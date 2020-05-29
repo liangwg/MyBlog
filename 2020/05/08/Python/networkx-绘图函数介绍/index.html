@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="创建图1.图的声明：123456import networkx as nx G &#x3D; nx.Graph()	#无多重边无向图G &#x3D; nx.DiGraph()	#无多重边有向图G &#x3D; nx.MultiGraph()		#有多重边无向图G &#x3D; nx.MultiDiGraph()	#有多重边有向图  2.添加节点和边：12345678910# 方法一----------------------------">
+<meta property="og:type" content="article">
+<meta property="og:title" content="networkx的绘图函数">
+<meta property="og:url" content="http://yoursite.com/2020/05/08/Python/networkx-%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="一叶扁舟">
+<meta property="og:description" content="创建图1.图的声明：123456import networkx as nx G &#x3D; nx.Graph()	#无多重边无向图G &#x3D; nx.DiGraph()	#无多重边有向图G &#x3D; nx.MultiGraph()		#有多重边无向图G &#x3D; nx.MultiDiGraph()	#有多重边有向图  2.添加节点和边：12345678910# 方法一----------------------------">
+<meta property="article:published_time" content="2020-05-08T02:42:57.419Z">
+<meta property="article:modified_time" content="2020-05-08T15:20:54.487Z">
+<meta property="article:author" content="liang">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/08/Python/networkx-绘图函数介绍/"/>
+
+
+
+
+
+  <title>networkx的绘图函数 | 一叶扁舟</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+	<a href="https://github.com/liangwg" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+	</div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一叶扁舟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不积小流，无以成江海</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/Python/networkx-%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一叶扁舟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">networkx的绘图函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T10:42:57+08:00">
+                2020-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/08/Python/networkx-%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/08/Python/networkx-%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="创建图"><a href="#创建图" class="headerlink" title="创建图"></a>创建图</h1><h4 id="1-图的声明："><a href="#1-图的声明：" class="headerlink" title="1.图的声明："></a>1.图的声明：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx </span><br><span class="line"></span><br><span class="line">G = nx.Graph()	<span class="comment">#无多重边无向图</span></span><br><span class="line">G = nx.DiGraph()	<span class="comment">#无多重边有向图</span></span><br><span class="line">G = nx.MultiGraph()		<span class="comment">#有多重边无向图</span></span><br><span class="line">G = nx.MultiDiGraph()	<span class="comment">#有多重边有向图</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-添加节点和边："><a href="#2-添加节点和边：" class="headerlink" title="2.添加节点和边："></a>2.添加节点和边：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一--------------------------------------</span></span><br><span class="line">G.add_node(<span class="string">'a'</span>)  <span class="comment"># 添加点a</span></span><br><span class="line">G.add_node(<span class="number">1</span>,<span class="number">1</span>)  <span class="comment"># 用坐标来添加点</span></span><br><span class="line">G.add_edge(<span class="string">'x'</span>,<span class="string">'y'</span>)   <span class="comment"># 添加边,起点为x，终点为y</span></span><br><span class="line">G.add_weight_edges_from([(<span class="string">'x'</span>,<span class="string">'y'</span>,<span class="number">1.0</span>)])  <span class="comment"># 第三个输入量为权值</span></span><br><span class="line"><span class="comment"># 方法二--------------------------------------</span></span><br><span class="line">list = [[(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="number">5.0</span>),(<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="number">3.0</span>),(<span class="string">'a'</span>,<span class="string">'c'</span>,<span class="number">1.0</span>)]</span><br><span class="line">G.add_weight_edges_from([(list)])</span><br><span class="line"><span class="comment"># 方法三--------------------------------------</span></span><br><span class="line">G = nx.from_pandas_edgelist(df_table, source = <span class="string">'A'</span>, target = <span class="string">'B'</span>, edge_attr = <span class="string">'C'</span>, create_using = nx.DiGraph())</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-图的显示："><a href="#3-图的显示：" class="headerlink" title="3.图的显示："></a>3.图的显示：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">nx.draw(G,</span><br><span class="line">        pos = nx.random_layout(G), <span class="comment"># pos 指的是布局,主要有spring_layout,random_layout,circle_layout,shell_layout</span></span><br><span class="line">        node_color = <span class="string">'b'</span>,   <span class="comment"># node_color指节点颜色,有rbykw,同理edge_color </span></span><br><span class="line">        edge_color = <span class="string">'r'</span>,</span><br><span class="line">        with_labels = <span class="literal">True</span>,  <span class="comment"># with_labels指节点是否显示名字</span></span><br><span class="line">        font_size =<span class="number">18</span>,  <span class="comment"># font_size表示字体大小,font_color表示字的颜色</span></span><br><span class="line">        node_size =<span class="number">20</span>)  <span class="comment"># font_size表示字体大小,font_color表示字的颜色</span></span><br><span class="line">plt.savefig(<span class="string">"network.png"</span>)</span><br><span class="line">nx.write_gexf(G, <span class="string">'network.gexf'</span>)  <span class="comment"># gexf格式文件可以导入gephi中进行分析</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h1 id="from-pandas-edgelist"><a href="#from-pandas-edgelist" class="headerlink" title="from_pandas_edgelist()"></a>from_pandas_edgelist()</h1><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>把包含边缘列表的pandas.DataFrame类型的数据转换成图</p>
+<h4 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h4><p>（df，source，target，edge_attr，create_using)</p>
+<details>
+    <summary>具体介绍</summary>
+    -df:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pandas DataFrame)&nbsp;&nbsp;&nbsp;&nbsp;-图的边的集合<br>
+    -source:&nbsp;&nbsp;&nbsp;&nbsp;(str or int)&nbsp;&nbsp;&nbsp;&nbsp;-源节点的有效的列名(有向图)<br>
+    -targe:&nbsp;&nbsp;&nbsp;&nbsp;(str or int)&nbsp;&nbsp;&nbsp;&nbsp;-目标节点的有效的列名<br>
+    -edge_attr:&nbsp;&nbsp;&nbsp;&nbsp;(str or int,iterable可迭代对象,True or None)&nbsp;&nbsp;&nbsp;&nbsp;边的名字=映射在df中要添加的列的名字，若=True，则除了前面已经用到的两个列以外，剩下的列都添加进去。<br>
+    -create_using:&nbsp;&nbsp;&nbsp;&nbsp;(NetworkX graph constructor, optional (default=nx.Graph))&nbsp;&nbsp;&nbsp;&nbsp;-要创建的图形类型。如果是图形实例，则在填充之前清除。<br>
+</details>
+
+<h4 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G = nx.from_pandas_edgelist(routes_us, source = <span class="string">'source'</span>, target = <span class="string">'target'</span>, edge_attr = <span class="string">'numbers'</span>, create_using = nx.DiGraph())</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="draw"><a href="#draw" class="headerlink" title="draw()"></a>draw()</h1><p>nx.draw()至少接受一个参数：待绘制的网络G</p>
+<details>
+    <summary>其他参数</summary>
+    -'node_size': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定节点的尺寸大小(默认是300)<br>
+    -'node_color':  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定节点的颜色(默认是红色，可以用字符串简单标识颜色，例如'r'为红色，'b'为绿色等)<br>
+    -'node_shape':  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点的形状(默认是圆形，用字符串'o'标识)<br>
+    -'alpha': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;透明度(默认是1.0，不透明，0为完全透明)<br>
+    -'width: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边的宽度(默认为1.0)<br>
+    -'edge_color': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边的颜色(默认为黑色)<br>
+    -'edge_cmp':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge_cmap与plt.cm.parameter开成映射，在图表上表现为边的颜色。<br>
+    -'style': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边的样式(默认是可实现，可选: solid|dashed|dotted,dashdot)<br>
+    -'with_labels': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点是否带标签(默认是True)<br>
+    -'font_size': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点标签字体大小(默认为12)<br>
+    -font_color': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点标签字体颜色(默认为黑色)
+</details>
+
+
+
+
+<h1 id="draw-network-edge-labels"><a href="#draw-network-edge-labels" class="headerlink" title="draw_network_edge_labels()"></a>draw_network_edge_labels()</h1><h4 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h4><p>绘制图中带有边的权重的图。</p>
+<h4 id="举例：-1"><a href="#举例：-1" class="headerlink" title="举例："></a>举例：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">G=nx.Graph(...)</span><br><span class="line">pos=nx.spring_layout(...)</span><br><span class="line">edge=dict(&#123;&#125;)</span><br><span class="line">nx.draw_network_edge_labels(G,pos,edge_labels=edge)</span><br></pre></td></tr></table></figure>
+
+<h1 id="spring-layout-函数"><a href="#spring-layout-函数" class="headerlink" title="spring_layout()函数"></a>spring_layout()函数</h1><h4 id="函数作用："><a href="#函数作用：" class="headerlink" title="函数作用："></a>函数作用：</h4><p>用来建立布局，起到美化作用。获取node的位置，</p>
+<h4 id="参数介绍："><a href="#参数介绍：" class="headerlink" title="参数介绍："></a>参数介绍：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring_layout(G, dim=<span class="number">2</span>, k=<span class="literal">None</span>, pos=<span class="literal">None</span>, fixed=<span class="literal">None</span>, iterations=<span class="number">50</span>, weight=<span class="string">'weight'</span>, scale=<span class="number">1.0</span>)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>取值</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>G</td>
+<td>Networkx graph</td>
+<td>传入DataFrame的值</td>
+</tr>
+<tr>
+<td>dim</td>
+<td>int</td>
+<td>布局的维度</td>
+</tr>
+<tr>
+<td>k</td>
+<td>float 或者default=None</td>
+<td>节点间的最佳距离。如果没有，则将距离设置为1/sqrt(n)，其中n是节点的数量。增加此值以将节点移动到更远的地方。</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>dict 或者没有<br />default=None</td>
+<td>节点的初始位置为字典，节点为键，值为列表或元组。如果没有，则使用随机生成图node的初始位置。</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>list or None optional (default=None)</td>
+<td>节点保持固定在初始位置。</td>
+</tr>
+<tr>
+<td>iterations</td>
+<td>int optional (default=50)</td>
+<td>弹簧松弛的迭代次数</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>string or None optional (default=’weight’)</td>
+<td>保存用于边缘权重的数值的边缘属性。如果没有，则所有边的权值都是1。</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>float (default=1.0)</td>
+<td>位置的比例因子。节点被放置在一个大小为[0,scale] x [0,scale]的框中。</td>
+</tr>
+<tr>
+<td>return</td>
+<td>dict</td>
+<td>由节点键控的位置字典</td>
+</tr>
+</tbody></table>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">G=nx.path_graph(<span class="number">4</span>)</span><br><span class="line">pos=nx.spring_layout(G)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/Zhili_wang/article/details/89368177" target="_blank" rel="noopener">https://blog.csdn.net/Zhili_wang/article/details/89368177</a></p>
+<p><a href="https://www.jianshu.com/p/6292e45da3d0" target="_blank" rel="noopener">https://www.jianshu.com/p/6292e45da3d0</a>   可以参考的是其中读取各种文件和绘制图形的过程</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/Python/plt-figure()%E5%87%BD%E6%95%B0/" rel="next" title="plt-figure()函数">
+                <i class="fa fa-chevron-left"></i> plt-figure()函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/08/Python/python-iterable%E5%AF%B9%E8%B1%A1/" rel="prev" title="python-Iterable(可迭代对象)">
+                python-Iterable(可迭代对象) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/image/%E5%A4%B4%E5%83%8F2.jpg"
+                alt="liang" />
+            
+              <p class="site-author-name" itemprop="name">liang</p>
+              <p class="site-description motion-element" itemprop="description">Once,onething</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建图"><span class="nav-number">1.</span> <span class="nav-text">创建图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-图的声明："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.图的声明：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-添加节点和边："><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.添加节点和边：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-图的显示："><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3.图的显示：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#from-pandas-edgelist"><span class="nav-number">2.</span> <span class="nav-text">from_pandas_edgelist()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介："><span class="nav-number">2.0.0.1.</span> <span class="nav-text">简介：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数："><span class="nav-number">2.0.0.2.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例："><span class="nav-number">2.0.0.3.</span> <span class="nav-text">举例：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#draw"><span class="nav-number">3.</span> <span class="nav-text">draw()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#draw-network-edge-labels"><span class="nav-number">4.</span> <span class="nav-text">draw_network_edge_labels()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用："><span class="nav-number">4.0.0.1.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例：-1"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">举例：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-layout-函数"><span class="nav-number">5.</span> <span class="nav-text">spring_layout()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作用："><span class="nav-number">5.0.0.1.</span> <span class="nav-text">函数作用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数介绍："><span class="nav-number">5.0.0.2.</span> <span class="nav-text">参数介绍：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举例"><span class="nav-number">5.0.1.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2020.4 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'iqt8La46IS4SERa8oTgtjPkG-gzGzoHsz',
+        appKey: 'mRulI0GixT6zeikSzEmpBKQj',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":40,"vOffset":-20},"mobile":{"show":true,"scale":0.5}});</script></body>
+</html>
