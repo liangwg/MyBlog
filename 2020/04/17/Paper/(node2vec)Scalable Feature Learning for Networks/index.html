@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="面向网络的可扩展特征学习 论文来源：KDD 2016 大致内容node2vec思想：生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。 不同点：在生成随机游走的过程做了一些创新 Introduction1.复杂网络面对的几种任务：  网络节点的分类（网络中的节点进行聚类，哪些节点有类似的属性，就将其分到同一个类别中） 链接预测（预测网络中哪些顶点">
+<meta name="description" content="面向网络的可扩展特征学习 论文来源：KDD 2016 一.大致内容node2vec思想：生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。 不同点：在生成随机游走的过程做了一些创新 二.Introduction1.复杂网络面对的几种任务：  网络节点的分类（网络中的节点进行聚类，哪些节点有类似的属性，就将其分到同一个类别中） 链接预测（预测网络中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(node2vec)Scalable Feature Learning for Networks">
-<meta property="og:url" content="http://yoursite.com/2020/04/17/Paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/04/17/paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/index.html">
 <meta property="og:site_name" content="一叶扁舟">
-<meta property="og:description" content="面向网络的可扩展特征学习 论文来源：KDD 2016 大致内容node2vec思想：生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。 不同点：在生成随机游走的过程做了一些创新 Introduction1.复杂网络面对的几种任务：  网络节点的分类（网络中的节点进行聚类，哪些节点有类似的属性，就将其分到同一个类别中） 链接预测（预测网络中哪些顶点">
+<meta property="og:description" content="面向网络的可扩展特征学习 论文来源：KDD 2016 一.大致内容node2vec思想：生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。 不同点：在生成随机游走的过程做了一些创新 二.Introduction1.复杂网络面对的几种任务：  网络节点的分类（网络中的节点进行聚类，哪些节点有类似的属性，就将其分到同一个类别中） 链接预测（预测网络中">
 <meta property="og:image" content="d:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cf60ff1705157444dafe927e0b8bf0be6%5Cclipboard.png">
 <meta property="og:image" content="d:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cf8e016e9db024e329ce1244c1171a3e7%5Cclipboard.png">
 <meta property="og:image" content="d:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C48a0d696069c4a1eb30ef0d6b019f5a6%5Cclipboard.png">
@@ -106,7 +106,7 @@
 <meta property="og:image" content="d:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C447b2a1282f14e2eaef542a225ccc8a2%5Cclipboard.png">
 <meta property="og:image" content="d:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C15b2e0dbe7074368a67182f0103f3e5b%5Cclipboard.png">
 <meta property="article:published_time" content="2020-04-17T14:23:57.496Z">
-<meta property="article:modified_time" content="2020-04-24T03:17:33.318Z">
+<meta property="article:modified_time" content="2020-06-07T07:43:35.957Z">
 <meta property="article:author" content="liang">
 <meta property="article:tag" content="node2vec">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/17/Paper/(node2vec)Scalable Feature Learning for Networks/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/17/paper/(node2vec)Scalable Feature Learning for Networks/"/>
 
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/Paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liang">
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper/" itemprop="url" rel="index">
-                    <span itemprop="name">Paper</span>
+                  <a href="/categories/paper/" itemprop="url" rel="index">
+                    <span itemprop="name">paper</span>
                   </a>
                 </span>
 
@@ -355,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/Paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/Paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/" itemprop="commentCount"></span>
+                <a href="/2020/04/17/paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -391,9 +391,9 @@
       
         <p><strong>面向网络的可扩展特征学习</strong></p>
 <p>论文来源：KDD 2016</p>
-<h1 id="大致内容"><a href="#大致内容" class="headerlink" title="大致内容"></a>大致内容</h1><p>node2vec思想：生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。</p>
+<h1 id="一-大致内容"><a href="#一-大致内容" class="headerlink" title="一.大致内容"></a>一.大致内容</h1><p>node2vec思想：生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。</p>
 <p><strong>不同点：在生成随机游走的过程做了一些创新</strong></p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><strong>1.复杂网络面对的几种任务：</strong></p>
+<h1 id="二-Introduction"><a href="#二-Introduction" class="headerlink" title="二.Introduction"></a>二.Introduction</h1><p><strong>1.复杂网络面对的几种任务：</strong></p>
 <ul>
 <li>网络节点的分类（网络中的节点进行聚类，哪些节点有类似的属性，就将其分到同一个类别中）</li>
 <li>链接预测（预测网络中哪些顶点有潜在的关联）</li>
@@ -410,12 +410,12 @@
 <li>同一个社区内的节点表示相似</li>
 <li>拥有类似结构的节点表示相似</li>
 </ul>
-<h1 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h1><p>之前的工作存在着的一些问题：</p>
+<h1 id="三-Related-Works"><a href="#三-Related-Works" class="headerlink" title="三.Related Works"></a>三.Related Works</h1><p>之前的工作存在着的一些问题：</p>
 <ul>
 <li>特征需要依赖人手工定义，本身就不准确</li>
 <li>一些非监督学习中的降维方法被拿来使用，但效率低，准确度不够，不能反应出网络的结构特征</li>
 </ul>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p><strong>1.损失函数：（objective function）</strong></p>
+<h1 id="四-准备工作"><a href="#四-准备工作" class="headerlink" title="四.准备工作"></a>四.准备工作</h1><p><strong>1.损失函数：（objective function）</strong></p>
 <p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cf8e016e9db024e329ce1244c1171a3e7%5Cclipboard.png" alt="img"></p>
 <p><strong>node2vec的优化目标就是给定每个顶点条件下，令其邻近顶点出现的概率最大</strong></p>
 <p><strong>2.引入的两个假设：</strong></p>
@@ -438,7 +438,7 @@
 <p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cd1e509728e5046d5b62cb515dab97626%5Cclipboard.png" alt="img"></p>
 <p>注意两点：</p>
 <p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C5938281332c9471bad1c022d347c793d%5Cclipboard.png" alt="img"></p>
-<h1 id="Node2vec创新的地方（采样策略）"><a href="#Node2vec创新的地方（采样策略）" class="headerlink" title="Node2vec创新的地方（采样策略）"></a>Node2vec创新的地方（采样策略）</h1><p><strong>1. node2vec采用一种有偏的随机游走。</strong></p>
+<h1 id="五-Node2vec创新的地方（采样策略）"><a href="#五-Node2vec创新的地方（采样策略）" class="headerlink" title="五.Node2vec创新的地方（采样策略）"></a>五.Node2vec创新的地方（采样策略）</h1><p><strong>1. node2vec采用一种有偏的随机游走。</strong></p>
 <p>给定当前顶点v，访问下一个顶点x的概率为：</p>
 <p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C63d3522790ba4313aec4f3cf23f336cb%5Cclipboard.png" alt="img"></p>
 <p><strong>2.node2vec引入了两个超参数p和q来控制随机游走的策略，</strong></p>
@@ -466,7 +466,7 @@
 </ul>
 <p>BFS倾向于在初始点的周围游走，反映出一个节点的邻居的微观特性；</p>
 <p>DFS则会离初始节点越来越远，反映出一个节点邻居的宏观特性；</p>
-<h1 id="算法部分"><a href="#算法部分" class="headerlink" title="算法部分"></a>算法部分</h1><p>按概率抽取，采用了Alias算法进行顶点采样</p>
+<h1 id="六-算法部分"><a href="#六-算法部分" class="headerlink" title="六.算法部分"></a>六.算法部分</h1><p>按概率抽取，采用了Alias算法进行顶点采样</p>
 <p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C9908a908f1cf4930976bd7d526e99348%5Cclipboard.png" alt="img"></p>
 <p>算法的参数+部分：</p>
 <p>图G，表示向量维度d，每个节点生成的游走个数r，游走长度I，上下文的窗口长度k，还有p,q参数。</p>
@@ -485,12 +485,12 @@
 <p>5.根据转移概率采样选择某个邻居s</p>
 <p>6.将该邻居添加到walk中。</p>
 <p><strong>此处有不懂的地方？？？？？</strong></p>
-<h1 id="Node2vec核心代码"><a href="#Node2vec核心代码" class="headerlink" title="Node2vec核心代码"></a>Node2vec核心代码</h1><p><a href="https://blog.csdn.net/u012151283/article/details/87081272" target="_blank" rel="noopener">https://blog.csdn.net/u012151283/article/details/87081272</a></p>
-<h1 id="实验部分"><a href="#实验部分" class="headerlink" title="实验部分"></a>实验部分</h1><p><strong>实验部分？？？？？？？？？？</strong></p>
+<h1 id="七-Node2vec核心代码"><a href="#七-Node2vec核心代码" class="headerlink" title="七.Node2vec核心代码"></a>七.Node2vec核心代码</h1><p><a href="https://blog.csdn.net/u012151283/article/details/87081272" target="_blank" rel="noopener">https://blog.csdn.net/u012151283/article/details/87081272</a></p>
+<h1 id="八-实验部分"><a href="#八-实验部分" class="headerlink" title="八.实验部分"></a>八.实验部分</h1><p><strong>实验部分？？？？？？？？？？</strong></p>
 <p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C447b2a1282f14e2eaef542a225ccc8a2%5Cclipboard.png" alt="img"></p>
 <p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C15b2e0dbe7074368a67182f0103f3e5b%5Cclipboard.png" alt="img"></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>思想和DeepWalk是一样的，但是改进了DeepWalk中随机游走的生成方式，使得生成的随机游走可以反映深度游走和广度游走的特性。</p>
-<h1 id="参考论文"><a href="#参考论文" class="headerlink" title="参考论文"></a>参考论文</h1><p>[1].论文翻译<a href="https://zhuanlan.zhihu.com/p/46344860" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46344860</a></p>
+<h1 id="九-总结"><a href="#九-总结" class="headerlink" title="九.总结"></a>九.总结</h1><p>思想和DeepWalk是一样的，但是改进了DeepWalk中随机游走的生成方式，使得生成的随机游走可以反映深度游走和广度游走的特性。</p>
+<h1 id="十-参考论文"><a href="#十-参考论文" class="headerlink" title="十.参考论文"></a>十.参考论文</h1><p>[1].论文翻译<a href="https://zhuanlan.zhihu.com/p/46344860" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46344860</a></p>
 <p>[2].代码参考<a href="https://blog.csdn.net/u012151283/article/details/87081272" target="_blank" rel="noopener">https://blog.csdn.net/u012151283/article/details/87081272</a></p>
 <p>[3].模型实现<a href="https://github.com/shenweichen/GraphEmbedding" target="_blank" rel="noopener">https://github.com/shenweichen/GraphEmbedding</a></p>
 
@@ -523,7 +523,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/17/Paper/(DeepWalk)online%20Learning%20of%20Social%20Representation/" rel="next" title="(DeepWalk)online Learning of Social Representation">
+              <a href="/2020/04/17/paper/(DeepWalk)online%20Learning%20of%20Social%20Representation/" rel="next" title="(DeepWalk)online Learning of Social Representation">
                 <i class="fa fa-chevron-left"></i> (DeepWalk)online Learning of Social Representation
               </a>
             
@@ -533,7 +533,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/19/ProblemSolved/Vmware%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" rel="prev" title="Vmware使用问题">
+              <a href="/2020/04/19/tools/Vmware%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" rel="prev" title="Vmware使用问题">
                 Vmware使用问题 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -628,7 +628,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -639,7 +639,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -672,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#大致内容"><span class="nav-number">1.</span> <span class="nav-text">大致内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Related-Works"><span class="nav-number">3.</span> <span class="nav-text">Related Works</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">4.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node2vec创新的地方（采样策略）"><span class="nav-number">5.</span> <span class="nav-text">Node2vec创新的地方（采样策略）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法部分"><span class="nav-number">6.</span> <span class="nav-text">算法部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node2vec核心代码"><span class="nav-number">7.</span> <span class="nav-text">Node2vec核心代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验部分"><span class="nav-number">8.</span> <span class="nav-text">实验部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考论文"><span class="nav-number">10.</span> <span class="nav-text">参考论文</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-大致内容"><span class="nav-text">一.大致内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-Introduction"><span class="nav-text">二.Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-Related-Works"><span class="nav-text">三.Related Works</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-准备工作"><span class="nav-text">四.准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-Node2vec创新的地方（采样策略）"><span class="nav-text">五.Node2vec创新的地方（采样策略）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六-算法部分"><span class="nav-text">六.算法部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七-Node2vec核心代码"><span class="nav-text">七.Node2vec核心代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八-实验部分"><span class="nav-text">八.实验部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九-总结"><span class="nav-text">九.总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十-参考论文"><span class="nav-text">十.参考论文</span></a></li></ol></div>
             
 
           </div>
