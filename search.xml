@@ -1,0 +1,1202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>linux的tar命令的使用</title>
+    <url>/2020/04/23/linux/linux%E7%9A%84tar%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="一-命令概述"><a href="#一-命令概述" class="headerlink" title="一.命令概述"></a>一.命令概述</h3><p>​    <strong>1. 作用</strong>： tar命令是Unix/Linux系统中备份文件（<strong>打包/解压</strong>）的可靠方法，几乎可以工作于任何环境中，它的使用权限是所有用户。</p>
+<p>​    <strong>2. 格式</strong>： <strong>tar [命令] [参数] 文件或目录</strong> </p>
+<p>　　　　示例： </p>
+<p>　　　　　　①  <strong>tar -czvf test.tgz test</strong>；  将当前目录下的test文件夹打包为test.tgz</p>
+<p>　　　　　　② <strong>tar -xzvf test.tgz</strong>；  将test.tgz解压到当前目录，如果要解压到指定目录</p>
+<p>　　　　　　③ <strong>tar -xzvf test.tgz -C /usr</strong> ;解压到指定目录 解压到/usr,可以用其中C必须大写</p>
+<p>​    <strong>3.主要参数：</strong>使用该命令时，必须选择一个命令（仅选一个，如-x），参数是辅助选项，可以根据需要选择（-f必选）</p>
+<h3 id="二-命令"><a href="#二-命令" class="headerlink" title="二.命令"></a>二.命令</h3><p>​        -c: 建立压缩档案<br>　　-x：解压<br>　　-t：查看内容<br>　　-r：向压缩归档文件末尾追加文件<br>　　-u：更新原压缩包中的文件</p>
+<h3 id="三-参数"><a href="#三-参数" class="headerlink" title="三.参数"></a>三.参数</h3><p>​       -z：有gzip属性的<br>　　-j：有bz2属性的<br>　　-Z：有compress属性的<br>　　-v：显示所有过程<br>　　-O：将文件解开到标准输出<br>​        -f :   使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。(-f为必选)</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>html的form表单</title>
+    <url>/2020/05/22/frontEnd/html%E7%9A%84form%E8%A1%A8%E5%8D%95/</url>
+    <content><![CDATA[<p>注意：若在action中填入”entity/“，则原来正常的表单提交完后，会变成给多了一个entity/的表单提交</p>
+<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><p>&lt;form&gt;标签用于为用户输入创建HTML表单。</p>
+<p>表单包含：input元素（文本字段，复选框，单选框，提交按钮等），menus、textarea、fieldset、legend、label元素</p>
+<p><strong>表单用于向服务器传输数据</strong></p>
+<h3 id="二-传递数据原理过程"><a href="#二-传递数据原理过程" class="headerlink" title="二.传递数据原理过程"></a>二.传递数据原理过程</h3><h4 id="1-使用POST方法："><a href="#1-使用POST方法：" class="headerlink" title="1.使用POST方法："></a>1.使用POST方法：</h4><p>浏览器按照这两个步骤来发送数据：</p>
+<p>1.浏览器将与action属性中指定的表单处理服务器建立联系，</p>
+<p>2.一旦建立连接，浏览器就按分段传输的方法将数据发送给服务器。</p>
+<h4 id="2-使用GET方法："><a href="#2-使用GET方法：" class="headerlink" title="2.使用GET方法："></a>2.使用GET方法：</h4><p>浏览器与表单处理服务器建立连接，然后直接在一个传输步骤中发送所有的表单数据：浏览器会将数据直接附在表单的action URL之后。这两者之间用问号分隔，<strong>因此，调用含义get方法的表单时，要在url的页面后面加上要传入的值</strong>，如：http:127.0.0.1/entity/?user_text=”杨幂”或者<a href="http://www.example.com/example/program?x=28&amp;y=66" target="_blank" rel="noopener">http://www.example.com/example/program?x=28&amp;y=66</a></p>
+<h4 id="3-用post还是get"><a href="#3-用post还是get" class="headerlink" title="3.用post还是get:"></a>3.用post还是get:</h4><table>
+<thead>
+<tr>
+<th>get优点</th>
+<th>post优点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.最佳表单传输性能+发送只有少数简短字段的小表单<br />2.get不需要在读取和解码方法做些额外的工作</td>
+<td>1.有许多字段或是很长文本域的表单<br />2.涉及到安全性问题，不能让外人看到传输的数据时</td>
+</tr>
+</tbody></table>
+<h3 id="三-表单的属性"><a href="#三-表单的属性" class="headerlink" title="三.表单的属性"></a>三.表单的属性</h3><p>参考<a href="https://www.w3school.com.cn/tags/tag_form.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/tags/tag_form.asp</a></p>
+<p>几个重要的属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>可能取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>action</td>
+<td>URL<br />比如：action=”form_action.asp”</td>
+<td>规定当提交表单时向何处发送表单数据;</td>
+</tr>
+<tr>
+<td>menthod</td>
+<td>menthod=”get”或者menthod=”post”</td>
+<td>规定用与发送form-data的HTTP的方法</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str型，</td>
+<td>规定表单的名称，提供了一种在脚本中引用form表单的方法</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="四-例子"><a href="#四-例子" class="headerlink" title="四.例子"></a>四.例子</h3><h4 id="menthod-”get”的例子"><a href="#menthod-”get”的例子" class="headerlink" title="menthod=”get”的例子"></a>menthod=”get”的例子</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"form_action.asp"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>First name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"fname"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Last name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lname"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="menthod-”post”的例子"><a href="#menthod-”post”的例子" class="headerlink" title="menthod=”post”的例子"></a>menthod=”post”的例子</h4>]]></content>
+      <categories>
+        <category>frontEnd</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>html的简单介绍</title>
+    <url>/2020/05/15/frontEnd/html%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">content= $(<span class="string">'#liang'</span>).val()</span><br></pre></td></tr></table></figure>
+
+<p>这句话的含义就是，选取前面定义过的id=’liang’的标签，并取值赋给content</p>
+<p>$其实就是copy函数名，在传统的编程语言中，$不能用在函数名中知，但是javascript中可以，这个$函数的作用就是通过ID获取Element。跟你直道接调用getElementById()效果是一样的。</p>
+<h3 id="Js弹出对话框的三种形式："><a href="#Js弹出对话框的三种形式：" class="headerlink" title="Js弹出对话框的三种形式："></a>Js弹出对话框的三种形式：</h3><p>alert(str);    弹出的框中只有确认按钮</p>
+<p>confirm(str);     弹出的框中既有确认按钮，也有取消按钮，并且有返回值，可以被调用。</p>
+<p>prompt(str);       弹出提示对话框，使用户输入有关信息，并接受返回值，</p>
+<p>将js代码放入body里面的最底部，这样方便先加载静态显示的内容，再加载js动态效果</p>
+<h3 id="style-’text-javascript’"><a href="#style-’text-javascript’" class="headerlink" title="style=’text/javascript’"></a>style=’text/javascript’</h3><p>type=”text/javascript”是说明这一段脚本语言是javascript。告诉浏览来器这一段要按照javascript来解释执行。</p>
+]]></content>
+      <categories>
+        <category>frontEnd</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>(DeepWalk)online Learning of Social Representation</title>
+    <url>/2020/04/17/paper/(DeepWalk)online%20Learning%20of%20Social%20Representation/</url>
+    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h1 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h1><p>构建分层softmax有什么用？？</p>
+<p>独立性假设？？？</p>
+<p>标签应该用什么向量来表示？？？？？？</p>
+<p>这里为什么可以用独立性假设</p>
+<p>这里的J是不是有问题？不应该是连乘式嘛？</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/clipboard.png" alt="img"></p>
+<h1 id="二-相关信息"><a href="#二-相关信息" class="headerlink" title="二.相关信息"></a>二.相关信息</h1><p><strong>发表：</strong></p>
+<p>2014的KDD会议上</p>
+<p><strong>作者：</strong></p>
+<p>Bryan Perozzi, Stony Brook University, Stony Brook, NY, USA</p>
+<p>Rami Al-Rfou, Stony Brook University, Stony Brook, NY, USA</p>
+<p>Steven Skiena, Stony Brook University, Stony Brook, NY, USA</p>
+<h1 id="三-背景介绍"><a href="#三-背景介绍" class="headerlink" title="三.背景介绍"></a>三.背景介绍</h1><pre><code> 1.使用机器学习的算法解决问题需要大量的信息，而现实生活中的网络信息较少。为了将机器学习的算法应用在现实网络中，要对信息较少的网络（稀疏性网络，社交网络）进行处理。
+
+ 2.DeepWalk把一个图或网络作为输入，输出为网络中顶点的向量表示。通过截断随机游走（truncated random walk）学习处一个网络的社会表示（social representation）(中心思想)
+
+3.网络嵌入：</code></pre><p>将网络中的点用一个低维的向量表示，并且这些向量要能反应原先网络的某些特性，比如原来的点结构类似，点所构成的向量也类似</p>
+<h1 id="四-问题定义"><a href="#四-问题定义" class="headerlink" title="四.问题定义"></a>四.问题定义</h1><p><strong>1.普通图的表示：</strong></p>
+<p>令G =(V,E)，其中V表示网络的节点，E是网络中的连接，E⊆ (V×V)。</p>
+<p><strong>2.标注图的表示（labeled social network）:</strong></p>
+<p>G的基础上加上顶点的向量表示和顶点所属的标注（网络节点分类问题中每个顶点都有一个类别，所属的类别即为该顶点的标注）</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online.png" alt="DW-online"></p>
+<p>​       X是将每个顶点的向量结合在一起形成的矩阵</p>
+<p>Y是每个顶点的标注构成的集合</p>
+<h1 id="五-补充知识"><a href="#五-补充知识" class="headerlink" title="五.补充知识"></a>五.补充知识</h1><p><strong>1.学习网络表示注意的几个性质：</strong></p>
+<p>适用性（Adaptability）:网络要适应网络的变化，对于新的节点和边添加可以处理，正常演化</p>
+<p>同节点类似表示性(Community aware):网络中结构相似的点表示成的向量也相似</p>
+<p>低维性(Low dimensional): 代表每个顶点的向量维数不能过高，过高会过拟合。</p>
+<p>连续性(Continuous):低维的向量应当连续。</p>
+<p><strong>2.网络嵌入和词嵌入：(word embedding and network embedding)</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>网络嵌入</th>
+<th>词嵌入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>可用向量表示单元&amp;&amp;基本处理单元</td>
+<td>网络节点</td>
+<td>单词</td>
+</tr>
+<tr>
+<td>分析</td>
+<td>对节点的表示中节点构成的随机游走序列进行分析</td>
+<td>对构成一个句子的单词序列进行分析</td>
+</tr>
+</tbody></table>
+<p><strong>3.嵌入的理解：（Embedding）</strong></p>
+<p>词嵌入，网络嵌入中的嵌入是学习这些内容的本质特征和内在含义的意思</p>
+<p>网络嵌入：将节点转化为向量，挖掘节点的本质特征（语义，属性等性质上的相似性转化为向量空间上的相似性）</p>
+<p>网络嵌入是将节点表示成低微向量，用向量的余弦距离表示节点的相连关系，余弦距离越近，表示有相连关系。</p>
+<p><strong>4.随机游走（random walk）:</strong></p>
+<p>网络上不断重复地随机选择游走路径，最终形成一条贯穿网络的路径；</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online3.png" alt="DW-online3"></p>
+<p>截断随机游走==长度固定的随机游走。</p>
+<p><strong>随机游走的两个好处：</strong></p>
+<ul>
+<li>并行性：随机游走是局部的，可以多个顶点同时开始一定长度的随机游走</li>
+<li>适应性：适应网络局部的变化，网络演化是局部的点和边的变化，这样的变化只对部分随机游走路径产生影响。</li>
+</ul>
+<p><strong>5.分层softmax  (**</strong>Hierarchical Softmax<strong>**)</strong></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online4.png" alt="DW-online4"></p>
+<p><strong>6.机器学习中的矩阵表示</strong></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online5.png" alt="DW-online5"></p>
+<h1 id="六-语言建模扩展到网络节点表示"><a href="#六-语言建模扩展到网络节点表示" class="headerlink" title="六.语言建模扩展到网络节点表示"></a>六.语言建模扩展到网络节点表示</h1><p><a href="https://zhuanlan.zhihu.com/p/45167021（推理部分）" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45167021（推理部分）</a></p>
+<p><strong>1.类比过程：</strong></p>
+<p>语言建模的目标是估计出现在语料库中的特定序列的可能性。即，给定Wn =（w0，w1，…，wn）的序列，其中wi∈V（V是词汇表），我们想最大化Pr（wn | w0，w1， …，wn-1）。在最近的工作中，语言建模扩展到使用概率神经网络来构建词语的一般表示。</p>
+<p>随机游走得到的序列可以被认为是一种特殊语言的短句，类比语言建模可以得到：在随机游走中给定迄今为止访问的所有先前顶点的情况下，下一个顶点是vi的可能性可以表示为：</p>
+<p>           Pr(vi| (v1,v2,··· ,vi-1))  (1)</p>
+<p><strong>2.节点–向量的映射</strong></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online6.png" alt="DW-online6"></p>
+<p><strong>3.松弛（relaxation）假设：</strong></p>
+<ul>
+<li>不是通过上下文预测单词，而是使用单词来预测上下文。</li>
+<li>上下文由给定的单词的左右两边的单词组成</li>
+<li>不考虑句子中上下文出现的顺序，最大化出现在上下文中的所有单词的概率。对于顶点的表示进行建模，产生下面的优化问题：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online7.png" alt="DW-online7"></p>
+<p>通过解决优化问题(3)可以得到图中节点的向量表示形式（最后的输出）</p>
+<h1 id="七-算法"><a href="#七-算法" class="headerlink" title="七.算法"></a>七.算法</h1><p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online8.png" alt="DW-online8"></p>
+<p><em>图3.DeepWalk算法框架</em></p>
+<p>DeepWalk的算法包含两个部分，一个部分是随机游走的生成，另一部分是参数的更新</p>
+<p><strong>1.主体部分：</strong></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online9.png" alt="DW-online9"></p>
+<p>其中第2步是构建Hierarchical Softmax，第3步对每个节点做γ次随机游走，第4步打乱网络中的节点，第5步以每个节点为根节点生成长度为t的随机游走，第7步根据生成的随机游走使用skip-gram模型利用梯度的方法对参数进行更新。</p>
+<p><strong>2.参数更新部分：</strong></p>
+<p>skip-gram是一个语言模型，用于最大化句子中出现在窗口w内的单词之间的共现概率。用独立性假设，将等式3中的条件概率近似为</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online10.png" alt="DW-online10"></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online11.png" alt="DW-online11"></p>
+<p>对随机游走序列中的每个顶点，先把它映射到它的当前表示向量Φ(vj)（参见图3(b)）；然后通过随机梯度下降算法，最大化出现在上下文中的所有单词的概率，以此更新向量表示。</p>
+<p><strong>3.Hierarchical Softmax</strong></p>
+<p>给定uk∈V，直接计算第3行的Pr(uk|Φ(vj))是不可行的，我们将使用Hierarchical Softmax来分解条件概率。</p>
+<p>我们将网络中的顶点分配为二叉树的叶子节点，将问题转化为最大化层级中特定路径的概率（参见图3(c)）。如果顶点uk的路径由一系列树节点(b0，b1，…，b[log |V|])来标识，其中，b0=vj，b[log |V|]= uk，那么</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online12.png" alt="DW-online12"></p>
+<p>Pr(bl|Φ(vj))可以通过对bl的父节点建模一个二元分类器实现，计算公式为：</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online13.png" alt="DW-online13"></p>
+<p>(这里的公式二元分类器)</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online14.png" alt="DW-online14"></p>
+<h1 id="八-实验"><a href="#八-实验" class="headerlink" title="八.实验"></a>八.实验</h1><p><a href="https://www.jianshu.com/p/5adcc3d94159" target="_blank" rel="noopener">https://www.jianshu.com/p/5adcc3d94159</a>  参照实验部分</p>
+<p><strong>1.数据集：</strong></p>
+<ul>
+<li>BlogCatalog是博客作者的社交关系网络。标签代表作者提供的主题类别。</li>
+<li>Flickr是照片分享网站用户之间的联系网络。标签代表用户的兴趣组。</li>
+<li>YouTube是流行的视频分享网站用户之间的社交网络。标签代表喜欢不同类视频的观众群体。</li>
+</ul>
+<p><strong>2.对比算法</strong></p>
+<ul>
+<li>SpectralClustering</li>
+<li>Modularity</li>
+<li>EdgeCluster</li>
+<li>wvRN</li>
+<li>Majority</li>
+</ul>
+<p><strong>3.实验设计</strong></p>
+<h1 id="九-总结"><a href="#九-总结" class="headerlink" title="九.总结"></a>九.总结</h1><p>学习顶点潜在表示的新方法，对语言建模算法的一般化。DeepWalk可扩展，可为大规模、稀疏的图创建有意义的表示。</p>
+<h1 id="十-参考文献"><a href="#十-参考文献" class="headerlink" title="十.参考文献"></a>十.参考文献</h1><p>[1].deepwalk理解：<a href="https://zhuanlan.zhihu.com/p/45167021" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45167021</a></p>
+<p>[2].论文参考翻译：<a href="https://www.jianshu.com/p/5adcc3d94159" target="_blank" rel="noopener">https://www.jianshu.com/p/5adcc3d94159</a></p>
+<p>[3].工具：<a href="https://github.com/phanein/deepwalk" target="_blank" rel="noopener">https://github.com/phanein/deepwalk</a></p>
+]]></content>
+      <categories>
+        <category>paper</category>
+      </categories>
+      <tags>
+        <tag>deepwalk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>endswitch()函数</title>
+    <url>/2020/05/06/python/endswitch()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="一-功能："><a href="#一-功能：" class="headerlink" title="一.功能："></a>一.功能：</h3><p>判断字符串是否以指定字符或者字符串结尾。</p>
+<h3 id="二-函数原型："><a href="#二-函数原型：" class="headerlink" title="二.函数原型："></a>二.函数原型：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.endswith(&quot;suffix&quot;,    	&#x3D;&gt; 后缀，可以是单个字符，也可以是字符串，还可以是元组;</span><br><span class="line">	      start &#x3D; 0,  	&#x3D;&gt; 索引字符串的起始位置;</span><br><span class="line">	      end &#x3D; len(str))	&#x3D;&gt; 索引字符串的结束位置。</span><br><span class="line">返回值：布尔类型（True,False）</span><br></pre></td></tr></table></figure>
+
+<h3 id="三-例子"><a href="#三-例子" class="headerlink" title="三.例子"></a>三.例子</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str=<span class="string">"Hello World"</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>)  <span class="comment">#判断是否以d结尾</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>,<span class="number">0</span>,<span class="number">6</span>) <span class="comment">#索引"Hello W"是否以d结尾</span></span><br><span class="line">str[<span class="number">0</span>:<span class="number">6</span>].endswitch(<span class="string">"d"</span>) <span class="comment">#只索引str[0:6]的</span></span><br><span class="line">str.endswitch((<span class="string">"e"</span>,<span class="string">"o"</span>)) <span class="comment">#遍历元组中的元素，存在则返回True</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>(node2vec)Scalable Feature Learning for Networks</title>
+    <url>/2020/04/17/paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/</url>
+    <content><![CDATA[<p><strong>面向网络的可扩展特征学习</strong></p>
+<p>论文来源：KDD 2016</p>
+<h1 id="一-大致内容"><a href="#一-大致内容" class="headerlink" title="一.大致内容"></a>一.大致内容</h1><p>node2vec思想：生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。</p>
+<p><strong>不同点：在生成随机游走的过程做了一些创新</strong></p>
+<h1 id="二-Introduction"><a href="#二-Introduction" class="headerlink" title="二.Introduction"></a>二.Introduction</h1><p><strong>1.复杂网络面对的几种任务：</strong></p>
+<ul>
+<li>网络节点的分类（网络中的节点进行聚类，哪些节点有类似的属性，就将其分到同一个类别中）</li>
+<li>链接预测（预测网络中哪些顶点有潜在的关联）</li>
+</ul>
+<p><strong>2.本文的工作：</strong></p>
+<p>设计出既能保持节点邻居信息又容易训练的模型</p>
+<p><strong>3.网络中的结构特征</strong></p>
+<p>社区：很多节点会聚集在一起，内部的连接远比外部的连接多。</p>
+<p>网络中两个可能相聚很远的节点，在边的连接上有着类似的特征。</p>
+<p>如下面的u,s1,s2,s3,s4就是一个社区，u和s6在结构上有着相似的特征</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cf60ff1705157444dafe927e0b8bf0be6%5Cclipboard.png" alt="img"></p>
+<p><strong>4.网络表示学习算法要满足：</strong></p>
+<ul>
+<li>同一个社区内的节点表示相似</li>
+<li>拥有类似结构的节点表示相似</li>
+</ul>
+<h1 id="三-Related-Works"><a href="#三-Related-Works" class="headerlink" title="三.Related Works"></a>三.Related Works</h1><p>之前的工作存在着的一些问题：</p>
+<ul>
+<li>特征需要依赖人手工定义，本身就不准确</li>
+<li>一些非监督学习中的降维方法被拿来使用，但效率低，准确度不够，不能反应出网络的结构特征</li>
+</ul>
+<h1 id="四-准备工作"><a href="#四-准备工作" class="headerlink" title="四.准备工作"></a>四.准备工作</h1><p><strong>1.损失函数：（objective function）</strong></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cf8e016e9db024e329ce1244c1171a3e7%5Cclipboard.png" alt="img"></p>
+<p><strong>node2vec的优化目标就是给定每个顶点条件下，令其邻近顶点出现的概率最大</strong></p>
+<p><strong>2.引入的两个假设：</strong></p>
+<ul>
+<li><strong>条件独立性（Conditional independence）：</strong>也即采样的每个邻居是相互独立的，若要计算采样所有邻居的概率只需要将采样每个邻居的概率相乘即可，公式如下：</li>
+</ul>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C48a0d696069c4a1eb30ef0d6b019f5a6%5Cclipboard.png" alt="img"></p>
+<ul>
+<li><strong>特征空间的对称性（Symmetry in feature space）：</strong>一条边连接了a和b，则映射到特征空间时，a对b的影响和b对a的影响是一样的。一个顶点作为源顶点和作为近邻顶点时共享一套embedding向量。由一个模型表示一个（节点，邻居）对：</li>
+</ul>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cc6934f999351407683f9e85a1867ccee%5Cclipboard.png" alt="img"></p>
+<p><strong>（此处的公式就是套用了完全softmax公式）</strong></p>
+<p><strong>3.最终的优化函数的推导：</strong></p>
+<p>将上面三个公式结合起来，得到最终的优化函数的结果：</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C1b44a0ee99b24d839a0799d673a3ae35%5Cclipboard.png" alt="img"></p>
+<p>其推导过程如下：</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Ccc3c25c8190d4605a084f9925090f833%5Cclipboard.png" alt="img"></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C837bf0fceeca47f1bf30f910f78f541a%5Ckaav" alt="img">)lxy}6t856~~gdcb_0q.png)</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cf301cb83d03646bab5e6e1228dc9540e%5Cclipboard.png" alt="img"></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cd1e509728e5046d5b62cb515dab97626%5Cclipboard.png" alt="img"></p>
+<p>注意两点：</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C5938281332c9471bad1c022d347c793d%5Cclipboard.png" alt="img"></p>
+<h1 id="五-Node2vec创新的地方（采样策略）"><a href="#五-Node2vec创新的地方（采样策略）" class="headerlink" title="五.Node2vec创新的地方（采样策略）"></a>五.Node2vec创新的地方（采样策略）</h1><p><strong>1. node2vec采用一种有偏的随机游走。</strong></p>
+<p>给定当前顶点v，访问下一个顶点x的概率为：</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C63d3522790ba4313aec4f3cf23f336cb%5Cclipboard.png" alt="img"></p>
+<p><strong>2.node2vec引入了两个超参数p和q来控制随机游走的策略，</strong></p>
+<p>假设当前随机游走经过边（t，v）到达顶点v，</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C4b7858cb1ca24c88b19c5adcaa47bfc4%5Cclipboard.png" alt="img"></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Cfd9ebd050db34310afc0921825b49a36%5Cclipboard.png" alt="img"></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C5bcc08e5be10459b99cc80ab2be72d7d%5Cclipboard.png" alt="img"></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C9f3cbba2c5214557b54cbe9a6a0ab1b8%5Cclipboard.png" alt="img"></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Ce9b465e9ee9c414ea2de4aede9566c84%5Cclipboard.png" alt="img"></p>
+<p><strong>3.超参数p和q对游走策略的影响：</strong></p>
+<ul>
+<li>Return parameter ,p(返回参数)：</li>
+</ul>
+<p>参数p控制重复访问刚刚访问过的顶点的概率。</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5Ca1a0692ee20d4fa0b0a7ece0cc14a9a8%5Cclipboard.png" alt="img"></p>
+<ul>
+<li>In-out parameter,q(出入参数)：</li>
+</ul>
+<p>q控制着游走是向外还是向内，若q&gt;1，随机游走倾向于访问和t接近的顶点（偏向于BFS）。若q&lt;1，倾向于访问远离t的顶点（偏向于DFS）</p>
+<ul>
+<li><p>当p=1，q=1时，游走方式就等同于DeepWalk中的随机游走。</p>
+</li>
+<li><p>随机游走的采样，两种图的游走方式，深度优先游走和广度优先游走，游走的路径就是采样候得到的随机游走。</p>
+</li>
+</ul>
+<p>BFS倾向于在初始点的周围游走，反映出一个节点的邻居的微观特性；</p>
+<p>DFS则会离初始节点越来越远，反映出一个节点邻居的宏观特性；</p>
+<h1 id="六-算法部分"><a href="#六-算法部分" class="headerlink" title="六.算法部分"></a>六.算法部分</h1><p>按概率抽取，采用了Alias算法进行顶点采样</p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C9908a908f1cf4930976bd7d526e99348%5Cclipboard.png" alt="img"></p>
+<p>算法的参数+部分：</p>
+<p>图G，表示向量维度d，每个节点生成的游走个数r，游走长度I，上下文的窗口长度k，还有p,q参数。</p>
+<p>1.根据p,q和之前的公式计算一个节点到它的邻居的转移概率。</p>
+<p>2.将这个转移概率加到图G中形成G’。</p>
+<p>3.walks用来存储随机游走，初始化为空。</p>
+<p>4.外循环r次表示每个节点作为初始节点要生成r个随机游走。</p>
+<p>5.对于图中的各个节点。</p>
+<p>6.生成一条随机游走walk。</p>
+<p>7.将walk添加到walks中保存。</p>
+<p>8.用SGD的方法对walks进行训练。</p>
+<p>1.将初始节点u添加进去。</p>
+<p>2.walk的长度为I，由此还要再循环添加I-1个节点。</p>
+<p>3.当前节点设为walk最后添加的节点。</p>
+<p>4.找出当前节点的所有邻居节点。</p>
+<p>5.根据转移概率采样选择某个邻居s</p>
+<p>6.将该邻居添加到walk中。</p>
+<p><strong>此处有不懂的地方？？？？？</strong></p>
+<h1 id="七-Node2vec核心代码"><a href="#七-Node2vec核心代码" class="headerlink" title="七.Node2vec核心代码"></a>七.Node2vec核心代码</h1><p><a href="https://blog.csdn.net/u012151283/article/details/87081272" target="_blank" rel="noopener">https://blog.csdn.net/u012151283/article/details/87081272</a></p>
+<h1 id="八-实验部分"><a href="#八-实验部分" class="headerlink" title="八.实验部分"></a>八.实验部分</h1><p><strong>实验部分？？？？？？？？？？</strong></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C447b2a1282f14e2eaef542a225ccc8a2%5Cclipboard.png" alt="img"></p>
+<p><img src="D:%5C%E6%9C%89%E9%81%93%E4%BA%91%E5%AD%98%E5%82%A8%5Cqq4EC68D37BEC205269D5190F466ABEE14%5C15b2e0dbe7074368a67182f0103f3e5b%5Cclipboard.png" alt="img"></p>
+<h1 id="九-总结"><a href="#九-总结" class="headerlink" title="九.总结"></a>九.总结</h1><p>思想和DeepWalk是一样的，但是改进了DeepWalk中随机游走的生成方式，使得生成的随机游走可以反映深度游走和广度游走的特性。</p>
+<h1 id="十-参考论文"><a href="#十-参考论文" class="headerlink" title="十.参考论文"></a>十.参考论文</h1><p>[1].论文翻译<a href="https://zhuanlan.zhihu.com/p/46344860" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46344860</a></p>
+<p>[2].代码参考<a href="https://blog.csdn.net/u012151283/article/details/87081272" target="_blank" rel="noopener">https://blog.csdn.net/u012151283/article/details/87081272</a></p>
+<p>[3].模型实现<a href="https://github.com/shenweichen/GraphEmbedding" target="_blank" rel="noopener">https://github.com/shenweichen/GraphEmbedding</a></p>
+]]></content>
+      <categories>
+        <category>paper</category>
+      </categories>
+      <tags>
+        <tag>node2vec</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>invalid syntax问题</title>
+    <url>/2020/05/11/python/invalid%20syntax%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>学习python时，明明代码没有一点问题，但是每次运行时都会显示<strong>”SyntaxError: invalid syntax”</strong>。</p>
+<h3 id="二-原因"><a href="#二-原因" class="headerlink" title="二.原因"></a>二.原因</h3><p><strong>”SyntaxError: invalid syntax”</strong>。意思是<strong>语法错误</strong></p>
+<p>有一下几种解决办法：</p>
+<h4 id="1-版本问题："><a href="#1-版本问题：" class="headerlink" title="1.版本问题："></a>1.版本问题：</h4><p>因为python2和python3是不兼容的，所以一些可以在python2上运行的代码不一定可以在python3上运行；可以尝试更换版本；</p>
+<h4 id="2-路径问题："><a href="#2-路径问题：" class="headerlink" title="2.路径问题："></a>2.路径问题：</h4><p>记得仔细查看自己的路径是否正确；</p>
+<h4 id="3-安装第三方模块时："><a href="#3-安装第三方模块时：" class="headerlink" title="3.安装第三方模块时："></a>3.安装第三方模块时：</h4><p>在安装第三方模块时也有可能出现“SyntaxError: invalid syntax”这个问题，这时需要检查一些是否是在cmd窗口下安装，同时，要到python的安装目录里面，找到pip所在的目录里面进行安装；</p>
+<h4 id="4-编写问题："><a href="#4-编写问题：" class="headerlink" title="4.编写问题："></a>4.编写问题：</h4><p>忘记在 if , elif , else , for , while , class ,def 声明末尾添加 冒号( : )；<br>误将 = 当成 == 使用；</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Iterable(可迭代对象)</title>
+    <url>/2020/05/08/python/iterable%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h3 id="一-定义"><a href="#一-定义" class="headerlink" title="一.定义"></a>一.定义</h3><p>可以对list、tuple、dict、set、str等类型的数据使用for…in…的循环语法，会从其中依次拿到数据元素进行使用，把这样的过程称为<strong>遍历</strong>，也叫<strong>迭代</strong>。把可以通过for…in…这类语句迭代读取一条数据元素供我们使用的这个对象就称之为<strong>可迭代对象(Iterable)</strong></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>networkx库-绘图</title>
+    <url>/2020/05/08/python/networkx%E5%BA%93-%E7%BB%98%E5%9B%BE/</url>
+    <content><![CDATA[<h3 id="一-创建图"><a href="#一-创建图" class="headerlink" title="一.创建图"></a>一.创建图</h3><h4 id="1-图的声明："><a href="#1-图的声明：" class="headerlink" title="1.图的声明："></a>1.图的声明：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx </span><br><span class="line"></span><br><span class="line">G = nyix.Graph()	<span class="comment">#无多重边无向图</span></span><br><span class="line">G = nx.DiGraph()	<span class="comment">#无多重边有向图</span></span><br><span class="line">G = nx.MultiGraph()		<span class="comment">#有多重边无向图</span></span><br><span class="line">G = nx.MultiDiGraph()	<span class="comment">#有多重边有向图</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-添加节点和边："><a href="#2-添加节点和边：" class="headerlink" title="2.添加节点和边："></a>2.添加节点和边：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 方法一--------------------------------------</span></span><br><span class="line">G.add_node(<span class="string">'a'</span>)  <span class="comment"># 添加点a</span></span><br><span class="line">G.add_node(<span class="number">1</span>,<span class="number">1</span>)  <span class="comment"># 用坐标来添加点</span></span><br><span class="line">G.add_edge(<span class="string">'x'</span>,<span class="string">'y'</span>)   <span class="comment"># 添加边,起点为x，终点为y</span></span><br><span class="line">G.add_weight_edges_from([(<span class="string">'x'</span>,<span class="string">'y'</span>,<span class="number">1.0</span>)])  <span class="comment"># 第三个输入量为权值</span></span><br><span class="line"><span class="comment"># 方法二--------------------------------------</span></span><br><span class="line">list = [[(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="number">5.0</span>),(<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="number">3.0</span>),(<span class="string">'a'</span>,<span class="string">'c'</span>,<span class="number">1.0</span>)]</span><br><span class="line">G.add_weight_edges_from([(list)])</span><br><span class="line"><span class="comment"># 方法三--------------------------------------</span></span><br><span class="line">G = nx.from_pandas_edgelist(df_table, source = <span class="string">'A'</span>, target = <span class="string">'B'</span>, edge_attr = <span class="string">'C'</span>, create_using = nx.DiGraph())</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-图的显示："><a href="#3-图的显示：" class="headerlink" title="3.图的显示："></a>3.图的显示：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">nx.draw(G,</span><br><span class="line">        pos = nx.random_layout(G), <span class="comment"># pos 指的是布局,主要有spring_layout,random_layout,circle_layout,shell_layout</span></span><br><span class="line">        node_color = <span class="string">'b'</span>,   <span class="comment"># node_color指节点颜色,有rbykw,同理edge_color </span></span><br><span class="line">        edge_color = <span class="string">'r'</span>,</span><br><span class="line">        with_labels = <span class="literal">True</span>,  <span class="comment"># with_labels指节点是否显示名字</span></span><br><span class="line">        font_size =<span class="number">18</span>,  <span class="comment"># font_size表示字体大小,font_color表示字的颜色</span></span><br><span class="line">        node_size =<span class="number">20</span>)  <span class="comment"># font_size表示字体大小,font_color表示字的颜色</span></span><br><span class="line">plt.savefig(<span class="string">"network.png"</span>)</span><br><span class="line">nx.write_gexf(G, <span class="string">'network.gexf'</span>)  <span class="comment"># gexf格式文件可以导入gephi中进行分析</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="二-from-pandas-edgelist"><a href="#二-from-pandas-edgelist" class="headerlink" title="二.from_pandas_edgelist()"></a>二.from_pandas_edgelist()</h3><h4 id="1-简介："><a href="#1-简介：" class="headerlink" title="1.简介："></a>1.简介：</h4><p>把包含边缘列表的pandas.DataFrame类型的数据转换成图</p>
+<h4 id="2-参数："><a href="#2-参数：" class="headerlink" title="2.参数："></a>2.参数：</h4><p>（df，source，target，edge_attr，create_using)</p>
+<details>
+    <summary>具体介绍</summary>
+    -df:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pandas DataFrame)&nbsp;&nbsp;&nbsp;&nbsp;-图的边的集合<br>
+    -source:&nbsp;&nbsp;&nbsp;&nbsp;(str or int)&nbsp;&nbsp;&nbsp;&nbsp;-源节点的有效的列名(有向图)<br>
+    -targe:&nbsp;&nbsp;&nbsp;&nbsp;(str or int)&nbsp;&nbsp;&nbsp;&nbsp;-目标节点的有效的列名<br>
+    -edge_attr:&nbsp;&nbsp;&nbsp;&nbsp;(str or int,iterable可迭代对象,True or None)&nbsp;&nbsp;&nbsp;&nbsp;边的名字=映射在df中要添加的列的名字，若=True，则除了前面已经用到的两个列以外，剩下的列都添加进去。<br>
+    -create_using:&nbsp;&nbsp;&nbsp;&nbsp;(NetworkX graph constructor, optional (default=nx.Graph))&nbsp;&nbsp;&nbsp;&nbsp;-要创建的图形类型。如果是图形实例，则在填充之前清除。<br>
+</details>
+
+<h4 id="3-举例："><a href="#3-举例：" class="headerlink" title="3.举例："></a>3.举例：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">G = nx.from_pandas_edgelist(routes_us, source = <span class="string">'source'</span>, target = <span class="string">'target'</span>, edge_attr = <span class="string">'numbers'</span>, create_using = nx.DiGraph())</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三-draw"><a href="#三-draw" class="headerlink" title="三.draw()"></a>三.draw()</h3><p>nx.draw()至少接受一个参数：待绘制的网络G</p>
+<details>
+    <summary>其他参数</summary>
+    -'node_size': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定节点的尺寸大小(默认是300)<br>
+    -'node_color':  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定节点的颜色(默认是红色，可以用字符串简单标识颜色，例如'r'为红色，'b'为绿色等)<br>
+    -'node_shape':  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点的形状(默认是圆形，用字符串'o'标识)<br>
+    -'alpha': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;透明度(默认是1.0，不透明，0为完全透明)<br>
+    -'width: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边的宽度(默认为1.0)<br>
+    -'edge_color': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边的颜色(默认为黑色)<br>
+    -'edge_cmp':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge_cmap与plt.cm.parameter开成映射，在图表上表现为边的颜色。<br>
+    -'style': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边的样式(默认是可实现，可选: solid|dashed|dotted,dashdot)<br>
+    -'with_labels': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点是否带标签(默认是True)<br>
+    -'font_size': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点标签字体大小(默认为12)<br>
+    -font_color': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点标签字体颜色(默认为黑色)
+</details>
+
+
+
+
+<h3 id="四-draw-network-edge-labels"><a href="#四-draw-network-edge-labels" class="headerlink" title="四.draw_network_edge_labels()"></a>四.draw_network_edge_labels()</h3><h4 id="1-作用："><a href="#1-作用：" class="headerlink" title="1.作用："></a>1.作用：</h4><p>绘制图中带有边的权重的图。</p>
+<h4 id="2-举例："><a href="#2-举例：" class="headerlink" title="2.举例："></a>2.举例：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">G=nx.Graph(...)</span><br><span class="line">pos=nx.spring_layout(...)</span><br><span class="line">edge=dict(&#123;&#125;)</span><br><span class="line">nx.draw_network_edge_labels(G,pos,edge_labels=edge)</span><br></pre></td></tr></table></figure>
+
+<h3 id="五-spring-layout-函数"><a href="#五-spring-layout-函数" class="headerlink" title="五.spring_layout()函数"></a>五.spring_layout()函数</h3><h4 id="1-函数作用："><a href="#1-函数作用：" class="headerlink" title="1.函数作用："></a>1.函数作用：</h4><p>用来建立布局，起到美化作用。获取node的位置，</p>
+<h4 id="2-参数介绍："><a href="#2-参数介绍：" class="headerlink" title="2.参数介绍："></a>2.参数介绍：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">spring_layout(G, dim=<span class="number">2</span>, k=<span class="literal">None</span>, pos=<span class="literal">None</span>, fixed=<span class="literal">None</span>, iterations=<span class="number">50</span>, weight=<span class="string">'weight'</span>, scale=<span class="number">1.0</span>)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>取值</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>G</td>
+<td>Networkx graph</td>
+<td>传入DataFrame的值</td>
+</tr>
+<tr>
+<td>dim</td>
+<td>int</td>
+<td>布局的维度</td>
+</tr>
+<tr>
+<td>k</td>
+<td>float 或者default=None</td>
+<td>节点间的最佳距离。如果没有，则将距离设置为1/sqrt(n)，其中n是节点的数量。增加此值以将节点移动到更远的地方。</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>dict 或者没有<br />default=None</td>
+<td>节点的初始位置为字典，节点为键，值为列表或元组。如果没有，则使用随机生成图node的初始位置。</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>list or None optional (default=None)</td>
+<td>节点保持固定在初始位置。</td>
+</tr>
+<tr>
+<td>iterations</td>
+<td>int optional (default=50)</td>
+<td>弹簧松弛的迭代次数</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>string or None optional (default=’weight’)</td>
+<td>保存用于边缘权重的数值的边缘属性。如果没有，则所有边的权值都是1。</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>float (default=1.0)</td>
+<td>位置的比例因子。节点被放置在一个大小为[0,scale] x [0,scale]的框中。</td>
+</tr>
+<tr>
+<td>return</td>
+<td>dict</td>
+<td>由节点键控的位置字典</td>
+</tr>
+</tbody></table>
+<h4 id="3-举例"><a href="#3-举例" class="headerlink" title="3.举例"></a>3.举例</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">G=nx.path_graph(<span class="number">4</span>)</span><br><span class="line">pos=nx.spring_layout(G)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="六-参考"><a href="#六-参考" class="headerlink" title="六.参考"></a>六.参考</h3><p><a href="https://blog.csdn.net/Zhili_wang/article/details/89368177" target="_blank" rel="noopener">https://blog.csdn.net/Zhili_wang/article/details/89368177</a></p>
+<p><a href="https://www.jianshu.com/p/6292e45da3d0" target="_blank" rel="noopener">https://www.jianshu.com/p/6292e45da3d0</a>   可以参考的是其中读取各种文件和绘制图形的过程</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>python-os库的介绍</title>
+    <url>/2020/05/12/python/os%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一-system-函数"><a href="#一-system-函数" class="headerlink" title="一.system()函数"></a>一.system()函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(cmd)<span class="comment"># 命令行的命令用双印号括起来</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-返回值："><a href="#1-返回值：" class="headerlink" title="1.返回值："></a>1.返回值：</h4><p>执行成功则返回0，若返回其他值，类型如下：</p>
+<details>
+    <summary>大致类型</summary>
+    "OS error code   1:  Operation not permitted"<br>
+ "OS error code   2:  No such file or directory"<br>
+ "OS error code   3:  No such process"<br>
+ "OS error code   4:  Interrupted system call"<br>
+ "OS error code   5:  Input/output error"<br>
+ "OS error code   6:  No such device or address"<br>
+ "OS error code   7:  Argument list too long"<br>
+ "OS error code   8:  Exec format error"<br>
+ "OS error code   9:  Bad file descriptor"<br>
+ "OS error code  10:  No child processes"<br>
+ "OS error code  11:  Resource temporarily unavailable"<br>
+ "OS error code  12:  Cannot allocate memory"<br>
+ "OS error code  13:  Permission denied"<br>
+ "OS error code  14:  Bad address"<br>
+ "OS error code  15:  Block device required"<br>
+ "OS error code  16:  Device or resource busy"<br>
+ "OS error code  17:  File exists"<br>
+ "OS error code  18:  Invalid cross-device link"<br>
+ "OS error code  19:  No such device"<br>
+ "OS error code  20:  Not a directory"<br>
+ "OS error code  21:  Is a directory"<br>
+</details>
+
+<h3 id="二-popen-函数"><a href="#二-popen-函数" class="headerlink" title="二.popen()函数"></a>二.popen()函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">r&#x3D;os.popen(&#39;ping www.baidu,com&#39;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-返回值：-1"><a href="#1-返回值：-1" class="headerlink" title="1.返回值："></a>1.返回值：</h4><p>返回脚本执行过程中的输出内容。</p>
+<p>但是当return str时，调用函数无法输出str的内容，此时可以打印一下该函数执行即可： print(fun(return str))</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>python-DataFrame()函数</title>
+    <url>/2020/05/07/python/pandas-DataFrame()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><p>DataFrame是Python中Pandas库中的一种数据结构，它类似execl，是一种二维表。其单元格可以存放数值、字符串等。</p>
+<h3 id="二-使用"><a href="#二-使用" class="headerlink" title="二.使用"></a>二.使用</h3><h4 id="1-引用头文件"><a href="#1-引用头文件" class="headerlink" title="1.引用头文件"></a>1.引用头文件</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-创建变量"><a href="#2-创建变量" class="headerlink" title="2.创建变量"></a>2.创建变量</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df1 = pd.DataFrame(np.random.randn(<span class="number">3</span>, <span class="number">3</span>), index=list(<span class="string">'abc'</span>), columns=list(<span class="string">'ABC'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#参数说明：第一个参数是要存放在DataFrame里的数据，第二个参数index就是行名，第三个参数就是列名</span></span><br><span class="line"><span class="comment">#其中，后两个参数List的长要和前面DataFrame的对应长度匹配。</span></span><br><span class="line">print(df1)</span><br><span class="line"></span><br><span class="line"><span class="comment">#           A         B         C</span></span><br><span class="line"><span class="comment"># a -0.612978  0.237191  0.312969</span></span><br><span class="line"><span class="comment"># b -1.281485  1.135944  0.162456</span></span><br><span class="line"><span class="comment"># c  2.232905  0.200209  0.028671</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#直接创建：</span></span><br><span class="line">df4 = pd.DataFrame([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], </span><br><span class="line">					[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">                    [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]],</span><br><span class="line">                   index=list(<span class="string">'abc'</span>), columns=list(<span class="string">'ABC'</span>))</span><br><span class="line"><span class="comment">#使用字典创建：</span></span><br><span class="line">dic1 = &#123;</span><br><span class="line">    <span class="string">'name'</span>: [</span><br><span class="line">        <span class="string">'张三'</span>, <span class="string">'李四'</span>, <span class="string">'王二麻子'</span>, <span class="string">'小淘气'</span>], <span class="string">'age'</span>: [</span><br><span class="line">            <span class="number">37</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">16</span>], <span class="string">'gender'</span>: [</span><br><span class="line">                <span class="string">'男'</span>, <span class="string">'男'</span>, <span class="string">'男'</span>, <span class="string">'女'</span>]&#125;</span><br><span class="line">df5 = pd.DataFrame(dic1)</span><br><span class="line">print(df5)</span><br><span class="line"></span><br><span class="line"><span class="comment">#    age gender  name</span></span><br><span class="line"><span class="comment"># 0   37      男    张三</span></span><br><span class="line"><span class="comment"># 1   30      男    李四</span></span><br><span class="line"><span class="comment"># 2   50      男  王二麻子</span></span><br><span class="line"><span class="comment"># 3   16      女   小淘气</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-查看操作"><a href="#3-查看操作" class="headerlink" title="3.查看操作"></a>3.查看操作</h4><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>df.dtypes</td>
+<td>返回</td>
+</tr>
+<tr>
+<td>df.head(6)</td>
+<td>显示前6行的数据，若不带参数则会显示全部数据</td>
+</tr>
+<tr>
+<td>df.tail(6)</td>
+<td>显示后6行的数据，若不带参数也会显示全部数据</td>
+</tr>
+<tr>
+<td>查看DataFrame的index,columns和values</td>
+<td>df.index和df.columns和df.values即可</td>
+</tr>
+</tbody></table>
+<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://www.cnblogs.com/luban/p/9117360.html" target="_blank" rel="noopener">https://www.cnblogs.com/luban/p/9117360.html</a></p>
+<p><a href="https://blog.csdn.net/tefuirnever/article/details/93708964" target="_blank" rel="noopener">https://blog.csdn.net/tefuirnever/article/details/93708964</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>plt-figure()函数</title>
+    <url>/2020/05/07/python/plt-figure()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="一-简介："><a href="#一-简介：" class="headerlink" title="一.简介："></a>一.简介：</h3><p>创建一个图形实例</p>
+<h3 id="二-语法说明"><a href="#二-语法说明" class="headerlink" title="二.语法说明"></a>二.语法说明</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">figure(num=<span class="literal">None</span>, figsize=<span class="literal">None</span>, dpi=<span class="literal">None</span>, facecolor=<span class="literal">None</span>, edgecolor=<span class="literal">None</span>, frameon=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">      num : 图像编号或名称，数字为编号，字符串为名称</span></span><br><span class="line"><span class="string">  figsize : 指定figure的宽和高，单位为英寸</span></span><br><span class="line"><span class="string">      dpi : 指定绘图对象的分辨率，即每英寸多少个像素，缺省值为80</span></span><br><span class="line"><span class="string">facecolor : 背景的颜色</span></span><br><span class="line"><span class="string">edgecolor : 边框颜色</span></span><br><span class="line"><span class="string">  frameon : 是否显示边框</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三-举例"><a href="#三-举例" class="headerlink" title="三.举例"></a>三.举例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">4</span>, <span class="number">3</span>), facecolor=<span class="string">'blue'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>py2neo库的介绍</title>
+    <url>/2020/05/12/python/py2neo%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><p>这个库是python和neo4j进行连接的库，可以用这个库的相关函数对Neo4j的数据库进行操作。</p>
+<p>安装指令：pip install py2neo</p>
+<h4 id="1-引用代码："><a href="#1-引用代码：" class="headerlink" title="1.引用代码："></a>1.引用代码：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> py2neo <span class="keyword">import</span> Graph,Node,Relationship</span><br></pre></td></tr></table></figure>
+
+<h3 id="二-相关操作"><a href="#二-相关操作" class="headerlink" title="二.相关操作"></a>二.相关操作</h3><h4 id="1-连接操作："><a href="#1-连接操作：" class="headerlink" title="1.连接操作："></a>1.连接操作：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test_graph = Graph(</span><br><span class="line">    <span class="string">"http://localhost:7474"</span>, </span><br><span class="line">    username=<span class="string">"neo4j"</span>, </span><br><span class="line">    password=<span class="string">"neo4j"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-节点的建立"><a href="#2-节点的建立" class="headerlink" title="2.节点的建立"></a>2.节点的建立</h4><p><a href="https://www.jianshu.com/p/a2497a33390f" target="_blank" rel="noopener">https://www.jianshu.com/p/a2497a33390f%20%20</a></p>
+<p><a href="https://blog.csdn.net/amao1998/article/details/81041143" target="_blank" rel="noopener">https://blog.csdn.net/amao1998/article/details/81041143</a></p>
+<p>这里neo4j-driver和py2neo是有区别的，</p>
+<p>前者是官方支持的，后者则在用户友好度上有优势，但还是建议使用前者。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Anaconda一些常用操作</title>
+    <url>/2020/05/11/tools/Anaconda%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="一-Anaconda的虚拟环境操作"><a href="#一-Anaconda的虚拟环境操作" class="headerlink" title="一.Anaconda的虚拟环境操作"></a>一.Anaconda的虚拟环境操作</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>建立Anaconda的虚拟环境</td>
+<td>1.以管理员身份运行Anaconda Prompt<br />2. conda create –name 虚拟环境名 python=x.x</td>
+</tr>
+<tr>
+<td>激活虚拟环境</td>
+<td>activate 虚拟环境名</td>
+</tr>
+<tr>
+<td>退出虚拟环境</td>
+<td>deactivate</td>
+</tr>
+<tr>
+<td>查找虚拟环境</td>
+<td>conda info -e 或conda list –env</td>
+</tr>
+<tr>
+<td>删除虚拟环境</td>
+<td>conda remove -n 环境名  -all</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>安装包</td>
+<td>conda install 包名或者pip install 包名</td>
+</tr>
+</tbody></table>
+<h3 id="二-Jupyter-notebook环境操作"><a href="#二-Jupyter-notebook环境操作" class="headerlink" title="二.Jupyter notebook环境操作"></a>二.Jupyter notebook环境操作</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>选择环境</td>
+<td>1.安装ipykernel： <code>conda install ipykernel</code> 如果不可行就使用<code>pip install ipykernel</code> <br /> 2.激活虚拟环境 将环境写入Notebook的kernel中： <code>python -m ipykernel install --user --name 环境名称 --display-name &quot;Python (环境名称)&quot;</code> <br />3.打开Jupyter notebook，新建Python文件，这时候你就能看见你的创建的环境</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://www.cnblogs.com/xxmmqg/p/12766319.html" target="_blank" rel="noopener">https://www.cnblogs.com/xxmmqg/p/12766319.html</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>python语法小记</title>
+    <url>/2020/05/13/python/python%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="with…as…语句"><a href="#with…as…语句" class="headerlink" title="with…as…语句"></a>with…as…语句</h3><h3 id="一-with…as…语句"><a href="#一-with…as…语句" class="headerlink" title="一.with…as…语句"></a>一.with…as…语句</h3><h4 id="1-作用："><a href="#1-作用：" class="headerlink" title="1.作用："></a>1.作用：</h4><p>1.解决异常退出时资源释放的问题</p>
+<p>2.解决用户忘记调用close方法而产生的资源泄露问题</p>
+<p>包含一个错误处理和文件关闭功能。</p>
+<h4 id="2-代码示例："><a href="#2-代码示例：" class="headerlink" title="2.代码示例："></a>2.代码示例：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(filepath,<span class="string">'wb'</span>) <span class="keyword">as</span> file:</span><br><span class="line">	file.write(<span class="string">"something"</span>)</span><br><span class="line"><span class="comment">#等价于</span></span><br><span class="line">file = open(filepath)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    file.write(<span class="string">"something"</span>,<span class="string">'wb'</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="二-map-函数"><a href="#二-map-函数" class="headerlink" title="二.map()函数"></a>二.map()函数</h3><h4 id="1-作用：-1"><a href="#1-作用：-1" class="headerlink" title="1.作用："></a>1.作用：</h4><p>会根据提供的函数对指定序列做映射</p>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map(function, iterable,...)</span><br><span class="line"><span class="comment">#function --函数</span></span><br><span class="line"><span class="comment">#iterable -- 一个或多个序列</span></span><br></pre></td></tr></table></figure>
+
+<p>第一个参数function以参数序列中的每一个元素调用function函数，返回包含每function函数返回值的新列表</p>
+<h4 id="2-举例："><a href="#2-举例：" class="headerlink" title="2.举例："></a>2.举例：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map(<span class="keyword">lambda</span> x: x**<span class="number">2</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])  </span><br><span class="line"><span class="comment">#返回[1,4,9,16,25]</span></span><br><span class="line">map(<span class="keyword">lambda</span> x,y: x+y,[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>])</span><br><span class="line"><span class="comment">#返回[3,7,11]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三-list-方法"><a href="#三-list-方法" class="headerlink" title="三.list()方法"></a>三.list()方法</h3><h4 id="1-作用：-2"><a href="#1-作用：-2" class="headerlink" title="1.作用："></a>1.作用：</h4><p>把字符串、列表、元组、字典转化为列表</p>
+<h4 id="2-举例：-1"><a href="#2-举例：-1" class="headerlink" title="2.举例："></a>2.举例：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#1.列表转换成列表</span></span><br><span class="line">list([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.字符串转成列表</span></span><br><span class="line">list(<span class="string">'hello'</span>)</span><br><span class="line"><span class="comment">#得到['h','e','l','l','o']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#3.元组转换成列表</span></span><br><span class="line">list((<span class="number">123</span>,<span class="string">'aaa'</span>,<span class="string">'abc'</span>))</span><br><span class="line"><span class="comment">#得到[123,'aaa','abc']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#4.字典转换成列表</span></span><br><span class="line">list(&#123;<span class="string">'name'</span>:<span class="string">'wang'</span>,<span class="string">'age'</span>:<span class="number">18</span>&#125;)</span><br><span class="line"><span class="comment">#得到['name','age'] ,这里只打印了keys，没有values值.</span></span><br><span class="line">list(&#123;<span class="string">'name'</span>:<span class="string">'wang'</span>,<span class="string">'age'</span>:<span class="number">18</span>&#125;.values())</span><br><span class="line"><span class="comment">#得到的是['liang',18]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四-装饰器"><a href="#四-装饰器" class="headerlink" title="四.装饰器"></a>四.装饰器</h3><h4 id="1-作用：-3"><a href="#1-作用：-3" class="headerlink" title="1.作用："></a>1.作用：</h4><p>在一个函数内部定义另外一个函数,然后返回一个新的函数,即动态的给一个对象添加额外的职责。</p>
+<p>传入的是f()</p>
+<p>可以给装饰器传递参数。在原有的函数外面进行传参数的函数封装，def  fengzhuan(a,b):</p>
+<p>然后在调用时，@fengzhuan(“start”,”end”)</p>
+<h3 id="五-python的项目程序执行结构"><a href="#五-python的项目程序执行结构" class="headerlink" title="五.python的项目程序执行结构"></a>五.python的项目程序执行结构</h3><p>在测试模块.py文件中加入以下的代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#注意，是双下划线</span></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#要执行的测试代码</span></span><br></pre></td></tr></table></figure>
+
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘的意思是：当.py文件被直接运行时，if <strong>name</strong> == ‘<strong>main</strong>‘之下的代码块将被运行；当.py文件以模块形式被导入时，if <strong>name</strong> == ‘<strong>main</strong>‘之下的代码块不被运行。</p>
+<h3 id="六-python如何把汉字转成unicode编码"><a href="#六-python如何把汉字转成unicode编码" class="headerlink" title="六.python如何把汉字转成unicode编码"></a>六.python如何把汉字转成unicode编码</h3><p>字符-&gt;Unicode编码</p>
+<p>Unicode编码字符串-&gt;汉字</p>
+<p>str=Ustr.encode(“utf-8”).decode(“utf-8”)</p>
+<p>或者 str=Ustr.decode(‘unicode_escape’)</p>
+<p>其他编码到Unicode的转换  decode(str)</p>
+<p>encode(str)  Unicode到其他编码的转换</p>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><h3 id="python中的异常处理和try-except的用法"><a href="#python中的异常处理和try-except的用法" class="headerlink" title="python中的异常处理和try,except的用法"></a>python中的异常处理和try,except的用法</h3><p><a href="https://blog.csdn.net/u012080686/article/details/81940211" target="_blank" rel="noopener">https://blog.csdn.net/u012080686/article/details/81940211</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Markdown编辑语法</title>
+    <url>/2020/06/05/tools/Markdown%E7%BC%96%E8%BE%91%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>Want to do</th>
+<th>How to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Markdown的常见特殊符号"><a href="#Markdown的常见特殊符号" class="headerlink" title="Markdown的常见特殊符号"></a>Markdown的常见特殊符号</h3><p><a href="http://www.mamicode.com/info-detail-2539363.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-2539363.html</a></p>
+<table>
+<thead>
+<tr>
+<th>要插入的符号</th>
+<th>编码&A;(下面是中间A的值)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>空格</td>
+<td>nbsp</td>
+</tr>
+<tr>
+<td>正负号&plusmn;</td>
+<td>plusmn</td>
+</tr>
+<tr>
+<td>无限大符号&infin;</td>
+<td>infin</td>
+</tr>
+<tr>
+<td>角度符号&ang;</td>
+<td>ang</td>
+</tr>
+<tr>
+<td>微积分符号&int;</td>
+<td>int</td>
+</tr>
+<tr>
+<td>不等于符号&ne;</td>
+<td>ne</td>
+</tr>
+<tr>
+<td>相等&equiv;</td>
+<td>equiv</td>
+</tr>
+<tr>
+<td>小于等于&le;</td>
+<td>le</td>
+</tr>
+<tr>
+<td>圆周率&pi;</td>
+<td>pi</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何写出合适的参考文献</title>
+    <url>/2020/05/31/%E5%85%B6%E4%BB%96/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E5%90%88%E9%80%82%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/</url>
+    <content><![CDATA[<h3 id="一-论文下载与找寻"><a href="#一-论文下载与找寻" class="headerlink" title="一.论文下载与找寻"></a>一.论文下载与找寻</h3><p>从浏览器中的Blog中找话</p>
+<p>将看似是一段论文的话复制黏贴进搜索，找到类似的论文，再</p>
+<p>通过北邮图书管理系统的资源</p>
+<p>知网万方Springer，去使用参考文献。</p>
+<h3 id="二-论文查重"><a href="#二-论文查重" class="headerlink" title="二.论文查重"></a>二.论文查重</h3><p>PaperPass </p>
+<p>知网</p>
+<h3 id="三-个例"><a href="#三-个例" class="headerlink" title="三.个例"></a>三.个例</h3><h4 id="1-引用arXiv的文献"><a href="#1-引用arXiv的文献" class="headerlink" title="1.引用arXiv的文献"></a>1.引用arXiv的文献</h4><p>[预印本]    作者姓名 年份 arXiv: 号 [科学领域]</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[8] Latham T, Gershon T 2008 arXiv: 0809.0872v1 [hep-ph]</span><br><span class="line">[9] Shih Yuan Yu,Sujit Rokka Chhetri,Palash Goyal,etc 2019 arXiv: 1906.04239v1 [cs.AI]</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-电子文献："><a href="#2-电子文献：" class="headerlink" title="2.电子文献："></a>2.电子文献：</h4><p>[电子文献]    作者姓名  网址  [引用日期]</p>
+<h4 id="3-引用书籍："><a href="#3-引用书籍：" class="headerlink" title="3.引用书籍："></a>3.引用书籍：</h4><p>[1] 著者. 书名[M].版本(第一版不标注).出版地.出版者.出版年.引文所在的起始或起止页码</p>
+<p>如</p>
+<p>[1] 翟姚明. 车辆-轨道耦合动力学[M].北京:中国铁道出版社,1997,74-80.</p>
+<p>[1] 邱锡鹏. 神经网络与深度学习[M].北京: 机械工业出版社,2020,7.</p>
+<h3 id="四-参考"><a href="#四-参考" class="headerlink" title="四.参考"></a>四.参考</h3><p><a href="https://wenku.baidu.com/view/0d9a3c4da4e9856a561252d380eb6294dc88225e.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/0d9a3c4da4e9856a561252d380eb6294dc88225e.html</a></p>
+<p><a href="https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html</a></p>
+<p>参考文献中显示符合重复是啥意思：</p>
+<p><a href="http://www.nxhh.net/lunwen/95159.html" target="_blank" rel="noopener">http://www.nxhh.net/lunwen/95159.html</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Vmware使用问题</title>
+    <url>/2020/04/19/tools/Vmware%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>在使用VM时出现了如下的问题：</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/VMware%E9%94%81%E5%AE%9A%E9%97%AE%E9%A2%98%E9%97%AE%E9%A2%98.jpg" alt=""></h1><h3 id="二-原因："><a href="#二-原因：" class="headerlink" title="二.原因："></a>二.原因：</h3><p>虚拟机异常关闭导致的。</p>
+<h3 id="三-解决办法："><a href="#三-解决办法：" class="headerlink" title="三.解决办法："></a>三.解决办法：</h3><p> 找到虚拟机所安装的位置，把所有.lck<em>文件都删除即可</em>。</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>word和pdf的一些基本操作</title>
+    <url>/2020/06/01/tools/word%E8%AE%BE%E7%BD%AE%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>Want to do</th>
+<th>How to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设置字符的下标的下标</td>
+<td>套用下标公式，然后在下标处再套用下标公式</td>
+</tr>
+<tr>
+<td>插入分数的形式</td>
+<td>“插入”-&gt;”公式”-&gt;”其他公式”-&gt;”插入新公式”-&gt;选项栏中的”结构”选择分数的形式</td>
+</tr>
+<tr>
+<td>插入&pi;</td>
+<td>“插入”-&gt;”字体”-&gt;”Symbol”中可以找到</td>
+</tr>
+<tr>
+<td>在表格的文字段落中实现段落操作</td>
+<td>由于在表格中的文字内容比较特殊，所以要在表格中设置段落的首行缩进的话，先选中所有内容，然后在“开始”菜单栏中，找到“段落”即可设置。</td>
+</tr>
+<tr>
+<td>如何设置页码在某一页开始不再显示</td>
+<td><a href="http://www.51sjk.com/b1b107081/" target="_blank" rel="noopener">http://www.51sjk.com/b1b107081/</a><br />“布局”-&gt;”分隔符”-&gt;插入到不想显示页码的那页，然后开始设置删除页码</td>
+</tr>
+</tbody></table>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>小米2手机刷机</title>
+    <url>/2020/06/03/%E5%85%B6%E4%BB%96/%E5%B0%8F%E7%B1%B32s%E5%8D%A1%E5%88%B7%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="一-问题描述"><a href="#一-问题描述" class="headerlink" title="一.问题描述"></a>一.问题描述</h3><p>一部小米2手机，如何把系统刷机到MIUI5或者其他版本？</p>
+<h3 id="二-方式"><a href="#二-方式" class="headerlink" title="二.方式"></a>二.方式</h3><h4 id="卡刷1："><a href="#卡刷1：" class="headerlink" title="卡刷1："></a>卡刷1：</h4><p>1.到官网论坛，选择下载需要的卡刷包。</p>
+<p>2.将下载好的ROM重新命名为update.zip</p>
+<p>3.将小米2连接上电脑，通常情况下会产生一个可移动磁盘（XIAOMI）和一个小米2的手机图标（MI2），如果没有小米2的图标(MI2)，请安装产生的可移动磁盘（XIAOMI）里的可执行文件Setup.exe，安装驱动，成功后继续第4步。如果产生了小米2的图标，请直接第4步。</p>
+<p>4.打开小米2图标，打开我的电脑里小米2的手机图标（MI2），里面有个内存设备，打开。将下载好的并且重命名后的文件update.zip拷贝到内存设备磁盘中（必须是根目录）。拷贝完后关闭手机。</p>
+<p>5.先关机，按住开机键+音量上 屏幕亮后立即松开电源键 音量上一直按住 进入recovery 。选择简体中文 然后选择 清除数据 确认 里面三个选项都清除 。（音量键上下选择，电源键确定）。然后选择将update.zip安装至第一系统。等待刷机成功重启。</p>
+<p>6.刷机成功后返回主菜单，选择重启系统，选择（最近）这个系统，因为进错了会无限重启。 </p>
+<h4 id="卡刷2："><a href="#卡刷2：" class="headerlink" title="卡刷2："></a>卡刷2：</h4><p>下载奇兔刷机，然后按照操作一键刷机。</p>
+<p>或者下载小米手机助手</p>
+<h4 id="如何识别线刷包和卡刷包："><a href="#如何识别线刷包和卡刷包：" class="headerlink" title="如何识别线刷包和卡刷包："></a>如何识别线刷包和卡刷包：</h4><p><a href="http://rom.7to.cn/jiaochengdetail/17162" target="_blank" rel="noopener">http://rom.7to.cn/jiaochengdetail/17162</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解决国内网址跳转亚马逊下载时网速慢的问题</title>
+    <url>/2020/04/17/%E5%85%B6%E4%BB%96/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85%E7%BD%91%E5%9D%80%E8%B7%B3%E8%BD%AC%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%8B%E8%BD%BD%E6%97%B6%E7%BD%91%E9%80%9F%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>“<a href="https://s3.ap-northeast-2.amazonaws.com/”开头类似于这种的带有[amazonaws](https://s3.ap-northeast-2.amazonaws.com/)字眼的地址，下载起来很慢，有时候连不上。" target="_blank" rel="noopener">https://s3.ap-northeast-2.amazonaws.com/”开头类似于这种的带有[amazonaws](https://s3.ap-northeast-2.amazonaws.com/)字眼的地址，下载起来很慢，有时候连不上。</a></p>
+<h3 id="二-解决办法："><a href="#二-解决办法：" class="headerlink" title="二.解决办法："></a>二.解决办法：</h3><p>可以通过设置<code>host</code>,强制把访问节点从美国定向到香港的办法来解决这个问题。<code>Windows</code>下，编辑<code>C:\Windows\System32\drivers\etc\hosts</code>然后增加如下解析即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">219.76.4.4 s3.amazonaws.com</span><br><span class="line">219.76.4.4 github-cloud.s3.amazonaws.com</span><br></pre></td></tr></table></figure>
+
+<h5 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h5><p>host立即生效：</p>
+<p>windows下修改hosts文件不需重启后直接生效：</p>
+<p>在cmd中输入ipconfig /displaydns 回车和ipconfig /flushdns回车即可</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>通过关闭Windows update更新解决服务主机CPU率高的问题</title>
+    <url>/2020/04/23/%E5%85%B6%E4%BB%96/%E9%80%9A%E8%BF%87%E5%85%B3%E9%97%ADWindows%20update%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E4%B8%BB%E6%9C%BACPU%E7%8E%87%E9%AB%98%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>windows10系统卡顿，并且笔记本风扇声音特别响，通过任务管理器查看得到Windows Update 所占的内存较大。</p>
+<h3 id="二-解决办法"><a href="#二-解决办法" class="headerlink" title="二.解决办法"></a>二.解决办法</h3><p>1.找到任务管理器中的“ 服务主机：本地系统”-&gt;“Windows Update”，右键，进入“服务”</p>
+<p>2.在服务列表中找到“Windows Update”，右键，停止</p>
+<p>3.在服务列表中找到“Windows Update”，右键，属性，启动类型选择“禁用”</p>
+<p>4.打开C:\Windows\SoftwareDistribution，删除里面所有文件，如果可以删除所有文件，那么CPU应该已经恢复正常了，如果有些文件不能删除，则可能是“Windows Update”没有完全关闭，继续下面步骤</p>
+<p>5.按Win键+R键调出运行，输入“gpedit.msc”点击“确定”，调出“本地组策略编辑器”。<br>（注：自己的电脑似乎没打显示gpedit.msc，不知道是什么原因。）</p>
+<p>6.依次展开”计算机配置”，”管理模板” ，”windows组件” ，”windows更新 “，在右面找到“配置自动更新”，并双击</p>
+<p>7.在配置窗口上按1-3的顺序选择“已禁用”，点击“应用”，“确定”，重启电脑</p>
+<p>8.打开C:\Windows\SoftwareDistribution，删除里面所有文件</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>面经</title>
+    <url>/2020/04/22/%E5%85%B6%E4%BB%96/%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<h1 id="快手"><a href="#快手" class="headerlink" title="快手"></a>快手</h1><h3 id="一-快手"><a href="#一-快手" class="headerlink" title="一.快手"></a>一.快手</h3><p><strong>1.C++方面</strong></p>
+<ul>
+<li>字符定义占几位</li>
+<li>多态的概念</li>
+</ul>
+<p><strong>2.linux编程开发</strong></p>
+<ul>
+<li>把一个文件的内容经过筛选输出到另一个文件中</li>
+</ul>
+<h3 id="二-百度（C-岗位）"><a href="#二-百度（C-岗位）" class="headerlink" title="二.百度（C++岗位）"></a>二.百度（C++岗位）</h3><p><strong>1.最重要的一条</strong></p>
+<p>​    在反问环节一定要问和技术有关的问题，要知道自己能为公司做什么，怎么做。</p>
+<p><strong>2.基础知识这一方面</strong></p>
+<p>要有自己的理解，不能像背书一样</p>
+<p><strong>3.Linux编程环境</strong></p>
+<ul>
+<li><p>fork()函数的作用（COW）：</p>
+</li>
+<li><p>一些常用指令必须熟记于心：</p>
+</li>
+<li><p>打印一个文档的内容：</p>
+</li>
+</ul>
+<p><strong>4.数据结构</strong></p>
+<ul>
+<li>链表反转算法</li>
+<li>所学过的数据结构</li>
+<li>对于一个二叉树，寻找一个特定节点所需的时间复杂度。</li>
+<li>所学过的其他算法</li>
+</ul>
+<p><strong>5.计算机网络</strong></p>
+<ul>
+<li>TCP和UDP的区别</li>
+<li>TCP的三次握手四次挥手</li>
+<li>TCP为什么要三次握手来建立通信</li>
+</ul>
+<p><strong>6.操作系统</strong></p>
+<ul>
+<li>线程的锁有哪几种</li>
+</ul>
+<p><strong>7.C++方面</strong></p>
+<ul>
+<li><p>C++虚函数的作用</p>
+</li>
+<li><p>多态的概念</p>
+</li>
+<li><p>C++的STL的使用</p>
+</li>
+<li><p>堆栈，局部变量区，全局变量区。</p>
+</li>
+</ul>
+<p><strong>8.数据库</strong></p>
+<ul>
+<li>Redis的使用</li>
+<li>修改数据时是先修改Redis的值还是先修改数据库磁盘的值</li>
+<li>关系数据库的性能优化</li>
+</ul>
+<p><strong>9.与人交往方面</strong></p>
+<ul>
+<li>永远不要相信面试官表面所显露的样子，以及他所说的每一句客套话，没人会因为你是本科生，他们需要的是能为他们解决问题的人，不会就是不会，不要拿本科没学过搪瓷。</li>
+<li>表面客气的人，其实和内心是不同的。自己要有心机。</li>
+</ul>
+<h3 id="三-字节跳动（后端开发岗）"><a href="#三-字节跳动（后端开发岗）" class="headerlink" title="三.字节跳动（后端开发岗）"></a>三.字节跳动（后端开发岗）</h3><p><strong>算法题方面</strong></p>
+<ul>
+<li>已知一个文件日志（用户名，登陆时间，登出时间），求出在线的人数情况</li>
+<li>已知一个二叉树，求出根结点到其他结点的值等于一个定值的所有路径。</li>
+</ul>
+<p><strong>计网基础知识</strong></p>
+<ul>
+<li>TCP的拥塞控制是如何实现的</li>
+<li>在前端与后端的交互上，是如何实现的（http如何发到后端上来）</li>
+</ul>
+<p><strong>字节跳动面经</strong></p>
+<p><a href="https://mp.weixin.qq.com/s/A5bSc7jcUhfhcDLu9bdC6w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/A5bSc7jcUhfhcDLu9bdC6w</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C++的Vector操作</title>
+    <url>/2020/04/18/C++/C++%E7%9A%84Vector%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h3 id="一-头文件"><a href="#一-头文件" class="headerlink" title="一.头文件"></a>一.头文件</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二-vector申明及初始化"><a href="#二-vector申明及初始化" class="headerlink" title="二.vector申明及初始化"></a>二.vector申明及初始化</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; vec(5)；//申明一个初始大小为5的int型向量</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vect</span><span class="params">(<span class="number">10</span>,<span class="number">1</span>)</span></span>; <span class="comment">//申明一个初始大小为10，且值都为1的向量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vec</span><span class="params">(num,num+<span class="number">5</span>)</span></span>;<span class="comment">// 将num数组的元素用于初始化vec向量(数组首地址，数组尾地址)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三-vector的基本操作"><a href="#三-vector的基本操作" class="headerlink" title="三.vector的基本操作"></a>三.vector的基本操作</h3><h4 id="1-容量的访问"><a href="#1-容量的访问" class="headerlink" title="1.容量的访问"></a>1.容量的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.向量大小：len=vec.<span class="built_in">size</span>()</span><br><span class="line">b.向量最大容量：(<span class="keyword">int</span>)vec.max_size();</span><br><span class="line">c.更改向量大小：vec.resize(num);   </span><br><span class="line">d.向量真实大小：<span class="keyword">int</span> len=vec.capacity()</span><br><span class="line">e.向量判空：vec.empty();   </span><br><span class="line">f.减少向量大小到满足元素所占存储空间的大小：vec.shrink_to_fit();</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-修改"><a href="#2-修改" class="headerlink" title="2.修改"></a>2.修改</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.末尾添加元素：vec.push_back(要添加的元素）</span><br><span class="line">b.末尾删除元素：vec.pop_back(空)；</span><br><span class="line">                       </span><br><span class="line">c.任意位置插入元素：vec.insert();</span><br><span class="line">iterator insert( iterator loc, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入值为val的元素,返回指向这个元素的迭代器,</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, size_type num, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入num个值为val的元素</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, input_iterator start, input_iterator <span class="built_in">end</span> );<span class="comment">//在指定位置loc前插入区间[start, end)的所有元素 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d.任意位置删除元素：vec.erase();</span><br><span class="line">vec.erase(pos)，删除pos位置的数据</span><br><span class="line">vec.erase(beg，<span class="built_in">end</span>); 删除[beg，<span class="built_in">end</span>]区间的数据</span><br><span class="line"></span><br><span class="line">e.交换两个向量的元素：vec.swap();</span><br><span class="line"></span><br><span class="line">f.清空向量元素:vec.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-元素的访问"><a href="#3-元素的访问" class="headerlink" title="3.元素的访问"></a>3.元素的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">下标访问法：vec[<span class="number">1</span>]；<span class="comment">//并不会检查是否越界</span></span><br><span class="line">at访问法：vec.at(<span class="number">1</span>);<span class="comment">//at会检查是否越界，是则抛出out of range的异常</span></span><br><span class="line">访问第一个元素：vec.front();</span><br><span class="line">访问最后一个元素：vec.back();</span><br><span class="line">返回一个指针：<span class="keyword">int</span>*p=vec.data(); <span class="comment">//可以返回一个指针指向这个数组，</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-迭代器"><a href="#4-迭代器" class="headerlink" title="4.迭代器"></a>4.迭代器</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">开始指针：vec.<span class="built_in">begin</span>();</span><br><span class="line">末尾指针：vec.<span class="built_in">end</span>();  <span class="comment">//指向最后一个元素的下一个位置</span></span><br><span class="line"><span class="comment">//对于iterator,有vector&lt;char&gt;::iterator theIterator = vec.begin();</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-有用的封装函数"><a href="#5-有用的封装函数" class="headerlink" title="5.有用的封装函数"></a>5.有用的封装函数</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.元素翻转：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">reverse(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">b.元素排序</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">sort(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());<span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line">c.元素求和</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line">accumulate(要累加的头迭代指标，要累加的尾迭代指标，累加的值)</span><br><span class="line">例：sum=accumulate(vec.<span class="built_in">begin</span>()，vec.<span class="built_in">end</span>(),<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>-—————————————</p>
+<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>1.在定义动态，没有规定大小的vector型数组时，向数组中添加元素不能用下标访问法，只能用str.push_back()往容器里面加入元素，等加入了元素后，才可以用下标访问法</p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C++的一些概念</title>
+    <url>/2020/04/18/C++/C++%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<p><strong>多态的概念</strong></p>
+<p><a href="https://www.cnblogs.com/dishengAndziyu/p/10915253.html" target="_blank" rel="noopener">https://www.cnblogs.com/dishengAndziyu/p/10915253.html</a></p>
+<p>相同的行为方式产生不同的行为结果</p>
+<p>同样的调用语句在实际运行中有不同的表现形式</p>
+<p><strong>C++的线程的锁</strong></p>
+<p>互斥锁，自旋锁，读写锁，条件锁。</p>
+<p><a href="https://blog.csdn.net/Allen_Walker_QAQ/article/details/80637010" target="_blank" rel="noopener">https://blog.csdn.net/Allen_Walker_QAQ/article/details/80637010</a></p>
+<p><strong>C++中基本数据类型所占的字节数</strong></p>
+<p>   char ：1个字节</p>
+<p>  char* (指针变量)：8个字节</p>
+<p>  short int :2个字节 </p>
+<p> int :4字节</p>
+<p> unsigned int :4字节</p>
+<p> float :4字节</p>
+<p>double,long,long long :8字节</p>
+<p>对于定义的类而言：1.等于非静态成员变量的总和；</p>
+<p>   2.编译器为了CPU的计算，做了数据对齐处理。（有char和int时，char作为4字节处理）</p>
+<p><strong>C++的STL的使用</strong></p>
+<p><a href="https://www.cnblogs.com/pullself/p/10049657.html" target="_blank" rel="noopener">https://www.cnblogs.com/pullself/p/10049657.html</a></p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Spacy库-英文文本分词库</title>
+    <url>/2020/06/09/python/Spacy%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>是预先读入一个已经训练好的词向量模型，在海量语料上训练的结果。</p>
+<p>使用举例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">doc&#x3D;nlp(要分析的text)</span><br><span class="line">list(doc.sents)  #打印所有的句子</span><br><span class="line">list(doc.sents)[0].text  #取出某一句话</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>用spacy库构建知识图谱 <a href="https://www.jianshu.com/p/df18cde76cda" target="_blank" rel="noopener">https://www.jianshu.com/p/df18cde76cda</a></p>
+<p>用spacy库进行分词的例子<a href="https://github.com/ZhangRaymond/Learning-Note/blob/master/demo-spacy-text-processing.ipynb" target="_blank" rel="noopener">https://github.com/ZhangRaymond/Learning-Note/blob/master/demo-spacy-text-processing.ipynb</a></p>
+<p>分词的例子2<a href="https://blog.csdn.net/weixin_40056628/article/details/89361587" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40056628/article/details/89361587</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux环境变量</title>
+    <url>/2020/06/09/linux/linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h3 id="export命令"><a href="#export命令" class="headerlink" title="export命令"></a>export命令</h3><p>linux的export命令：设置或显示环境变量，在程序中先执行export，告诉系统某某某程序在对应路径下。 在linux里设置环境变量的方法：要么直接在命令行中执行（只对当前有效），要么在profile，.bashrc中设置（重启系统后生效）。</p>
+<p> 使用模板：export PATH=”$PATH:/要添加的路径”</p>
+<p>$是调用变量的意思，$PATH是调用该环境变量的值。其中${}里面放的是变量，用来引用，$()里面放的是命令，执行这个命令。</p>
+<h3 id="etc-environment和-etc-profile的区别"><a href="#etc-environment和-etc-profile的区别" class="headerlink" title="/etc/environment和/etc/profile的区别"></a>/etc/environment和/etc/profile的区别</h3><p>/environment是给系统配置变量，而/profile是给用户配置变量，都是在系统运行时读取，一个先读一个后读。 若是要修改bash的，需要在vi ~/.bashrc中修改，这样重启后就会生效。</p>
+<p>参考：<a href="https://blog.csdn.net/teamlet/article/details/8257853" target="_blank" rel="noopener">https://blog.csdn.net/teamlet/article/details/8257853</a> </p>
+<h3 id="source-filename"><a href="#source-filename" class="headerlink" title="source filename"></a>source filename</h3><p>这个命令其实只是简单地读取脚本里面的语句依次在当前shell里面执行，没有建立新的子shell。那么脚本里面所有新建、改变变量的语句都会保存在当前shell里面。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>psql关系数据库操作</title>
+    <url>/2020/06/09/tools/psql%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><h4 id="数据库和数据库表的关系"><a href="#数据库和数据库表的关系" class="headerlink" title="数据库和数据库表的关系"></a>数据库和数据库表的关系</h4><p>角色和用户的role和user关系：create role xxx password ‘mm’  LOGIN等同于create user xxx password ‘mmm’ ，也即role + login = user;</p>
+<h3 id="二-操作"><a href="#二-操作" class="headerlink" title="二.操作"></a>二.操作</h3><h4 id="创建数据库："><a href="#创建数据库：" class="headerlink" title="创建数据库："></a>创建数据库：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create database 数据库名字 owner 用户名；</span><br></pre></td></tr></table></figure>
+
+<h4 id="将某个数据库的所有权限赋值给某个用户"><a href="#将某个数据库的所有权限赋值给某个用户" class="headerlink" title="将某个数据库的所有权限赋值给某个用户"></a>将某个数据库的所有权限赋值给某个用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grant all privileges on database xxx to xxx;</span><br></pre></td></tr></table></figure>
+
+<h4 id="赋予部分权限"><a href="#赋予部分权限" class="headerlink" title="赋予部分权限"></a>赋予部分权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alter user xxx 权限1 权限2 权限3;</span><br></pre></td></tr></table></figure>
+
+<h4 id="登陆指定数据库"><a href="#登陆指定数据库" class="headerlink" title="登陆指定数据库"></a>登陆指定数据库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">psql -h server -p port -u username 数据库名</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop database 数据库名;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除用户角色"><a href="#删除用户角色" class="headerlink" title="删除用户角色"></a>删除用户角色</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop role xxx;</span><br></pre></td></tr></table></figure>
+
+<p>若遇到权限依赖的问题，前面把数据库db的权限给了xxx，则需要事先收回xxx的所有权限。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">revoke all on database db from xxx;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看某个数据库中存储的内容"><a href="#查看某个数据库中存储的内容" class="headerlink" title="查看某个数据库中存储的内容"></a>查看某个数据库中存储的内容</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\c 数据库名  #进入到某个数据库中</span><br><span class="line">\dt   #查看该个数据库中的所有表</span><br><span class="line">\c interface  #切换数据库</span><br><span class="line">\d 表名 	#查看某个数据库的某个表结构</span><br><span class="line">select* from apps limit 1; #查看某个库中某个表的记录</span><br><span class="line">\q  #退出psql</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://blog.csdn.net/londa/article/details/94327596" target="_blank" rel="noopener">https://blog.csdn.net/londa/article/details/94327596</a>    psql常用命令</p>
+<p><a href="https://blog.csdn.net/londa/article/details/94327596" target="_blank" rel="noopener">https://blog.csdn.net/londa/article/details/94327596</a>    创建用户后，登陆用户并创建数据库</p>
+<p><a href="https://jingyan.baidu.com/article/39810a23af6cc9b636fda6da.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/39810a23af6cc9b636fda6da.html</a>   pgAdmin连接psql数据库</p>
+<p><a href="https://jingyan.baidu.com/article/f3ad7d0fafd8c549c2345b53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/f3ad7d0fafd8c549c2345b53.html</a>    pgAdmin打开表</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解决在hexo提交博客到github时，登不上去的问题</title>
+    <url>/2020/06/09/%E5%85%B6%E4%BB%96/%E8%A7%A3%E5%86%B3%E8%BE%93%E5%85%A5hexo%E5%91%BD%E4%BB%A4%E6%97%B6github%E7%99%BB%E4%B8%8D%E4%B8%8A%E5%8E%BB/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>在提交自己的博客到github Page，在cmd中输入命令“hexo d”时，爆出如下的错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fatal: unable to access &#39;[https:&#x2F;&#x2F;liangwg:mlma3d4f@github.com&#x2F;liangwg&#x2F;liangwg.github.io.git&#x2F;](https:&#x2F;&#x2F;liangwg:mlma3d4f@github.com&#x2F;liangwg&#x2F;liangwg.github.io.git&#x2F;)&#39;: Failed to connect to [github.com](http:&#x2F;&#x2F;github.com&#x2F;) port 443: Timed out</span><br></pre></td></tr></table></figure>
+
+<p>但是自己在搭建完梯子之后明明能够登上github的官网，也能正常打开自己的网页。</p>
+<h3 id="二-解决办法"><a href="#二-解决办法" class="headerlink" title="二.解决办法"></a>二.解决办法</h3><p>是由于自己在c:\windows\system32\drivers\etc\的目录下的host文件出了问题，之前在host文件中添加了几个github的域名，现在这些域名没法使用了，导致hexo d时，跳转不过去。</p>
+<p>因此，把之前添加的有关github的域名解析的行都删除即可。</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>tools/Neo4j的相关操作</title>
+    <url>/2020/05/13/tools/Neo4j%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。</p>
+<table>
+<thead>
+<tr>
+<th>Want to do</th>
+<th>How to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>修改Neo4j的登陆密码</td>
+<td>1.进入neo4j提供的可视化界面<br />2.输入： :server change-password<br />3.键入原密码及新密码，即可修改</td>
+</tr>
+<tr>
+<td>把.csv数据导入到图数据库中</td>
+<td>将要导入的.csv数据集放到neo4j-community-3.5.3\import目录下，然后执行load命令，就可完成关系图谱的构建。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="Cypher的语句示例"><a href="#Cypher的语句示例" class="headerlink" title="Cypher的语句示例"></a>Cypher的语句示例</h1><h4 id="删除所有（清库）："><a href="#删除所有（清库）：" class="headerlink" title="删除所有（清库）："></a>删除所有（清库）：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MATCH (n) DETACH DELETE n</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建节点："><a href="#创建节点：" class="headerlink" title="创建节点："></a>创建节点：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE (结点名字:结点类型&#123;结点属性1:属性1值,结点属性2:属性2值&#125;) RETURN 结点名字;</span><br></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.创建一个Person名字为a，出生于1997的节点</span><br><span class="line">CREATE (a:Person &#123;name:‘a’, born:1997&#125;) return a;</span><br><span class="line">2.创建b和c</span><br><span class="line">CREATE (b:Person &#123;name:‘b’, born:1997&#125;),(c:Person &#123;name:‘c’, born:1961&#125;) Return b,c</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建节点和关系："><a href="#创建节点和关系：" class="headerlink" title="创建节点和关系："></a>创建节点和关系：</h4><p>a-gift-&gt;b</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE (m:Person&#123;name:‘a’&#125;)-[:gift]-&gt;(f:Person&#123;name:‘b’&#125;) return m,f</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看所有结点："><a href="#查看所有结点：" class="headerlink" title="查看所有结点："></a>查看所有结点：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MATCH (n) RETURN n;</span><br></pre></td></tr></table></figure>
+
+<h4 id="根据结点姓名返回所有的关系和尾结点"><a href="#根据结点姓名返回所有的关系和尾结点" class="headerlink" title="根据结点姓名返回所有的关系和尾结点"></a>根据结点姓名返回所有的关系和尾结点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">return (:star&#123;starname:&quot;张国荣&quot;&#125;)--&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>####查询给定姓名和关系的所有的节点</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">match p&#x3D;(n:star&#123;starname:&quot;张国荣&quot;&#125;)-[:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;() return p;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询给定关系的所有节点对"><a href="#查询给定关系的所有节点对" class="headerlink" title="查询给定关系的所有节点对"></a>查询给定关系的所有节点对</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">match p&#x3D;()-[:rel&#123;relation:&quot;旧爱&quot;&#125;]-&gt;() return p;</span><br></pre></td></tr></table></figure>
+
+<h4 id="语句中的return的一些示例"><a href="#语句中的return的一些示例" class="headerlink" title="语句中的return的一些示例"></a>语句中的return的一些示例</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">return as A将结果集合取一个别名A，</span><br><span class="line"></span><br><span class="line">return id(p)  将p结点的id返回  0，1，2，3，4，5，6</span><br><span class="line"></span><br><span class="line">return labels(p)  将结点的标签返回：star，star，star</span><br><span class="line"></span><br><span class="line">return head(labels(p))  仍然是返回结点的标签：star，star，star</span><br><span class="line"></span><br><span class="line">return n.starid    返回结点的starid属性值，貌似是等于id(p)+1</span><br><span class="line"></span><br><span class="line">return n.starname   返回结点的starname属性值，</span><br><span class="line"></span><br><span class="line">return &#123;,,,&#125; as A   构造了一个dict型变量集，</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改结点间的关系"><a href="#修改结点间的关系" class="headerlink" title="修改结点间的关系"></a>修改结点间的关系</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">match (a:star&#123;starname:&quot;张国荣&quot;&#125;)-[p:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;(b:star&#123;starname:&quot;张学友&quot;&#125;)</span><br><span class="line">set p.relation&#x3D;&quot;组合&quot;</span><br><span class="line">return a,p,b</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除某个节点"><a href="#删除某个节点" class="headerlink" title="删除某个节点"></a>删除某个节点</h4><p>先删除关系，再删除节点</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MATCH (n:Department&#123;name: &quot;心胸外科&quot;,alias: &quot;&quot;&#125;) DETACH DELETE n</span><br></pre></td></tr></table></figure>
+
+<h4 id="新增节点间的关系"><a href="#新增节点间的关系" class="headerlink" title="新增节点间的关系"></a>新增节点间的关系</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MATCH (a:star&#123;starname:&quot;张国荣&quot;&#125;),(b:star&#123;starname:&quot;张学友&quot;&#125;) </span><br><span class="line">CREATE (a)-[p:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;(b) return a,p,b</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除结点间的关系"><a href="#删除结点间的关系" class="headerlink" title="删除结点间的关系"></a>删除结点间的关系</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">match (a:star&#123;starname:&quot;张国荣&quot;&#125;)-[p:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;(b:star&#123;starname:&quot;张学友&quot;&#125;)</span><br><span class="line">delete p</span><br><span class="line">return a,p,b</span><br></pre></td></tr></table></figure>
+
+<h4 id="新增某个节点"><a href="#新增某个节点" class="headerlink" title="新增某个节点"></a>新增某个节点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create (a:star&#123;starname:&quot;&quot;,starid:&quot;&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询只有一个节点的语句"><a href="#查询只有一个节点的语句" class="headerlink" title="查询只有一个节点的语句"></a>查询只有一个节点的语句</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">match (n) where not (n)-[]-() return n;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>Cypher语句使用案例<a href="https://blog.csdn.net/u013032852/article/details/82997088?utm_source=blogxgwz7" target="_blank" rel="noopener">https://blog.csdn.net/u013032852/article/details/82997088?utm_source=blogxgwz7</a></p>
+<p>用Neo4j构建明星关系图谱<a href="https://zhuanlan.zhihu.com/p/61096301" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61096301</a></p>
+<p>Neo4j的前端可视化组件<a href="https://zhuanlan.zhihu.com/p/126219777" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/126219777</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+</search>
