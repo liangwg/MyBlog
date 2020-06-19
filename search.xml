@@ -90,6 +90,8 @@
 <p>prompt(str);       弹出提示对话框，使用户输入有关信息，并接受返回值，</p>
 <p>将js代码放入body里面的最底部，这样方便先加载静态显示的内容，再加载js动态效果</p>
 <h3 id="style-’text-javascript’"><a href="#style-’text-javascript’" class="headerlink" title="style=’text/javascript’"></a>style=’text/javascript’</h3><p>type=”text/javascript”是说明这一段脚本语言是javascript。告诉浏览来器这一段要按照javascript来解释执行。</p>
+<h3 id="html的文件路径问题"><a href="#html的文件路径问题" class="headerlink" title="html的文件路径问题"></a>html的文件路径问题</h3><p>没有在页面引入Qjuery，引用路径：可以是绝对路径引用（以根目录为基准），也可以是相对路径引用(以网页文件当前所在文档为基准开始向下找，当前所在文档为基准，用两个点”..”表示上一级文件夹同级寻找。)</p>
+<p><a href="https://blog.csdn.net/wildand/article/details/89501599" target="_blank" rel="noopener">https://blog.csdn.net/wildand/article/details/89501599</a></p>
 ]]></content>
       <categories>
         <category>frontEnd</category>
@@ -722,8 +724,8 @@
 </tr>
 </thead>
 <tbody><tr>
-<td></td>
-<td></td>
+<td>Markdown想要显示上下标H<sub>2</sub>O<sup>T</sup></td>
+<td>下标：H&lt;sub&gt;2&lt;/sub&gt;<br />上标：O&lt;sup&gt;T&lt;/sup&gt;</td>
 </tr>
 <tr>
 <td></td>
@@ -734,8 +736,47 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="Markdown的常见特殊符号"><a href="#Markdown的常见特殊符号" class="headerlink" title="Markdown的常见特殊符号"></a>Markdown的常见特殊符号</h3><p><a href="http://www.mamicode.com/info-detail-2539363.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-2539363.html</a></p>
-<table>
+<h3 id="Markdown中插入的公式符号"><a href="#Markdown中插入的公式符号" class="headerlink" title="Markdown中插入的公式符号"></a>Markdown中插入的公式符号</h3><table>
+<thead>
+<tr>
+<th>要插入的符号</th>
+<th>词（$\A​$）下面是A的值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$\times$</td>
+<td>times</td>
+</tr>
+<tr>
+<td>$\log$</td>
+<td>log</td>
+</tr>
+<tr>
+<td>$\sigma$</td>
+<td>sigma</td>
+</tr>
+<tr>
+<td>伊普西隆$\varepsilon$</td>
+<td>varepsilon</td>
+</tr>
+<tr>
+<td>$\Sigma^N_1$</td>
+<td>Sigma^N_1</td>
+</tr>
+<tr>
+<td>$\nabla$</td>
+<td>nabla</td>
+</tr>
+<tr>
+<td>$\frac{1}{2}$分数</td>
+<td>frac{分子}{分母}</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Markdown的常见特殊符号"><a href="#Markdown的常见特殊符号" class="headerlink" title="Markdown的常见特殊符号"></a>Markdown的常见特殊符号</h3><table>
 <thead>
 <tr>
 <th>要插入的符号</th>
@@ -783,6 +824,10 @@
 <td>pi</td>
 </tr>
 </tbody></table>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>1.希腊字母对应表<a href="https://blog.csdn.net/leviopku/article/details/81566554" target="_blank" rel="noopener">https://blog.csdn.net/leviopku/article/details/81566554</a></p>
+<p>2.插入的各种数学公式符号<a href="https://blog.csdn.net/jiaoyangwm/article/details/79247803" target="_blank" rel="noopener">https://blog.csdn.net/jiaoyangwm/article/details/79247803</a></p>
+<p>3.常见的特殊的字符<a href="http://www.mamicode.com/info-detail-2539363.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-2539363.html</a></p>
+<p>4.数学符号<a href="https://blog.csdn.net/katherine_hsr/article/details/79179622" target="_blank" rel="noopener">https://blog.csdn.net/katherine_hsr/article/details/79179622</a></p>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -857,7 +902,8 @@
 <td><a href="http://www.51sjk.com/b1b107081/" target="_blank" rel="noopener">http://www.51sjk.com/b1b107081/</a><br />“布局”-&gt;”分隔符”-&gt;插入到不想显示页码的那页，然后开始设置删除页码</td>
 </tr>
 </tbody></table>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+<h3 id="打开文件遇到错误提示”word在试图打开文件时遇到错误”"><a href="#打开文件遇到错误提示”word在试图打开文件时遇到错误”" class="headerlink" title="打开文件遇到错误提示”word在试图打开文件时遇到错误”"></a>打开文件遇到错误提示”word在试图打开文件时遇到错误”</h3><p>关闭提示窗口-&gt;打开”文件”-&gt;最下面的”选项”-&gt;最下面的”信任中心”-&gt;”信任中心设置”-&gt;”受保护的视图”-&gt;取消勾选“为来自Internet的文件启用受保护的视图”</p>
+]]></content>
       <categories>
         <category>tools</category>
       </categories>
@@ -1197,6 +1243,561 @@
 ]]></content>
       <categories>
         <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>java下载过程中遇到的问题</title>
+    <url>/2020/05/10/java/java%E4%B8%8B%E8%BD%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在下载Neo4j时，要先下载Java，在访问官网时，得到了如下的两类</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/%E6%8F%92%E5%85%A5.png" alt="插入"></p>
+<p>不知道该下载哪一种</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一般都是下载.exe，是直接帮安装的。而.zip则是由源码的</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jieba库的介绍</title>
+    <url>/2020/05/24/python/jieba%E5%BA%93/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/dongzixian/article/details/103240861" target="_blank" rel="noopener">https://blog.csdn.net/dongzixian/article/details/103240861</a></p>
+<p><a href="https://www.cnblogs.com/han20180705/p/9470622.html" target="_blank" rel="noopener">https://www.cnblogs.com/han20180705/p/9470622.html</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>(word2vec第1弹)-向量空间中单词表示的有效评估</title>
+    <url>/2020/04/18/paper/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/</url>
+    <content><![CDATA[<p>什么是N-gram模型？</p>
+<p>随机梯度下降和反向传播算法。</p>
+<p>RNN模型</p>
+<p>题目</p>
+<p>Efficient Estimation of Word Representations in Vector Space</p>
+<p>背景说明：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.word2vec是用于词向量计算的工具</span><br><span class="line">2.该工具得到的训练结果：词向量(word embedding),度量词与词之间的相似性。</span><br><span class="line">3.word2vec算法的背后是一个浅层的神经网络</span><br><span class="line">4.word2vec算法或模型是指背后用于计算word vector的CBOW模型和Skip-gram模型。</span><br></pre></td></tr></table></figure>
+
+<p>由google的Mikolov于2013年发表。</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>两种新的模型体系结构，用于从非常大的数据集中计算单词的连续矢量表示。</p>
+<p>准确性提高，计算成本降低很多。</p>
+<p>用于句法和语义词的相似性。</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>之前是将词作为原子之间的相似性的原子单位，并且在词汇表中表示为索引。典型的是N-gram模型。</p>
+<p>但是这样简单的技术是有限制的，在自动语音识别（由高质量的转录语音数据大小决定）和机器翻译（现有较少的单词库）中，存储的数据是有限的。</p>
+<p>引出使用单词的分布式表示，并且基于神经网络的语音模型优于N-gram模型。</p>
+<h4 id="1-1-Goals-of-the-Paper"><a href="#1-1-Goals-of-the-Paper" class="headerlink" title="1.1 Goals of the Paper"></a>1.1 Goals of the Paper</h4><p><strong>主要目的</strong>：从词汇表中数十亿个单词和数以百计的单词的巨大数据集中引入可用于学习高质量单词矢量的技术。</p>
+<p>单词矢量的最大维数在50~100之间。</p>
+<p>所提出的技术：相似的单词趋于彼此接近，且单词可以有多个相似度。(若名词有多个单词结尾，则在原始矢量空间的子空间中搜索相似的单词，可以找到有相似结尾的单词。)</p>
+<p><strong>单词表示的相似性：</strong>使用对单词向量执行简单代数运算的单词偏移技术，例如，显示出vector（“ King”）-vector（“ Man”）+ vector（“ Woman”）产生的矢量与单词Queen的矢量表示最接近 。</p>
+<p><strong>本文的工作</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.开发保留词间线性规则性的新模型架构来最大化上述向量运算的准确性</span><br><span class="line">2.设计了一种新的综合测验集，用于测量句法和语义规律性，</span><br><span class="line">3.单词向量的维数和训练数据的数量对于训练时间和准确性的影响。</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-Previous-Work"><a href="#1-2-Previous-Work" class="headerlink" title="1.2 Previous Work"></a>1.2 Previous Work</h4><p>将单词作为连续向量的表示，典型的是<strong>NNLM模型</strong>。用于估计神经网络语言模型的模型架构。其中使用具有线性投影层和非线性隐藏层的前馈神经网络来共同学习单词向量表示和统计语言模型。</p>
+<p>其中单词向量是使用带有单个隐藏层的神经网络进行精细学习的。 单词向量被训练为训练NNLM。 因此，即使不构建完整的NNLM，也可以学习单词向量。 在这项工作中，我们直接扩展了该体系结构，并重点关注了使用简单模型学习单词向量的第一步。</p>
+<h3 id="2-Model-Architectures"><a href="#2-Model-Architectures" class="headerlink" title="2.Model Architectures"></a>2.Model Architectures</h3><p>评估单词的连续表示的模型有：Latent Semantic Analysis (LSA) 和 Latent Dirichlet Allocation (LDA)。本文中采用的是<strong>由神经网络学习的词的分布式表示形式</strong>，这种方式在保留词之间的线性规则上好于LSA，在大型数据集上，比LDA更为便宜。</p>
+<p>对于接下来的这几个模型，模型的复杂度和下面的公式成比例：<br>$$<br>O=E\times T \times Q<br>$$<br>其中E是模型训练的Epochs的数目，T是training set中的单词的数目，Q是每个框架模型的进一步定义，一般的E=3~50，T高达十亿。下面的所有模型都采用随机梯度下降和反向传播训练。</p>
+<h4 id="2-1-Feedforward-Neural-Net-Language-Model-NNLM"><a href="#2-1-Feedforward-Neural-Net-Language-Model-NNLM" class="headerlink" title="2.1 Feedforward Neural Net Language Model(NNLM)"></a>2.1 Feedforward Neural Net Language Model(NNLM)</h4><p>前馈神经网络语言模型</p>
+<p>它由输入，投影，隐藏和输出层组成。 在输入层，使用1-of-V编码对N个先前的单词进行编码，其中V是词汇量。 然后，使用共享的投影矩阵将输入层投影到尺寸为N×D的投影层P上。 由于只有N个输入在给定时间处于活动状态，所以投影层的组成相对便宜。 由于投影层中的值很密集，NNLM体系结构在投影层和隐藏层之间的计算变得很复杂。 对于N = 10的常见选择，投影层（P）的大小可能为500到2000，而隐藏层的大小H通常为500到1000单位。 此外，隐藏层用于计算词汇表中所有单词的概率分布，从而导致维数为V的输出层。 因此，每个训练示例的计算复杂度为下式子(2)<br>$$<br>Q=N\times D+N\times D\times H+H\times V —(2)<br>$$<br>其中主导项是H×V。但是，为避免这种情况提出了一些实际的解决方案。要么使用softmax的分层版本[25，23，18]，要么使用在训练过程中未标准化的模型来完全避免标准化模型[4，9]。用词汇表的二叉树表示，需要评估的输出单位数可以降低到log2（V）左右。因此，大多数复杂性是由项N×D×H引起的。在我们的模型中，我们使用层次化的软件最大值，其中词汇表示霍夫曼二叉树。这遵循先前的观察，即词频在神经网络语言模型中很容易获得类[16]。霍夫曼树将短的二进制代码分配给频繁的单词，这进一步减少了需要经过估值的输出单元的数量：而平衡二叉树需要对账本进行估值的log2（V），而基于霍夫曼树的分层软最大值仅需要log2（Unigram perplexity（V））。例如，当词汇量为一百万个单词时，这会使评估速度提高大约两倍。尽管对于N×D×H项中的计算瓶颈而言，这对于神经网络LM而言并不是至关重要的提速，但我们将提出一种建议，该结构必须具有隐藏层并且因此在很大程度上取决于softmax归一化的效率。</p>
+<h3 id="2-2-Recurrent-Neural-Net-Language-Model-RNNLM"><a href="#2-2-Recurrent-Neural-Net-Language-Model-RNNLM" class="headerlink" title="2.2 Recurrent Neural Net Language Model (RNNLM)"></a>2.2 Recurrent Neural Net Language Model (RNNLM)</h3><p>递归神经网络语言模型。</p>
+<p>已经提出了基于递归神经网络的语言模型来克服前馈NNLM的某些限制，例如需要指定上下文长度（模型N的顺序），并且因为理论上RNN可以比浅层神经网络更有效地表示更复杂的模式[15，2]。 RNN模型没有投影层。 仅输入，隐藏和输出层。 这种类型的模型的特殊之处在于递归矩阵，它使用延时连接将隐藏层与其自身相连。 这允许循环模型形成某种形式的短期内存，该信息是由隐藏层状态表示的过去的信息组成的，该信息根据当前输入和上一时间步中隐藏层的状态进行更新。 RNN模型的每个训练示例的复杂度为<br>$$<br>Q=H\times H+H\times V—(3)<br>$$<br>其中，单词表示D的维数与隐藏层H相同。再次，可以使用分层softmax有效地将术语H×V简化为H×log2（V）。 那么，大多数复杂度来自H×H。</p>
+<h3 id="2-3-Parallel-Training-of-Neural-Networks"><a href="#2-3-Parallel-Training-of-Neural-Networks" class="headerlink" title="2.3  Parallel Training of Neural Networks"></a>2.3  Parallel Training of Neural Networks</h3><p>神经网络并行训练。</p>
+<p>为了在海量数据集上训练模型，我们在称为DistBelief [6]的大规模分布式框架的基础上实现了多个模型，包括前馈NNLM和本文提出的新模型。 该框架允许我们并行运行同一模型的多个副本，并且每个副本通过保留所有参数的集中式服务器同步其梯度更新。 对于这种并行训练，我们使用称为Adagrad [7]的自适应学习速率程序进行小批量异步梯度下降。 在此框架下，通常使用一百个或多个模型副本，每个副本在数据中心的不同计算机上使用许多CPU内核。</p>
+<h3 id="3-New-Log-linear-Models-对数线性模型"><a href="#3-New-Log-linear-Models-对数线性模型" class="headerlink" title="3 New Log-linear Models(对数线性模型)"></a>3 New Log-linear Models(对数线性模型)</h3><p>上面这些模型的非线性隐藏层导致了复杂性较高。新的架构直接遵循我们早期工作[13，14]中提出的架构，发现神经网络语言模型可以成功地分两个步骤进行训练：首先，使用简单模型对连续的单词向量进行学习，然后在这些单词的分布式表示之上限制N-gram NLM。 虽然后来有大量工作集中在学习单词向量上，但我们认为[13]中提出的简化简单方法的方法。 请注意，相关模型也已经提早提出[26，8]。</p>
+<h4 id="3-1-Continuous-Bag-of-Words-Model-连续词袋模型"><a href="#3-1-Continuous-Bag-of-Words-Model-连续词袋模型" class="headerlink" title="3.1 Continuous Bag-of-Words Model(连续词袋模型)"></a>3.1 Continuous Bag-of-Words Model(连续词袋模型)</h4><p>所提出的第一个体系结构类似于前馈NNLM，其中去除了非线性隐藏层，并且所有单词都共享了投影层（不仅仅是投影矩阵）。因此，所有单词都投影到同一位置（对它们的向量进行平均）。我们将此架构称为“词袋模型”，因为历史中的词序不会影响投影。此外，我们也使用未来的话语。通过构建一个对数线性分类器，在输入中包含四个未来和四个历史单词，我们的训练标准是正确分类当前（中间）单词，从而在下一节介绍的任务上获得了最佳性能。那么训练的复杂度如下：<br>$$<br>Q=N\times D+D\times \log_2(V)—(4)<br>$$<br>我们将这个模型进一步称为CBOW，与标准的词袋模型不同，它使用上下文的连续分布式表示。该模型的体系结构如图1所示。请注意，输入和投影层之间的权重矩阵以与NNLM中相同的方式共享给所有单词位置。</p>
+<h4 id="3-2-Continuous-Skip-gram-Model"><a href="#3-2-Continuous-Skip-gram-Model" class="headerlink" title="3.2 Continuous Skip-gram Model"></a>3.2 Continuous Skip-gram Model</h4><p>第二种结构与CBOW类似，但是它不是根据上下文来预测当前单词，而是尝试根据同一句子中的另一个单词来最大化单词的分类。更准确地说，我们将每个当前单词用作具有连续投影层的对数线性分类器的输入，并预测当前单词前后的特定范围内的单词。我们发现，增加范围可以提高所得词向量的质量，但同时也会增加计算复杂度。由于距离较远的单词通常比与距离最近的单词更不相关，因此我们在训练示例中通过从这些单词中抽取较少的采样来给予距离较远的单词较少的权重。这种架构的训练复杂度是<br>$$<br>Q=C\times (D+D\times \log_2(V))—(5)<br>$$<br>其中C是单词的最大距离。因此，如果我们选择C = 5，则对于每个训练词，我们将随机选择范围&lt;1; C&gt;的数字R，将历史中的R个单词和当前单词的未来中的R个单词用作正确的标签。这将要求我们对R×2个单词进行分类，将当前单词作为输入，并将每个R + R单词作为输出。在以下实验中，我们使用C = 10。</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/CBOW-SkipGram.png" alt="CBOW-SkipGram"></p>
+<h3 id="4-Result"><a href="#4-Result" class="headerlink" title="4.Result"></a>4.Result</h3><h3 id="6-Conclusion"><a href="#6-Conclusion" class="headerlink" title="6 Conclusion"></a>6 Conclusion</h3><p> 本文研究了语法模型和语义语言任务的集合中各种模型衍生的单词的矢量表示的质量。我们观察到，与流行的神经网络模型（前馈模型和递归模型）相比，可以使用非常简单的模型结构来训练高质量的单词向量。由于计算复杂度低得多，因此可以从更大的数据集中计算出非常准确的高维词向量。使用Dist Belief分布的框架，即使在具有一万亿个单词的语料库上，也应该能够训练CBOW和Skip-gram模型，从而使词汇量基本上不受限制。这比以前发布的同类最佳结果最好的数量级大几个数量级。SemEval-2012 Task 2 [11]是一个有趣的任务，其中单词向量最近被显示为明显优于以前的最新技术水平。公开使用的RNN向量与其他技术一起使用，使Spearman的排名相关性比以前的最佳结果提高了50％以上[31]。基于神经网络的词向量先前已应用于许多其他NLP任务，例如情感分析[12]和复述检测[28]。可以预期，这些应用程序可以从本文描述的模型架构中受益。我们正在进行的工作表明，单词向量可以成功地应用于知识库中事实的自动扩展，也可以用于验证现有事实的正确性。机器翻译实验的结果看起来也很有希望。将来，比较我们的技术需求潜在关系分析[30]和其他方法也将很有趣。相信我们全面的测试集将帮助研究团体改进现有的估计词向量的技术。我们还预计，高质量的字向量将成为未来NLP应用程序的重要组成部分。</p>
+<p>[1].翻译参考</p>
+<p><a href="https://www.jianshu.com/p/4517181ca9c3" target="_blank" rel="noopener">https://www.jianshu.com/p/4517181ca9c3</a></p>
+<p>[2].N-gram模型</p>
+<p><a href="https://blog.csdn.net/songbinxu/article/details/80209197" target="_blank" rel="noopener">https://blog.csdn.net/songbinxu/article/details/80209197</a></p>
+]]></content>
+      <categories>
+        <category>paper</category>
+      </categories>
+      <tags>
+        <tag>word2vec</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>(word2vec第3弹)词和短语的分布式表示及其构成</title>
+    <url>/2020/04/18/paper/(word2vec)Distributed%20Representations%20of%20Words%20and%20Phrases%20and%20their%20Compositionality/</url>
+    <content><![CDATA[<p>英文题名：</p>
+<p>Distributed Representations of Words and Phrases and their Compositionality.</p>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本文提出了几个扩展，提高了向量的质量和训练速度，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.通过对frequent words进行二次采样，进行训练加速。</span><br><span class="line"></span><br><span class="line">2.学习更多的regular word representations(常规词表示)。</span><br><span class="line"></span><br><span class="line">3.提出一个分层softmax的简单替代方法-negative sampling(负采样)。</span><br></pre></td></tr></table></figure>
+
+<p>词表示(word representations)的一个固有限制：</p>
+<p>不关心词序，而且无法表示习惯用语。</p>
+<p>提出的是一种：在文本中查找短语的简单方法，</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>skip-gram模型：从大量非结构化文本数据中学习高质量向量表示的有效方法。</p>
+<p><strong>—————————————-</strong></p>
+<p>[1]. 翻译参考</p>
+<p><a href="https://blog.csdn.net/u010555997/article/details/76598666" target="_blank" rel="noopener">https://blog.csdn.net/u010555997/article/details/76598666</a> （前半部分）</p>
+<p><a href="https://blog.csdn.net/qq_27859417/article/details/84929114" target="_blank" rel="noopener">https://blog.csdn.net/qq_27859417/article/details/84929114</a> (概述理解)</p>
+<p>[2].分层softmax介绍</p>
+<p>word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
+]]></content>
+      <categories>
+        <category>paper</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Pytorch的使用</title>
+    <url>/2020/06/09/tools/Pytorch/</url>
+    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>pytorch的中文社区库github上的<a href="https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion" target="_blank" rel="noopener">https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion</a></p>
+<p>对应的英文库<a href="https://github.com/bharathgs/Awesome-pytorch-list" target="_blank" rel="noopener">https://github.com/bharathgs/Awesome-pytorch-list</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>requests库介绍</title>
+    <url>/2020/05/11/python/requests%E5%BA%93%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>这个库是用于发送一个网络请求。</p>
+<h3 id="requests-get-函数"><a href="#requests-get-函数" class="headerlink" title="requests.get()函数"></a>requests.get()函数</h3><h4 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h4><p>获取HTML网页的主要方法，对应于http的GET</p>
+<p><a href="https://blog.csdn.net/k_koris/article/details/82950654" target="_blank" rel="noopener">https://blog.csdn.net/k_koris/article/details/82950654</a></p>
+<h3 id="requests-head-函数"><a href="#requests-head-函数" class="headerlink" title="requests.head()函数"></a>requests.head()函数</h3><h3 id="requests-post-函数"><a href="#requests-post-函数" class="headerlink" title="requests.post()函数"></a>requests.post()函数</h3><h3 id="requests-put-函数"><a href="#requests-put-函数" class="headerlink" title="requests.put()函数"></a>requests.put()函数</h3><h3 id="requests-patch-函数"><a href="#requests-patch-函数" class="headerlink" title="requests.patch()函数"></a>requests.patch()函数</h3><h3 id="requests-delete-函数"><a href="#requests-delete-函数" class="headerlink" title="requests.delete()函数"></a>requests.delete()函数</h3>]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>github相关操作</title>
+    <url>/2020/04/18/tools/github%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h3 id="1-github上找到好东西的方法："><a href="#1-github上找到好东西的方法：" class="headerlink" title="1.github上找到好东西的方法："></a>1.github上找到好东西的方法：</h3><p>Awesome+关键词</p>
+<h3 id="2-git和svn的差别："><a href="#2-git和svn的差别：" class="headerlink" title="2.git和svn的差别："></a>2.git和svn的差别：</h3><p>git:分布式，本地有镜像，无网络时也可以提交到本地镜像，待到有网络时再push到服务器，svn：非分布式，无网络时不可以提交。</p>
+<p><a href="http://www.danmakupie.com/manage#/" target="_blank" rel="noopener">http://www.danmakupie.com/manage#/</a></p>
+<h3 id="3-git基本操作指令"><a href="#3-git基本操作指令" class="headerlink" title="3.git基本操作指令"></a>3.git基本操作指令</h3><table>
+<thead>
+<tr>
+<th>Want to do</th>
+<th>How to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建一个初始的仓库</td>
+<td>git bash目录定位到需要创建仓库的位置，然后，输入git init</td>
+</tr>
+<tr>
+<td>把文件加入到仓库中</td>
+<td>1.使用命令 git add  文件名（带后缀），这个命令可以反复多次使用2.使用git commit -m “文件信息”，完成</td>
+</tr>
+<tr>
+<td>查看用户名，邮箱</td>
+<td>git config user,namegit config user.email</td>
+</tr>
+<tr>
+<td>修改用户名，邮箱</td>
+<td>git config –global user.name “your name”git config –global user.name “your email”</td>
+</tr>
+<tr>
+<td>掌握当前工作区的状态</td>
+<td>git status</td>
+</tr>
+<tr>
+<td>查看被修改内容的区别</td>
+<td>git diff 文件名（带后缀）</td>
+</tr>
+<tr>
+<td>显示从最近到最远的提交日志</td>
+<td>git log</td>
+</tr>
+<tr>
+<td>显示查看命令历史</td>
+<td>git reflog</td>
+</tr>
+<tr>
+<td>在版本的历史之间穿梭，回退</td>
+<td>git reset –hard 命令号其中HEAD表示当前版本，HEAD^表示上一个版本</td>
+</tr>
+<tr>
+<td>修改还只在工作区的时候，想要丢弃修改</td>
+<td>git checkout –文件名</td>
+</tr>
+<tr>
+<td>工作区也修改了，同时还添加到了暂存区，想要丢弃修改，可以退回到修改只在工作区</td>
+<td>git reset HEAD 文件名</td>
+</tr>
+<tr>
+<td>删除文件</td>
+<td>1.先手动删除，然后再git rm 文件名 ，再git commit -m “ message”2.若是文件误删，则可以用git checkout  - 文件名，恢复到最新版本</td>
+</tr>
+<tr>
+<td>把已有的一个本地仓库与空的远端仓库相关联，同时把本地仓库的内容推到远端仓库</td>
+<td>git remote add origin <a href="https://github.com/liangwg/testgit.git(远端仓库名)同时把本地库的内容推送到远端，git" target="_blank" rel="noopener">https://github.com/liangwg/testgit.git(远端仓库名)同时把本地库的内容推送到远端，git</a> push -u origin master</td>
+</tr>
+<tr>
+<td>只要本地做了提交，就可以直接修改</td>
+<td>git push origin master</td>
+</tr>
+<tr>
+<td>从远端库中拷贝下到本地</td>
+<td>git clone <a href="mailto:git@github.com">git@github.com</a>:liangwg/testgit.git(远端仓库名）其中Github还可以给出其他地址：<a href="https://github.com/仓库名" target="_blank" rel="noopener">https://github.com/仓库名</a></td>
+</tr>
+<tr>
+<td>git使用分支</td>
+<td>查看分支：git branch创建分支：git branch 分支名切换分支：git checkout 分支名或者git switch 分支名创建+切换分支：git check -b 分支名或者git switch -c 分支名合并某分支到当前分支：git merge 分支删除分支：git branch -d 分支</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ppt的一些操作</title>
+    <url>/2020/05/30/tools/ppt%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h3 id="ppt如何使得某一部分内容先展示，某一部分内容后展示"><a href="#ppt如何使得某一部分内容先展示，某一部分内容后展示" class="headerlink" title="ppt如何使得某一部分内容先展示，某一部分内容后展示"></a>ppt如何使得某一部分内容先展示，某一部分内容后展示</h3><p>分成两个文本框，给文本框设计出动作，</p>
+<p>单击要编辑的文本框或图片，选中，然后右键，选择自定义动画就好了。可以选择点击出现，也可以选择设计多少时间后出现。</p>
+<h3 id="如何设计动画同时出现"><a href="#如何设计动画同时出现" class="headerlink" title="如何设计动画同时出现"></a>如何设计动画同时出现</h3><p><a href="https://zhidao.baidu.com/question/445588972.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/445588972.html</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jupyter Notebook的使用</title>
+    <url>/2020/04/18/tools/JupyterNotebook%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="一-其他"><a href="#一-其他" class="headerlink" title="一.其他"></a>一.其他</h3><p>对于一个单元格的运行，ctrl+enter，光标不下移动而出结果；而shift+enter，则光标移动到下一个新的单元格</p>
+<h3 id="二-使用说明"><a href="#二-使用说明" class="headerlink" title="二.使用说明"></a>二.使用说明</h3><p>1.如何使jupyter notebook打开的目录是干净的</p>
+<p>修改c\Users\28708.jupter\里的.py文件，修改保存路径</p>
+<p>c.NotebookApp.notebook_dir=‘需要的路径’</p>
+<p>同时，每次打开，必须从cmd中输入jupyter notebook，打开，才是运行.py配置后的结果</p>
+<p>2.笔记本的基本操作</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/jupyter1.png" alt="jupyter1"></p>
+<p>3.Conda类目下对conda环境和包进行一系列操作</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/jupyter2.png" alt="jupyter2"></p>
+<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://blog.csdn.net/xiewenrui1996/article/details/90301335" target="_blank" rel="noopener">https://blog.csdn.net/xiewenrui1996/article/details/90301335</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/33207896" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33207896</a></p>
+<p><a href="https://www.jianshu.com/p/91365f343585/" target="_blank" rel="noopener">https://www.jianshu.com/p/91365f343585/</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jupyter Notebook使用其他环境</title>
+    <url>/2020/05/11/tools/jupyterNotebook%E4%BD%BF%E7%94%A8%E5%85%B6%E4%BB%96%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h3 id="1-问题："><a href="#1-问题：" class="headerlink" title="1.问题："></a>1.问题：</h3><p>在Andaconda中已经配置了某个虚拟环境：UseTensor，在这个环境中安装了pykg2vec库，但是在jupyternotebook中并没法使用这个环境。</p>
+<h3 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2.解决办法"></a>2.解决办法</h3><p>以管理员方式打开Anaconda Promt，</p>
+<p>在Anaconda Promt中进入所创建的虚拟环境，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install ipykernel</span><br><span class="line">#或者 pip install ipkernel</span><br></pre></td></tr></table></figure>
+
+<p>然后将自己的环境添加到ipython的kernel里，输入一下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(你创建的虚拟环境名)&gt;python -m ipykernel install --user --name (你创建的环境名) --display-name &quot;任意的名字，在jupyternotebook中展示的&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后再刷新一下jupyternotebook的网页即可。</p>
+<h3 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3.其他操作"></a>3.其他操作</h3><h4 id="3-1-查看已经安装的kernelspec的命令如下："><a href="#3-1-查看已经安装的kernelspec的命令如下：" class="headerlink" title="3.1 查看已经安装的kernelspec的命令如下："></a>3.1 查看已经安装的kernelspec的命令如下：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter kernelspec list</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-删除某个kernel环境"><a href="#3-2-删除某个kernel环境" class="headerlink" title="3.2 删除某个kernel环境"></a>3.2 删除某个kernel环境</h4><p>输入jupyter kernelspec list 查看安装的kernel和位置，根据显示的路径进入，其中把对应文件夹删除即可。</p>
+<p>或者，直接输入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter kernelspec remove 环境名称</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-可能遇到的问题"><a href="#4-可能遇到的问题" class="headerlink" title="4.可能遇到的问题"></a>4.可能遇到的问题</h3><p>4.1 在按照上述步骤添加完虚拟环境后，在jupyternotebook中切换到刚创建的环境一直显示“服务正在启动”和“服务重连失败”，然后在Anaconda Promt的虚拟环境中尝试执行jupyter notebook命令，直接报下面的错误:<img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/%E9%97%AE%E9%A2%98.png" alt="问题"></p>
+<p>解决办法：</p>
+<p>在电脑的系统变量中的PATH添加下面两个路径</p>
+<p>D:\appIItemp\Anaconda\Library\bin</p>
+<p>D:\appIItemp\Anaconda</p>
+<p>然后重新运行一下。</p>
+<p>4.2 在上面的问题解决之后，又遇到这个问题：在jupyter notebook使用新建的虚拟环境时，会显示是“挂掉的服务”。</p>
+<p>在后台中出现如此的问题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#39;win32api&#39;</span><br></pre></td></tr></table></figure>
+
+<p>解决办法：</p>
+<p>输入pip install pypiwin32</p>
+<p>4.3 又遇到的问题</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ERROR: Could not find a version that satisfies the requirement pypiwin32 (from versions: none)</span><br></pre></td></tr></table></figure>
+
+<p>解决办法：</p>
+<p>网络不好，重新运行一下就行了。</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>pykg2vec-表示学习的库</title>
+    <url>/2020/06/09/python/pykg2vec%E5%BA%93-%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一-一些概念"><a href="#一-一些概念" class="headerlink" title="一.一些概念"></a>一.一些概念</h3><h4 id="1-pkl文件"><a href="#1-pkl文件" class="headerlink" title="1..pkl文件"></a>1..pkl文件</h4><p>python中的存储方式，将python项目过程中用到的一些暂时变量、或者需要提前、暂存的字符串、列表、字典等数据保存起来。</p>
+<h4 id="2-tsv文件"><a href="#2-tsv文件" class="headerlink" title="2..tsv文件"></a>2..tsv文件</h4><p>制表符分隔符，制表符分隔数据段成列，可以用Excel进行打开。</p>
+<h4 id="3-pickle文件"><a href="#3-pickle文件" class="headerlink" title="3..pickle文件"></a>3..pickle文件</h4><p>用于将python对象为一个字节表示存储在磁盘或通过网络传输的python模块创建的文件。</p>
+<p>一个Python模块，允许将对象序列化到磁盘上的文件和反序列化回程序在运行时创建的文件，保存表示对象的字节流，更经常使用.P延伸，而不是“ .pickle 。</p>
+<h4 id="4-数据集"><a href="#4-数据集" class="headerlink" title="4.数据集"></a>4.数据集</h4><p>以fb15k的数据为例子。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;m&#x2F;0b7x18   &#x2F;people&#x2F;person&#x2F;profession	&#x2F;m&#x2F;05sxg2</span><br></pre></td></tr></table></figure>
+
+<p>数据格式：每一行都包含； 一个三元组和两个mid(Freebase实体的标识）和关系标识。第一个mid是关系的头实体，第三个是关系的尾实体，中间是关系。</p>
+<h4 id="5-关系预测的结果解释"><a href="#5-关系预测的结果解释" class="headerlink" title="5.关系预测的结果解释"></a>5.关系预测的结果解释</h4><p>以infer_tails(1,10,topk=5)为例子</p>
+<p>这里的1是ent_label里面的第二个实体的mid，10是rel_label里面的第11个关系，</p>
+<p>topk=5是预测和head有关系的排名前5的tail</p>
+<p>/m/03_dj 是Jonathan Swift</p>
+<p>/m/0100mt是El Paso, Texas  是Texas州，El Paso县</p>
+<p>/m/05m7zg是David Tennant   演员，饰演足球的演员</p>
+<p>/m/05wh0sh是Vladimir Lenin</p>
+<h4 id="6-模型训练和关系推理两个阶段的衔接"><a href="#6-模型训练和关系推理两个阶段的衔接" class="headerlink" title="6.模型训练和关系推理两个阶段的衔接"></a>6.模型训练和关系推理两个阶段的衔接</h4><p>第一阶段训练得到的是embedding，第二阶段的预测是利用embedding去遍历所有的，找到满足h+r=t的关系即可</p>
+<h4 id="7-freebase数据集介绍"><a href="#7-freebase数据集介绍" class="headerlink" title="7.freebase数据集介绍"></a>7.freebase数据集介绍</h4><p><a href="https://developer.aliyun.com/article/717320" target="_blank" rel="noopener">https://developer.aliyun.com/article/717320</a></p>
+<p>其中的关系介绍： mid1 people.person.place_of_birth mid2</p>
+<h3 id="二-整个文件的架构图"><a href="#二-整个文件的架构图" class="headerlink" title="二.整个文件的架构图"></a>二.整个文件的架构图</h3><p>inference.py 文件  用来进行预测，使用此脚本检查训练的结果，并执行手动推断任务。</p>
+<p>tune_model.py  是用来调节某一个单一算法的，可以用来训练某个已有的模型（利用自己的标注数据）</p>
+<p>train.py  运行一个算法</p>
+<p>config文件夹：文件配置模块，提供解析数据集的必要模块，基线图超参数的基准值</p>
+<p>core文件夹：嵌入算法的核心代码组成，每种算法都实现为单独的python模块</p>
+<p>utils文件夹：各种实用程序组成的模块：数据准备+数据可视化+算法评估+数据生成器+贝叶斯优化器</p>
+<p>example文件夹：包含示例代码，可用于运行单个模块或一次运行所有模块或调整模块</p>
+<h4 id="train-py中的模型参数传递过程"><a href="#train-py中的模型参数传递过程" class="headerlink" title="train.py中的模型参数传递过程"></a>train.py中的模型参数传递过程</h4><p>mian中参数的调用：=Importer().import_model_config()</p>
+<p>对于import_model_config()</p>
+<p>返回的参数= getattr(importlib.import_model(),….)</p>
+<p>并且self.config_path=pykg2vec.config.config，model_path=pykg2vec.core</p>
+<p>对于import_mode()，传入的是config_path，然后返回的是调用config.py中的所有类</p>
+<p>对于getattr()：（传入的是config.py中的所有类，返回的是configMap[name]=TransE的类)</p>
+<h4 id="模型训练的输入"><a href="#模型训练的输入" class="headerlink" title="模型训练的输入"></a>模型训练的输入</h4><p>1.所有三元组以文本格式存储，，每个关系一行，使用制表符\t分隔实体和关系，head  relation  tail</p>
+<p>2.将文本文件根据参考名称分成三个文件：train.txt ，valid.txt ，test.txt</p>
+<p>3.创建一个文件夹包含这个三个文件，</p>
+<p>4.使用如下命令训练一个数据集：python <a href="http://train.py" target="_blank" rel="noopener">train.py</a> -mn TransE -ds trains.txt -dsp [文件路径存储路径]</p>
+<p>1.所有三元组以文本格式存储，，每个关系一行，使用制表符\t分隔实体和关系，head  relation  tail </p>
+<p>2.将文本文件根据参考名称分成三个文件：train.txt ，valid.txt ，test.txt </p>
+<p>3.创建一个文件夹包含这个三个文件， </p>
+<p>4.使用如下命令训练一个数据集：python train.py -mn TransE -ds trains.txt -dsp [文件路径存储路径]</p>
+<h4 id="模型训练的输出"><a href="#模型训练的输出" class="headerlink" title="模型训练的输出"></a>模型训练的输出</h4><p>模型训练完后，得到的是实体和关系的向量表示，进一步可以做关系推理知识抽取的任务。</p>
+<p>ent_embedding.tsv是一个神经网络的嵌入矩阵，其列=hidden_size，其行=实体个数</p>
+<p>ent_labels.tsv是所有实体</p>
+<p>rel_embedding.tsv也是一个神经网络的嵌入矩阵，其列=hidden_size，其行=关系个数</p>
+<h4 id="config-config-py文件中"><a href="#config-config-py文件中" class="headerlink" title="/config/config.py文件中"></a>/config/config.py文件中</h4><p>KGEArgParser：类</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">这个类实现参数解析器，定义所有可能的参数，有全局参数，也有本地参数，也即在控制台该如何输入的参数。每个模型都有各种的参数，也有公共的参数，以及参数对应的功能。</span><br><span class="line"></span><br><span class="line">- 这其中parse的函数是什么作用？</span><br></pre></td></tr></table></figure>
+
+<p>Import类</p>
+<p>用于定义算法名称的映射，并提供用于加载配置和模型的方法</p>
+<p>ArgumentParser</p>
+<p>是pyhon的一个子库。用于解析命令行参数</p>
+<p><a href="https://www.carymic.com/tag/argumentparser/" target="_blank" rel="noopener">https://www.carymic.com/tag/argumentparser/</a></p>
+<p>对于argparse.ArgumentParser()函数的用法：<a href="https://blog.csdn.net/the_time_runner/article/details/97941409" target="_blank" rel="noopener">https://blog.csdn.net/the_time_runner/article/details/97941409</a></p>
+<h4 id="utils-kgcontroller-py文件中"><a href="#utils-kgcontroller-py文件中" class="headerlink" title="/utils/kgcontroller.py文件中"></a>/utils/kgcontroller.py文件中</h4><p>进行知识图谱的构建，把读入的三元组数据按照一定规则存储起来。</p>
+<p>如果不在控制台输入数据集的名称和路径，则默认名称是Freebase15k的数据集，路径无。</p>
+<h4 id="main中"><a href="#main中" class="headerlink" title="/main中"></a>/main中</h4><ol>
+<li>从控制台获取相关参数</li>
+<li>准备输入的原始数据</li>
+<li>从Importer()中获取对应模型的参数配置和定义</li>
+<li>模型训练</li>
+</ol>
+<h3 id="三-相关参数介绍"><a href="#三-相关参数介绍" class="headerlink" title="三.相关参数介绍"></a>三.相关参数介绍</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mean Rank</td>
+<td>那些预测尾实体命中了的排名的平均</td>
+</tr>
+<tr>
+<td>Filtered Mean Rank</td>
+<td>经过筛选之后的预测的尾实体的排名的平均</td>
+</tr>
+<tr>
+<td>Mean Reciprocal Rank</td>
+<td>对于一个query，若第一个正确答案排在第n位，则MRR得分就是1\n，然后取Q为样本                                        query集合，取平均</td>
+</tr>
+<tr>
+<td>batch_size：</td>
+<td>更新梯度中使用的样本数（批量梯度下降算法）</td>
+</tr>
+<tr>
+<td>iterations：</td>
+<td>迭代次数，每次迭代更新一次网络结构的参数，每一次迭代得到的结果都会被作为下一次迭代的初始值                 其中，一个迭代=一个（batch_size）数据正向通过+一个（batch_size）数据反向通过（其中：前向传播                  根据xi得到y的表达式，反向传播是基于损失函数求解参数？？？？</td>
+</tr>
+<tr>
+<td>epochs</td>
+<td>前向传播+反向传播所有批次的单次迭代训练=1个周期就是所有数据的单词前向和反向传递</td>
+</tr>
+<tr>
+<td>loss</td>
+<td>目标函数值，随着训练轮数（epoch）的增加而缓慢下降+接近最优值或找到某个局部最优值。</td>
+</tr>
+<tr>
+<td>learning_rate</td>
+<td>过大时导致模型难以收敛，过小时收敛速度过慢；在梯度下降过程中更新权重时的超参数。</td>
+</tr>
+<tr>
+<td>margin：</td>
+<td>最大分类间隔的超平面。</td>
+</tr>
+<tr>
+<td>sampling:uniform</td>
+<td>是采样，[0,1]采样</td>
+</tr>
+<tr>
+<td>argument是实参，parameter是形参</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>学习率：<a href="https://blog.csdn.net/u012526436/article/details/90486021" target="_blank" rel="noopener">https://blog.csdn.net/u012526436/article/details/90486021</a></p>
+<p>train loss和test loss：<a href="https://www.cnblogs.com/chason95/articles/10575859.html" target="_blank" rel="noopener">https://www.cnblogs.com/chason95/articles/10575859.html</a></p>
+<p>MRR简介：<a href="http://www.voidcn.com/article/p-hgmpcymt-sr.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-hgmpcymt-sr.html</a></p>
+<p>深度学习中的相关参数介绍：<a href="https://blog.csdn.net/Gamer_gyt/article/details/87927075" target="_blank" rel="noopener">https://blog.csdn.net/Gamer_gyt/article/details/87927075</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux编程环境</title>
+    <url>/2020/04/18/linux/linux%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h3 id="1-一些问题辨析"><a href="#1-一些问题辨析" class="headerlink" title="1.一些问题辨析"></a>1.一些问题辨析</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>在windows上启动wsl的方法</td>
+<td>当前定位的是虚拟的/home/wgl的路径，通过cd  /mnt进入到该虚拟文件夹中，然后C盘，D盘都是以文件夹的形式附缀在其内部的。</td>
+</tr>
+<tr>
+<td>ls a.txt b.txt 1&gt;file.out 2&gt;&amp;1</td>
+<td>这代表把标准输出和标准错误重定向合并到文件file.out</td>
+</tr>
+<tr>
+<td></td>
+<td>0表示stdin标准输入<br />1表示stdout标准输出<br />2表示stderr标准错误</td>
+</tr>
+<tr>
+<td>./a.sh与.a.sh</td>
+<td>./a.sh 将创建子进程，在子shell中执行当前目录下的a.sh脚本里的程序，而.a.sh 将在当前的shell中执行a.sh脚本。</td>
+</tr>
+<tr>
+<td>编译并运行.c文件的方法</td>
+<td>：编译：gcc -o 文件名  文件名.c  或者gcc 文件名.c -o 文件名或者make 文件名运行：./文件名其中：gcc将编译链接过程产生的错误信息输出到标准错误文件stderr中，要将stderr输出到标准输出中，则有 2&gt;&amp;1</td>
+</tr>
+<tr>
+<td>代码段与栈</td>
+<td>代码段：存放着程序的指令数据段.data 存放着已经初始化的全局变量和静态变量(包括局部），字符串数据（用双引号包起来的数据），声明为static的变量也在数据段BSS段：Unix链接器产生的未初始化数据段。程序中没有初始化的全局变量堆：存放进程运行中被动态分配的内存段，栈：用户函数内部定义的局部变量，都是在堆栈段</td>
+</tr>
+<tr>
+<td>bash中的()与{}</td>
+<td>()和{}都是执行一段程序。两者的区别:()命令组，括号中的命令新开一个子shell 程序，括号中的变量为本地变量，不能够在脚本其他部分使用。括号中多个命令之间用分号隔开。   {}命令组，大括号的命令在当前shell运行，不会重新开子shell。括号内的命令必须用分隔符隔开，最后一个命令后面必须跟上分号。{}的第一个命令和左括号之间必须有空格</td>
+</tr>
+</tbody></table>
+<h3 id="2-命令集"><a href="#2-命令集" class="headerlink" title="2.命令集"></a>2.命令集</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>cat</td>
+<td>1.一次显示整个文件：cat filename<br />2.从键盘创建一个文件：cat&gt;filename ，<br />3.将几个文件合并为一个文件：cat file1 file2 &gt;file</td>
+</tr>
+<tr>
+<td>cc</td>
+<td>1.编译文件2.比如说：cc file.c3.cc -o fot foobar.c  其中会生成fot.o</td>
+</tr>
+<tr>
+<td>chomd</td>
+<td><a href="https://blog.csdn.net/weixin_43190941/article/details/83281132" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43190941/article/details/83281132</a></td>
+</tr>
+<tr>
+<td>close</td>
+<td>作用是关闭进程的文件描述符，即一个进程的文件描述符被close后，就不会指向内核的资源了</td>
+</tr>
+<tr>
+<td>diff</td>
+<td>1. 逐行比较两个文本文件，列出其不同之处。显示出两个文件中所有不同的行。diff a.c b.c<br />2.diff -c&lt;行数&gt;  a.c b.c  比较前多少行</td>
+</tr>
+<tr>
+<td>echo</td>
+<td>echo -e 能够识别以\开头的一些特殊字符,比如echo -e \101</td>
+</tr>
+<tr>
+<td>find</td>
+<td><a href="https://www.cnblogs.com/weijiangbao/p/7653588.html" target="_blank" rel="noopener">https://www.cnblogs.com/weijiangbao/p/7653588.html</a></td>
+</tr>
+<tr>
+<td>grep</td>
+<td>1.用于查找文件里符合条件的字符串，把含有范式样本的那一列显示出来。<br />2.常用格式：grep [选项] “模式“ [文件]<a href="https://www.runoob.com/linux/linux-comm-grep.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-grep.html</a><br />3.去掉所有空行：grep -v “^ *$” 文件名</td>
+</tr>
+<tr>
+<td>man</td>
+<td>使用man可以在线查阅命令的使用手册</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>ls -l 是列出当前目录下的所有文件和目录，而ls -l *则是列出当前目录下所有文件，和当前目录下所有目录中的内容。</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>查看当前工作目录的完整路径</td>
+</tr>
+<tr>
+<td>pipe()</td>
+<td>1.把两个进程之间的标准输入和标准输出连接起来的，提供两个文件描述符来操作管道，其中一个对管道写，另一个对管道读2.必须在fork()中调用pipe(),否则子进程不会继承文件描述符，两个进程不共享祖先进程，3.<a href="http://www.cnblogs.com/kunhu/p/3608109.html4.父子进程管道的关闭问题https://blog.csdn.net/rl529014/article/details/51464363" target="_blank" rel="noopener">http://www.cnblogs.com/kunhu/p/3608109.html4.父子进程管道的关闭问题https://blog.csdn.net/rl529014/article/details/51464363</a></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>ps -l的选项，可以打印出进程当前的SZ属性，即进程的虚拟内存空间的大小2.ps -e 显示所有程序3.ps -f 用ASCII字符显示树状结构，表达程序间的相互关系</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>1.删除文件命令，rm– -f，表示显示结束选项参数。<br />2.递归地删除一个子目录：rm -r 目录名</td>
+</tr>
+<tr>
+<td>test</td>
+<td><a href="https://www.cnblogs.com/tankblog/p/6160808.html" target="_blank" rel="noopener">https://www.cnblogs.com/tankblog/p/6160808.html</a></td>
+</tr>
+<tr>
+<td>wc</td>
+<td>1.wc [选项]文件 统计指定文件中的字节数、字数、行数，并将统计结果显示输出。该命令统计指定文件中的字节数、字数、行数。<br />2.<a href="https://www.cnblogs.com/newcaoguo/p/5896491.html" target="_blank" rel="noopener">https://www.cnblogs.com/newcaoguo/p/5896491.html</a><br />3.统计行数  。  -l统计字节数  -c统计字节数-w</td>
+</tr>
+</tbody></table>
+<h3 id="3-Vim编辑器的使用"><a href="#3-Vim编辑器的使用" class="headerlink" title="3.Vim编辑器的使用"></a>3.Vim编辑器的使用</h3><ul>
+<li><p>先按ESC进入Command模式，然后输入下面对应的命令执行相应的command操作</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>回车保存并退出</td>
+<td>:wq</td>
+</tr>
+<tr>
+<td>文件另存为</td>
+<td>:w newname</td>
+</tr>
+<tr>
+<td>保存并强制退出</td>
+<td>:wq!</td>
+</tr>
+<tr>
+<td>强制退出</td>
+<td>:q!</td>
+</tr>
+<tr>
+<td>保存并退出（仅当文件有变化时保存）</td>
+<td>:x</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h3><p>$的用法<a href="https://www.cnblogs.com/chjbbs/p/6393935.html" target="_blank" rel="noopener">https://www.cnblogs.com/chjbbs/p/6393935.html</a></p>
+<p>文件通配符<a href="https://www.cnblogs.com/0zcl/p/6821213.html" target="_blank" rel="noopener">https://www.cnblogs.com/0zcl/p/6821213.html</a></p>
+<p>linux的正则表达式<a href="https://www.cnblogs.com/fox-zhang/p/8066719.html" target="_blank" rel="noopener">https://www.cnblogs.com/fox-zhang/p/8066719.html</a></p>
+<p>vi的一些使用命令：<a href="https://blog.csdn.net/williamfan21c/article/details/56495261" target="_blank" rel="noopener">https://blog.csdn.net/williamfan21c/article/details/56495261</a></p>
+<p>Linux的i结点<a href="https://www.cnblogs.com/hnrainll/archive/2012/08/25/2237877.html" target="_blank" rel="noopener">https://www.cnblogs.com/hnrainll/archive/2012/08/25/2237877.html</a></p>
+<p>Linux中cat,more，less,tail,head命令的区别<a href="https://www.cnblogs.com/losbyday/p/5856106.html" target="_blank" rel="noopener">https://www.cnblogs.com/losbyday/p/5856106.html</a></p>
+<p>sed的使用<a href="https://blog.csdn.net/wangcg123/article/details/50667883" target="_blank" rel="noopener">https://blog.csdn.net/wangcg123/article/details/50667883</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
       </categories>
   </entry>
 </search>
