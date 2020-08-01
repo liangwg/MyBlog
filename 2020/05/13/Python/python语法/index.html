@@ -302,7 +302,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F2.jpg">
+      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F5.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -405,24 +405,19 @@
 <p>2.解决用户忘记调用close方法而产生的资源泄露问题</p>
 <p>包含一个错误处理和文件关闭功能。</p>
 <h4 id="2-代码示例："><a href="#2-代码示例：" class="headerlink" title="2.代码示例："></a>2.代码示例：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(filepath,<span class="string">'wb'</span>) <span class="keyword">as</span> file:</span><br><span class="line">	file.write(<span class="string">"something"</span>)</span><br><span class="line"><span class="comment">#等价于</span></span><br><span class="line">file = open(filepath)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    file.write(<span class="string">"something"</span>,<span class="string">'wb'</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file.close()</span><br></pre></td></tr></table></figure>
-
 <h3 id="二-map-函数"><a href="#二-map-函数" class="headerlink" title="二.map()函数"></a>二.map()函数</h3><h4 id="1-作用：-1"><a href="#1-作用：-1" class="headerlink" title="1.作用："></a>1.作用：</h4><p>会根据提供的函数对指定序列做映射</p>
 <p>参数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">map(function, iterable,...)</span><br><span class="line"><span class="comment">#function --函数</span></span><br><span class="line"><span class="comment">#iterable -- 一个或多个序列</span></span><br></pre></td></tr></table></figure>
-
 <p>第一个参数function以参数序列中的每一个元素调用function函数，返回包含每function函数返回值的新列表</p>
 <h4 id="2-举例："><a href="#2-举例：" class="headerlink" title="2.举例："></a>2.举例：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map(<span class="keyword">lambda</span> x: x**<span class="number">2</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])  </span><br><span class="line"><span class="comment">#返回[1,4,9,16,25]</span></span><br><span class="line">map(<span class="keyword">lambda</span> x,y: x+y,[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>])</span><br><span class="line"><span class="comment">#返回[3,7,11]</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="三-list-方法"><a href="#三-list-方法" class="headerlink" title="三.list()方法"></a>三.list()方法</h3><h4 id="1-作用：-2"><a href="#1-作用：-2" class="headerlink" title="1.作用："></a>1.作用：</h4><p>把字符串、列表、元组、字典转化为列表</p>
 <h4 id="2-举例：-1"><a href="#2-举例：-1" class="headerlink" title="2.举例："></a>2.举例：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.列表转换成列表</span></span><br><span class="line">list([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.字符串转成列表</span></span><br><span class="line">list(<span class="string">'hello'</span>)</span><br><span class="line"><span class="comment">#得到['h','e','l','l','o']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#3.元组转换成列表</span></span><br><span class="line">list((<span class="number">123</span>,<span class="string">'aaa'</span>,<span class="string">'abc'</span>))</span><br><span class="line"><span class="comment">#得到[123,'aaa','abc']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#4.字典转换成列表</span></span><br><span class="line">list(&#123;<span class="string">'name'</span>:<span class="string">'wang'</span>,<span class="string">'age'</span>:<span class="number">18</span>&#125;)</span><br><span class="line"><span class="comment">#得到['name','age'] ,这里只打印了keys，没有values值.</span></span><br><span class="line">list(&#123;<span class="string">'name'</span>:<span class="string">'wang'</span>,<span class="string">'age'</span>:<span class="number">18</span>&#125;.values())</span><br><span class="line"><span class="comment">#得到的是['liang',18]</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="四-装饰器"><a href="#四-装饰器" class="headerlink" title="四.装饰器"></a>四.装饰器</h3><h4 id="1-作用：-3"><a href="#1-作用：-3" class="headerlink" title="1.作用："></a>1.作用：</h4><p>在一个函数内部定义另外一个函数,然后返回一个新的函数,即动态的给一个对象添加额外的职责。</p>
 <p>传入的是f()</p>
 <p>可以给装饰器传递参数。在原有的函数外面进行传参数的函数封装，def  fengzhuan(a,b):</p>
 <p>然后在调用时，@fengzhuan(“start”,”end”)</p>
 <h3 id="五-python的项目程序执行结构"><a href="#五-python的项目程序执行结构" class="headerlink" title="五.python的项目程序执行结构"></a>五.python的项目程序执行结构</h3><p>在测试模块.py文件中加入以下的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意，是双下划线</span></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#要执行的测试代码</span></span><br></pre></td></tr></table></figure>
-
 <p>if <strong>name</strong> == ‘<strong>main</strong>‘的意思是：当.py文件被直接运行时，if <strong>name</strong> == ‘<strong>main</strong>‘之下的代码块将被运行；当.py文件以模块形式被导入时，if <strong>name</strong> == ‘<strong>main</strong>‘之下的代码块不被运行。</p>
 <h3 id="六-python如何把汉字转成unicode编码"><a href="#六-python如何把汉字转成unicode编码" class="headerlink" title="六.python如何把汉字转成unicode编码"></a>六.python如何把汉字转成unicode编码</h3><p>字符-&gt;Unicode编码</p>
 <p>Unicode编码字符串-&gt;汉字</p>
@@ -430,7 +425,10 @@
 <p>或者 str=Ustr.decode(‘unicode_escape’)</p>
 <p>其他编码到Unicode的转换  decode(str)</p>
 <p>encode(str)  Unicode到其他编码的转换</p>
-<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><h3 id="python中的异常处理和try-except的用法"><a href="#python中的异常处理和try-except的用法" class="headerlink" title="python中的异常处理和try,except的用法"></a>python中的异常处理和try,except的用法</h3><p><a href="https://blog.csdn.net/u012080686/article/details/81940211" target="_blank" rel="noopener">https://blog.csdn.net/u012080686/article/details/81940211</a></p>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><blockquote id="fn_参考">
+<sup>参考</sup>. <a href="https://www.cnblogs.com/mxh1099/p/5386529.html" target="_blank" rel="noopener">https://www.cnblogs.com/mxh1099/p/5386529.html</a><a href="#reffn_参考" title="Jump back to footnote [参考] in the text."> &#8617;</a>
+</blockquote>
+<h3 id="python中的异常处理和try-except的用法"><a href="#python中的异常处理和try-except的用法" class="headerlink" title="python中的异常处理和try,except的用法"></a>python中的异常处理和try,except的用法</h3><p><a href="https://blog.csdn.net/u012080686/article/details/81940211" target="_blank" rel="noopener">https://blog.csdn.net/u012080686/article/details/81940211</a></p>
 
       
     </div>
@@ -440,6 +438,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="liang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipayreward.jpg" alt="liang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -537,7 +564,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/image/%E5%A4%B4%E5%83%8F2.jpg"
+                src="/image/%E5%A4%B4%E5%83%8F5.jpg"
                 alt="liang" />
             
               <p class="site-author-name" itemprop="name">liang</p>
@@ -549,7 +576,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -560,7 +587,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

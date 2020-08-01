@@ -79,16 +79,21 @@
 
 
 
-<meta name="description" content="英文题名： Distributed Representations of Words and Phrases and their Compositionality. 摘要本文提出了几个扩展，提高了向量的质量和训练速度，如下： 123451.通过对frequent words进行二次采样，进行训练加速。2.学习更多的regular word representations(常规词表示)。3.提出一个">
+<meta name="description" content="[TOC] 0 简介12345论文中文：词和短语的分布式表示及其构成论文英文：Distributed Representations of Words and Phrases and their Compositionality.时间：2013年作者：Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(word2vec第3弹)词和短语的分布式表示及其构成">
 <meta property="og:url" content="http://yoursite.com/2020/04/18/paper/(word2vec)Distributed%20Representations%20of%20Words%20and%20Phrases%20and%20their%20Compositionality/index.html">
 <meta property="og:site_name" content="一叶扁舟">
-<meta property="og:description" content="英文题名： Distributed Representations of Words and Phrases and their Compositionality. 摘要本文提出了几个扩展，提高了向量的质量和训练速度，如下： 123451.通过对frequent words进行二次采样，进行训练加速。2.学习更多的regular word representations(常规词表示)。3.提出一个">
+<meta property="og:description" content="[TOC] 0 简介12345论文中文：词和短语的分布式表示及其构成论文英文：Distributed Representations of Words and Phrases and their Compositionality.时间：2013年作者：Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and D">
+<meta property="og:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram%E6%A8%A1%E5%9E%8B%E5%9B%BE1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram%E6%A8%A1%E5%9E%8B%E5%9B%BE2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram%E6%A8%A1%E5%9E%8B%E5%9B%BE3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/word2vec-H-softmax.png">
 <meta property="article:published_time" content="2020-04-18T09:12:18.724Z">
-<meta property="article:modified_time" content="2020-06-11T09:52:52.141Z">
+<meta property="article:modified_time" content="2020-07-30T10:52:31.326Z">
 <meta property="article:author" content="liang">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram%E6%A8%A1%E5%9E%8B%E5%9B%BE1.png">
 
 
 
@@ -302,7 +307,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F2.jpg">
+      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F5.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -401,21 +406,92 @@
       
 
       
-        <p>英文题名：</p>
-<p>Distributed Representations of Words and Phrases and their Compositionality.</p>
-<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本文提出了几个扩展，提高了向量的质量和训练速度，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.通过对frequent words进行二次采样，进行训练加速。</span><br><span class="line"></span><br><span class="line">2.学习更多的regular word representations(常规词表示)。</span><br><span class="line"></span><br><span class="line">3.提出一个分层softmax的简单替代方法-negative sampling(负采样)。</span><br></pre></td></tr></table></figure>
-
+        <p>[TOC]</p>
+<h3 id="0-简介"><a href="#0-简介" class="headerlink" title="0 简介"></a>0 简介</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">论文中文：词和短语的分布式表示及其构成</span><br><span class="line">论文英文：Distributed Representations of Words and Phrases and their Compositionality.</span><br><span class="line">时间：2013年</span><br><span class="line">作者：Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff</span><br><span class="line">发表期刊：介绍性文章</span><br></pre></td></tr></table></figure>
+<p>讲解Skip-gram模型的优化及其扩展。</p>
+<p>本文提出了几个扩展，提高了向量的质量和训练速度，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.通过对frequent words(高频词)进行二次采样，进行训练加速，并提高了低频词的向量表示。</span><br><span class="line"></span><br><span class="line">2.学习更多的regular word representations(常规词表示)。</span><br><span class="line"></span><br><span class="line">3.提出一个分层softmax的简单替代方法-negative sampling(负采样)。</span><br><span class="line"></span><br><span class="line">4.提出一种简化的噪声对比估计(Noise Contrastive Estimation, NCE),可以更快和更好地表示频繁单词。</span><br></pre></td></tr></table></figure>
 <p>词表示(word representations)的一个固有限制：</p>
-<p>不关心词序，而且无法表示习惯用语。</p>
-<p>提出的是一种：在文本中查找短语的简单方法，</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>skip-gram模型：从大量非结构化文本数据中学习高质量向量表示的有效方法。</p>
-<p><strong>—————————————-</strong></p>
-<p>[1]. 翻译参考</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h3><p>skip-gram模型：从大量非结构化文本数据中学习高质量向量表示的有效方法。</p>
+<p>学习高质量分布式向量表示的方法。</p>
+<p>词表示的一个缺陷：不关心词序，而且无法表示习惯用语。</p>
+<h3 id="2-Skip-gram模型"><a href="#2-Skip-gram模型" class="headerlink" title="2 Skip-gram模型"></a>2 Skip-gram模型</h3><p><strong>模型结构：</strong></p>
+<p><img src='https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图1.png' width='200'></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图2.png" alt="skip-gram模型图2" style="zoom:70%;" /></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图3.jpg" alt="skip-gram模型图3" style="zoom:80%;" /></p>
+<p>输入层与隐藏层的权重矩阵：VxN，V是词库大小，N是一个词的特征表示长度，300一般</p>
+<p><strong>训练目标：</strong>能够预测文本中某个词周围可能出现的词。已知中心词，预测周围词</p>
+<p><strong>目标函数：</strong>若一份文档由T个词组成，$w_1,w_2,w_3,…,w_T$，模型的目标函数是最大化他们的平均对数概率：</p>
+<p>​        $max~\frac{1}{T}\sum_{t=1}^{T}\sum_{-c\le j\le c,j\ne0}log[p(w_{t+j}|w_t)]$</p>
+<blockquote>
+<p>滑动窗口式目标函数，每个词都作为一次中心词，确定完中心词后，把以[-c,c]作为滑动窗口，计算对数概率的乘积</p>
+</blockquote>
+<p>c是训练上下文的大小，c较大则训练例增大，准确性更高，训练时间更长。</p>
+<p><strong>基本方式计算$p(w_{t+j}|w_t)$：</strong></p>
+<p>具体对(1)的推导过程参见[2]。</p>
+<p>基本的Skip-gram公式使用softmax函数来定义$p(w_{t+j}|w_t)$</p>
+<script type="math/tex; mode=display">
+p(w_O|w_I)=\frac{exp(v'^T_{w_O}v_{w_I})}{\sum_{w=1}^Vexp(v'^T_wv_{w_I})}\tag{1}</script><blockquote>
+<p>$w_I$是已知的中心词，$w_O$是周围的一个词。</p>
+<p>这个公式表达的是具体去计算某一个周围词的概率。</p>
+<p>公式的含义就是用隐-出矩阵的作为周围词的那一列的向量的转置，乘以入-隐矩阵的作为中心词的哪一行的行向量的转置</p>
+</blockquote>
+<ul>
+<li><p>$v_{w_I}$是表示输入-隐藏层的权重矩阵$\bold{W}$的第I行的行向量的转置，是列向量(是Nx1)。也即one-hot编码中不为0的哪一行中的位置。$\bold{W}$是VxN的矩阵。(单词w的中心词向量)</p>
+</li>
+<li><p>$\bold{v}’_{w_O}$是隐藏层-输出层的权重矩阵$\bold{W}’$中的第O列，是Nx1的列向量，，这里的j是输出向量中第j位的单词。$\bold{W}’$是NxV的矩阵。(单词w的上下文词向量)</p>
+</li>
+<li><p>V是输入词向量的维度，模型词汇表的大小；N是隐藏层的维度。</p>
+</li>
+</ul>
+<h3 id="3-论文的改进处"><a href="#3-论文的改进处" class="headerlink" title="3 论文的改进处"></a>3 论文的改进处</h3><h4 id="3-1-采用Hierarchical-Softmax计算-p-w-t-j-w-t"><a href="#3-1-采用Hierarchical-Softmax计算-p-w-t-j-w-t" class="headerlink" title="3.1 采用Hierarchical Softmax计算$p(w_{t+j}|w_t)$"></a>3.1 采用Hierarchical Softmax计算$p(w_{t+j}|w_t)$</h4><p>Hierarchical Softmax，意即分层softmax。结构见下图：”</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/word2vec-H-softmax.png" alt="word2vec-H-softmax" style="zoom:80%;" /></p>
+<p>这里W个字作为叶子节点$w_1,w_2,w_3…$，</p>
+<p><strong>计算方式：</strong></p>
+<script type="math/tex; mode=display">
+p(w|w_i)=\prod^{L(w)-1}_{j=1}\sigma(【n(w,j+1)=ch(n(w,j))】v'^T_{n(w,j)}v_{wI})</script><p>​    n(w,j)：从根节点到单词w的第j个中间节点；</p>
+<p>​    L(w)：从根节点到单词w的路径长度；</p>
+<p>​    ch(n)：是n的左孩子或者右孩子；</p>
+<p>​    【x】：若x为true，则为1；反之则为-1；</p>
+<p>​    $\sigma(x)=\frac{1}{1+exp(-x)}$，并且可以证明$\sum_{w=1}^Wp(w|w_I)=1$</p>
+<p><strong>特点：</strong></p>
+<p>​    与此同时，计算$log(p(w_O|w_I))$和$\nabla log(p(w_O|w_I))$的消耗与$L(w_O)$成正比。</p>
+<p>​    不同于标准的Skip-gram，为每个单词分配两个表征$v_w与v’_w$，分层softmax为每个单词分配一个词向量$v_w$，以及为每个 内部节点分配向量表征$v’_n$。</p>
+<p><strong>优势：</strong></p>
+<p>​    对于Huffman树，高频词的编码较短(靠近根节点)，以此加快训练。</p>
+<h4 id="3-2-负采样Negative-Sampling"><a href="#3-2-负采样Negative-Sampling" class="headerlink" title="3.2 负采样Negative Sampling"></a>3.2 负采样Negative Sampling</h4><p> <strong>随机梯度下降法存在的问题：</strong></p>
+<p>1.我们每次只对窗口中出现的几个单词进行升级，但是在计算梯度的过程中，是对整个参数矩阵进行运算，但这样的参数矩阵中的大部分值都是0，见下面的</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta}J_t(\theta)=\left[\begin{matrix}0\\\vdots\\\nabla_{v_{like}}\\\vdots\\0\\\nabla_{u_I}\\\vdots\\\nabla_{u_{learning}}\\\vdots\end{matrix}\right]\in\R^{2dV}</script><p>2.我们所使用的目标函数是softmax函数</p>
+<p>$softmax(u_o^Tv_c)=p(o|c)=\hat{y}_o=\frac{e^{u^T_o}v_c}{\sum^W_{w=1}e^{u^T_w}v_c}$,由分母可以知道，分母需要把窗口所有的单词的“得分”都算出来再求和，这种方式效率较低。</p>
+<p><strong>负采样的核心思想：</strong></p>
+<p>计算目标单词和窗口中的单词的真实单词对“得分”，再加上一些“噪声”，即词表中的随机单词和目标单词的“得分”。</p>
+<p>真实单词对“得分”和“噪声”作为代价函数。</p>
+<p>每次优化参数，只关注代价函数中涉及的词向量。</p>
+<p>见如下公式：</p>
+<script type="math/tex; mode=display">
+J(\theta)=\frac{1}{T}\sum^T_{t=1}J_t(\theta)</script><script type="math/tex; mode=display">
+J_t(\theta)=log\sigma(u_o^Tv_c)+\sum^k_{j=1}\Bbb{E}_{j~P(w)}[log\sigma(-u_j^Tv_c)]</script><p>采用上述公式解决了之前说的两个问题：</p>
+<ol>
+<li>我们仅对K个参数进行采样</li>
+<li>我们放弃softmax函数，采用sigmoid函数，这样就不存在先求一遍窗口中所有单词的‘“得分”的情况了。</li>
+</ol>
+<h4 id="3-3-高频词的二次取样"><a href="#3-3-高频词的二次取样" class="headerlink" title="3.3 高频词的二次取样"></a>3.3 高频词的二次取样</h4><p>高频出现的词，信息价值很少 → the经常与很多单词co-occurs → 经过长时间训练，词向量没有显著的改变 → 平衡rare and frequency words → 对每个词按概率进行discard。</p>
+<p>概率计算：$P(w_i)=1-\sqrt{\frac{t}{f(w_i)}}$</p>
+<p>$f(w_i)$：单词$w_i$的频率；</p>
+<p>t：阀值，$10^{-5}$</p>
+<p><strong>优势：</strong></p>
+<p>​    1.在保留频率排序的同时，对频率大于t的词进行了启发式的子抽样</p>
+<p>​    2.加快了学习速度，提高了罕见词词向量的准确性。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. 翻译参考</p>
 <p><a href="https://blog.csdn.net/u010555997/article/details/76598666" target="_blank" rel="noopener">https://blog.csdn.net/u010555997/article/details/76598666</a> （前半部分）</p>
 <p><a href="https://blog.csdn.net/qq_27859417/article/details/84929114" target="_blank" rel="noopener">https://blog.csdn.net/qq_27859417/article/details/84929114</a> (概述理解)</p>
 <p>[2].分层softmax介绍</p>
 <p>word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
+<p>[3].整体阅读</p>
+<p><a href="https://hiyoungai.com/posts/28911bbb.html" target="_blank" rel="noopener">https://hiyoungai.com/posts/28911bbb.html</a></p>
+<p>[4].skip-gram模型的深层次解析+语言模型的一些基础知识<a href="https://blog.csdn.net/omashion/article/details/72667203" target="_blank" rel="noopener">https://blog.csdn.net/omashion/article/details/72667203</a></p>
+<p>[5].负采样<a href="https://zhuanlan.zhihu.com/p/29488930" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29488930</a></p>
 
       
     </div>
@@ -425,6 +501,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="liang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipayreward.jpg" alt="liang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -440,8 +545,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/18/C++/C++%E7%9A%84Vector%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="next" title="C++的Vector操作">
-                <i class="fa fa-chevron-left"></i> C++的Vector操作
+              <a href="/2020/04/18/paper/word2vec/" rel="next" title="word2vec的总结">
+                <i class="fa fa-chevron-left"></i> word2vec的总结
               </a>
             
           </div>
@@ -522,7 +627,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/image/%E5%A4%B4%E5%83%8F2.jpg"
+                src="/image/%E5%A4%B4%E5%83%8F5.jpg"
                 alt="liang" />
             
               <p class="site-author-name" itemprop="name">liang</p>
@@ -534,7 +639,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -545,7 +650,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -589,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1.Introduction</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-简介"><span class="nav-text">0 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Skip-gram模型"><span class="nav-text">2 Skip-gram模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-论文的改进处"><span class="nav-text">3 论文的改进处</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-采用Hierarchical-Softmax计算-p-w-t-j-w-t"><span class="nav-text">3.1 采用Hierarchical Softmax计算$p(w_{t+j}|w_t)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-负采样Negative-Sampling"><span class="nav-text">3.2 负采样Negative Sampling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-高频词的二次取样"><span class="nav-text">3.3 高频词的二次取样</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

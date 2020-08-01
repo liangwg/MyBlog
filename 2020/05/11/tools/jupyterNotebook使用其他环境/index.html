@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="1.问题：在Andaconda中已经配置了某个虚拟环境：UseTensor，在这个环境中安装了pykg2vec库，但是在jupyternotebook中并没法使用这个环境。 2.解决办法以管理员方式打开Anaconda Promt， 在Anaconda Promt中进入所创建的虚拟环境，然后执行 12conda install ipykernel#或者 pip install ipkernel">
+<meta name="description" content="1.问题：在Andaconda中已经配置了某个虚拟环境：UseTensor，在这个环境中安装了pykg2vec库，但是在jupyternotebook中并没法使用这个环境。 2.解决办法以管理员方式打开Anaconda Promt， 在Anaconda Promt中进入所创建的虚拟环境，然后执行 12conda install ipykernel#或者 pip install ipkernel 然">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jupyter Notebook使用其他环境">
 <meta property="og:url" content="http://yoursite.com/2020/05/11/tools/jupyterNotebook%E4%BD%BF%E7%94%A8%E5%85%B6%E4%BB%96%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="一叶扁舟">
-<meta property="og:description" content="1.问题：在Andaconda中已经配置了某个虚拟环境：UseTensor，在这个环境中安装了pykg2vec库，但是在jupyternotebook中并没法使用这个环境。 2.解决办法以管理员方式打开Anaconda Promt， 在Anaconda Promt中进入所创建的虚拟环境，然后执行 12conda install ipykernel#或者 pip install ipkernel">
+<meta property="og:description" content="1.问题：在Andaconda中已经配置了某个虚拟环境：UseTensor，在这个环境中安装了pykg2vec库，但是在jupyternotebook中并没法使用这个环境。 2.解决办法以管理员方式打开Anaconda Promt， 在Anaconda Promt中进入所创建的虚拟环境，然后执行 12conda install ipykernel#或者 pip install ipkernel 然">
 <meta property="og:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/%E9%97%AE%E9%A2%98.png">
 <meta property="article:published_time" content="2020-05-11T09:12:26.615Z">
 <meta property="article:modified_time" content="2020-06-11T14:21:54.666Z">
@@ -304,7 +304,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F2.jpg">
+      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F5.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -407,18 +407,14 @@
 <h3 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2.解决办法"></a>2.解决办法</h3><p>以管理员方式打开Anaconda Promt，</p>
 <p>在Anaconda Promt中进入所创建的虚拟环境，然后执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install ipykernel</span><br><span class="line">#或者 pip install ipkernel</span><br></pre></td></tr></table></figure>
-
 <p>然后将自己的环境添加到ipython的kernel里，输入一下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(你创建的虚拟环境名)&gt;python -m ipykernel install --user --name (你创建的环境名) --display-name &quot;任意的名字，在jupyternotebook中展示的&quot;</span><br></pre></td></tr></table></figure>
-
 <p>然后再刷新一下jupyternotebook的网页即可。</p>
 <h3 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3.其他操作"></a>3.其他操作</h3><h4 id="3-1-查看已经安装的kernelspec的命令如下："><a href="#3-1-查看已经安装的kernelspec的命令如下：" class="headerlink" title="3.1 查看已经安装的kernelspec的命令如下："></a>3.1 查看已经安装的kernelspec的命令如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter kernelspec list</span><br></pre></td></tr></table></figure>
-
 <h4 id="3-2-删除某个kernel环境"><a href="#3-2-删除某个kernel环境" class="headerlink" title="3.2 删除某个kernel环境"></a>3.2 删除某个kernel环境</h4><p>输入jupyter kernelspec list 查看安装的kernel和位置，根据显示的路径进入，其中把对应文件夹删除即可。</p>
 <p>或者，直接输入以下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter kernelspec remove 环境名称</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-可能遇到的问题"><a href="#4-可能遇到的问题" class="headerlink" title="4.可能遇到的问题"></a>4.可能遇到的问题</h3><p>4.1 在按照上述步骤添加完虚拟环境后，在jupyternotebook中切换到刚创建的环境一直显示“服务正在启动”和“服务重连失败”，然后在Anaconda Promt的虚拟环境中尝试执行jupyter notebook命令，直接报下面的错误:<img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/%E9%97%AE%E9%A2%98.png" alt="问题"></p>
+<h3 id="4-可能遇到的问题"><a href="#4-可能遇到的问题" class="headerlink" title="4.可能遇到的问题"></a>4.可能遇到的问题</h3><p>4.1 在按照上述步骤添加完虚拟环境后，在jupyternotebook中切换到刚创建的环境一直显示“服务正在启动”和“服务重连失败”，然后在Anaconda Promt的虚拟环境中尝试执行jupyter notebook命令，直接报下面的错误:<img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/问题.png" alt="问题"></p>
 <p>解决办法：</p>
 <p>在电脑的系统变量中的PATH添加下面两个路径</p>
 <p>D:\appIItemp\Anaconda\Library\bin</p>
@@ -427,12 +423,10 @@
 <p>4.2 在上面的问题解决之后，又遇到这个问题：在jupyter notebook使用新建的虚拟环境时，会显示是“挂掉的服务”。</p>
 <p>在后台中出现如此的问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#39;win32api&#39;</span><br></pre></td></tr></table></figure>
-
 <p>解决办法：</p>
 <p>输入pip install pypiwin32</p>
 <p>4.3 又遇到的问题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Could not find a version that satisfies the requirement pypiwin32 (from versions: none)</span><br></pre></td></tr></table></figure>
-
 <p>解决办法：</p>
 <p>网络不好，重新运行一下就行了。</p>
 
@@ -444,6 +438,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="liang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipayreward.jpg" alt="liang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -541,7 +564,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/image/%E5%A4%B4%E5%83%8F2.jpg"
+                src="/image/%E5%A4%B4%E5%83%8F5.jpg"
                 alt="liang" />
             
               <p class="site-author-name" itemprop="name">liang</p>
@@ -553,7 +576,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,7 +587,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

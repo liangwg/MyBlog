@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="简介Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。    Want to do How to do    修改Neo4j的登陆密码 1.进入neo4j提供的可视化界面2.输">
+<meta name="description" content="简介Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。     Want to do How to do     修改Neo4j的登陆密码 1.进入neo4j提供的可视化界面2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tools&#x2F;Neo4j的相关操作">
 <meta property="og:url" content="http://yoursite.com/2020/05/13/tools/Neo4j%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="一叶扁舟">
-<meta property="og:description" content="简介Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。    Want to do How to do    修改Neo4j的登陆密码 1.进入neo4j提供的可视化界面2.输">
+<meta property="og:description" content="简介Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。     Want to do How to do     修改Neo4j的登陆密码 1.进入neo4j提供的可视化界面2">
 <meta property="article:published_time" content="2020-05-13T02:54:04.718Z">
 <meta property="article:modified_time" content="2020-06-09T08:09:06.509Z">
 <meta property="article:author" content="liang">
@@ -302,7 +302,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F2.jpg">
+      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F5.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -402,6 +402,7 @@
 
       
         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -409,7 +410,8 @@
 <th>How to do</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>修改Neo4j的登陆密码</td>
 <td>1.进入neo4j提供的可视化界面<br />2.输入： :server change-password<br />3.键入原密码及新密码，即可修改</td>
 </tr>
@@ -427,45 +429,28 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h1 id="Cypher的语句示例"><a href="#Cypher的语句示例" class="headerlink" title="Cypher的语句示例"></a>Cypher的语句示例</h1><h4 id="删除所有（清库）："><a href="#删除所有（清库）：" class="headerlink" title="删除所有（清库）："></a>删除所有（清库）：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n) DETACH DELETE n</span><br></pre></td></tr></table></figure>
-
 <h4 id="创建节点："><a href="#创建节点：" class="headerlink" title="创建节点："></a>创建节点：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (结点名字:结点类型&#123;结点属性1:属性1值,结点属性2:属性2值&#125;) RETURN 结点名字;</span><br></pre></td></tr></table></figure>
-
 <p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.创建一个Person名字为a，出生于1997的节点</span><br><span class="line">CREATE (a:Person &#123;name:‘a’, born:1997&#125;) return a;</span><br><span class="line">2.创建b和c</span><br><span class="line">CREATE (b:Person &#123;name:‘b’, born:1997&#125;),(c:Person &#123;name:‘c’, born:1961&#125;) Return b,c</span><br></pre></td></tr></table></figure>
-
 <h4 id="创建节点和关系："><a href="#创建节点和关系：" class="headerlink" title="创建节点和关系："></a>创建节点和关系：</h4><p>a-gift-&gt;b</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (m:Person&#123;name:‘a’&#125;)-[:gift]-&gt;(f:Person&#123;name:‘b’&#125;) return m,f</span><br></pre></td></tr></table></figure>
-
 <h4 id="查看所有结点："><a href="#查看所有结点：" class="headerlink" title="查看所有结点："></a>查看所有结点：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n) RETURN n;</span><br></pre></td></tr></table></figure>
-
 <h4 id="根据结点姓名返回所有的关系和尾结点"><a href="#根据结点姓名返回所有的关系和尾结点" class="headerlink" title="根据结点姓名返回所有的关系和尾结点"></a>根据结点姓名返回所有的关系和尾结点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (:star&#123;starname:&quot;张国荣&quot;&#125;)--&gt;();</span><br></pre></td></tr></table></figure>
-
-<p>####查询给定姓名和关系的所有的节点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">match p&#x3D;(n:star&#123;starname:&quot;张国荣&quot;&#125;)-[:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;() return p;</span><br></pre></td></tr></table></figure>
-
+<h4 id="查询给定姓名和关系的所有的节点"><a href="#查询给定姓名和关系的所有的节点" class="headerlink" title="查询给定姓名和关系的所有的节点"></a>查询给定姓名和关系的所有的节点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">match p&#x3D;(n:star&#123;starname:&quot;张国荣&quot;&#125;)-[:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;() return p;</span><br></pre></td></tr></table></figure>
 <h4 id="查询给定关系的所有节点对"><a href="#查询给定关系的所有节点对" class="headerlink" title="查询给定关系的所有节点对"></a>查询给定关系的所有节点对</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">match p&#x3D;()-[:rel&#123;relation:&quot;旧爱&quot;&#125;]-&gt;() return p;</span><br></pre></td></tr></table></figure>
-
 <h4 id="语句中的return的一些示例"><a href="#语句中的return的一些示例" class="headerlink" title="语句中的return的一些示例"></a>语句中的return的一些示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">return as A将结果集合取一个别名A，</span><br><span class="line"></span><br><span class="line">return id(p)  将p结点的id返回  0，1，2，3，4，5，6</span><br><span class="line"></span><br><span class="line">return labels(p)  将结点的标签返回：star，star，star</span><br><span class="line"></span><br><span class="line">return head(labels(p))  仍然是返回结点的标签：star，star，star</span><br><span class="line"></span><br><span class="line">return n.starid    返回结点的starid属性值，貌似是等于id(p)+1</span><br><span class="line"></span><br><span class="line">return n.starname   返回结点的starname属性值，</span><br><span class="line"></span><br><span class="line">return &#123;,,,&#125; as A   构造了一个dict型变量集，</span><br></pre></td></tr></table></figure>
-
 <h4 id="修改结点间的关系"><a href="#修改结点间的关系" class="headerlink" title="修改结点间的关系"></a>修改结点间的关系</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">match (a:star&#123;starname:&quot;张国荣&quot;&#125;)-[p:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;(b:star&#123;starname:&quot;张学友&quot;&#125;)</span><br><span class="line">set p.relation&#x3D;&quot;组合&quot;</span><br><span class="line">return a,p,b</span><br></pre></td></tr></table></figure>
-
 <h4 id="删除某个节点"><a href="#删除某个节点" class="headerlink" title="删除某个节点"></a>删除某个节点</h4><p>先删除关系，再删除节点</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Department&#123;name: &quot;心胸外科&quot;,alias: &quot;&quot;&#125;) DETACH DELETE n</span><br></pre></td></tr></table></figure>
-
 <h4 id="新增节点间的关系"><a href="#新增节点间的关系" class="headerlink" title="新增节点间的关系"></a>新增节点间的关系</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a:star&#123;starname:&quot;张国荣&quot;&#125;),(b:star&#123;starname:&quot;张学友&quot;&#125;) </span><br><span class="line">CREATE (a)-[p:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;(b) return a,p,b</span><br></pre></td></tr></table></figure>
-
 <h4 id="删除结点间的关系"><a href="#删除结点间的关系" class="headerlink" title="删除结点间的关系"></a>删除结点间的关系</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">match (a:star&#123;starname:&quot;张国荣&quot;&#125;)-[p:rel&#123;relation:&quot;好友&quot;&#125;]-&gt;(b:star&#123;starname:&quot;张学友&quot;&#125;)</span><br><span class="line">delete p</span><br><span class="line">return a,p,b</span><br></pre></td></tr></table></figure>
-
 <h4 id="新增某个节点"><a href="#新增某个节点" class="headerlink" title="新增某个节点"></a>新增某个节点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create (a:star&#123;starname:&quot;&quot;,starid:&quot;&quot;&#125;)</span><br></pre></td></tr></table></figure>
-
 <h4 id="查询只有一个节点的语句"><a href="#查询只有一个节点的语句" class="headerlink" title="查询只有一个节点的语句"></a>查询只有一个节点的语句</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">match (n) where not (n)-[]-() return n;</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>Cypher语句使用案例<a href="https://blog.csdn.net/u013032852/article/details/82997088?utm_source=blogxgwz7" target="_blank" rel="noopener">https://blog.csdn.net/u013032852/article/details/82997088?utm_source=blogxgwz7</a></p>
 <p>用Neo4j构建明星关系图谱<a href="https://zhuanlan.zhihu.com/p/61096301" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61096301</a></p>
 <p>Neo4j的前端可视化组件<a href="https://zhuanlan.zhihu.com/p/126219777" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/126219777</a></p>
@@ -478,6 +463,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="liang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipayreward.jpg" alt="liang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -575,7 +589,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/image/%E5%A4%B4%E5%83%8F2.jpg"
+                src="/image/%E5%A4%B4%E5%83%8F5.jpg"
                 alt="liang" />
             
               <p class="site-author-name" itemprop="name">liang</p>
@@ -587,7 +601,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -598,7 +612,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -642,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cypher的语句示例"><span class="nav-text">Cypher的语句示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#删除所有（清库）："><span class="nav-text">删除所有（清库）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建节点："><span class="nav-text">创建节点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建节点和关系："><span class="nav-text">创建节点和关系：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看所有结点："><span class="nav-text">查看所有结点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据结点姓名返回所有的关系和尾结点"><span class="nav-text">根据结点姓名返回所有的关系和尾结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询给定关系的所有节点对"><span class="nav-text">查询给定关系的所有节点对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语句中的return的一些示例"><span class="nav-text">语句中的return的一些示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改结点间的关系"><span class="nav-text">修改结点间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除某个节点"><span class="nav-text">删除某个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增节点间的关系"><span class="nav-text">新增节点间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除结点间的关系"><span class="nav-text">删除结点间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增某个节点"><span class="nav-text">新增某个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询只有一个节点的语句"><span class="nav-text">查询只有一个节点的语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cypher的语句示例"><span class="nav-text">Cypher的语句示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#删除所有（清库）："><span class="nav-text">删除所有（清库）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建节点："><span class="nav-text">创建节点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建节点和关系："><span class="nav-text">创建节点和关系：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看所有结点："><span class="nav-text">查看所有结点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据结点姓名返回所有的关系和尾结点"><span class="nav-text">根据结点姓名返回所有的关系和尾结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询给定姓名和关系的所有的节点"><span class="nav-text">查询给定姓名和关系的所有的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询给定关系的所有节点对"><span class="nav-text">查询给定关系的所有节点对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语句中的return的一些示例"><span class="nav-text">语句中的return的一些示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改结点间的关系"><span class="nav-text">修改结点间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除某个节点"><span class="nav-text">删除某个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增节点间的关系"><span class="nav-text">新增节点间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除结点间的关系"><span class="nav-text">删除结点间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增某个节点"><span class="nav-text">新增某个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询只有一个节点的语句"><span class="nav-text">查询只有一个节点的语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

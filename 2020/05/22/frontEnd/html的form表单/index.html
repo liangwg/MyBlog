@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="注意：若在action中填入”entity&#x2F;“，则原来正常的表单提交完后，会变成给多了一个entity&#x2F;的表单提交 一.简介&lt;form&gt;标签用于为用户输入创建HTML表单。 表单包含：input元素（文本字段，复选框，单选框，提交按钮等），menus、textarea、fieldset、legend、label元素 表单用于向服务器传输数据 二.传递数据原理过程1.使用POST方法：浏">
+<meta name="description" content="1 简介\标签用于为用户输入创建HTML表单。 表单包含：input元素（文本字段，复选框，单选框，提交按钮等），menus、textarea、fieldset、legend、label元素 举例如下： 12345&lt;form action&#x3D;&quot;&quot; method&#x3D;&quot;&quot;&gt;    用户名：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot; value&#x3D;&quot;用户名&quot; &amp;gt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="html的form表单">
 <meta property="og:url" content="http://yoursite.com/2020/05/22/frontEnd/html%E7%9A%84form%E8%A1%A8%E5%8D%95/index.html">
 <meta property="og:site_name" content="一叶扁舟">
-<meta property="og:description" content="注意：若在action中填入”entity&#x2F;“，则原来正常的表单提交完后，会变成给多了一个entity&#x2F;的表单提交 一.简介&lt;form&gt;标签用于为用户输入创建HTML表单。 表单包含：input元素（文本字段，复选框，单选框，提交按钮等），menus、textarea、fieldset、legend、label元素 表单用于向服务器传输数据 二.传递数据原理过程1.使用POST方法：浏">
+<meta property="og:description" content="1 简介\标签用于为用户输入创建HTML表单。 表单包含：input元素（文本字段，复选框，单选框，提交按钮等），menus、textarea、fieldset、legend、label元素 举例如下： 12345&lt;form action&#x3D;&quot;&quot; method&#x3D;&quot;&quot;&gt;    用户名：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot; value&#x3D;&quot;用户名&quot; &amp;gt">
 <meta property="article:published_time" content="2020-05-22T02:30:58.118Z">
-<meta property="article:modified_time" content="2020-06-07T09:32:24.294Z">
+<meta property="article:modified_time" content="2020-06-22T14:10:57.071Z">
 <meta property="article:author" content="liang">
 <meta name="twitter:card" content="summary">
 
@@ -302,7 +302,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F2.jpg">
+      <meta itemprop="image" content="/image/%E5%A4%B4%E5%83%8F5.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -401,28 +401,39 @@
       
 
       
-        <p>注意：若在action中填入”entity/“，则原来正常的表单提交完后，会变成给多了一个entity/的表单提交</p>
-<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><p>&lt;form&gt;标签用于为用户输入创建HTML表单。</p>
+        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h3><p>\<form>标签用于为用户输入创建HTML表单。</p>
 <p>表单包含：input元素（文本字段，复选框，单选框，提交按钮等），menus、textarea、fieldset、legend、label元素</p>
+<p>举例如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"用户名"</span> &gt;</span></span><br><span class="line">    密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"密码"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>表单用于向服务器传输数据</strong></p>
-<h3 id="二-传递数据原理过程"><a href="#二-传递数据原理过程" class="headerlink" title="二.传递数据原理过程"></a>二.传递数据原理过程</h3><h4 id="1-使用POST方法："><a href="#1-使用POST方法：" class="headerlink" title="1.使用POST方法："></a>1.使用POST方法：</h4><p>浏览器按照这两个步骤来发送数据：</p>
+<h3 id="2-传递数据原理过程method"><a href="#2-传递数据原理过程method" class="headerlink" title="2 传递数据原理过程method="></a>2 传递数据原理过程method=</h3><p><strong>使用POST方法：</strong></p>
+<p>浏览器按照这两个步骤来发送数据：</p>
 <p>1.浏览器将与action属性中指定的表单处理服务器建立联系，</p>
 <p>2.一旦建立连接，浏览器就按分段传输的方法将数据发送给服务器。</p>
-<h4 id="2-使用GET方法："><a href="#2-使用GET方法：" class="headerlink" title="2.使用GET方法："></a>2.使用GET方法：</h4><p>浏览器与表单处理服务器建立连接，然后直接在一个传输步骤中发送所有的表单数据：浏览器会将数据直接附在表单的action URL之后。这两者之间用问号分隔，<strong>因此，调用含义get方法的表单时，要在url的页面后面加上要传入的值</strong>，如：http:127.0.0.1/entity/?user_text=”杨幂”或者<a href="http://www.example.com/example/program?x=28&amp;y=66" target="_blank" rel="noopener">http://www.example.com/example/program?x=28&amp;y=66</a></p>
-<h4 id="3-用post还是get"><a href="#3-用post还是get" class="headerlink" title="3.用post还是get:"></a>3.用post还是get:</h4><table>
+<p><strong>使用GET方法：</strong></p>
+<p>浏览器与表单处理服务器建立连接，然后直接在一个传输步骤中发送所有的表单数据：浏览器会将数据直接附在表单的action URL之后。这两者之间用问号分隔，从服务器获取数据，不更改服务器的状态和数据。</p>
+<p>因此，调用含义get方法的表单时，要在url的页面后面加上要传入的值，如：http:127.0.0.1/entity/?user_text=”杨幂”或者<a href="http://www.example.com/example/program?x=28&amp;y=66" target="_blank" rel="noopener">http://www.example.com/example/program?x=28&amp;y=66</a></p>
+<p><strong>用post还是get：</strong></p>
+<div class="table-container">
+<table>
 <thead>
 <tr>
 <th>get优点</th>
 <th>post优点</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1.最佳表单传输性能+发送只有少数简短字段的小表单<br />2.get不需要在读取和解码方法做些额外的工作</td>
 <td>1.有许多字段或是很长文本域的表单<br />2.涉及到安全性问题，不能让外人看到传输的数据时</td>
 </tr>
-</tbody></table>
-<h3 id="三-表单的属性"><a href="#三-表单的属性" class="headerlink" title="三.表单的属性"></a>三.表单的属性</h3><p>参考<a href="https://www.w3school.com.cn/tags/tag_form.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/tags/tag_form.asp</a></p>
+</tbody>
+</table>
+</div>
+<h3 id="3-表单的属性参数"><a href="#3-表单的属性参数" class="headerlink" title="3 表单的属性参数"></a>3 表单的属性参数</h3><p>参考<a href="https://www.w3school.com.cn/tags/tag_form.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/tags/tag_form.asp</a></p>
+<p>form的method参数用于设置</p>
 <p>几个重要的属性：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -431,15 +442,16 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>action</td>
 <td>URL<br />比如：action=”form_action.asp”</td>
-<td>规定当提交表单时向何处发送表单数据;</td>
+<td>用于设置表单的提交url，若不写或者保持空字符串，则将使用当前的URL。</td>
 </tr>
 <tr>
 <td>menthod</td>
 <td>menthod=”get”或者menthod=”post”</td>
-<td>规定用与发送form-data的HTTP的方法</td>
+<td>规定用与发送form-data的HTTP的方法；设置表单的提交方式，为空的话，默认使用POST。</td>
 </tr>
 <tr>
 <td>name</td>
@@ -449,12 +461,16 @@
 <tr>
 <td></td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<p><strong>对于action中的url地址而言：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">action="<span class="tag">&lt;<span class="name">%=request.getContextPath()</span> %&gt;</span>/html/index.html"</span><br><span class="line"><span class="comment">&lt;!--这里&lt;%=request.getContextPath() %&gt;表示回到应用的根目录下，再加上相对路径--&gt;</span></span><br><span class="line">    </span><br><span class="line">action="/html/index.html"</span><br><span class="line"><span class="comment">&lt;!--表示在服务器的根目录下搜索html/index.html  /表示web根目录</span></span><br><span class="line"><span class="comment">	提交表单之后，是(正常调用IP:/html/index.html)</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"></span><br><span class="line">action="index.html"</span><br><span class="line"><span class="comment">&lt;!--不以"/"开头的表示的是相对地址，即相对于当前这个页面的地址。</span></span><br><span class="line"><span class="comment">	提交表单之后，则是(调用IP:当前url/index.html)</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">    </span><br><span class="line">action="http://localhost:8080/PracticeLogin/html/index.html"</span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	这个是绝对路径，直接就是将路径显示出来。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!--表示在服务器的 &gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="四-例子"><a href="#四-例子" class="headerlink" title="四.例子"></a>四.例子</h3><h4 id="menthod-”get”的例子"><a href="#menthod-”get”的例子" class="headerlink" title="menthod=”get”的例子"></a>menthod=”get”的例子</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"form_action.asp"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>First name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"fname"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Last name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lname"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="menthod-”post”的例子"><a href="#menthod-”post”的例子" class="headerlink" title="menthod=”post”的例子"></a>menthod=”post”的例子</h4><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].使用form表单实现Django数据传输的一个实例<a href="https://blog.csdn.net/a877415861/article/details/77989811?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/a877415861/article/details/77989811?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase</a></p>
 
-<h4 id="menthod-”post”的例子"><a href="#menthod-”post”的例子" class="headerlink" title="menthod=”post”的例子"></a>menthod=”post”的例子</h4>
       
     </div>
     
@@ -463,6 +479,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatreward.png" alt="liang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipayreward.jpg" alt="liang 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -478,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/15/frontEnd/html%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" rel="next" title="html的简单介绍">
-                <i class="fa fa-chevron-left"></i> html的简单介绍
+              <a href="/2020/05/19/frontEnd/ECharts%E5%89%8D%E7%AB%AF%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%84%E4%BB%B6/" rel="next" title="ECharts前端可视化">
+                <i class="fa fa-chevron-left"></i> ECharts前端可视化
               </a>
             
           </div>
@@ -560,7 +605,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/image/%E5%A4%B4%E5%83%8F2.jpg"
+                src="/image/%E5%A4%B4%E5%83%8F5.jpg"
                 alt="liang" />
             
               <p class="site-author-name" itemprop="name">liang</p>
@@ -572,7 +617,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -583,7 +628,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -627,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-简介"><span class="nav-text">一.简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-传递数据原理过程"><span class="nav-text">二.传递数据原理过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-使用POST方法："><span class="nav-text">1.使用POST方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用GET方法："><span class="nav-text">2.使用GET方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-用post还是get"><span class="nav-text">3.用post还是get:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-表单的属性"><span class="nav-text">三.表单的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-例子"><span class="nav-text">四.例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#menthod-”get”的例子"><span class="nav-text">menthod&#x3D;”get”的例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#menthod-”post”的例子"><span class="nav-text">menthod&#x3D;”post”的例子</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-简介"><span class="nav-text">1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-传递数据原理过程method"><span class="nav-text">2 传递数据原理过程method&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-表单的属性参数"><span class="nav-text">3 表单的属性参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-例子"><span class="nav-text">四.例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#menthod-”get”的例子"><span class="nav-text">menthod&#x3D;”get”的例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#menthod-”post”的例子"><span class="nav-text">menthod&#x3D;”post”的例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
