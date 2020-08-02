@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="一叶扁舟">
 <meta property="og:description" content="数据样本如下：(样本来自于)     x1 x2 y     1 4 19   2 5 26   5 1 19   4 2 29     这里$x_1$和$x_2$是样本值，y是预测目标，我们假设以一条直线来拟合上面的数据，设待拟合的函数如下： $h(\theta)&#x3D;\theta_1 x_1+\theta_2 x_2\tag{1}$ 我们的目标是求出$\theta_1$和$\theta_2$的值，">
 <meta property="article:published_time" content="2020-07-27T01:28:55.432Z">
-<meta property="article:modified_time" content="2020-08-02T00:57:15.721Z">
+<meta property="article:modified_time" content="2020-08-02T02:10:18.472Z">
 <meta property="article:author" content="liang">
 <meta name="twitter:card" content="summary">
 
@@ -443,13 +443,13 @@
 <script type="math/tex; mode=display">
 J(\theta)=\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]^2\tag{2}</script><p>这里m代表每次取多少样本进行训练，若采用SGD训练，则每次随机取一组样本，m=1;若是批处理，则m等于每次抽取作为训练样本的数量。$\theta$是参数，其对应于（1）式中的$\theta_1,\theta_2$。</p>
 <p><strong>训练目标如下：</strong></p>
-<p>让损失函数$J(\theta)$的值最小，则由梯度下降法，先对$J(\theta)$求偏导：</p>
+<p>让损失函数$J(\theta)$的值最小，则由梯度下降法，先对$J(\theta)$求偏导：1111</p>
 <script type="math/tex; mode=display">
-\frac{\part}{\part\theta_j}J(\theta)=2\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i](\frac{\part}{\part\theta_j}h_{\theta}(x^i))\\=\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{3}</script><p>由于是要最小化损失函数，故参数$\theta$的更新是按其负梯度方向的：</p>
+\frac{ \part }{\part\theta_j}J(\theta)=2\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i](\frac{\part}{\part\theta_j}h_{\theta}(x^i))\\=\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{3}</script><p>由于是要最小化损失函数，故参数$\theta$的更新是按其负梯度方向的：</p>
 <script type="math/tex; mode=display">
 \theta_j:=\theta_j-\alpha\frac{\part}{\part\theta_j}J(\theta)\\=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{4}</script><blockquote>
 <p>每次向山下走时，都以下降最多的路线。</p>
-<p>从二维角度考虑，则利用函数$y=x^2+1$，若要使得函数达到最小值，则对x求导，得到$y’=\frac{1}{2}x$，再利用梯度下降的方式，使得$x\rarr0$</p>
+<p>从二维角度考虑，则利用函数$y=x^2+1$，若要使得函数达到最小值，则对x求导，得到$y’=\frac{1}{2}x$，再利用梯度下降的方式，使得$x \rarr 0$</p>
 </blockquote>
 <h3 id="批量梯度下降法-Batch-gradient-descent"><a href="#批量梯度下降法-Batch-gradient-descent" class="headerlink" title="批量梯度下降法(Batch gradient descent)"></a>批量梯度下降法(Batch gradient descent)</h3><p>每次迭代使用所有的样本。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#用y = Θ1*x1 + Θ2*x2来拟合下面的输入和输出</span></span><br><span class="line"><span class="comment">#input1  1   2   5   4</span></span><br><span class="line"><span class="comment">#input2  4   5   1   2</span></span><br><span class="line"><span class="comment">#output  19  26  19  20</span></span><br><span class="line">input_x = [[<span class="number">1</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">5</span>], [<span class="number">5</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>]]  <span class="comment">#输入</span></span><br><span class="line">y = [<span class="number">19</span>,<span class="number">26</span>,<span class="number">19</span>,<span class="number">20</span>]   <span class="comment">#输出</span></span><br><span class="line">theta = [<span class="number">1</span>,<span class="number">1</span>]       <span class="comment">#θ参数初始化</span></span><br><span class="line">loss = <span class="number">10</span>           <span class="comment">#loss先定义一个数，为了进入循环迭代</span></span><br><span class="line">step_size = <span class="number">0.01</span>    <span class="comment">#步长</span></span><br><span class="line">eps =<span class="number">0.0001</span>         <span class="comment">#精度要求</span></span><br><span class="line">max_iters = <span class="number">10000</span>   <span class="comment">#最大迭代次数</span></span><br><span class="line">error =<span class="number">0</span>            <span class="comment">#损失值</span></span><br><span class="line">iter_count = <span class="number">0</span>      <span class="comment">#当前迭代次数</span></span><br><span class="line"> </span><br><span class="line">err1=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]      <span class="comment">#求Θ1梯度的中间变量1</span></span><br><span class="line">err2=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]      <span class="comment">#求Θ2梯度的中间变量2</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>( loss &gt; eps <span class="keyword">and</span> iter_count &lt; max_iters):   <span class="comment">#迭代条件,使得损失值小于某一个固定的值，就行</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    err1sum = <span class="number">0</span></span><br><span class="line">    err2sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">4</span>):     <span class="comment">#每次迭代所有的样本都进行训练</span></span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]  <span class="comment">#预测值</span></span><br><span class="line">        err1[i]=(pred_y-y[i])*input_x[i][<span class="number">0</span>] <span class="comment">#这个式子是J(\theta)对\theta_1求偏导后得到的式子，然后将样本点代入</span></span><br><span class="line">        err1sum=err1sum+err1[i]                 <span class="comment">#这个是求和</span></span><br><span class="line">        err2[i]=(pred_y-y[i])*input_x[i][<span class="number">1</span>]</span><br><span class="line">        err2sum=err2sum+err2[i]</span><br><span class="line">    theta[<span class="number">0</span>] = theta[<span class="number">0</span>] - step_size * err1sum/<span class="number">4</span>  <span class="comment">#对应(4)式</span></span><br><span class="line">    theta[<span class="number">1</span>] = theta[<span class="number">1</span>] - step_size * err2sum/<span class="number">4</span>  <span class="comment">#对应(4)式</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">4</span>):</span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]   <span class="comment">#预测值</span></span><br><span class="line">        error = (<span class="number">1</span>/(<span class="number">2</span>*<span class="number">4</span>))*(pred_y - y[i])**<span class="number">2</span>  <span class="comment">#损失值</span></span><br><span class="line">        loss = loss + error  <span class="comment">#总损失值</span></span><br><span class="line">    iter_count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"iters_count"</span>, iter_count)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'theta: '</span>,theta )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'final loss: '</span>, loss)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'iters: '</span>, iter_count)</span><br></pre></td></tr></table></figure>
@@ -1241,6 +1241,28 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]^2\tag{2}</script><p>这�
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
