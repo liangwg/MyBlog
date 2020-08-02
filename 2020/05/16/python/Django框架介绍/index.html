@@ -405,7 +405,7 @@
 <h3 id="form表单-Django中自带的模板"><a href="#form表单-Django中自带的模板" class="headerlink" title="form表单(Django中自带的模板)"></a>form表单(Django中自带的模板)</h3><h4 id="i-1-前端表单部分"><a href="#i-1-前端表单部分" class="headerlink" title="i-1 前端表单部分"></a>i-1 前端表单部分</h4><p>通过form表单向后端提交数据</p>
 <p>这个中的action路径的填写：参考”html的form表单”</p>
 <h4 id="i-2-urls-py部分-绑定响应函数"><a href="#i-2-urls-py部分-绑定响应函数" class="headerlink" title="i-2 urls.py部分(绑定响应函数)"></a>i-2 urls.py部分(绑定响应函数)</h4><p>url(r’^type_add/$’, views.type_add, name=’type_add’),</p>
-<p>这里的r’^type_add/‘中，r是匹配的意思，单引号的中间是具体要匹配的，^是匹配要检索的文本的开头，还有一般是有在最后面加上$，这个\$匹配文本的结束，不加也可以。上述的访问链接是 <a href="http://127.0.0.1:port/type_add/">http://127.0.0.1:port/type_add/</a></p>
+<p>这里的r’^type_add/‘中，r是匹配的意思，单引号的中间是具体要匹配的，^是匹配要检索的文本的开头，还有一般是有在最后面加上$，这个$匹配文本的结束，不加也可以。上述的访问链接是 <a href="http://127.0.0.1:port/type_add/">http://127.0.0.1:port/type_add/</a></p>
 <p>path(‘在html绑定的url网页名\\’,调用的views中的视图函数)</p>
 <h4 id="i-3-views-py部分"><a href="#i-3-views-py部分" class="headerlink" title="i-3 views.py部分"></a>i-3 views.py部分</h4><p>具体构建响应函数的内容，并将处理后的结果连同html页面返回给前端用户。</p>
 <h4 id="i-4-url传输的具体的实例"><a href="#i-4-url传输的具体的实例" class="headerlink" title="i-4 url传输的具体的实例"></a>i-4 url传输的具体的实例</h4><p>在 user\templates\user 目录下新建 login.html 文件，&lt; form action=”/user/login/“ method=”post”<strong>&gt;</strong></p>
