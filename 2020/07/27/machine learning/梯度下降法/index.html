@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="一叶扁舟">
 <meta property="og:description" content="数据样本如下：(样本来自于)     x1 x2 y     1 4 19   2 5 26   5 1 19   4 2 29     这里$x_1$和$x_2$是样本值，y是预测目标，我们假设以一条直线来拟合上面的数据，设待拟合的函数如下： $h(\theta)&#x3D;\theta_1 x_1+\theta_2 x_2\tag{1}$ 我们的目标是求出$\theta_1$和$\theta_2$的值，">
 <meta property="article:published_time" content="2020-07-27T01:28:55.432Z">
-<meta property="article:modified_time" content="2020-08-02T02:10:18.472Z">
+<meta property="article:modified_time" content="2020-08-02T08:09:50.661Z">
 <meta property="article:author" content="liang">
 <meta name="twitter:card" content="summary">
 
@@ -443,7 +443,7 @@
 <script type="math/tex; mode=display">
 J(\theta)=\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]^2\tag{2}</script><p>这里m代表每次取多少样本进行训练，若采用SGD训练，则每次随机取一组样本，m=1;若是批处理，则m等于每次抽取作为训练样本的数量。$\theta$是参数，其对应于（1）式中的$\theta_1,\theta_2$。</p>
 <p><strong>训练目标如下：</strong></p>
-<p>让损失函数$J(\theta)$的值最小，则由梯度下降法，先对$J(\theta)$求偏导：1111</p>
+<p>让损失函数$J(\theta)$的值最小，则由梯度下降法，先对$J(\theta)$求偏导：</p>
 <script type="math/tex; mode=display">
 \frac{ \part }{\part\theta_j}J(\theta)=2\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i](\frac{\part}{\part\theta_j}h_{\theta}(x^i))\\=\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{3}</script><p>由于是要最小化损失函数，故参数$\theta$的更新是按其负梯度方向的：</p>
 <script type="math/tex; mode=display">
@@ -480,14 +480,14 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]^2\tag{2}</script><p>这�
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatreward.png" alt="liang 微信支付"/>
+        <img id="wechat_qr" src="/image/wechatreward.png" alt="liang 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipayreward.jpg" alt="liang 支付宝"/>
+        <img id="alipay_qr" src="/image/alipayreward.jpg" alt="liang 支付宝"/>
         <p>支付宝</p>
       </div>
     
