@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="word2vec," />
 
 
 
@@ -79,16 +79,19 @@
 
 
 
-<meta name="description" content="word2vec是word embedding的一种 （word embedding :把人类的抽象符号转换成数值形式，或是嵌入到一个数学空间中，就是词嵌入） word2vec的最终目的： 模型训练完后的副产物-模型参数 将参数作为输入x的某种向量化的表示，这个向量就是词向量 word2vec的两种模型 skip-gram 模型：用词的输入，来预测上下文 CBOW模型：用上下文输入，来预测词 wo">
+<meta name="description" content="什么是N-gram模型？ 随机梯度下降和反向传播算法。 RNN模型 题目 Efficient Estimation of Word Representations in Vector Space 背景说明： 12341.word2vec是用于词向量计算的工具2.该工具得到的训练结果：词向量(word embedding),度量词与词之间的相似性。3.word2vec算法的背后是一个浅层的神经网络4">
 <meta property="og:type" content="article">
-<meta property="og:title" content="word2vec的总结">
-<meta property="og:url" content="http://yoursite.com/2020/04/18/paper/word2vec/index.html">
+<meta property="og:title" content="(word2vec第1弹)-向量空间中单词表示的有效评估">
+<meta property="og:url" content="http://yoursite.com/2020/08/02/papers/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/index.html">
 <meta property="og:site_name" content="一叶扁舟">
-<meta property="og:description" content="word2vec是word embedding的一种 （word embedding :把人类的抽象符号转换成数值形式，或是嵌入到一个数学空间中，就是词嵌入） word2vec的最终目的： 模型训练完后的副产物-模型参数 将参数作为输入x的某种向量化的表示，这个向量就是词向量 word2vec的两种模型 skip-gram 模型：用词的输入，来预测上下文 CBOW模型：用上下文输入，来预测词 wo">
-<meta property="article:published_time" content="2020-04-18T09:10:36.364Z">
-<meta property="article:modified_time" content="2020-06-23T08:12:28.151Z">
+<meta property="og:description" content="什么是N-gram模型？ 随机梯度下降和反向传播算法。 RNN模型 题目 Efficient Estimation of Word Representations in Vector Space 背景说明： 12341.word2vec是用于词向量计算的工具2.该工具得到的训练结果：词向量(word embedding),度量词与词之间的相似性。3.word2vec算法的背后是一个浅层的神经网络4">
+<meta property="og:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/CBOW-SkipGram.png">
+<meta property="article:published_time" content="2020-08-02T10:35:21.742Z">
+<meta property="article:modified_time" content="2020-08-02T10:35:42.908Z">
 <meta property="article:author" content="liang">
+<meta property="article:tag" content="word2vec">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/CBOW-SkipGram.png">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/18/paper/word2vec/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/08/02/papers/(word2vec)Efficient Estimation of Word Representations in Vector Space/"/>
 
 
 
 
 
-  <title>word2vec的总结 | 一叶扁舟</title>
+  <title>(word2vec第1弹)-向量空间中单词表示的有效评估 | 一叶扁舟</title>
   
 
 
@@ -297,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/paper/word2vec/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/02/papers/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liang">
@@ -314,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">word2vec的总结</h1>
+          <h1 class="post-title" itemprop="name headline">(word2vec第1弹)-向量空间中单词表示的有效评估</h1>
         
 
         <div class="post-meta">
@@ -326,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-18T17:10:36+08:00">
-                2020-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-02T18:35:21+08:00">
+                2020-08-02
               </time>
             
 
@@ -349,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/paper/" itemprop="url" rel="index">
-                    <span itemprop="name">paper</span>
+                  <a href="/categories/papers/" itemprop="url" rel="index">
+                    <span itemprop="name">papers</span>
                   </a>
                 </span>
 
@@ -367,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/18/paper/word2vec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/18/paper/word2vec/" itemprop="commentCount"></span>
+                <a href="/2020/08/02/papers/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/02/papers/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,30 +404,55 @@
       
 
       
-        <p>word2vec是<strong>word embedding</strong>的一种</p>
-<p>（word embedding :把人类的抽象符号转换成数值形式，或是嵌入到一个数学空间中，就是词嵌入）</p>
-<p><strong>word2vec的最终目的：</strong></p>
-<p>模型训练完后的副产物-模型参数</p>
-<p>将参数作为输入x的某种向量化的表示，这个向量就是词向量</p>
-<p><strong>word2vec的两种模型</strong></p>
-<p>skip-gram 模型：用词的输入，来预测上下文</p>
-<p>CBOW模型：用上下文输入，来预测词</p>
-<p><strong>word2vec的精髓</strong></p>
-<p>用输入的向量来训练出权重，</p>
-<p><strong>word2vec的三个创新</strong></p>
-<p>(1).将常见的单词组合或者词组作为单个“word”来处理</p>
-<p>(2).对高频词进行抽样来减少训练样本的个数</p>
-<p>(3).对优化目标采用“negative sampling”方法，这样每个训练样本的训练只会更新一小部分的模型权重，从而降低计算负担。(更新的negative words是那些频率较高的单词，这样更有可能和输入有关)</p>
-<p><strong>最后的输出是：</strong></p>
-<p>后验分布：在已知是这个周围词的情况下，还是输入的中心词的概率</p>
-<hr>
-<p>[6].word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
-<p>[1].<strong>激活函数的介绍</strong></p>
-<p>「激活函数」指的是什么？ - Lunarnai的回答 - 知乎 <a href="https://www.zhihu.com/question/304499337/answer/549345296" target="_blank" rel="noopener">https://www.zhihu.com/question/304499337/answer/549345296</a></p>
-<p>[2].<strong>反向传播算法</strong> <a href="https://zhuanlan.zhihu.com/p/33411558" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33411558</a></p>
-<p>[3].softmax函数的介绍</p>
-<p><a href="https://www.cnblogs.com/alexanderkun/p/8098781.html" target="_blank" rel="noopener">https://www.cnblogs.com/alexanderkun/p/8098781.html</a></p>
-<p>[4].<a href="http://liweithu.com/word2vec" target="_blank" rel="noopener">http://liweithu.com/word2vec</a></p>
+        <p>什么是N-gram模型？</p>
+<p>随机梯度下降和反向传播算法。</p>
+<p>RNN模型</p>
+<p>题目</p>
+<p>Efficient Estimation of Word Representations in Vector Space</p>
+<p>背景说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.word2vec是用于词向量计算的工具</span><br><span class="line">2.该工具得到的训练结果：词向量(word embedding),度量词与词之间的相似性。</span><br><span class="line">3.word2vec算法的背后是一个浅层的神经网络</span><br><span class="line">4.word2vec算法或模型是指背后用于计算word vector的CBOW模型和Skip-gram模型。</span><br></pre></td></tr></table></figure>
+<p>由google的Mikolov于2013年发表。</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>两种新的模型体系结构，用于从非常大的数据集中计算单词的连续矢量表示。</p>
+<p>准确性提高，计算成本降低很多。</p>
+<p>用于句法和语义词的相似性。</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>之前是将词作为原子之间的相似性的原子单位，并且在词汇表中表示为索引。典型的是N-gram模型。</p>
+<p>但是这样简单的技术是有限制的，在自动语音识别（由高质量的转录语音数据大小决定）和机器翻译（现有较少的单词库）中，存储的数据是有限的。</p>
+<p>引出使用单词的分布式表示，并且基于神经网络的语音模型优于N-gram模型。</p>
+<h4 id="1-1-Goals-of-the-Paper"><a href="#1-1-Goals-of-the-Paper" class="headerlink" title="1.1 Goals of the Paper"></a>1.1 Goals of the Paper</h4><p><strong>主要目的</strong>：从词汇表中数十亿个单词和数以百计的单词的巨大数据集中引入可用于学习高质量单词矢量的技术。</p>
+<p>单词矢量的最大维数在50~100之间。</p>
+<p>所提出的技术：相似的单词趋于彼此接近，且单词可以有多个相似度。(若名词有多个单词结尾，则在原始矢量空间的子空间中搜索相似的单词，可以找到有相似结尾的单词。)</p>
+<p><strong>单词表示的相似性：</strong>使用对单词向量执行简单代数运算的单词偏移技术，例如，显示出vector（“ King”）-vector（“ Man”）+ vector（“ Woman”）产生的矢量与单词Queen的矢量表示最接近 。</p>
+<p><strong>本文的工作</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.开发保留词间线性规则性的新模型架构来最大化上述向量运算的准确性</span><br><span class="line">2.设计了一种新的综合测验集，用于测量句法和语义规律性，</span><br><span class="line">3.单词向量的维数和训练数据的数量对于训练时间和准确性的影响。</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-Previous-Work"><a href="#1-2-Previous-Work" class="headerlink" title="1.2 Previous Work"></a>1.2 Previous Work</h4><p>将单词作为连续向量的表示，典型的是<strong>NNLM模型</strong>。用于估计神经网络语言模型的模型架构。其中使用具有线性投影层和非线性隐藏层的前馈神经网络来共同学习单词向量表示和统计语言模型。</p>
+<p>其中单词向量是使用带有单个隐藏层的神经网络进行精细学习的。 单词向量被训练为训练NNLM。 因此，即使不构建完整的NNLM，也可以学习单词向量。 在这项工作中，我们直接扩展了该体系结构，并重点关注了使用简单模型学习单词向量的第一步。</p>
+<h3 id="2-Model-Architectures"><a href="#2-Model-Architectures" class="headerlink" title="2.Model Architectures"></a>2.Model Architectures</h3><p>评估单词的连续表示的模型有：Latent Semantic Analysis (LSA) 和 Latent Dirichlet Allocation (LDA)。本文中采用的是<strong>由神经网络学习的词的分布式表示形式</strong>，这种方式在保留词之间的线性规则上好于LSA，在大型数据集上，比LDA更为便宜。</p>
+<p>对于接下来的这几个模型，模型的复杂度和下面的公式成比例：</p>
+<script type="math/tex; mode=display">
+O=E\times T \times Q</script><p>其中E是模型训练的Epochs的数目，T是training set中的单词的数目，Q是每个框架模型的进一步定义，一般的E=3~50，T高达十亿。下面的所有模型都采用随机梯度下降和反向传播训练。</p>
+<h4 id="2-1-Feedforward-Neural-Net-Language-Model-NNLM"><a href="#2-1-Feedforward-Neural-Net-Language-Model-NNLM" class="headerlink" title="2.1 Feedforward Neural Net Language Model(NNLM)"></a>2.1 Feedforward Neural Net Language Model(NNLM)</h4><p>前馈神经网络语言模型</p>
+<p>它由输入，投影，隐藏和输出层组成。 在输入层，使用1-of-V编码对N个先前的单词进行编码，其中V是词汇量。 然后，使用共享的投影矩阵将输入层投影到尺寸为N×D的投影层P上。 由于只有N个输入在给定时间处于活动状态，所以投影层的组成相对便宜。 由于投影层中的值很密集，NNLM体系结构在投影层和隐藏层之间的计算变得很复杂。 对于N = 10的常见选择，投影层（P）的大小可能为500到2000，而隐藏层的大小H通常为500到1000单位。 此外，隐藏层用于计算词汇表中所有单词的概率分布，从而导致维数为V的输出层。 因此，每个训练示例的计算复杂度为下式子(2)</p>
+<script type="math/tex; mode=display">
+Q=N\times D+N\times D\times H+H\times V ---(2)</script><p>其中主导项是H×V。但是，为避免这种情况提出了一些实际的解决方案。要么使用softmax的分层版本[25，23，18]，要么使用在训练过程中未标准化的模型来完全避免标准化模型[4，9]。用词汇表的二叉树表示，需要评估的输出单位数可以降低到log2（V）左右。因此，大多数复杂性是由项N×D×H引起的。在我们的模型中，我们使用层次化的软件最大值，其中词汇表示霍夫曼二叉树。这遵循先前的观察，即词频在神经网络语言模型中很容易获得类[16]。霍夫曼树将短的二进制代码分配给频繁的单词，这进一步减少了需要经过估值的输出单元的数量：而平衡二叉树需要对账本进行估值的log2（V），而基于霍夫曼树的分层软最大值仅需要log2（Unigram perplexity（V））。例如，当词汇量为一百万个单词时，这会使评估速度提高大约两倍。尽管对于N×D×H项中的计算瓶颈而言，这对于神经网络LM而言并不是至关重要的提速，但我们将提出一种建议，该结构必须具有隐藏层并且因此在很大程度上取决于softmax归一化的效率。</p>
+<h3 id="2-2-Recurrent-Neural-Net-Language-Model-RNNLM"><a href="#2-2-Recurrent-Neural-Net-Language-Model-RNNLM" class="headerlink" title="2.2 Recurrent Neural Net Language Model (RNNLM)"></a>2.2 Recurrent Neural Net Language Model (RNNLM)</h3><p>递归神经网络语言模型。</p>
+<p>已经提出了基于递归神经网络的语言模型来克服前馈NNLM的某些限制，例如需要指定上下文长度（模型N的顺序），并且因为理论上RNN可以比浅层神经网络更有效地表示更复杂的模式[15，2]。 RNN模型没有投影层。 仅输入，隐藏和输出层。 这种类型的模型的特殊之处在于递归矩阵，它使用延时连接将隐藏层与其自身相连。 这允许循环模型形成某种形式的短期内存，该信息是由隐藏层状态表示的过去的信息组成的，该信息根据当前输入和上一时间步中隐藏层的状态进行更新。 RNN模型的每个训练示例的复杂度为</p>
+<script type="math/tex; mode=display">
+Q=H\times H+H\times V---(3)</script><p>其中，单词表示D的维数与隐藏层H相同。再次，可以使用分层softmax有效地将术语H×V简化为H×log2（V）。 那么，大多数复杂度来自H×H。</p>
+<h3 id="2-3-Parallel-Training-of-Neural-Networks"><a href="#2-3-Parallel-Training-of-Neural-Networks" class="headerlink" title="2.3  Parallel Training of Neural Networks"></a>2.3  Parallel Training of Neural Networks</h3><p>神经网络并行训练。</p>
+<p>为了在海量数据集上训练模型，我们在称为DistBelief [6]的大规模分布式框架的基础上实现了多个模型，包括前馈NNLM和本文提出的新模型。 该框架允许我们并行运行同一模型的多个副本，并且每个副本通过保留所有参数的集中式服务器同步其梯度更新。 对于这种并行训练，我们使用称为Adagrad [7]的自适应学习速率程序进行小批量异步梯度下降。 在此框架下，通常使用一百个或多个模型副本，每个副本在数据中心的不同计算机上使用许多CPU内核。</p>
+<h3 id="3-New-Log-linear-Models-对数线性模型"><a href="#3-New-Log-linear-Models-对数线性模型" class="headerlink" title="3 New Log-linear Models(对数线性模型)"></a>3 New Log-linear Models(对数线性模型)</h3><p>上面这些模型的非线性隐藏层导致了复杂性较高。新的架构直接遵循我们早期工作[13，14]中提出的架构，发现神经网络语言模型可以成功地分两个步骤进行训练：首先，使用简单模型对连续的单词向量进行学习，然后在这些单词的分布式表示之上限制N-gram NLM。 虽然后来有大量工作集中在学习单词向量上，但我们认为[13]中提出的简化简单方法的方法。 请注意，相关模型也已经提早提出[26，8]。</p>
+<h4 id="3-1-Continuous-Bag-of-Words-Model-连续词袋模型"><a href="#3-1-Continuous-Bag-of-Words-Model-连续词袋模型" class="headerlink" title="3.1 Continuous Bag-of-Words Model(连续词袋模型)"></a>3.1 Continuous Bag-of-Words Model(连续词袋模型)</h4><p>所提出的第一个体系结构类似于前馈NNLM，其中去除了非线性隐藏层，并且所有单词都共享了投影层（不仅仅是投影矩阵）。因此，所有单词都投影到同一位置（对它们的向量进行平均）。我们将此架构称为“词袋模型”，因为历史中的词序不会影响投影。此外，我们也使用未来的话语。通过构建一个对数线性分类器，在输入中包含四个未来和四个历史单词，我们的训练标准是正确分类当前（中间）单词，从而在下一节介绍的任务上获得了最佳性能。那么训练的复杂度如下：</p>
+<script type="math/tex; mode=display">
+Q=N\times D+D\times \log_2(V)---(4)</script><p>我们将这个模型进一步称为CBOW，与标准的词袋模型不同，它使用上下文的连续分布式表示。该模型的体系结构如图1所示。请注意，输入和投影层之间的权重矩阵以与NNLM中相同的方式共享给所有单词位置。</p>
+<h4 id="3-2-Continuous-Skip-gram-Model"><a href="#3-2-Continuous-Skip-gram-Model" class="headerlink" title="3.2 Continuous Skip-gram Model"></a>3.2 Continuous Skip-gram Model</h4><p>第二种结构与CBOW类似，但是它不是根据上下文来预测当前单词，而是尝试根据同一句子中的另一个单词来最大化单词的分类。更准确地说，我们将每个当前单词用作具有连续投影层的对数线性分类器的输入，并预测当前单词前后的特定范围内的单词。我们发现，增加范围可以提高所得词向量的质量，但同时也会增加计算复杂度。由于距离较远的单词通常比与距离最近的单词更不相关，因此我们在训练示例中通过从这些单词中抽取较少的采样来给予距离较远的单词较少的权重。这种架构的训练复杂度是</p>
+<script type="math/tex; mode=display">
+Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离。因此，如果我们选择C = 5，则对于每个训练词，我们将随机选择范围<1; C>的数字R，将历史中的R个单词和当前单词的未来中的R个单词用作正确的标签。这将要求我们对R×2个单词进行分类，将当前单词作为输入，并将每个R + R单词作为输出。在以下实验中，我们使用C = 10。</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/CBOW-SkipGram.png" alt="CBOW-SkipGram"></p>
+<h3 id="4-Result"><a href="#4-Result" class="headerlink" title="4.Result"></a>4.Result</h3><h3 id="6-Conclusion"><a href="#6-Conclusion" class="headerlink" title="6 Conclusion"></a>6 Conclusion</h3><p> 本文研究了语法模型和语义语言任务的集合中各种模型衍生的单词的矢量表示的质量。我们观察到，与流行的神经网络模型（前馈模型和递归模型）相比，可以使用非常简单的模型结构来训练高质量的单词向量。由于计算复杂度低得多，因此可以从更大的数据集中计算出非常准确的高维词向量。使用Dist Belief分布的框架，即使在具有一万亿个单词的语料库上，也应该能够训练CBOW和Skip-gram模型，从而使词汇量基本上不受限制。这比以前发布的同类最佳结果最好的数量级大几个数量级。SemEval-2012 Task 2 [11]是一个有趣的任务，其中单词向量最近被显示为明显优于以前的最新技术水平。公开使用的RNN向量与其他技术一起使用，使Spearman的排名相关性比以前的最佳结果提高了50％以上[31]。基于神经网络的词向量先前已应用于许多其他NLP任务，例如情感分析[12]和复述检测[28]。可以预期，这些应用程序可以从本文描述的模型架构中受益。我们正在进行的工作表明，单词向量可以成功地应用于知识库中事实的自动扩展，也可以用于验证现有事实的正确性。机器翻译实验的结果看起来也很有希望。将来，比较我们的技术需求潜在关系分析[30]和其他方法也将很有趣。相信我们全面的测试集将帮助研究团体改进现有的估计词向量的技术。我们还预计，高质量的字向量将成为未来NLP应用程序的重要组成部分。</p>
+<p>[1].翻译参考</p>
+<p><a href="https://www.jianshu.com/p/4517181ca9c3" target="_blank" rel="noopener">https://www.jianshu.com/p/4517181ca9c3</a></p>
+<p>[2].N-gram模型</p>
+<p><a href="https://blog.csdn.net/songbinxu/article/details/80209197" target="_blank" rel="noopener">https://blog.csdn.net/songbinxu/article/details/80209197</a></p>
 
       
     </div>
@@ -469,6 +497,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/word2vec/" rel="tag"><i class="fa fa-tag"></i> word2vec</a>
+          
+        </div>
+      
 
       
       
@@ -478,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/18/C++/C++%E7%9A%84Vector%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="next" title="C++的Vector操作">
-                <i class="fa fa-chevron-left"></i> C++的Vector操作
+              <a href="/2020/08/02/papers/(word2vec)Distributed%20Representations%20of%20Words%20and%20Phrases%20and%20their%20Compositionality/" rel="next" title="(word2vec第3弹)词和短语的分布式表示及其构成">
+                <i class="fa fa-chevron-left"></i> (word2vec第3弹)词和短语的分布式表示及其构成
               </a>
             
           </div>
@@ -487,10 +521,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/18/paper/(word2vec)Distributed%20Representations%20of%20Words%20and%20Phrases%20and%20their%20Compositionality/" rel="prev" title="(word2vec第3弹)词和短语的分布式表示及其构成">
-                (word2vec第3弹)词和短语的分布式表示及其构成 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -545,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,7 +602,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -574,7 +613,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,6 +647,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1.Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Goals-of-the-Paper"><span class="nav-text">1.1 Goals of the Paper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Previous-Work"><span class="nav-text">1.2 Previous Work</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Model-Architectures"><span class="nav-text">2.Model Architectures</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Feedforward-Neural-Net-Language-Model-NNLM"><span class="nav-text">2.1 Feedforward Neural Net Language Model(NNLM)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Recurrent-Neural-Net-Language-Model-RNNLM"><span class="nav-text">2.2 Recurrent Neural Net Language Model (RNNLM)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Parallel-Training-of-Neural-Networks"><span class="nav-text">2.3  Parallel Training of Neural Networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-New-Log-linear-Models-对数线性模型"><span class="nav-text">3 New Log-linear Models(对数线性模型)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Continuous-Bag-of-Words-Model-连续词袋模型"><span class="nav-text">3.1 Continuous Bag-of-Words Model(连续词袋模型)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Continuous-Skip-gram-Model"><span class="nav-text">3.2 Continuous Skip-gram Model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Result"><span class="nav-text">4.Result</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Conclusion"><span class="nav-text">6 Conclusion</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

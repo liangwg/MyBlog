@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++的Vector操作</title>
+    <url>/2020/04/18/C++/C++%E7%9A%84Vector%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h3 id="一-头文件"><a href="#一-头文件" class="headerlink" title="一.头文件"></a>一.头文件</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="二-vector申明及初始化"><a href="#二-vector申明及初始化" class="headerlink" title="二.vector申明及初始化"></a>二.vector申明及初始化</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; vec(5)；//申明一个初始大小为5的int型向量</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vect</span><span class="params">(<span class="number">10</span>,<span class="number">1</span>)</span></span>; <span class="comment">//申明一个初始大小为10，且值都为1的向量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vec</span><span class="params">(num,num+<span class="number">5</span>)</span></span>;<span class="comment">// 将num数组的元素用于初始化vec向量(数组首地址，数组尾地址)</span></span><br></pre></td></tr></table></figure>
+<h3 id="三-vector的基本操作"><a href="#三-vector的基本操作" class="headerlink" title="三.vector的基本操作"></a>三.vector的基本操作</h3><h4 id="1-容量的访问"><a href="#1-容量的访问" class="headerlink" title="1.容量的访问"></a>1.容量的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.向量大小：len=vec.<span class="built_in">size</span>()</span><br><span class="line">b.向量最大容量：(<span class="keyword">int</span>)vec.max_size();</span><br><span class="line">c.更改向量大小：vec.resize(num);   </span><br><span class="line">d.向量真实大小：<span class="keyword">int</span> len=vec.capacity()</span><br><span class="line">e.向量判空：vec.empty();   </span><br><span class="line">f.减少向量大小到满足元素所占存储空间的大小：vec.shrink_to_fit();</span><br></pre></td></tr></table></figure>
+<h4 id="2-修改"><a href="#2-修改" class="headerlink" title="2.修改"></a>2.修改</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.末尾添加元素：vec.push_back(要添加的元素）</span><br><span class="line">b.末尾删除元素：vec.pop_back(空)；</span><br><span class="line">                       </span><br><span class="line">c.任意位置插入元素：vec.insert();</span><br><span class="line">iterator insert( iterator loc, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入值为val的元素,返回指向这个元素的迭代器,</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, size_type num, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入num个值为val的元素</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, input_iterator start, input_iterator <span class="built_in">end</span> );<span class="comment">//在指定位置loc前插入区间[start, end)的所有元素 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d.任意位置删除元素：vec.erase();</span><br><span class="line">vec.erase(pos)，删除pos位置的数据</span><br><span class="line">vec.erase(beg，<span class="built_in">end</span>); 删除[beg，<span class="built_in">end</span>]区间的数据</span><br><span class="line"></span><br><span class="line">e.交换两个向量的元素：vec.swap();</span><br><span class="line"></span><br><span class="line">f.清空向量元素:vec.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
+<h4 id="3-元素的访问"><a href="#3-元素的访问" class="headerlink" title="3.元素的访问"></a>3.元素的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">下标访问法：vec[<span class="number">1</span>]；<span class="comment">//并不会检查是否越界</span></span><br><span class="line">at访问法：vec.at(<span class="number">1</span>);<span class="comment">//at会检查是否越界，是则抛出out of range的异常</span></span><br><span class="line">访问第一个元素：vec.front();</span><br><span class="line">访问最后一个元素：vec.back();</span><br><span class="line">返回一个指针：<span class="keyword">int</span>*p=vec.data(); <span class="comment">//可以返回一个指针指向这个数组，</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-迭代器"><a href="#4-迭代器" class="headerlink" title="4.迭代器"></a>4.迭代器</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">开始指针：vec.<span class="built_in">begin</span>();</span><br><span class="line">末尾指针：vec.<span class="built_in">end</span>();  <span class="comment">//指向最后一个元素的下一个位置</span></span><br><span class="line"><span class="comment">//对于iterator,有vector&lt;char&gt;::iterator theIterator = vec.begin();</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-有用的封装函数"><a href="#5-有用的封装函数" class="headerlink" title="5.有用的封装函数"></a>5.有用的封装函数</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.元素翻转：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">reverse(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">b.元素排序</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">sort(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());<span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line">c.元素求和</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line">accumulate(要累加的头迭代指标，要累加的尾迭代指标，累加的值)</span><br><span class="line">例：sum=accumulate(vec.<span class="built_in">begin</span>()，vec.<span class="built_in">end</span>(),<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>-———————————————————-</p>
+<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>1.在定义动态，没有规定大小的vector型数组时，向数组中添加元素不能用下标访问法，只能用str.push_back()往容器里面加入元素，等加入了元素后，才可以用下标访问法</p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C++的一些概念</title>
+    <url>/2020/04/18/C++/C++%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<p><strong>多态的概念</strong></p>
+<p><a href="https://www.cnblogs.com/dishengAndziyu/p/10915253.html" target="_blank" rel="noopener">https://www.cnblogs.com/dishengAndziyu/p/10915253.html</a></p>
+<p>相同的行为方式产生不同的行为结果</p>
+<p>同样的调用语句在实际运行中有不同的表现形式</p>
+<p><strong>C++的线程的锁</strong></p>
+<p>互斥锁，自旋锁，读写锁，条件锁。</p>
+<p><a href="https://blog.csdn.net/Allen_Walker_QAQ/article/details/80637010" target="_blank" rel="noopener">https://blog.csdn.net/Allen_Walker_QAQ/article/details/80637010</a></p>
+<p><strong>C++中基本数据类型所占的字节数</strong></p>
+<p>   char ：1个字节</p>
+<p>  char* (指针变量)：8个字节</p>
+<p>  short int :2个字节 </p>
+<p> int :4字节</p>
+<p> unsigned int :4字节</p>
+<p> float :4字节</p>
+<p>double,long,long long :8字节</p>
+<p>对于定义的类而言：1.等于非静态成员变量的总和；</p>
+<p>   2.编译器为了CPU的计算，做了数据对齐处理。（有char和int时，char作为4字节处理）</p>
+<p><strong>C++的STL的使用</strong></p>
+<p><a href="https://www.cnblogs.com/pullself/p/10049657.html" target="_blank" rel="noopener">https://www.cnblogs.com/pullself/p/10049657.html</a></p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ECharts前端可视化</title>
     <url>/2020/05/19/frontEnd/ECharts%E5%89%8D%E7%AB%AF%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="大致框架"><a href="#大致框架" class="headerlink" title="大致框架"></a>大致框架</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>ECharts 关系图<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.2.1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width:1000px;height:800px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> categories = [];</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span></span><br><span class="line">            categories[i] = &#123;</span><br><span class="line"><span class="actionscript">                name: <span class="string">'类目'</span> + i</span></span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        option = &#123;</span><br><span class="line"><span class="actionscript">            <span class="comment">// 图的标题</span></span></span><br><span class="line">            title: &#123;</span><br><span class="line"><span class="actionscript">                text: <span class="string">'ECharts 关系图'</span></span></span><br><span class="line">            &#125;,</span><br><span class="line"><span class="actionscript">            <span class="comment">// 提示框的配置</span></span></span><br><span class="line">            tooltip: &#123;</span><br><span class="line"><span class="actionscript">                formatter: <span class="function"><span class="keyword">function</span> <span class="params">(x)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> x.data.des;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"><span class="actionscript">            <span class="comment">// 工具箱</span></span></span><br><span class="line">            toolbox: &#123;</span><br><span class="line"><span class="actionscript">                <span class="comment">// 显示工具箱</span></span></span><br><span class="line"><span class="actionscript">                show: <span class="literal">true</span>,</span></span><br><span class="line">                feature: &#123;</span><br><span class="line">                    mark: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="actionscript">                    <span class="comment">// 还原</span></span></span><br><span class="line">                    restore: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="actionscript">                    <span class="comment">// 保存为图片</span></span></span><br><span class="line">                    saveAsImage: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            legend: [&#123;</span><br><span class="line"><span class="actionscript">                <span class="comment">// selectedMode: 'single',</span></span></span><br><span class="line"><span class="actionscript">                data: categories.map(<span class="function"><span class="keyword">function</span> <span class="params">(a)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> a.name;</span></span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;],</span><br><span class="line">            series: [&#123;</span><br><span class="line"><span class="actionscript">                type: <span class="string">'graph'</span>, <span class="comment">// 类型:关系图</span></span></span><br><span class="line"><span class="actionscript">                layout: <span class="string">'force'</span>, <span class="comment">//图的布局，类型为力导图</span></span></span><br><span class="line"><span class="actionscript">                symbolSize: <span class="number">40</span>, <span class="comment">// 调整节点的大小</span></span></span><br><span class="line"><span class="actionscript">                roam: <span class="literal">true</span>, <span class="comment">// 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启</span></span></span><br><span class="line"><span class="actionscript">                edgeSymbol: [<span class="string">'circle'</span>, <span class="string">'arrow'</span>],</span></span><br><span class="line">                edgeSymbolSize: [2, 10],</span><br><span class="line">                edgeLabel: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        textStyle: &#123;</span><br><span class="line">                            fontSize: 20</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                force: &#123;</span><br><span class="line">                    repulsion: 2500,</span><br><span class="line">                    edgeLength: [10, 50]</span><br><span class="line">                &#125;,</span><br><span class="line"><span class="actionscript">                draggable: <span class="literal">true</span>,</span></span><br><span class="line">                lineStyle: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        width: 2,</span><br><span class="line"><span class="actionscript">                        color: <span class="string">'#4b565b'</span>,</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                edgeLabel: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">                        formatter: <span class="function"><span class="keyword">function</span> <span class="params">(x)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                            <span class="keyword">return</span> x.data.name;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                label: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span>,</span></span><br><span class="line">                        textStyle: &#123;&#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 数据</span></span></span><br><span class="line">                data: [&#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes01'</span>,</span></span><br><span class="line">                    symbolSize: 70,</span><br><span class="line">                    category: 0,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node02'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes02'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node03'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes3'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node04'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes04'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node05'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes05'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;],</span><br><span class="line">                links: [&#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node02'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link01'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link01des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node03'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link02'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link02des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node04'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link03'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link03des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node05'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link04'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link05des'</span></span></span><br><span class="line">                &#125;],</span><br><span class="line">                categories: categories,</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;;</span><br><span class="line">        myChart.setOption(option);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -34,6 +78,16 @@
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].重要的参考<a href="https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL" target="_blank" rel="noopener">https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL</a></p>
 <p>[2].ECharts详细说明<a href="https://www.it610.com/article/3564022.htm" target="_blank" rel="noopener">https://www.it610.com/article/3564022.htm</a></p>
 <p>[3].非常详细的介绍<a href="https://blog.csdn.net/qq_40576686/article/details/78711191" target="_blank" rel="noopener">https://blog.csdn.net/qq_40576686/article/details/78711191</a></p>
+]]></content>
+      <categories>
+        <category>frontEnd</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>什么是基于Web框架开发</title>
+    <url>/2020/05/25/frontEnd/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9F%BA%E4%BA%8EWeb%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<p>基于Web开发又称为B/S架构开发。</p>
+<p>B/S模式是百指在TCP/IP的支持下，以HTTP为传输协议，客户端通过Browser访问Web服务器以及与之相连的后台数据库的技术及体系结构。它由浏览器、Web服务器、应用服务器和数据库服务器组成。客户端的浏览器通过URL访问Web服务器，度Web服务器请求数据库服务器，并将获得的结果以HTML形式返回客户端浏览器。</p>
 ]]></content>
       <categories>
         <category>frontEnd</category>
@@ -117,6 +171,18 @@
       </categories>
   </entry>
   <entry>
+    <title>java下载过程中遇到的问题</title>
+    <url>/2020/05/10/java/java%E4%B8%8B%E8%BD%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在下载Neo4j时，要先下载Java，在访问官网时，得到了如下的两类</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/插入.png" alt="插入"></p>
+<p>不知道该下载哪一种</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一般都是下载.exe，是直接帮安装的。而.zip则是由源码的</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>html的简单介绍</title>
     <url>/2020/05/15/frontEnd/html%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">content= $(<span class="string">'#liang'</span>).val()</span><br></pre></td></tr></table></figure>
@@ -135,57 +201,17 @@
       </categories>
   </entry>
   <entry>
-    <title>C++的一些概念</title>
-    <url>/2020/04/18/C++/C++%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<p><strong>多态的概念</strong></p>
-<p><a href="https://www.cnblogs.com/dishengAndziyu/p/10915253.html" target="_blank" rel="noopener">https://www.cnblogs.com/dishengAndziyu/p/10915253.html</a></p>
-<p>相同的行为方式产生不同的行为结果</p>
-<p>同样的调用语句在实际运行中有不同的表现形式</p>
-<p><strong>C++的线程的锁</strong></p>
-<p>互斥锁，自旋锁，读写锁，条件锁。</p>
-<p><a href="https://blog.csdn.net/Allen_Walker_QAQ/article/details/80637010" target="_blank" rel="noopener">https://blog.csdn.net/Allen_Walker_QAQ/article/details/80637010</a></p>
-<p><strong>C++中基本数据类型所占的字节数</strong></p>
-<p>   char ：1个字节</p>
-<p>  char* (指针变量)：8个字节</p>
-<p>  short int :2个字节 </p>
-<p> int :4字节</p>
-<p> unsigned int :4字节</p>
-<p> float :4字节</p>
-<p>double,long,long long :8字节</p>
-<p>对于定义的类而言：1.等于非静态成员变量的总和；</p>
-<p>   2.编译器为了CPU的计算，做了数据对齐处理。（有char和int时，char作为4字节处理）</p>
-<p><strong>C++的STL的使用</strong></p>
-<p><a href="https://www.cnblogs.com/pullself/p/10049657.html" target="_blank" rel="noopener">https://www.cnblogs.com/pullself/p/10049657.html</a></p>
+    <title>linux环境变量</title>
+    <url>/2020/06/09/linux/linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h3 id="export命令"><a href="#export命令" class="headerlink" title="export命令"></a>export命令</h3><p>linux的export命令：设置或显示环境变量，在程序中先执行export，告诉系统某某某程序在对应路径下。 在linux里设置环境变量的方法：要么直接在命令行中执行（只对当前有效），要么在profile，.bashrc中设置（重启系统后生效）。</p>
+<p> 使用模板：export PATH=”$PATH:/要添加的路径”</p>
+<p>$是调用变量的意思，$PATH是调用该环境变量的值。其中${}里面放的是变量，用来引用，$()里面放的是命令，执行这个命令。</p>
+<h3 id="etc-environment和-etc-profile的区别"><a href="#etc-environment和-etc-profile的区别" class="headerlink" title="/etc/environment和/etc/profile的区别"></a>/etc/environment和/etc/profile的区别</h3><p>/environment是给系统配置变量，而/profile是给用户配置变量，都是在系统运行时读取，一个先读一个后读。 若是要修改bash的，需要在vi ~/.bashrc中修改，这样重启后就会生效。</p>
+<p>参考：<a href="https://blog.csdn.net/teamlet/article/details/8257853" target="_blank" rel="noopener">https://blog.csdn.net/teamlet/article/details/8257853</a> </p>
+<h3 id="source-filename"><a href="#source-filename" class="headerlink" title="source filename"></a>source filename</h3><p>这个命令其实只是简单地读取脚本里面的语句依次在当前shell里面执行，没有建立新的子shell。那么脚本里面所有新建、改变变量的语句都会保存在当前shell里面。</p>
 ]]></content>
       <categories>
-        <category>C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C++的Vector操作</title>
-    <url>/2020/04/18/C++/C++%E7%9A%84Vector%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h3 id="一-头文件"><a href="#一-头文件" class="headerlink" title="一.头文件"></a>一.头文件</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="二-vector申明及初始化"><a href="#二-vector申明及初始化" class="headerlink" title="二.vector申明及初始化"></a>二.vector申明及初始化</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; vec(5)；//申明一个初始大小为5的int型向量</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vect</span><span class="params">(<span class="number">10</span>,<span class="number">1</span>)</span></span>; <span class="comment">//申明一个初始大小为10，且值都为1的向量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vec</span><span class="params">(num,num+<span class="number">5</span>)</span></span>;<span class="comment">// 将num数组的元素用于初始化vec向量(数组首地址，数组尾地址)</span></span><br></pre></td></tr></table></figure>
-<h3 id="三-vector的基本操作"><a href="#三-vector的基本操作" class="headerlink" title="三.vector的基本操作"></a>三.vector的基本操作</h3><h4 id="1-容量的访问"><a href="#1-容量的访问" class="headerlink" title="1.容量的访问"></a>1.容量的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.向量大小：len=vec.<span class="built_in">size</span>()</span><br><span class="line">b.向量最大容量：(<span class="keyword">int</span>)vec.max_size();</span><br><span class="line">c.更改向量大小：vec.resize(num);   </span><br><span class="line">d.向量真实大小：<span class="keyword">int</span> len=vec.capacity()</span><br><span class="line">e.向量判空：vec.empty();   </span><br><span class="line">f.减少向量大小到满足元素所占存储空间的大小：vec.shrink_to_fit();</span><br></pre></td></tr></table></figure>
-<h4 id="2-修改"><a href="#2-修改" class="headerlink" title="2.修改"></a>2.修改</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.末尾添加元素：vec.push_back(要添加的元素）</span><br><span class="line">b.末尾删除元素：vec.pop_back(空)；</span><br><span class="line">                       </span><br><span class="line">c.任意位置插入元素：vec.insert();</span><br><span class="line">iterator insert( iterator loc, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入值为val的元素,返回指向这个元素的迭代器,</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, size_type num, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入num个值为val的元素</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, input_iterator start, input_iterator <span class="built_in">end</span> );<span class="comment">//在指定位置loc前插入区间[start, end)的所有元素 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d.任意位置删除元素：vec.erase();</span><br><span class="line">vec.erase(pos)，删除pos位置的数据</span><br><span class="line">vec.erase(beg，<span class="built_in">end</span>); 删除[beg，<span class="built_in">end</span>]区间的数据</span><br><span class="line"></span><br><span class="line">e.交换两个向量的元素：vec.swap();</span><br><span class="line"></span><br><span class="line">f.清空向量元素:vec.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
-<h4 id="3-元素的访问"><a href="#3-元素的访问" class="headerlink" title="3.元素的访问"></a>3.元素的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">下标访问法：vec[<span class="number">1</span>]；<span class="comment">//并不会检查是否越界</span></span><br><span class="line">at访问法：vec.at(<span class="number">1</span>);<span class="comment">//at会检查是否越界，是则抛出out of range的异常</span></span><br><span class="line">访问第一个元素：vec.front();</span><br><span class="line">访问最后一个元素：vec.back();</span><br><span class="line">返回一个指针：<span class="keyword">int</span>*p=vec.data(); <span class="comment">//可以返回一个指针指向这个数组，</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-迭代器"><a href="#4-迭代器" class="headerlink" title="4.迭代器"></a>4.迭代器</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">开始指针：vec.<span class="built_in">begin</span>();</span><br><span class="line">末尾指针：vec.<span class="built_in">end</span>();  <span class="comment">//指向最后一个元素的下一个位置</span></span><br><span class="line"><span class="comment">//对于iterator,有vector&lt;char&gt;::iterator theIterator = vec.begin();</span></span><br></pre></td></tr></table></figure>
-<h4 id="5-有用的封装函数"><a href="#5-有用的封装函数" class="headerlink" title="5.有用的封装函数"></a>5.有用的封装函数</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.元素翻转：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">reverse(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">b.元素排序</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">sort(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());<span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line">c.元素求和</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line">accumulate(要累加的头迭代指标，要累加的尾迭代指标，累加的值)</span><br><span class="line">例：sum=accumulate(vec.<span class="built_in">begin</span>()，vec.<span class="built_in">end</span>(),<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<p>-———————————————————-</p>
-<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>1.在定义动态，没有规定大小的vector型数组时，向数组中添加元素不能用下标访问法，只能用str.push_back()往容器里面加入元素，等加入了元素后，才可以用下标访问法</p>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>什么是基于Web框架开发</title>
-    <url>/2020/05/25/frontEnd/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9F%BA%E4%BA%8EWeb%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<p>基于Web开发又称为B/S架构开发。</p>
-<p>B/S模式是百指在TCP/IP的支持下，以HTTP为传输协议，客户端通过Browser访问Web服务器以及与之相连的后台数据库的技术及体系结构。它由浏览器、Web服务器、应用服务器和数据库服务器组成。客户端的浏览器通过URL访问Web服务器，度Web服务器请求数据库服务器，并将获得的结果以HTML形式返回客户端浏览器。</p>
-]]></content>
-      <categories>
-        <category>frontEnd</category>
+        <category>linux</category>
       </categories>
   </entry>
   <entry>
@@ -227,761 +253,6 @@
 ]]></content>
       <categories>
         <category>knowledge graph</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>java下载过程中遇到的问题</title>
-    <url>/2020/05/10/java/java%E4%B8%8B%E8%BD%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在下载Neo4j时，要先下载Java，在访问官网时，得到了如下的两类</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/插入.png" alt="插入"></p>
-<p>不知道该下载哪一种</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一般都是下载.exe，是直接帮安装的。而.zip则是由源码的</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hierarchical softmax</title>
-    <url>/2020/06/11/machine%20learning/Hierarchical%20softmax/</url>
-    <content><![CDATA[<p>构造一棵树，依据训练样本数据中的单词出现的频率，构建起来的一棵Huffman tree，频率越高，节点越短。得到构造的二叉树的结构：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/分层softmax.png" alt="分层softmax"></p>
-<p>对于每一个节点，都是一个二分类[0,1]，可以用sigmod去处理节点信息。sigmod函数如下：</p>
-<script type="math/tex; mode=display">
-\sigma (x)=\frac{1}{1+exp(-x)}</script><p>此时，当我们知道了目标单词x,我们只需要计算root节点到该词的路径乘积即可，不需去遍历所有的节点信息，时间复杂度变成O($\log_2$(v))</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax2.png" alt="softmax2"></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>RNN(循环神经网络)</title>
-    <url>/2020/06/20/machine%20learning/RNN(%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)/</url>
-    <content><![CDATA[<h3 id="RNN-Recurrent-Neural-Network-问题引入"><a href="#RNN-Recurrent-Neural-Network-问题引入" class="headerlink" title="RNN(Recurrent Neural Network) 问题引入"></a>RNN(Recurrent Neural Network) 问题引入</h3><p>之前研究的是一个个的输入，前一个输入和后一个输入并没有关系，但是任务需要能够更好的处理序列的信息，也即后一个输入的处理结果与前一个输入有着一定的关系。</p>
-<p>比如”我吃苹果”中，在确定”吃”这个输入的词性是动词之后，下一个输入”苹果”是名词的可能性很大，即相互关联关系。</p>
-<h3 id="RNN结构"><a href="#RNN结构" class="headerlink" title="RNN结构"></a>RNN结构</h3><p>先看一个简单的RNN结构</p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/简单RNN结构图.jpg" width="200" height="150"/></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x是一个向量，表示输入层的值。</span><br><span class="line">u是输入层到隐藏层的权重矩阵。</span><br><span class="line">s是一个向量,表示隐藏层的值(这一层有多个节点，节点数与向量s的维度相同)。</span><br><span class="line">权重矩阵w就是隐藏层上一次的值作为这一次的输入的权重。</span><br><span class="line">v是隐藏层到输出层的权重矩阵。</span><br></pre></td></tr></table></figure>
-<p>具体的RNN的结构图</p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/具体RNN的图.jpg" width="550"/></p>
-<blockquote id="fn_？">
-<sup>？</sup>. 这里的g和f是什么？<a href="#reffn_？" title="Jump back to footnote [？] in the text."> &#8617;</a>
-</blockquote>
-<p>之后，将其按照时间线进行展开，得到如下图所示：</p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/展开后的RNN.jpg" width="500" /></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>循环神经网络<a href="https://zybuluo.com/hanbingtao/note/541458" target="_blank" rel="noopener">https://zybuluo.com/hanbingtao/note/541458</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Sigmoid函数介绍</title>
-    <url>/2020/07/20/machine%20learning/Sigmoid%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="Sigmoid函数形式"><a href="#Sigmoid函数形式" class="headerlink" title="Sigmoid函数形式"></a>Sigmoid函数形式</h3><script type="math/tex; mode=display">
-\sigma(x)=\frac{1}{1+e^{-x}}</script><p>其导数形式：$\sigma’(x)=\frac{e^{-x}}{(1+e^{-x})^2}=\sigma(x)[1-\sigma(x)]$</p>
-<p>并且由此可以得到</p>
-<p>$[log~\sigma(x)]’=1-\sigma(x)$</p>
-<p>$[log(1-\sigma(x))]’=-\sigma(x)$</p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>前馈神经网络</title>
-    <url>/2020/06/11/machine%20learning/%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<p>前馈神经网络的结构以下几个特点：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*每层神经元与下一层神经元之间完全互连</span><br><span class="line">*神经元之间不存在同层连接</span><br><span class="line">*神经元之间不存在跨层连接</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/前馈神经网络.png" alt="前馈神经网络"></p>
-<p>由此可以得知：”前馈“指的是网络拓扑结构中不存在环或回路，</p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>softmax简要介绍</title>
-    <url>/2020/07/13/machine%20learning/softmax%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>应用于多分类的场景中。</p>
-<p>把一些输入映射为0-1之间的实数，并且归一化保证和为1.</p>
-<p>max是分类，非黑即白，非大即小。而所希望的是取到某个分类的概率，因此加上soft。最后的输出是每个分类被取到的概率。</p>
-<h3 id="什么是Softmax公式"><a href="#什么是Softmax公式" class="headerlink" title="什么是Softmax公式"></a>什么是Softmax公式</h3><p>首先上图：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax图片.jpg" alt="softmax图片" style="zoom:80%;" /></p>
-<p><strong>softmax公式：</strong></p>
-<p>若有一个数组V，$V_i$表示V中的第i个元素，则这个元素的softmax的值为：</p>
-<script type="math/tex; mode=display">
-S_i=\frac{e^i}{\sum_je^j}</script><p>该元素的指数值除以所有元素指数和的比值。</p>
-<h3 id="softmax-和k个二元分类器的区别："><a href="#softmax-和k个二元分类器的区别：" class="headerlink" title="softmax 和k个二元分类器的区别："></a>softmax 和k个二元分类器的区别：</h3><p>若分类的类别是互相排斥的，则可以使用Softmax更为方便；</p>
-<p>若分类的类别并不是互相排斥的，则建立k个独立的logistic回归分类器更合适。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].softmax简要介绍</p>
-<p><a href="https://blog.csdn.net/bitcarmanlee/article/details/82320853" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/82320853</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>李航-《统计学习方法》</title>
-    <url>/2020/06/23/machine%20learning/%E6%9D%8E%E8%88%AA-%E3%80%8A%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E3%80%8B/</url>
-    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].代码实现<a href="https://github.com/fengdu78/lihang-code" target="_blank" rel="noopener">https://github.com/fengdu78/lihang-code</a></p>
-<p>[2].统计学习方法最全资源汇总<a href="https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>图嵌入</title>
-    <url>/2020/07/17/machine%20learning/%E5%9B%BE%E5%B5%8C%E5%85%A5%20/</url>
-    <content><![CDATA[<h3 id="1-什么是图嵌入"><a href="#1-什么是图嵌入" class="headerlink" title="1 什么是图嵌入"></a>1 什么是图嵌入</h3><p>将图数据(通常为高维稠密的矩阵)映射为低维稠密向量的过程。</p>
-<p>图嵌入要捕捉图的拓扑结构，顶点与顶点的关系，以及其他的信息(如子图、连边等)。如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/图嵌入.jpg" alt="图嵌入" style="zoom:30%;" /></p>
-<h3 id="2-图嵌入技术分类："><a href="#2-图嵌入技术分类：" class="headerlink" title="2 图嵌入技术分类："></a>2 图嵌入技术分类：</h3><p><strong>节点嵌入：</strong></p>
-<p>需要对节点进行分类、节点相似度预测、节点分布可视化时一般采用节点的嵌入。</p>
-<p><strong>图嵌入：</strong></p>
-<p>需要在图级别上预测或者整个图结构决策，需要将整个图表示为一个向量进行嵌入表示。</p>
-<h3 id="3-使用图嵌入的原因："><a href="#3-使用图嵌入的原因：" class="headerlink" title="3 使用图嵌入的原因："></a>3 使用图嵌入的原因：</h3><p><strong>1). 在graph上直接进行机器学习有一定局限性。</strong></p>
-<p>图是由节点和边构成，图中的向量关系只能用数学、统计或者特定的子集进行表示，但在嵌入之后的向量空间具有更加灵活和丰富的计算方式。</p>
-<p><strong>2).图嵌入能够压缩数据。</strong></p>
-<p>原来的图是用邻接矩阵描述图中节点之间的连接。图嵌入之后是降维作用，压缩数据。</p>
-<p><strong>3).向量计算比直接在图上操作更加简单。</strong></p>
-<h3 id="4-图嵌入满足的条件："><a href="#4-图嵌入满足的条件：" class="headerlink" title="4 图嵌入满足的条件："></a>4 图嵌入满足的条件：</h3><p>​    <strong>1).属性选择</strong></p>
-<p>确保嵌入能够很好地描述图的属性，即需要表示图拓扑，节点连接和节点邻域</p>
-<p>​    <strong>2).可扩展性</strong></p>
-<p>好的嵌入方法在小图上高效嵌入，在大图上也能高效嵌入。</p>
-<p>​    <strong>3).嵌入的维度</strong></p>
-<p>需要一个合适的维度。</p>
-<h3 id="5-图嵌入方法"><a href="#5-图嵌入方法" class="headerlink" title="5 图嵌入方法"></a>5 图嵌入方法</h3><h4 id="节点嵌入："><a href="#节点嵌入：" class="headerlink" title="节点嵌入："></a>节点嵌入：</h4><p>DeepWalk，Node2vec，SDNE</p>
-<h4 id="图嵌入"><a href="#图嵌入" class="headerlink" title="图嵌入"></a>图嵌入</h4><p>graph2vec</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].<a href="https://zhuanlan.zhihu.com/p/87572912" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/87572912</a></p>
-<p>[2].图嵌入和知识图谱嵌入<a href="https://zhuanlan.zhihu.com/p/94201377" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/94201377</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>梯度下降法</title>
-    <url>/2020/07/27/machine%20learning/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/</url>
-    <content><![CDATA[<p>数据样本如下：(样本来自于)</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>x1</th>
-<th>x2</th>
-<th>y</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>4</td>
-<td>19</td>
-</tr>
-<tr>
-<td>2</td>
-<td>5</td>
-<td>26</td>
-</tr>
-<tr>
-<td>5</td>
-<td>1</td>
-<td>19</td>
-</tr>
-<tr>
-<td>4</td>
-<td>2</td>
-<td>29</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>这里$x_1$和$x_2$是样本值，y是预测目标，我们假设以一条直线来拟合上面的数据，设待拟合的函数如下：</p>
-<p>$h(\theta)=\theta_1 x_1+\theta_2 x_2\tag{1}$</p>
-<p>我们的目标是求出$\theta_1$和$\theta_2$的值，让$h(\theta)$尽量逼近目标值y。</p>
-<p>对于这个线性回归问题，采用最小二乘法和梯度下降就可以求出两个参数。下面的损失函数等借用最小二乘法的概念解释。</p>
-<h3 id="梯度下降法原理："><a href="#梯度下降法原理：" class="headerlink" title="梯度下降法原理："></a>梯度下降法原理：</h3><p><strong>损失函数</strong>如下：</p>
-<script type="math/tex; mode=display">
-J(\theta)=\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]^2\tag{2}</script><p>这里m代表每次取多少样本进行训练，若采用SGD训练，则每次随机取一组样本，m=1;若是批处理，则m等于每次抽取作为训练样本的数量。$\theta$是参数，其对应于（1）式中的$\theta_1,\theta_2$。</p>
-<p><strong>训练目标如下：</strong></p>
-<p>让损失函数$J(\theta)$的值最小，则由梯度下降法，先对$J(\theta)$求偏导：</p>
-<script type="math/tex; mode=display">
-\frac{ \part }{\part\theta_j}J(\theta)=2\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i](\frac{\part}{\part\theta_j}h_{\theta}(x^i))\\=\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{3}</script><p>由于是要最小化损失函数，故参数$\theta$的更新是按其负梯度方向的：</p>
-<script type="math/tex; mode=display">
-\theta_j:=\theta_j-\alpha\frac{\part}{\part\theta_j}J(\theta)\\=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{4}</script><blockquote>
-<p>每次向山下走时，都以下降最多的路线。</p>
-<p>从二维角度考虑，则利用函数$y=x^2+1$，若要使得函数达到最小值，则对x求导，得到$y’=\frac{1}{2}x$，再利用梯度下降的方式，使得$x \rarr 0$</p>
-</blockquote>
-<h3 id="批量梯度下降法-Batch-gradient-descent"><a href="#批量梯度下降法-Batch-gradient-descent" class="headerlink" title="批量梯度下降法(Batch gradient descent)"></a>批量梯度下降法(Batch gradient descent)</h3><p>每次迭代使用所有的样本。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#用y = Θ1*x1 + Θ2*x2来拟合下面的输入和输出</span></span><br><span class="line"><span class="comment">#input1  1   2   5   4</span></span><br><span class="line"><span class="comment">#input2  4   5   1   2</span></span><br><span class="line"><span class="comment">#output  19  26  19  20</span></span><br><span class="line">input_x = [[<span class="number">1</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">5</span>], [<span class="number">5</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>]]  <span class="comment">#输入</span></span><br><span class="line">y = [<span class="number">19</span>,<span class="number">26</span>,<span class="number">19</span>,<span class="number">20</span>]   <span class="comment">#输出</span></span><br><span class="line">theta = [<span class="number">1</span>,<span class="number">1</span>]       <span class="comment">#θ参数初始化</span></span><br><span class="line">loss = <span class="number">10</span>           <span class="comment">#loss先定义一个数，为了进入循环迭代</span></span><br><span class="line">step_size = <span class="number">0.01</span>    <span class="comment">#步长</span></span><br><span class="line">eps =<span class="number">0.0001</span>         <span class="comment">#精度要求</span></span><br><span class="line">max_iters = <span class="number">10000</span>   <span class="comment">#最大迭代次数</span></span><br><span class="line">error =<span class="number">0</span>            <span class="comment">#损失值</span></span><br><span class="line">iter_count = <span class="number">0</span>      <span class="comment">#当前迭代次数</span></span><br><span class="line"> </span><br><span class="line">err1=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]      <span class="comment">#求Θ1梯度的中间变量1</span></span><br><span class="line">err2=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]      <span class="comment">#求Θ2梯度的中间变量2</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>( loss &gt; eps <span class="keyword">and</span> iter_count &lt; max_iters):   <span class="comment">#迭代条件,使得损失值小于某一个固定的值，就行</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    err1sum = <span class="number">0</span></span><br><span class="line">    err2sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">4</span>):     <span class="comment">#每次迭代所有的样本都进行训练</span></span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]  <span class="comment">#预测值</span></span><br><span class="line">        err1[i]=(pred_y-y[i])*input_x[i][<span class="number">0</span>] <span class="comment">#这个式子是J(\theta)对\theta_1求偏导后得到的式子，然后将样本点代入</span></span><br><span class="line">        err1sum=err1sum+err1[i]                 <span class="comment">#这个是求和</span></span><br><span class="line">        err2[i]=(pred_y-y[i])*input_x[i][<span class="number">1</span>]</span><br><span class="line">        err2sum=err2sum+err2[i]</span><br><span class="line">    theta[<span class="number">0</span>] = theta[<span class="number">0</span>] - step_size * err1sum/<span class="number">4</span>  <span class="comment">#对应(4)式</span></span><br><span class="line">    theta[<span class="number">1</span>] = theta[<span class="number">1</span>] - step_size * err2sum/<span class="number">4</span>  <span class="comment">#对应(4)式</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">4</span>):</span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]   <span class="comment">#预测值</span></span><br><span class="line">        error = (<span class="number">1</span>/(<span class="number">2</span>*<span class="number">4</span>))*(pred_y - y[i])**<span class="number">2</span>  <span class="comment">#损失值</span></span><br><span class="line">        loss = loss + error  <span class="comment">#总损失值</span></span><br><span class="line">    iter_count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"iters_count"</span>, iter_count)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'theta: '</span>,theta )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'final loss: '</span>, loss)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'iters: '</span>, iter_count)</span><br></pre></td></tr></table></figure>
-<p>最后的输出如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theta:  [3.0044552563214433, 3.9955447274498894]</span><br><span class="line">final loss:  9.428456066652548e-05</span><br><span class="line">iters:  9</span><br></pre></td></tr></table></figure>
-<h3 id="随机梯度下降法-Stochastic-gradientdescent-SGD"><a href="#随机梯度下降法-Stochastic-gradientdescent-SGD" class="headerlink" title="随机梯度下降法(Stochastic gradientdescent):SGD"></a>随机梯度下降法(Stochastic gradientdescent):SGD</h3><p>针对BGD算法训练速度过慢的缺点，提出了SGD算法，普通的BGD算法是每次迭代把所有样本都过一遍，每训练一组样本就把梯度更新一次。而SGD算法是从样本中随机抽出一组，训练后按梯度更新一次，然后再抽取一组，再更新一次，在样本量及其大的情况下，可能不用训练完所有的样本就可以获得一个损失值在可接受范围之内的模型了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#用y = Θ1*x1 + Θ2*x2来拟合下面的输入和输出</span></span><br><span class="line"><span class="comment">#input1  1   2   5   4</span></span><br><span class="line"><span class="comment">#input2  4   5   1   2</span></span><br><span class="line"><span class="comment">#output  19  26  19  20</span></span><br><span class="line">input_x = [[<span class="number">1</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">5</span>], [<span class="number">5</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>]]  <span class="comment">#输入</span></span><br><span class="line">y = [<span class="number">19</span>,<span class="number">26</span>,<span class="number">19</span>,<span class="number">20</span>]   <span class="comment">#输出</span></span><br><span class="line">theta = [<span class="number">1</span>,<span class="number">1</span>]       <span class="comment">#θ参数初始化</span></span><br><span class="line">loss = <span class="number">10</span>           <span class="comment">#loss先定义一个数，为了进入循环迭代</span></span><br><span class="line">step_size = <span class="number">0.01</span>    <span class="comment">#步长</span></span><br><span class="line">eps =<span class="number">0.0001</span>         <span class="comment">#精度要求</span></span><br><span class="line">max_iters = <span class="number">10000</span>   <span class="comment">#最大迭代次数</span></span><br><span class="line">error =<span class="number">0</span>            <span class="comment">#损失值</span></span><br><span class="line">iter_count = <span class="number">0</span>      <span class="comment">#当前迭代次数</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>( loss &gt; eps <span class="keyword">and</span> iter_count &lt; max_iters):    <span class="comment">#迭代条件</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    i = random.randint(<span class="number">0</span>,<span class="number">3</span>)  <span class="comment">#每次迭代在input_x中随机选取一组样本进行权重的更新</span></span><br><span class="line">    pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>] <span class="comment">#预测值</span></span><br><span class="line">    theta[<span class="number">0</span>] = theta[<span class="number">0</span>] - step_size * (pred_y - y[i]) * input_x[i][<span class="number">0</span>]</span><br><span class="line">    theta[<span class="number">1</span>] = theta[<span class="number">1</span>] - step_size * (pred_y - y[i]) * input_x[i][<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">3</span>):</span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>] <span class="comment">#预测值</span></span><br><span class="line">        error = <span class="number">0.5</span>*(pred_y - y[i])**<span class="number">2</span></span><br><span class="line">        loss = loss + error</span><br><span class="line">    iter_count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'iters_count'</span>, iter_count)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'theta: '</span>,theta )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'final loss: '</span>, loss)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'iters: '</span>, iter_count)</span><br></pre></td></tr></table></figure>
-<h3 id="小批量梯度下降-Mini-batch-gradient-descent-：MBGD"><a href="#小批量梯度下降-Mini-batch-gradient-descent-：MBGD" class="headerlink" title="小批量梯度下降(Mini-batch gradient descent)：MBGD"></a>小批量梯度下降(Mini-batch gradient descent)：MBGD</h3><p>SGD相对来说要快很多，但是也有存在问题，由于单个样本的训练可能会带来很多噪声，使得SGD并不是每次迭代都向着整体最优化方向，因此在刚开始训练时可能收敛得很快，但是训练一段时间后就会变得很慢。在此基础上又提出了小批量梯度下降法，它是每次从样本中随机抽取一小批进行训练，而不是一组。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#用y = Θ1*x1 + Θ2*x2来拟合下面的输入和输出</span></span><br><span class="line"><span class="comment">#input1  1   2   5   4</span></span><br><span class="line"><span class="comment">#input2  4   5   1   2</span></span><br><span class="line"><span class="comment">#output  19  26  19  20</span></span><br><span class="line">input_x = [[<span class="number">1</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">5</span>], [<span class="number">5</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>]]  <span class="comment">#输入</span></span><br><span class="line">y = [<span class="number">19</span>,<span class="number">26</span>,<span class="number">19</span>,<span class="number">20</span>]       <span class="comment">#输出</span></span><br><span class="line">theta = [<span class="number">1</span>,<span class="number">1</span>]           <span class="comment">#θ参数初始化</span></span><br><span class="line">loss = <span class="number">10</span>               <span class="comment">#loss先定义一个数，为了进入循环迭代</span></span><br><span class="line">step_size = <span class="number">0.01</span>        <span class="comment">#步长</span></span><br><span class="line">eps =<span class="number">0.0001</span>             <span class="comment">#精度要求</span></span><br><span class="line">max_iters = <span class="number">10000</span>       <span class="comment">#最大迭代次数</span></span><br><span class="line">error =<span class="number">0</span>                <span class="comment">#损失值</span></span><br><span class="line">iter_count = <span class="number">0</span>          <span class="comment">#当前迭代次数</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>( loss &gt; eps <span class="keyword">and</span> iter_count &lt; max_iters):  <span class="comment">#迭代条件</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    <span class="comment">#这里每次批量选取的是2组样本进行更新，另一个点是随机点+1的相邻点</span></span><br><span class="line">    i = random.randint(<span class="number">0</span>,<span class="number">3</span>)     <span class="comment">#随机抽取一组样本</span></span><br><span class="line">    j = (i+<span class="number">1</span>)%<span class="number">4</span>                 <span class="comment">#抽取另一组样本，j=i+1</span></span><br><span class="line">    pred_y0 = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]  <span class="comment">#预测值1</span></span><br><span class="line">    pred_y1 = theta[<span class="number">0</span>]*input_x[j][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[j][<span class="number">1</span>]  <span class="comment">#预测值2</span></span><br><span class="line">    theta[<span class="number">0</span>] = theta[<span class="number">0</span>] - step_size * (<span class="number">1</span>/<span class="number">2</span>) * ((pred_y0 - y[i]) * input_x[i][<span class="number">0</span>]+(pred_y1 - y[j]) * input_x[j][<span class="number">0</span>])  <span class="comment">#对应(4)式</span></span><br><span class="line">    theta[<span class="number">1</span>] = theta[<span class="number">1</span>] - step_size * (<span class="number">1</span>/<span class="number">2</span>) * ((pred_y0 - y[i]) * input_x[i][<span class="number">1</span>]+(pred_y1 - y[j]) * input_x[j][<span class="number">1</span>])  <span class="comment">#对应(4)式</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">3</span>):</span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]     <span class="comment">#总预测值</span></span><br><span class="line">        error = (<span class="number">1</span>/(<span class="number">2</span>*<span class="number">2</span>))*(pred_y - y[i])**<span class="number">2</span>                    <span class="comment">#损失值</span></span><br><span class="line">        loss = loss + error       <span class="comment">#总损失值</span></span><br><span class="line">    iter_count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'iters_count'</span>, iter_count)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">print</span> (<span class="string">'theta: '</span>,theta )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'final loss: '</span>, loss)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'iters: '</span>, iter_count)</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].例子<a href="https://blog.csdn.net/Softdiamonds/article/details/80339083#" target="_blank" rel="noopener">https://blog.csdn.net/Softdiamonds/article/details/80339083#</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>目标函数和损失函数</title>
-    <url>/2020/07/25/machine%20learning/%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%92%8C%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>度量的是预测值和真实值之间的差异。损失函数通常写成$L(\hat{y},y)$，这里$\hat{y}$表示预测值，$y$表示真实值。比如平方差损失函数$L(\hat{y},y)=(\hat{y}-y)^2$。</p>
-<h3 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h3><p>更为宽泛的概念。</p>
-<p>目标函数是优化问题中的概念。</p>
-<details>   
-    <summary>优化问题包括</summary>
-    (1).目标函数，最终是要最大化或者最小化的函数；</br>
-    (2).约束条件：约束条件是可选的，如x<0，
-     </details>
-
-<h3 id="区分两者的例子"><a href="#区分两者的例子" class="headerlink" title="区分两者的例子"></a>区分两者的例子</h3><h4 id="既是损失函数又是目标函数的例子"><a href="#既是损失函数又是目标函数的例子" class="headerlink" title="既是损失函数又是目标函数的例子"></a>既是损失函数又是目标函数的例子</h4><p><strong>最小二乘的拟合函数：</strong></p>
-<p>给定一组的样本点$\{(x_1,y_1),…,(x_n,y_n)\}$,我们要求用一条直线去拟合这些样本点。假设求出的模型形式为$y=\beta^Tx$。然后最小化下面的方程：</p>
-<script type="math/tex; mode=display">
-arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2\}</script><p>这里这个式子既是损失函数，也是目标函数。</p>
-<h4 id="是目标函数但大于损失函数"><a href="#是目标函数但大于损失函数" class="headerlink" title="是目标函数但大于损失函数"></a>是目标函数但大于损失函数</h4><p><strong>脊回归(Ridge regression)：</strong></p>
-<p>需要对$\beta$做正则化处理。需要优化的函数变成：</p>
-<script type="math/tex; mode=display">
-arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2+\lambda\beta^T\beta\}</script><p>上式可以称作目标函数，但却不是损失函数。损失函数仅仅是其中的一部分</p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>(DeepWalk)online Learning of Social Representation</title>
-    <url>/2020/04/17/paper/(DeepWalk)online%20Learning%20of%20Social%20Representation/</url>
-    <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>构建分层softmax有什么用？？</p>
-<p>独立性假设？？？</p>
-<p>标签应该用什么向量来表示？？？？？？</p>
-<p>这里为什么可以用独立性假设</p>
-<p>这里的J是不是有问题？不应该是连乘式嘛？</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/clipboard.png" alt="img"></p>
-<h1 id="0-简介"><a href="#0-简介" class="headerlink" title="0 简介"></a>0 简介</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">论文英文：online Learning of Social Representation.</span><br><span class="line">论文中文：社交表征的在线学习</span><br><span class="line">发表期刊：2014的KDD会议上</span><br><span class="line">作者：</span><br><span class="line">Bryan Perozzi, Stony Brook University, Stony Brook, NY, USA</span><br><span class="line">Rami Al-Rfou, Stony Brook University, Stony Brook, NY, USA</span><br><span class="line">Steven Skiena, Stony Brook University, Stony Brook, NY, USA</span><br></pre></td></tr></table></figure>
-<p><strong>嵌入、词嵌入、网络嵌入</strong></p>
-<p><strong>DeepWalk：</strong>DeepWalk把一个图或网络作为输入，输出为网络中顶点的向量表示。通过截断随机游走（truncated random walk）学习出一个网络的社会表示（social representation）(中心思想)，所谓的社会表示就是原来图中邻居的相似性、社区关系等特征表示。对这种关系编码得到低维的、有丰富含义的顶点向量表示。</p>
-<p>deepwalk是将截断随机游走和神经语言模型结合形成的网络表示。</p>
-<p><strong>映射函数$\Phi$：</strong>实现将网络中的节点映射成向量，便于计算。</p>
-<h1 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1 背景介绍"></a>1 背景介绍</h1><pre><code>  1.使用机器学习的算法解决问题需要大量的信息，而现实生活中的网络信息较少。为了将机器学习的算法应用在现实网络中，要对信息较少的网络（稀疏性网络，社交网络）进行处理。
-</code></pre><p><strong>DeepWalk</strong>通过构建的short random walk流学习Graph中顶点的social representation。Social representations是关于顶点的邻居相似性、社区关系的一种隐含的特征表示，通过对上述关系的编码得到一种低维的、具有丰富含义的向量表示，也即embedding vector。</p>
-<h1 id="2-问题描述-相关概念"><a href="#2-问题描述-相关概念" class="headerlink" title="2 问题描述+相关概念"></a>2 问题描述+相关概念</h1><p><strong>普通图的表示：</strong></p>
-<p>令G =(V,E)，其中V表示网络的节点，E是网络中的连接，$E\subseteq(V\times V)$。</p>
-<p><strong>标注图的表示（labeled social network）:</strong></p>
-<p>G的基础上加上所有顶点的向量表示的矩阵X和所有顶点所属的标签构成的矩阵Y</p>
-<blockquote>
-<p>网络节点分类问题中每个顶点都有一个类别，所属的类别即为该顶点的标注</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online.png" alt="DW-online" style="zoom:50%;" /></p>
-<p>​       X是将每个顶点的向量结合在一起形成的矩阵</p>
-<p>​        Y是每个顶点的标签构成的集合</p>
-<p><strong>学习网络表示注意的几个性质：</strong></p>
-<p>适用性（Adaptability）:网络要适应网络的变化，对于新的节点和边添加可以处理，正常演化</p>
-<p>同节点类似表示性(Community aware):网络中结构相似的点表示成的向量也相似</p>
-<p>低维性(Low dimensional): 代表每个顶点的向量维数不能过高，过高会过拟合。</p>
-<p>连续性(Continuous):低维的向量应当连续。</p>
-<p><strong>网络嵌入和词嵌入：(word embedding and network embedding)</strong></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th>网络嵌入</th>
-<th>词嵌入</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>可用向量表示单元&amp;&amp;基本处理单元</td>
-<td>网络节点</td>
-<td>单词</td>
-</tr>
-<tr>
-<td>分析</td>
-<td>对节点的表示中节点构成的随机游走序列进行分析</td>
-<td>对构成一个句子的单词序列进行分析</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>嵌入的理解：（Embedding）</strong></p>
-<p>词嵌入，网络嵌入中的嵌入是<font color='blue'>学习这些内容的本质特征和内在含义的意思</font></p>
-<p>网络嵌入：将节点转化为向量，挖掘节点的本质特征（语义，属性等性质上的相似性转化为向量空间上的相似性）</p>
-<p>网络嵌入是将节点表示成低微向量，用向量的余弦距离表示节点的相连关系，余弦距离越近，表示有相连关系。</p>
-<p><strong>随机游走（random walk）:</strong></p>
-<p>网络上不断重复地随机选择游走路径，最终形成一条贯穿网络的路径；</p>
-<p>从某个特定的端点开始，游走的每一步都从与当前节点相连的边中随机选择一条，沿着选定的边移动到下一个顶点，不断重复这个过程。</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online3.png" alt="DW-online3" style="zoom:50%;" /></p>
-<p>截断随机游走==长度固定的随机游走。</p>
-<p><strong>随机游走的两个好处：</strong></p>
-<ul>
-<li>并行性：随机游走是局部的，可以多个顶点同时开始一定长度的随机游走。减少采样的时间。</li>
-<li>适应性：适应网络局部的变化，网络演化是局部的点和边的变化，这样的变化只对部分随机游走路径产生影响。</li>
-</ul>
-<h1 id="3-语言建模扩展到网络节点表示"><a href="#3-语言建模扩展到网络节点表示" class="headerlink" title="3 语言建模扩展到网络节点表示"></a>3 语言建模扩展到网络节点表示</h1><p><a href="https://zhuanlan.zhihu.com/p/45167021（推理部分）" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45167021（推理部分）</a></p>
-<p><strong>类比过程：</strong></p>
-<p>语言建模的目标是估计出现在语料库中的特定序列的可能性。即，给定$W_n=(w_0,w_1,…,w_n)$的序列，其中$w_i\in V$（V是词汇表），我们想最大化$P_r(w_n|w_0,w_1,..w_{n-1})$。在最近的工作中，语言建模扩展到使用概率神经网络来构建词语的一般表示。</p>
-<p>随机游走得到的序列可以被认为是一种特殊语言的短句，类比语言建模可以得到：在随机游走中给定迄今为止访问的所有先前顶点$(v_1,v_2,…,v_{i-1})$的情况下，下一个顶点是$v_i$的可能性可以表示为：</p>
-<script type="math/tex; mode=display">
-P_r(v_i|(v_1,v_2,...,v_{i-1}))\tag{1}</script><p><strong>引入”节点—向量的映射“：</strong></p>
-<p>对于(1)而言，顶点是没办法计算的，因此要引入<font color='red'>映射函数</font>$\Phi:v\in V \rarr R^{|V|\times d}$。将网络中的每一个节点映射成d维向量，得到一个矩阵，共有|V|xd个参数，这些参数需要学习。</p>
-<p>则原先(1)的<font color='red'>优化目标</font>就可以写成：</p>
-<script type="math/tex; mode=display">
-P_r(v_i|(\Phi(v_0),\Phi(v_1),...,\Phi(v_{i-1})))\tag{2}</script><p><strong>引入”松弛（relaxation）假设“：</strong></p>
-<p>​    但是随着walk的增长，$(\Phi(v_0),\Phi(v_1),…,\Phi(v_{i-1}))$这一部分太难计算。因此，借用词向量中的skip-gram模型，引入松弛假设：</p>
-<ul>
-<li><p>不是通过上下文预测缺失词(missing word)，而是使用缺失词来预测上下文。因此，只需要计算一个$\Phi(v_k)$就可以，其中$v_k$是缺失词。</p>
-</li>
-<li><p>同时考虑左边窗口和右边窗口。如下图橘黄色部分，$v_4$同时考虑左边和右边的2个窗口内的节点：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/deepwalk-窗口.jpg" alt="deepwalk-窗口" style="zoom:40%;" /></p>
-</li>
-<li><p>不考虑顺序，只要是窗口中出现的词都算进来，而不管它具体出现在窗口的哪个位置。即无序性。</p>
-</li>
-</ul>
-<p><strong>得到：最终优化目标函数：</strong></p>
-<script type="math/tex; mode=display">
-\underset{\Phi}{minimize}~-log[P_r(\{v_{i-w},...,v_{i-1},v_{i+1},...,v_{i+w}\}|\Phi(v_i))]</script><blockquote>
-<p>这里概率部分的意思是：在一个随机游走中，当给定一个顶点$v_i$时，出现在它的w窗口范围内顶点的概率。</p>
-<p>忽视顶点的顺序更好地体现了在随机游走中顶点的邻近关系，真正需要计算的是一个顶点$v_i$的向量</p>
-</blockquote>
-<h1 id="4-算法"><a href="#4-算法" class="headerlink" title="4 算法"></a>4 算法</h1><p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online8.png" alt="DW-online8"></p>
-<p><em>图3.DeepWalk算法框架</em></p>
-<p>DeepWalk的算法包含两个部分，一个部分是随机游走的生成，另一部分是参数的更新</p>
-<p><strong>1.主体部分：</strong></p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online9.png" alt="DW-online9"></p>
-<p>其中第2步是构建Hierarchical Softmax，第3步对每个节点做γ次随机游走，第4步打乱网络中的节点，第5步以每个节点为根节点生成长度为t的随机游走，第7步根据生成的随机游走使用skip-gram模型利用梯度的方法对参数进行更新。</p>
-<p><strong>2.参数更新部分：</strong></p>
-<p>skip-gram是一个语言模型，用于最大化句子中出现在窗口w内的单词之间的共现概率。用独立性假设，将等式3中的条件概率近似为</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online10.png" alt="DW-online10"></p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online11.png" alt="DW-online11"></p>
-<p>对随机游走序列中的每个顶点，先把它映射到它的当前表示向量Φ(vj)（参见图3(b)）；然后通过随机梯度下降算法，最大化出现在上下文中的所有单词的概率，以此更新向量表示。</p>
-<p><strong>3.Hierarchical Softmax</strong></p>
-<p>给定uk∈V，直接计算第3行的Pr(uk|Φ(vj))是不可行的，我们将使用Hierarchical Softmax来分解条件概率。</p>
-<p>我们将网络中的顶点分配为二叉树的叶子节点，将问题转化为最大化层级中特定路径的概率（参见图3(c)）。如果顶点uk的路径由一系列树节点(b0，b1，…，b[log |V|])来标识，其中，b0=vj，b[log |V|]= uk，那么</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online12.png" alt="DW-online12"></p>
-<p>Pr(bl|Φ(vj))可以通过对bl的父节点建模一个二元分类器实现，计算公式为：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online13.png" alt="DW-online13"></p>
-<p>(这里的公式二元分类器)</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/DW-online14.png" alt="DW-online14"></p>
-<h1 id="八-实验"><a href="#八-实验" class="headerlink" title="八.实验"></a>八.实验</h1><p><a href="https://www.jianshu.com/p/5adcc3d94159" target="_blank" rel="noopener">https://www.jianshu.com/p/5adcc3d94159</a>  参照实验部分</p>
-<p><strong>1.数据集：</strong></p>
-<ul>
-<li>BlogCatalog是博客作者的社交关系网络。标签代表作者提供的主题类别。</li>
-<li>Flickr是照片分享网站用户之间的联系网络。标签代表用户的兴趣组。</li>
-<li>YouTube是流行的视频分享网站用户之间的社交网络。标签代表喜欢不同类视频的观众群体。</li>
-</ul>
-<p><strong>2.对比算法</strong></p>
-<ul>
-<li>SpectralClustering</li>
-<li>Modularity</li>
-<li>EdgeCluster</li>
-<li>wvRN</li>
-<li>Majority</li>
-</ul>
-<p><strong>3.实验设计</strong></p>
-<h1 id="九-总结"><a href="#九-总结" class="headerlink" title="九.总结"></a>九.总结</h1><p>学习顶点潜在表示的新方法，对语言建模算法的一般化。DeepWalk可扩展，可为大规模、稀疏的图创建有意义的表示。</p>
-<h1 id="十-参考文献"><a href="#十-参考文献" class="headerlink" title="十.参考文献"></a>十.参考文献</h1><p>[1].deepwalk理解：<a href="https://zhuanlan.zhihu.com/p/45167021" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45167021</a></p>
-<p>[2].论文参考翻译：<a href="https://www.jianshu.com/p/5adcc3d94159" target="_blank" rel="noopener">https://www.jianshu.com/p/5adcc3d94159</a></p>
-<p>[3].工具：<a href="https://github.com/phanein/deepwalk" target="_blank" rel="noopener">https://github.com/phanein/deepwalk</a></p>
-]]></content>
-      <categories>
-        <category>paper</category>
-      </categories>
-      <tags>
-        <tag>deepwalk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>(Trans系列)</title>
-    <url>/2020/04/18/paper/(Trans%E7%B3%BB%E5%88%97)/</url>
-    <content><![CDATA[<p><strong>论文情况</strong></p>
-<p>目前基于翻译模型（Trans系列）的知识表示学习的研究情况</p>
-<p>TransE, NIPS2013, Translating embeddings for modeling multi-relational data</p>
-<p>TransH, AAAI2014, Knowledge graph embedding by translating on hyperplanes</p>
-<p>TransR, AAAI2015, Learning Entity and Relation Embeddings for Knowledge Graph Completion</p>
-<p>TransD, ACL2015, Knowledge graph embedding via dynamic mapping matrix</p>
-<p>TransA, arXiv2015, An adaptive approach for knowledge graph embedding</p>
-<p>TranSparse, AAAI2016, Knowledge graph completion with adaptive sparse transfer matrix</p>
-<p>TransG, arXiv2015, A Generative Mixture Model for Knowledge Graph Embedding</p>
-<p>KG2E, CIKM2015, Learning to represent knowledge graphs with gaussian embedding</p>
-<hr>
-<h1 id="Mean-rank，Hit-10的理解"><a href="#Mean-rank，Hit-10的理解" class="headerlink" title="Mean rank，Hit@10的理解"></a>Mean rank，Hit@10的理解</h1><h3 id="1-Mean-rank"><a href="#1-Mean-rank" class="headerlink" title="1.Mean rank:"></a>1.Mean rank:</h3><p>对于每个testing triple，以预测tail entity为例，将(h,r,t)中的t用知识图谱中的每个实体代替，通过fr(h,t)函数计算分数，得到的一系列分数升序排列，f函数值越小越好-排的越靠前越好。然后去看每个testing triple中正确答案也即真实的t在序列中排多少位，比如t1排100位，t2排200，t3排60，然后对这些排名求平均,Mean rank即可以得到。</p>
-<h3 id="2-Hit10"><a href="#2-Hit10" class="headerlink" title="2.Hit10:"></a>2.Hit10:</h3><p>按照上述进行f函数值排列，然后去看每个testing triple的正确答案是否排在序列的前十，如果在的话就计数+1,然后，最终排在前十的个数/总个数 ，就是Hit@10.</p>
-<h1 id="参考的"><a href="#参考的" class="headerlink" title="参考的"></a>参考的</h1><p><a href="https://blog.csdn.net/wp_csdn/article/details/79607727" target="_blank" rel="noopener">https://blog.csdn.net/wp_csdn/article/details/79607727</a></p>
-<p><a href="https://www.jianshu.com/p/f1ba68064343" target="_blank" rel="noopener">https://www.jianshu.com/p/f1ba68064343</a></p>
-<p>书籍-《知识图谱》 -第九章的第四节</p>
-]]></content>
-      <categories>
-        <category>paper</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>表示学习与深度学习</title>
-    <url>/2020/05/26/machine%20learning/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h3 id="My"><a href="#My" class="headerlink" title="My"></a>My</h3><p>表示学习就是将原始数据转换成计算机能有效识别的特征，又分为局部表示和分布式表示。局部表示是用某一维来表示原始数据的某一实体，而分布式表示则是用向量整体来表示，是低维稠密向量。</p>
-<p>嵌入则是将局部表示转换成分布式表示。</p>
-<p>深度学习则是如何有效表示学习+实现这种表示学习的算法。最终目标是提高模型的准确性。</p>
-<h3 id="1-表示学习"><a href="#1-表示学习" class="headerlink" title="1 表示学习"></a>1 表示学习</h3><blockquote>
-<p>定义：<strong>为了提高机器学习系统的准确率，我们就需要将输入信息转换为有效的特征，或者更一般性称为表示（Representation）。如果有一种算法可以自动地学习出有效的特征，并提高最终机器学习模型的性能，那么这种学习就是可以叫做表示学习（Representation Learning）</strong>。</p>
-</blockquote>
-<p><strong>关键：</strong>解决语义鸿沟问题。(输入数据的底层特征和高层语义信息之间的不一致和差异性)，比较好的是在高层语义信息上进行预测模型建模。</p>
-<p><strong>核心问题：</strong>1.“什么是一个好的表示”；2.“如何学习到好的表示”。</p>
-<p><strong>好的表示学习的优点：</strong>1.较强的表示能力；2.包含更高层的语义信息，使得后续的学习任务变得简单；3.具有一般性，任务或领域独立。</p>
-<p><strong>两种表示学习方式：</strong>1.局部表示(Local Representation)；2.分布式表示(Distributed Representation).</p>
-<p><strong>表示学习的关键：</strong>构建具有一定深度的多层次特征表示。</p>
-<h4 id="1-1-局部表示"><a href="#1-1-局部表示" class="headerlink" title="1.1 局部表示"></a>1.1 局部表示</h4><p>一般表示为向量的形式。“one-hot”局部表示，以不同的名字来命名不同的颜色，相当于给颜色取了一个代号，比如(0,0,0,1,0)表示红色，(1,0,0,0)表示绿色，也称作离散表示或符号表示。</p>
-<p><strong>局部表示的两个不足之处：</strong>1.one-hot向量的维数很高，不能扩展。若有一种新的颜色出现，则需要增加一维，所对应的神经网络改动会很大。2.不能很好地刻画不同颜色之间的相似度。</p>
-<h4 id="1-2-分布式表示"><a href="#1-2-分布式表示" class="headerlink" title="1.2 分布式表示"></a>1.2 分布式表示</h4><p>可以表示为低维的稠密向量。举例：表示颜色的方法可以为RGB值，不同的颜色对应R，G，B三维空间中的一个点。如(255,255,255)表示白色，(0,0,0)表示黑色，也即相较于局部表示，分布式表示用稠密向量的整体表示某个实体，而局部表示则是用某一维来表示某个实体。</p>
-<h4 id="1-3-嵌入-Embedding"><a href="#1-3-嵌入-Embedding" class="headerlink" title="1.3 嵌入(Embedding)"></a>1.3 嵌入(Embedding)</h4><p>使用神经网络将高维的局部表示空间$\R^{|v|}$,映射到一个非常低维的分布式表示空间$\R^d$中。使得特征不再是坐标轴上的点，而是分散在整个低维空间中。如下图所示</p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/局部表示嵌入到分布式表示.png" width="300"/></p>
-<p><strong>嵌入：</strong>将一个度量空间中的一些对象映射到另一个低维的度量空间中，并尽可能保持不同对象之间的拓扑关系。</p>
-<p><strong>“好的高层语义表示：”</strong>从底层特征开始，经过多步非线性转换得到。</p>
-<h3 id="2-深度学习"><a href="#2-深度学习" class="headerlink" title="2.深度学习"></a>2.深度学习</h3><p>为了学习一种好的表示，构建一种有深度的模型，并通过学习算法让模型自动学习出特征表示(底层特征-&gt;中层特征-&gt;高层特征)，最终提升预测模型的准确率。</p>
-<p><strong>深度：</strong>原始数据进行非线性特征转换的次数，若一个表示学习系统是一个有向图结构，则深度也是从输入节点到输出节点所经过的最长路径的长度。</p>
-<p><strong>深度学习和表示学习的关系：</strong></p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/深度学习和表示学习.png" /></p>
-<p><strong>深度学习要解决的关键问题：</strong>贡献度分配问题，一个系统的不同组件或参数对于最终输出结果的贡献或影响。即模型的各个部分对于最终结果的影响程度。深度学习主要采用的模型是神经网络模型，利用神经网络的反向误差传播算法来解决各个部分贡献度分配问题。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>表示学习与深度学习<a href="https://www.jianshu.com/p/b1dcd8811326" target="_blank" rel="noopener">https://www.jianshu.com/p/b1dcd8811326</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>(node2vec)Scalable Feature Learning for Networks</title>
-    <url>/2020/04/17/paper/(node2vec)Scalable%20Feature%20Learning%20for%20Networks/</url>
-    <content><![CDATA[<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="-1 问题"></a>-1 问题</h3><p>本文最终的输出是什么？和目标函数有什么关系？</p>
-<h3 id="0-简介"><a href="#0-简介" class="headerlink" title="0 简介"></a>0 简介</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">论文英文：Scalable Feature Learning for Networks</span><br><span class="line">论文中文：面向网络的可扩展特征学习</span><br><span class="line">发表期刊：KDD 2016</span><br></pre></td></tr></table></figure>
-<p><strong>node2vec主要思想：</strong>生成随机游走采样得到（节点，上下文）的组合，然后用处理词向量的方法对这样的组合建模得到网络节点的表示。</p>
-<p><strong>论文的创新点：</strong>在生成随机游走的过程中做了一些创新。</p>
-<p>思想和DeepWalk是一样的，但是改进了DeepWalk中随机游走的生成方式，使得生成的随机游走可以反映深度游走和广度游走的特性。</p>
-<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h1><p><strong>复杂网络面对的几种任务：</strong></p>
-<ul>
-<li>网络节点的分类（网络中的节点进行聚类，哪些节点有类似的属性，就将其分到同一个类别中）</li>
-<li>链接预测（预测网络中哪些顶点有潜在的关联）</li>
-</ul>
-<p><strong>本文的工作：</strong></p>
-<p>设计出既能保持节点邻居信息又容易训练的模型</p>
-<p><strong>网络中的结构特征（社区）：</strong></p>
-<p>社区：很多节点会聚集在一起，内部的连接远比外部的连接多。</p>
-<blockquote>
-<p>相当于一个集群的概念</p>
-</blockquote>
-<p>网络中两个可能相聚很远的节点，在边的连接上有着类似的特征。</p>
-<p>如下面的$u,S_1,S_2,S_3,S_4$就是一个社区，u和$S_6$在结构上有着相似的特征</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/node2vec-社区.png" alt="node2vec-社区" style="zoom:50%;" /></p>
-<p><strong>网络表示学习算法要满足：</strong></p>
-<ul>
-<li>同一个社区内的节点表示相似</li>
-<li>拥有类似结构的节点表示相似</li>
-</ul>
-<h1 id="2-Related-Works"><a href="#2-Related-Works" class="headerlink" title="2 Related Works"></a>2 Related Works</h1><p>之前的工作存在着的一些问题：</p>
-<ul>
-<li>特征需要依赖人手工定义，本身就不准确</li>
-<li>一些非监督学习中的降维方法被拿来使用，但效率低，准确度不够，不能反应出网络的结构特征</li>
-</ul>
-<h1 id="3-模型介绍"><a href="#3-模型介绍" class="headerlink" title="3 模型介绍"></a>3 模型介绍</h1><h4 id="3-1-模型目标函数及推导："><a href="#3-1-模型目标函数及推导：" class="headerlink" title="3.1 模型目标函数及推导："></a>3.1 模型目标函数及推导：</h4><p><strong>初始目标函数（objective function）：</strong></p>
-<script type="math/tex; mode=display">
-\underset{f}{max}\sum_{u\in V}logPr(N_s(u)|f(u)) \tag{1}</script><p>$f(u)$是当前节点，$N_s(u)$是邻居节点。</p>
-<p><font color='red'>优化目标是给定每个顶点条件下，令其邻近顶点出现的概率最大。</font>，因此是对数和的形式。</p>
-<p><strong>引入的两个假设：</strong></p>
-<ul>
-<li><strong>条件独立性（Conditional independence）：</strong>也即采样的每个邻居是相互独立的，若要计算采样所有邻居的概率只需要将采样每个邻居的概率相乘即可，公式如下：</li>
-</ul>
-<script type="math/tex; mode=display">
-P_r(N_s(u)|f(u))=\prod_{n_i\in N_s(u)}P_r(n_i|f(u))\tag{2}</script><ul>
-<li><strong>特征空间的对称性（Symmetry in feature space）：</strong>一条边连接了a和b，则映射到特征空间时，a对b的影响和b对a的影响是一样的。一个顶点作为源顶点和作为近邻顶点时共享一套embedding向量。由一个模型表示一个（节点，邻居）对：</li>
-</ul>
-<script type="math/tex; mode=display">
-P_r(n_i|f(u))=\frac{exp(f(n_i)\cdot f(u))}{\sum_{v\in V }exp(f(v)\cdot f(u))}\tag{3}</script><p><strong>最终的优化目标函数：</strong></p>
-<p>将(1)、(2)、(3) 三个公式结合起来推导得到最终的优化结果：</p>
-<script type="math/tex; mode=display">
-\underset{f}{max}\sum_{u\in V}[-logZ_u+\sum_{n_i\in N_s(u)}f(n_i)\cdot f(u)]</script><p>其推导过程如下：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/node2vec的公式推导.jpg" alt="node2vec的公式推导" style="zoom:40%;" /></p>
-<p>推导完后，应该有一个$|N_s(u)|$的系数，但这一部分并不出现在最终的损失函数中，是因为整个这一项$|N_s(u)|logZ_u$都是常数的原因。</p>
-<p>这里注意两点：</p>
-<p>​        1). $Z_u$直接计算特别费时，本文是Negative Sampling方式解决。</p>
-<p>​        2).$N_s(u)$未必是u的直接邻居，只是用s方法采样得到的邻居，和具体的采样方式有关。</p>
-<h4 id="3-2-随机游走采样-创新的部分"><a href="#3-2-随机游走采样-创新的部分" class="headerlink" title="3.2 随机游走采样(创新的部分)"></a>3.2 随机游走采样(创新的部分)</h4><p><strong>两种图的游走方式：</strong></p>
-<p>​        深度优先游走(Depth-first Sampling,DFS)，广度优先游走(BFS)</p>
-<p>​        BFS倾向于在初始节点的周围游走，反映处一个节点的邻居的微观特性；</p>
-<p>​        DFS则会跑的离初始节点越来越远，反映出一个节点邻居的宏观特性。</p>
-<p><strong>本文工作：改进DeepWalk中随机游走的方式，综合DFS和BFS的特性。</strong></p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/node2vec-随机游走.png" alt="node2vec-随机游走" style="zoom:40%;" /></p>
-<p>对于这个随机游走，若已经采样了(t,v)，现在停留在节点v上，则下一个要采样的节点x遵循以下的概率分布：(一个节点到它不同邻居的转移概率：)</p>
-<script type="math/tex; mode=display">
-\alpha_{pq}(t,x)=\begin{cases}
-\frac{1}{p} &if~d_{tx}=0\\
-1 & if~d_{tx}=1\\
-\frac{1}{q} &if~d_{tx}=2
-\end{cases}</script><blockquote>
-<p>若t与x相等，则采样x的概率为$\frac{1}{p}$，即往回采样，采样已经访问过的节点t</p>
-<p>若t与x相连，则采样x的概率为1，这是一定采样相邻的节点$x_1$；</p>
-<p>若t与x不相连，则采样x的概率为$\frac{1}{q}$，这是采样不相邻的节点$x_2,x_3$。</p>
-</blockquote>
-<p><strong>超参数p、q的意义：</strong></p>
-<p>​    返回参数p：</p>
-<p>​        若$p&gt;max(q,1)$，则采样会尽量不往回走，不太可能是上一个访问的节点t</p>
-<p>​        若$p&lt;min(q,1)$，则采样更倾向于返回上一个节点，则会一直在起始点周围的某些节点来回转。</p>
-<p>​    出入参数q：</p>
-<p>​        q控制着游走是向外还是向内，若q&gt;1，随机游走倾向于访问和t接近的顶点（偏向于BFS）。若q&lt;1，倾向于访问远离t的顶点（偏向于DFS）</p>
-<p>这里当p=1，q=1时，游走方式就等同于DeepWalk中的随机游走。</p>
-<h1 id="六-算法部分"><a href="#六-算法部分" class="headerlink" title="六.算法部分"></a>六.算法部分</h1><p>按概率抽取，采用了Alias算法进行顶点采样</p>
-<p><img src="D:\有道云存储\qq4EC68D37BEC205269D5190F466ABEE14\9908a908f1cf4930976bd7d526e99348\clipboard.png" alt="img"></p>
-<p>算法的参数+部分：</p>
-<p>图G，表示向量维度d，每个节点生成的游走个数r，游走长度I，上下文的窗口长度k，还有p,q参数。</p>
-<p>1.根据p,q和之前的公式计算一个节点到它的邻居的转移概率。</p>
-<p>2.将这个转移概率加到图G中形成G’。</p>
-<p>3.walks用来存储随机游走，初始化为空。</p>
-<p>4.外循环r次表示每个节点作为初始节点要生成r个随机游走。</p>
-<p>5.对于图中的各个节点。</p>
-<p>6.生成一条随机游走walk。</p>
-<p>7.将walk添加到walks中保存。</p>
-<p>8.用SGD的方法对walks进行训练。</p>
-<p>1.将初始节点u添加进去。</p>
-<p>2.walk的长度为I，由此还要再循环添加I-1个节点。</p>
-<p>3.当前节点设为walk最后添加的节点。</p>
-<p>4.找出当前节点的所有邻居节点。</p>
-<p>5.根据转移概率采样选择某个邻居s</p>
-<p>6.将该邻居添加到walk中。</p>
-<p><strong>此处有不懂的地方？？？？？</strong></p>
-<h1 id="七-Node2vec核心代码"><a href="#七-Node2vec核心代码" class="headerlink" title="七.Node2vec核心代码"></a>七.Node2vec核心代码</h1><p><a href="https://blog.csdn.net/u012151283/article/details/87081272" target="_blank" rel="noopener">https://blog.csdn.net/u012151283/article/details/87081272</a></p>
-<h1 id="八-实验部分"><a href="#八-实验部分" class="headerlink" title="八.实验部分"></a>八.实验部分</h1><p><strong>实验部分？？？？？？？？？？</strong></p>
-<p><img src="D:\有道云存储\qq4EC68D37BEC205269D5190F466ABEE14\447b2a1282f14e2eaef542a225ccc8a2\clipboard.png" alt="img"></p>
-<p><img src="D:\有道云存储\qq4EC68D37BEC205269D5190F466ABEE14\15b2e0dbe7074368a67182f0103f3e5b\clipboard.png" alt="img"></p>
-<h1 id="十-参考论文"><a href="#十-参考论文" class="headerlink" title="十.参考论文"></a>十.参考论文</h1><p>[1].论文翻译<a href="https://zhuanlan.zhihu.com/p/46344860" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46344860</a></p>
-<p>[2].代码参考<a href="https://blog.csdn.net/u012151283/article/details/87081272" target="_blank" rel="noopener">https://blog.csdn.net/u012151283/article/details/87081272</a></p>
-<p>[3].模型实现<a href="https://github.com/shenweichen/GraphEmbedding" target="_blank" rel="noopener">https://github.com/shenweichen/GraphEmbedding</a></p>
-]]></content>
-      <categories>
-        <category>paper</category>
-      </categories>
-      <tags>
-        <tag>node2vec</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>同构图和异构图</title>
-    <url>/2020/07/18/machine%20learning/%E5%90%8C%E6%9E%84%E5%9B%BE%E5%92%8C%E5%BC%82%E6%9E%84%E5%9B%BE/</url>
-    <content><![CDATA[<p>什么是同构图？什么是异构图，他们能够开展的工作有哪些？</p>
-<h3 id="同构图-Homogeneous-Graph"><a href="#同构图-Homogeneous-Graph" class="headerlink" title="同构图(Homogeneous Graph)"></a>同构图(Homogeneous Graph)</h3><p>传统同构图数据中只存在一种节点和边，因此在构建图神经网络时所用节点共享同样的模型参数并且拥有同样的特征空间。</p>
-<h3 id="异构图-Heterogeneous-Graph"><a href="#异构图-Heterogeneous-Graph" class="headerlink" title="异构图(Heterogeneous Graph)"></a>异构图(Heterogeneous Graph)</h3><p>可以存在不只一种节点和边，因此允许不同类型的节点拥有不同维度的特征或属性。</p>
-<p>人和周围事物的关系大部分都是天然异构，如：“我看了《流浪地球》”。“我”和“《流浪地球》”的属性是不同的，需要用不同的模型或特征维度来表达。</p>
-<p> <strong>基于异构图训练的神经网络比较有代表性的两个模型：</strong></p>
-<p>​    1.用于节点分类和链接预测等任务的RGCN</p>
-<p>​    2.用于产品推荐的GCMC。</p>
-<p><strong>异构图神经网络框架DGL[1]：</strong></p>
-<p> 纽约大学、亚马逊联手推出的神经网络框架DGL。</p>
-<p>有各种异构图神经网络的实现方法，比如GCMC、RGCN、HAN、Metapath2vec</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].从图到图卷积<a href="https://www.jianshu.com/p/d97afb87ef20" target="_blank" rel="noopener">https://www.jianshu.com/p/d97afb87ef20</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>(word2vec第1弹)-向量空间中单词表示的有效评估</title>
-    <url>/2020/04/18/paper/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/</url>
-    <content><![CDATA[<p>什么是N-gram模型？</p>
-<p>随机梯度下降和反向传播算法。</p>
-<p>RNN模型</p>
-<p>题目</p>
-<p>Efficient Estimation of Word Representations in Vector Space</p>
-<p>背景说明：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.word2vec是用于词向量计算的工具</span><br><span class="line">2.该工具得到的训练结果：词向量(word embedding),度量词与词之间的相似性。</span><br><span class="line">3.word2vec算法的背后是一个浅层的神经网络</span><br><span class="line">4.word2vec算法或模型是指背后用于计算word vector的CBOW模型和Skip-gram模型。</span><br></pre></td></tr></table></figure>
-<p>由google的Mikolov于2013年发表。</p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>两种新的模型体系结构，用于从非常大的数据集中计算单词的连续矢量表示。</p>
-<p>准确性提高，计算成本降低很多。</p>
-<p>用于句法和语义词的相似性。</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>之前是将词作为原子之间的相似性的原子单位，并且在词汇表中表示为索引。典型的是N-gram模型。</p>
-<p>但是这样简单的技术是有限制的，在自动语音识别（由高质量的转录语音数据大小决定）和机器翻译（现有较少的单词库）中，存储的数据是有限的。</p>
-<p>引出使用单词的分布式表示，并且基于神经网络的语音模型优于N-gram模型。</p>
-<h4 id="1-1-Goals-of-the-Paper"><a href="#1-1-Goals-of-the-Paper" class="headerlink" title="1.1 Goals of the Paper"></a>1.1 Goals of the Paper</h4><p><strong>主要目的</strong>：从词汇表中数十亿个单词和数以百计的单词的巨大数据集中引入可用于学习高质量单词矢量的技术。</p>
-<p>单词矢量的最大维数在50~100之间。</p>
-<p>所提出的技术：相似的单词趋于彼此接近，且单词可以有多个相似度。(若名词有多个单词结尾，则在原始矢量空间的子空间中搜索相似的单词，可以找到有相似结尾的单词。)</p>
-<p><strong>单词表示的相似性：</strong>使用对单词向量执行简单代数运算的单词偏移技术，例如，显示出vector（“ King”）-vector（“ Man”）+ vector（“ Woman”）产生的矢量与单词Queen的矢量表示最接近 。</p>
-<p><strong>本文的工作</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.开发保留词间线性规则性的新模型架构来最大化上述向量运算的准确性</span><br><span class="line">2.设计了一种新的综合测验集，用于测量句法和语义规律性，</span><br><span class="line">3.单词向量的维数和训练数据的数量对于训练时间和准确性的影响。</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-Previous-Work"><a href="#1-2-Previous-Work" class="headerlink" title="1.2 Previous Work"></a>1.2 Previous Work</h4><p>将单词作为连续向量的表示，典型的是<strong>NNLM模型</strong>。用于估计神经网络语言模型的模型架构。其中使用具有线性投影层和非线性隐藏层的前馈神经网络来共同学习单词向量表示和统计语言模型。</p>
-<p>其中单词向量是使用带有单个隐藏层的神经网络进行精细学习的。 单词向量被训练为训练NNLM。 因此，即使不构建完整的NNLM，也可以学习单词向量。 在这项工作中，我们直接扩展了该体系结构，并重点关注了使用简单模型学习单词向量的第一步。</p>
-<h3 id="2-Model-Architectures"><a href="#2-Model-Architectures" class="headerlink" title="2.Model Architectures"></a>2.Model Architectures</h3><p>评估单词的连续表示的模型有：Latent Semantic Analysis (LSA) 和 Latent Dirichlet Allocation (LDA)。本文中采用的是<strong>由神经网络学习的词的分布式表示形式</strong>，这种方式在保留词之间的线性规则上好于LSA，在大型数据集上，比LDA更为便宜。</p>
-<p>对于接下来的这几个模型，模型的复杂度和下面的公式成比例：</p>
-<script type="math/tex; mode=display">
-O=E\times T \times Q</script><p>其中E是模型训练的Epochs的数目，T是training set中的单词的数目，Q是每个框架模型的进一步定义，一般的E=3~50，T高达十亿。下面的所有模型都采用随机梯度下降和反向传播训练。</p>
-<h4 id="2-1-Feedforward-Neural-Net-Language-Model-NNLM"><a href="#2-1-Feedforward-Neural-Net-Language-Model-NNLM" class="headerlink" title="2.1 Feedforward Neural Net Language Model(NNLM)"></a>2.1 Feedforward Neural Net Language Model(NNLM)</h4><p>前馈神经网络语言模型</p>
-<p>它由输入，投影，隐藏和输出层组成。 在输入层，使用1-of-V编码对N个先前的单词进行编码，其中V是词汇量。 然后，使用共享的投影矩阵将输入层投影到尺寸为N×D的投影层P上。 由于只有N个输入在给定时间处于活动状态，所以投影层的组成相对便宜。 由于投影层中的值很密集，NNLM体系结构在投影层和隐藏层之间的计算变得很复杂。 对于N = 10的常见选择，投影层（P）的大小可能为500到2000，而隐藏层的大小H通常为500到1000单位。 此外，隐藏层用于计算词汇表中所有单词的概率分布，从而导致维数为V的输出层。 因此，每个训练示例的计算复杂度为下式子(2)</p>
-<script type="math/tex; mode=display">
-Q=N\times D+N\times D\times H+H\times V ---(2)</script><p>其中主导项是H×V。但是，为避免这种情况提出了一些实际的解决方案。要么使用softmax的分层版本[25，23，18]，要么使用在训练过程中未标准化的模型来完全避免标准化模型[4，9]。用词汇表的二叉树表示，需要评估的输出单位数可以降低到log2（V）左右。因此，大多数复杂性是由项N×D×H引起的。在我们的模型中，我们使用层次化的软件最大值，其中词汇表示霍夫曼二叉树。这遵循先前的观察，即词频在神经网络语言模型中很容易获得类[16]。霍夫曼树将短的二进制代码分配给频繁的单词，这进一步减少了需要经过估值的输出单元的数量：而平衡二叉树需要对账本进行估值的log2（V），而基于霍夫曼树的分层软最大值仅需要log2（Unigram perplexity（V））。例如，当词汇量为一百万个单词时，这会使评估速度提高大约两倍。尽管对于N×D×H项中的计算瓶颈而言，这对于神经网络LM而言并不是至关重要的提速，但我们将提出一种建议，该结构必须具有隐藏层并且因此在很大程度上取决于softmax归一化的效率。</p>
-<h3 id="2-2-Recurrent-Neural-Net-Language-Model-RNNLM"><a href="#2-2-Recurrent-Neural-Net-Language-Model-RNNLM" class="headerlink" title="2.2 Recurrent Neural Net Language Model (RNNLM)"></a>2.2 Recurrent Neural Net Language Model (RNNLM)</h3><p>递归神经网络语言模型。</p>
-<p>已经提出了基于递归神经网络的语言模型来克服前馈NNLM的某些限制，例如需要指定上下文长度（模型N的顺序），并且因为理论上RNN可以比浅层神经网络更有效地表示更复杂的模式[15，2]。 RNN模型没有投影层。 仅输入，隐藏和输出层。 这种类型的模型的特殊之处在于递归矩阵，它使用延时连接将隐藏层与其自身相连。 这允许循环模型形成某种形式的短期内存，该信息是由隐藏层状态表示的过去的信息组成的，该信息根据当前输入和上一时间步中隐藏层的状态进行更新。 RNN模型的每个训练示例的复杂度为</p>
-<script type="math/tex; mode=display">
-Q=H\times H+H\times V---(3)</script><p>其中，单词表示D的维数与隐藏层H相同。再次，可以使用分层softmax有效地将术语H×V简化为H×log2（V）。 那么，大多数复杂度来自H×H。</p>
-<h3 id="2-3-Parallel-Training-of-Neural-Networks"><a href="#2-3-Parallel-Training-of-Neural-Networks" class="headerlink" title="2.3  Parallel Training of Neural Networks"></a>2.3  Parallel Training of Neural Networks</h3><p>神经网络并行训练。</p>
-<p>为了在海量数据集上训练模型，我们在称为DistBelief [6]的大规模分布式框架的基础上实现了多个模型，包括前馈NNLM和本文提出的新模型。 该框架允许我们并行运行同一模型的多个副本，并且每个副本通过保留所有参数的集中式服务器同步其梯度更新。 对于这种并行训练，我们使用称为Adagrad [7]的自适应学习速率程序进行小批量异步梯度下降。 在此框架下，通常使用一百个或多个模型副本，每个副本在数据中心的不同计算机上使用许多CPU内核。</p>
-<h3 id="3-New-Log-linear-Models-对数线性模型"><a href="#3-New-Log-linear-Models-对数线性模型" class="headerlink" title="3 New Log-linear Models(对数线性模型)"></a>3 New Log-linear Models(对数线性模型)</h3><p>上面这些模型的非线性隐藏层导致了复杂性较高。新的架构直接遵循我们早期工作[13，14]中提出的架构，发现神经网络语言模型可以成功地分两个步骤进行训练：首先，使用简单模型对连续的单词向量进行学习，然后在这些单词的分布式表示之上限制N-gram NLM。 虽然后来有大量工作集中在学习单词向量上，但我们认为[13]中提出的简化简单方法的方法。 请注意，相关模型也已经提早提出[26，8]。</p>
-<h4 id="3-1-Continuous-Bag-of-Words-Model-连续词袋模型"><a href="#3-1-Continuous-Bag-of-Words-Model-连续词袋模型" class="headerlink" title="3.1 Continuous Bag-of-Words Model(连续词袋模型)"></a>3.1 Continuous Bag-of-Words Model(连续词袋模型)</h4><p>所提出的第一个体系结构类似于前馈NNLM，其中去除了非线性隐藏层，并且所有单词都共享了投影层（不仅仅是投影矩阵）。因此，所有单词都投影到同一位置（对它们的向量进行平均）。我们将此架构称为“词袋模型”，因为历史中的词序不会影响投影。此外，我们也使用未来的话语。通过构建一个对数线性分类器，在输入中包含四个未来和四个历史单词，我们的训练标准是正确分类当前（中间）单词，从而在下一节介绍的任务上获得了最佳性能。那么训练的复杂度如下：</p>
-<script type="math/tex; mode=display">
-Q=N\times D+D\times \log_2(V)---(4)</script><p>我们将这个模型进一步称为CBOW，与标准的词袋模型不同，它使用上下文的连续分布式表示。该模型的体系结构如图1所示。请注意，输入和投影层之间的权重矩阵以与NNLM中相同的方式共享给所有单词位置。</p>
-<h4 id="3-2-Continuous-Skip-gram-Model"><a href="#3-2-Continuous-Skip-gram-Model" class="headerlink" title="3.2 Continuous Skip-gram Model"></a>3.2 Continuous Skip-gram Model</h4><p>第二种结构与CBOW类似，但是它不是根据上下文来预测当前单词，而是尝试根据同一句子中的另一个单词来最大化单词的分类。更准确地说，我们将每个当前单词用作具有连续投影层的对数线性分类器的输入，并预测当前单词前后的特定范围内的单词。我们发现，增加范围可以提高所得词向量的质量，但同时也会增加计算复杂度。由于距离较远的单词通常比与距离最近的单词更不相关，因此我们在训练示例中通过从这些单词中抽取较少的采样来给予距离较远的单词较少的权重。这种架构的训练复杂度是</p>
-<script type="math/tex; mode=display">
-Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离。因此，如果我们选择C = 5，则对于每个训练词，我们将随机选择范围<1; C>的数字R，将历史中的R个单词和当前单词的未来中的R个单词用作正确的标签。这将要求我们对R×2个单词进行分类，将当前单词作为输入，并将每个R + R单词作为输出。在以下实验中，我们使用C = 10。</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/CBOW-SkipGram.png" alt="CBOW-SkipGram"></p>
-<h3 id="4-Result"><a href="#4-Result" class="headerlink" title="4.Result"></a>4.Result</h3><h3 id="6-Conclusion"><a href="#6-Conclusion" class="headerlink" title="6 Conclusion"></a>6 Conclusion</h3><p> 本文研究了语法模型和语义语言任务的集合中各种模型衍生的单词的矢量表示的质量。我们观察到，与流行的神经网络模型（前馈模型和递归模型）相比，可以使用非常简单的模型结构来训练高质量的单词向量。由于计算复杂度低得多，因此可以从更大的数据集中计算出非常准确的高维词向量。使用Dist Belief分布的框架，即使在具有一万亿个单词的语料库上，也应该能够训练CBOW和Skip-gram模型，从而使词汇量基本上不受限制。这比以前发布的同类最佳结果最好的数量级大几个数量级。SemEval-2012 Task 2 [11]是一个有趣的任务，其中单词向量最近被显示为明显优于以前的最新技术水平。公开使用的RNN向量与其他技术一起使用，使Spearman的排名相关性比以前的最佳结果提高了50％以上[31]。基于神经网络的词向量先前已应用于许多其他NLP任务，例如情感分析[12]和复述检测[28]。可以预期，这些应用程序可以从本文描述的模型架构中受益。我们正在进行的工作表明，单词向量可以成功地应用于知识库中事实的自动扩展，也可以用于验证现有事实的正确性。机器翻译实验的结果看起来也很有希望。将来，比较我们的技术需求潜在关系分析[30]和其他方法也将很有趣。相信我们全面的测试集将帮助研究团体改进现有的估计词向量的技术。我们还预计，高质量的字向量将成为未来NLP应用程序的重要组成部分。</p>
-<p>[1].翻译参考</p>
-<p><a href="https://www.jianshu.com/p/4517181ca9c3" target="_blank" rel="noopener">https://www.jianshu.com/p/4517181ca9c3</a></p>
-<p>[2].N-gram模型</p>
-<p><a href="https://blog.csdn.net/songbinxu/article/details/80209197" target="_blank" rel="noopener">https://blog.csdn.net/songbinxu/article/details/80209197</a></p>
-]]></content>
-      <categories>
-        <category>paper</category>
-      </categories>
-      <tags>
-        <tag>word2vec</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>(word2vec第3弹)词和短语的分布式表示及其构成</title>
-    <url>/2020/04/18/paper/(word2vec)Distributed%20Representations%20of%20Words%20and%20Phrases%20and%20their%20Compositionality/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h3 id="0-简介"><a href="#0-简介" class="headerlink" title="0 简介"></a>0 简介</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">论文中文：词和短语的分布式表示及其构成</span><br><span class="line">论文英文：Distributed Representations of Words and Phrases and their Compositionality.</span><br><span class="line">时间：2013年</span><br><span class="line">作者：Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff</span><br><span class="line">发表期刊：介绍性文章</span><br></pre></td></tr></table></figure>
-<p>讲解Skip-gram模型的优化及其扩展。</p>
-<p>本文提出了几个扩展，提高了向量的质量和训练速度，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.通过对frequent words(高频词)进行二次采样，进行训练加速，并提高了低频词的向量表示。</span><br><span class="line"></span><br><span class="line">2.学习更多的regular word representations(常规词表示)。</span><br><span class="line"></span><br><span class="line">3.提出一个分层softmax的简单替代方法-negative sampling(负采样)。</span><br><span class="line"></span><br><span class="line">4.提出一种简化的噪声对比估计(Noise Contrastive Estimation, NCE),可以更快和更好地表示频繁单词。</span><br></pre></td></tr></table></figure>
-<p>词表示(word representations)的一个固有限制：</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h3><p>skip-gram模型：从大量非结构化文本数据中学习高质量向量表示的有效方法。</p>
-<p>学习高质量分布式向量表示的方法。</p>
-<p>词表示的一个缺陷：不关心词序，而且无法表示习惯用语。</p>
-<h3 id="2-Skip-gram模型"><a href="#2-Skip-gram模型" class="headerlink" title="2 Skip-gram模型"></a>2 Skip-gram模型</h3><p><strong>模型结构：</strong></p>
-<p><img src='https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图1.png' width='200'></p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图2.png" alt="skip-gram模型图2" style="zoom:70%;" /></p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图3.jpg" alt="skip-gram模型图3" style="zoom:80%;" /></p>
-<p>输入层与隐藏层的权重矩阵：VxN，V是词库大小，N是一个词的特征表示长度，300一般</p>
-<p><strong>训练目标：</strong>能够预测文本中某个词周围可能出现的词。已知中心词，预测周围词</p>
-<p><strong>目标函数：</strong>若一份文档由T个词组成，$w_1,w_2,w_3,…,w_T$，模型的目标函数是最大化他们的平均对数概率：</p>
-<p>​        $max~\frac{1}{T}\sum_{t=1}^{T}\sum_{-c\le j\le c,j\ne0}log[p(w_{t+j}|w_t)]$</p>
-<blockquote>
-<p>滑动窗口式目标函数，每个词都作为一次中心词，确定完中心词后，把以[-c,c]作为滑动窗口，计算对数概率的乘积</p>
-</blockquote>
-<p>c是训练上下文的大小，c较大则训练例增大，准确性更高，训练时间更长。</p>
-<p><strong>基本方式计算$p(w_{t+j}|w_t)$：</strong></p>
-<p>具体对(1)的推导过程参见[2]。</p>
-<p>基本的Skip-gram公式使用softmax函数来定义$p(w_{t+j}|w_t)$</p>
-<script type="math/tex; mode=display">
-p(w_O|w_I)=\frac{exp(v'^T_{w_O}v_{w_I})}{\sum_{w=1}^Vexp(v'^T_wv_{w_I})}\tag{1}</script><blockquote>
-<p>$w_I$是已知的中心词，$w_O$是周围的一个词。</p>
-<p>这个公式表达的是具体去计算某一个周围词的概率。</p>
-<p>公式的含义就是用隐-出矩阵的作为周围词的那一列的向量的转置，乘以入-隐矩阵的作为中心词的哪一行的行向量的转置</p>
-</blockquote>
-<ul>
-<li><p>$v_{w_I}$是表示输入-隐藏层的权重矩阵$\bold{W}$的第I行的行向量的转置，是列向量(是Nx1)。也即one-hot编码中不为0的哪一行中的位置。$\bold{W}$是VxN的矩阵。(单词w的中心词向量)</p>
-</li>
-<li><p>$\bold{v}’_{w_O}$是隐藏层-输出层的权重矩阵$\bold{W}’$中的第O列，是Nx1的列向量，，这里的j是输出向量中第j位的单词。$\bold{W}’$是NxV的矩阵。(单词w的上下文词向量)</p>
-</li>
-<li><p>V是输入词向量的维度，模型词汇表的大小；N是隐藏层的维度。</p>
-</li>
-</ul>
-<h3 id="3-论文的改进处"><a href="#3-论文的改进处" class="headerlink" title="3 论文的改进处"></a>3 论文的改进处</h3><h4 id="3-1-采用Hierarchical-Softmax计算-p-w-t-j-w-t"><a href="#3-1-采用Hierarchical-Softmax计算-p-w-t-j-w-t" class="headerlink" title="3.1 采用Hierarchical Softmax计算$p(w_{t+j}|w_t)$"></a>3.1 采用Hierarchical Softmax计算$p(w_{t+j}|w_t)$</h4><p>Hierarchical Softmax，意即分层softmax。结构见下图：”</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/word2vec-H-softmax.png" alt="word2vec-H-softmax" style="zoom:80%;" /></p>
-<p>这里W个字作为叶子节点$w_1,w_2,w_3…$，</p>
-<p><strong>计算方式：</strong></p>
-<script type="math/tex; mode=display">
-p(w|w_i)=\prod^{L(w)-1}_{j=1}\sigma(【n(w,j+1)=ch(n(w,j))】v'^T_{n(w,j)}v_{wI})</script><p>​    n(w,j)：从根节点到单词w的第j个中间节点；</p>
-<p>​    L(w)：从根节点到单词w的路径长度；</p>
-<p>​    ch(n)：是n的左孩子或者右孩子；</p>
-<p>​    【x】：若x为true，则为1；反之则为-1；</p>
-<p>​    $\sigma(x)=\frac{1}{1+exp(-x)}$，并且可以证明$\sum_{w=1}^Wp(w|w_I)=1$</p>
-<p><strong>特点：</strong></p>
-<p>​    与此同时，计算$log(p(w_O|w_I))$和$\nabla log(p(w_O|w_I))$的消耗与$L(w_O)$成正比。</p>
-<p>​    不同于标准的Skip-gram，为每个单词分配两个表征$v_w与v’_w$，分层softmax为每个单词分配一个词向量$v_w$，以及为每个 内部节点分配向量表征$v’_n$。</p>
-<p><strong>优势：</strong></p>
-<p>​    对于Huffman树，高频词的编码较短(靠近根节点)，以此加快训练。</p>
-<h4 id="3-2-负采样Negative-Sampling"><a href="#3-2-负采样Negative-Sampling" class="headerlink" title="3.2 负采样Negative Sampling"></a>3.2 负采样Negative Sampling</h4><p> <strong>随机梯度下降法存在的问题：</strong></p>
-<p>1.我们每次只对窗口中出现的几个单词进行升级，但是在计算梯度的过程中，是对整个参数矩阵进行运算，但这样的参数矩阵中的大部分值都是0，见下面的</p>
-<script type="math/tex; mode=display">
-\nabla_{\theta}J_t(\theta)=\left[\begin{matrix}0\\\vdots\\\nabla_{v_{like}}\\\vdots\\0\\\nabla_{u_I}\\\vdots\\\nabla_{u_{learning}}\\\vdots\end{matrix}\right]\in\R^{2dV}</script><p>2.我们所使用的目标函数是softmax函数</p>
-<p>$softmax(u_o^Tv_c)=p(o|c)=\hat{y}_o=\frac{e^{u^T_o}v_c}{\sum^W_{w=1}e^{u^T_w}v_c}$,由分母可以知道，分母需要把窗口所有的单词的“得分”都算出来再求和，这种方式效率较低。</p>
-<p><strong>负采样的核心思想：</strong></p>
-<p>计算目标单词和窗口中的单词的真实单词对“得分”，再加上一些“噪声”，即词表中的随机单词和目标单词的“得分”。</p>
-<p>真实单词对“得分”和“噪声”作为代价函数。</p>
-<p>每次优化参数，只关注代价函数中涉及的词向量。</p>
-<p>见如下公式：</p>
-<script type="math/tex; mode=display">
-J(\theta)=\frac{1}{T}\sum^T_{t=1}J_t(\theta)</script><script type="math/tex; mode=display">
-J_t(\theta)=log\sigma(u_o^Tv_c)+\sum^k_{j=1}\Bbb{E}_{j~P(w)}[log\sigma(-u_j^Tv_c)]</script><p>采用上述公式解决了之前说的两个问题：</p>
-<ol>
-<li>我们仅对K个参数进行采样</li>
-<li>我们放弃softmax函数，采用sigmoid函数，这样就不存在先求一遍窗口中所有单词的‘“得分”的情况了。</li>
-</ol>
-<h4 id="3-3-高频词的二次取样"><a href="#3-3-高频词的二次取样" class="headerlink" title="3.3 高频词的二次取样"></a>3.3 高频词的二次取样</h4><p>高频出现的词，信息价值很少 → the经常与很多单词co-occurs → 经过长时间训练，词向量没有显著的改变 → 平衡rare and frequency words → 对每个词按概率进行discard。</p>
-<p>概率计算：$P(w_i)=1-\sqrt{\frac{t}{f(w_i)}}$</p>
-<p>$f(w_i)$：单词$w_i$的频率；</p>
-<p>t：阀值，$10^{-5}$</p>
-<p><strong>优势：</strong></p>
-<p>​    1.在保留频率排序的同时，对频率大于t的词进行了启发式的子抽样</p>
-<p>​    2.加快了学习速度，提高了罕见词词向量的准确性。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. 翻译参考</p>
-<p><a href="https://blog.csdn.net/u010555997/article/details/76598666" target="_blank" rel="noopener">https://blog.csdn.net/u010555997/article/details/76598666</a> （前半部分）</p>
-<p><a href="https://blog.csdn.net/qq_27859417/article/details/84929114" target="_blank" rel="noopener">https://blog.csdn.net/qq_27859417/article/details/84929114</a> (概述理解)</p>
-<p>[2].分层softmax介绍</p>
-<p>word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
-<p>[3].整体阅读</p>
-<p><a href="https://hiyoungai.com/posts/28911bbb.html" target="_blank" rel="noopener">https://hiyoungai.com/posts/28911bbb.html</a></p>
-<p>[4].skip-gram模型的深层次解析+语言模型的一些基础知识<a href="https://blog.csdn.net/omashion/article/details/72667203" target="_blank" rel="noopener">https://blog.csdn.net/omashion/article/details/72667203</a></p>
-<p>[5].负采样<a href="https://zhuanlan.zhihu.com/p/29488930" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29488930</a></p>
-]]></content>
-      <categories>
-        <category>paper</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>word2vec的总结</title>
-    <url>/2020/04/18/paper/word2vec/</url>
-    <content><![CDATA[<p>word2vec是<strong>word embedding</strong>的一种</p>
-<p>（word embedding :把人类的抽象符号转换成数值形式，或是嵌入到一个数学空间中，就是词嵌入）</p>
-<p><strong>word2vec的最终目的：</strong></p>
-<p>模型训练完后的副产物-模型参数</p>
-<p>将参数作为输入x的某种向量化的表示，这个向量就是词向量</p>
-<p><strong>word2vec的两种模型</strong></p>
-<p>skip-gram 模型：用词的输入，来预测上下文</p>
-<p>CBOW模型：用上下文输入，来预测词</p>
-<p><strong>word2vec的精髓</strong></p>
-<p>用输入的向量来训练出权重，</p>
-<p><strong>word2vec的三个创新</strong></p>
-<p>(1).将常见的单词组合或者词组作为单个“word”来处理</p>
-<p>(2).对高频词进行抽样来减少训练样本的个数</p>
-<p>(3).对优化目标采用“negative sampling”方法，这样每个训练样本的训练只会更新一小部分的模型权重，从而降低计算负担。(更新的negative words是那些频率较高的单词，这样更有可能和输入有关)</p>
-<p><strong>最后的输出是：</strong></p>
-<p>后验分布：在已知是这个周围词的情况下，还是输入的中心词的概率</p>
-<hr>
-<p>[6].word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
-<p>[1].<strong>激活函数的介绍</strong></p>
-<p>「激活函数」指的是什么？ - Lunarnai的回答 - 知乎 <a href="https://www.zhihu.com/question/304499337/answer/549345296" target="_blank" rel="noopener">https://www.zhihu.com/question/304499337/answer/549345296</a></p>
-<p>[2].<strong>反向传播算法</strong> <a href="https://zhuanlan.zhihu.com/p/33411558" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33411558</a></p>
-<p>[3].softmax函数的介绍</p>
-<p><a href="https://www.cnblogs.com/alexanderkun/p/8098781.html" target="_blank" rel="noopener">https://www.cnblogs.com/alexanderkun/p/8098781.html</a></p>
-<p>[4].<a href="http://liweithu.com/word2vec" target="_blank" rel="noopener">http://liweithu.com/word2vec</a></p>
-]]></content>
-      <categories>
-        <category>paper</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>linux环境变量</title>
-    <url>/2020/06/09/linux/linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h3 id="export命令"><a href="#export命令" class="headerlink" title="export命令"></a>export命令</h3><p>linux的export命令：设置或显示环境变量，在程序中先执行export，告诉系统某某某程序在对应路径下。 在linux里设置环境变量的方法：要么直接在命令行中执行（只对当前有效），要么在profile，.bashrc中设置（重启系统后生效）。</p>
-<p> 使用模板：export PATH=”$PATH:/要添加的路径”</p>
-<p>$是调用变量的意思，$PATH是调用该环境变量的值。其中${}里面放的是变量，用来引用，$()里面放的是命令，执行这个命令。</p>
-<h3 id="etc-environment和-etc-profile的区别"><a href="#etc-environment和-etc-profile的区别" class="headerlink" title="/etc/environment和/etc/profile的区别"></a>/etc/environment和/etc/profile的区别</h3><p>/environment是给系统配置变量，而/profile是给用户配置变量，都是在系统运行时读取，一个先读一个后读。 若是要修改bash的，需要在vi ~/.bashrc中修改，这样重启后就会生效。</p>
-<p>参考：<a href="https://blog.csdn.net/teamlet/article/details/8257853" target="_blank" rel="noopener">https://blog.csdn.net/teamlet/article/details/8257853</a> </p>
-<h3 id="source-filename"><a href="#source-filename" class="headerlink" title="source filename"></a>source filename</h3><p>这个命令其实只是简单地读取脚本里面的语句依次在当前shell里面执行，没有建立新的子shell。那么脚本里面所有新建、改变变量的语句都会保存在当前shell里面。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
       </categories>
   </entry>
   <entry>
@@ -1142,6 +413,270 @@ J_t(\theta)=log\sigma(u_o^Tv_c)+\sum^k_{j=1}\Bbb{E}_{j~P(w)}[log\sigma(-u_j^Tv_c
 ]]></content>
       <categories>
         <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hierarchical softmax</title>
+    <url>/2020/06/11/machine%20learning/Hierarchical%20softmax/</url>
+    <content><![CDATA[<p>构造一棵树，依据训练样本数据中的单词出现的频率，构建起来的一棵Huffman tree，频率越高，节点越短。得到构造的二叉树的结构：</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/分层softmax.png" alt="分层softmax"></p>
+<p>对于每一个节点，都是一个二分类[0,1]，可以用sigmod去处理节点信息。sigmod函数如下：</p>
+<script type="math/tex; mode=display">
+\sigma (x)=\frac{1}{1+exp(-x)}</script><p>此时，当我们知道了目标单词x,我们只需要计算root节点到该词的路径乘积即可，不需去遍历所有的节点信息，时间复杂度变成O($\log_2$(v))</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax2.png" alt="softmax2"></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>RNN(循环神经网络)</title>
+    <url>/2020/06/20/machine%20learning/RNN(%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)/</url>
+    <content><![CDATA[<h3 id="RNN-Recurrent-Neural-Network-问题引入"><a href="#RNN-Recurrent-Neural-Network-问题引入" class="headerlink" title="RNN(Recurrent Neural Network) 问题引入"></a>RNN(Recurrent Neural Network) 问题引入</h3><p>之前研究的是一个个的输入，前一个输入和后一个输入并没有关系，但是任务需要能够更好的处理序列的信息，也即后一个输入的处理结果与前一个输入有着一定的关系。</p>
+<p>比如”我吃苹果”中，在确定”吃”这个输入的词性是动词之后，下一个输入”苹果”是名词的可能性很大，即相互关联关系。</p>
+<h3 id="RNN结构"><a href="#RNN结构" class="headerlink" title="RNN结构"></a>RNN结构</h3><p>先看一个简单的RNN结构</p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/简单RNN结构图.jpg" width="200" height="150"/></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x是一个向量，表示输入层的值。</span><br><span class="line">u是输入层到隐藏层的权重矩阵。</span><br><span class="line">s是一个向量,表示隐藏层的值(这一层有多个节点，节点数与向量s的维度相同)。</span><br><span class="line">权重矩阵w就是隐藏层上一次的值作为这一次的输入的权重。</span><br><span class="line">v是隐藏层到输出层的权重矩阵。</span><br></pre></td></tr></table></figure>
+<p>具体的RNN的结构图</p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/具体RNN的图.jpg" width="550"/></p>
+<blockquote id="fn_？">
+<sup>？</sup>. 这里的g和f是什么？<a href="#reffn_？" title="Jump back to footnote [？] in the text."> &#8617;</a>
+</blockquote>
+<p>之后，将其按照时间线进行展开，得到如下图所示：</p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/展开后的RNN.jpg" width="500" /></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>循环神经网络<a href="https://zybuluo.com/hanbingtao/note/541458" target="_blank" rel="noopener">https://zybuluo.com/hanbingtao/note/541458</a></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Sigmoid函数介绍</title>
+    <url>/2020/07/20/machine%20learning/Sigmoid%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="Sigmoid函数形式"><a href="#Sigmoid函数形式" class="headerlink" title="Sigmoid函数形式"></a>Sigmoid函数形式</h3><script type="math/tex; mode=display">
+\sigma(x)=\frac{1}{1+e^{-x}}</script><p>其导数形式：$\sigma’(x)=\frac{e^{-x}}{(1+e^{-x})^2}=\sigma(x)[1-\sigma(x)]$</p>
+<p>并且由此可以得到</p>
+<p>$[log~\sigma(x)]’=1-\sigma(x)$</p>
+<p>$[log(1-\sigma(x))]’=-\sigma(x)$</p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>softmax简要介绍</title>
+    <url>/2020/07/13/machine%20learning/softmax%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>应用于多分类的场景中。</p>
+<p>把一些输入映射为0-1之间的实数，并且归一化保证和为1.</p>
+<p>max是分类，非黑即白，非大即小。而所希望的是取到某个分类的概率，因此加上soft。最后的输出是每个分类被取到的概率。</p>
+<h3 id="什么是Softmax公式"><a href="#什么是Softmax公式" class="headerlink" title="什么是Softmax公式"></a>什么是Softmax公式</h3><p>首先上图：</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax图片.jpg" alt="softmax图片" style="zoom:80%;" /></p>
+<p><strong>softmax公式：</strong></p>
+<p>若有一个数组V，$V_i$表示V中的第i个元素，则这个元素的softmax的值为：</p>
+<script type="math/tex; mode=display">
+S_i=\frac{e^i}{\sum_je^j}</script><p>该元素的指数值除以所有元素指数和的比值。</p>
+<h3 id="softmax-和k个二元分类器的区别："><a href="#softmax-和k个二元分类器的区别：" class="headerlink" title="softmax 和k个二元分类器的区别："></a>softmax 和k个二元分类器的区别：</h3><p>若分类的类别是互相排斥的，则可以使用Softmax更为方便；</p>
+<p>若分类的类别并不是互相排斥的，则建立k个独立的logistic回归分类器更合适。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].softmax简要介绍</p>
+<p><a href="https://blog.csdn.net/bitcarmanlee/article/details/82320853" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/82320853</a></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>同构图和异构图</title>
+    <url>/2020/07/18/machine%20learning/%E5%90%8C%E6%9E%84%E5%9B%BE%E5%92%8C%E5%BC%82%E6%9E%84%E5%9B%BE/</url>
+    <content><![CDATA[<p>什么是同构图？什么是异构图，他们能够开展的工作有哪些？</p>
+<h3 id="同构图-Homogeneous-Graph"><a href="#同构图-Homogeneous-Graph" class="headerlink" title="同构图(Homogeneous Graph)"></a>同构图(Homogeneous Graph)</h3><p>传统同构图数据中只存在一种节点和边，因此在构建图神经网络时所用节点共享同样的模型参数并且拥有同样的特征空间。</p>
+<h3 id="异构图-Heterogeneous-Graph"><a href="#异构图-Heterogeneous-Graph" class="headerlink" title="异构图(Heterogeneous Graph)"></a>异构图(Heterogeneous Graph)</h3><p>可以存在不只一种节点和边，因此允许不同类型的节点拥有不同维度的特征或属性。</p>
+<p>人和周围事物的关系大部分都是天然异构，如：“我看了《流浪地球》”。“我”和“《流浪地球》”的属性是不同的，需要用不同的模型或特征维度来表达。</p>
+<p> <strong>基于异构图训练的神经网络比较有代表性的两个模型：</strong></p>
+<p>​    1.用于节点分类和链接预测等任务的RGCN</p>
+<p>​    2.用于产品推荐的GCMC。</p>
+<p><strong>异构图神经网络框架DGL[1]：</strong></p>
+<p> 纽约大学、亚马逊联手推出的神经网络框架DGL。</p>
+<p>有各种异构图神经网络的实现方法，比如GCMC、RGCN、HAN、Metapath2vec</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].从图到图卷积<a href="https://www.jianshu.com/p/d97afb87ef20" target="_blank" rel="noopener">https://www.jianshu.com/p/d97afb87ef20</a></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>前馈神经网络</title>
+    <url>/2020/06/11/machine%20learning/%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<p>前馈神经网络的结构以下几个特点：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*每层神经元与下一层神经元之间完全互连</span><br><span class="line">*神经元之间不存在同层连接</span><br><span class="line">*神经元之间不存在跨层连接</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/前馈神经网络.png" alt="前馈神经网络"></p>
+<p>由此可以得知：”前馈“指的是网络拓扑结构中不存在环或回路，</p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>图嵌入</title>
+    <url>/2020/07/17/machine%20learning/%E5%9B%BE%E5%B5%8C%E5%85%A5%20/</url>
+    <content><![CDATA[<h3 id="1-什么是图嵌入"><a href="#1-什么是图嵌入" class="headerlink" title="1 什么是图嵌入"></a>1 什么是图嵌入</h3><p>将图数据(通常为高维稠密的矩阵)映射为低维稠密向量的过程。</p>
+<p>图嵌入要捕捉图的拓扑结构，顶点与顶点的关系，以及其他的信息(如子图、连边等)。如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/图嵌入.jpg" alt="图嵌入" style="zoom:30%;" /></p>
+<h3 id="2-图嵌入技术分类："><a href="#2-图嵌入技术分类：" class="headerlink" title="2 图嵌入技术分类："></a>2 图嵌入技术分类：</h3><p><strong>节点嵌入：</strong></p>
+<p>需要对节点进行分类、节点相似度预测、节点分布可视化时一般采用节点的嵌入。</p>
+<p><strong>图嵌入：</strong></p>
+<p>需要在图级别上预测或者整个图结构决策，需要将整个图表示为一个向量进行嵌入表示。</p>
+<h3 id="3-使用图嵌入的原因："><a href="#3-使用图嵌入的原因：" class="headerlink" title="3 使用图嵌入的原因："></a>3 使用图嵌入的原因：</h3><p><strong>1). 在graph上直接进行机器学习有一定局限性。</strong></p>
+<p>图是由节点和边构成，图中的向量关系只能用数学、统计或者特定的子集进行表示，但在嵌入之后的向量空间具有更加灵活和丰富的计算方式。</p>
+<p><strong>2).图嵌入能够压缩数据。</strong></p>
+<p>原来的图是用邻接矩阵描述图中节点之间的连接。图嵌入之后是降维作用，压缩数据。</p>
+<p><strong>3).向量计算比直接在图上操作更加简单。</strong></p>
+<h3 id="4-图嵌入满足的条件："><a href="#4-图嵌入满足的条件：" class="headerlink" title="4 图嵌入满足的条件："></a>4 图嵌入满足的条件：</h3><p>​    <strong>1).属性选择</strong></p>
+<p>确保嵌入能够很好地描述图的属性，即需要表示图拓扑，节点连接和节点邻域</p>
+<p>​    <strong>2).可扩展性</strong></p>
+<p>好的嵌入方法在小图上高效嵌入，在大图上也能高效嵌入。</p>
+<p>​    <strong>3).嵌入的维度</strong></p>
+<p>需要一个合适的维度。</p>
+<h3 id="5-图嵌入方法"><a href="#5-图嵌入方法" class="headerlink" title="5 图嵌入方法"></a>5 图嵌入方法</h3><h4 id="节点嵌入："><a href="#节点嵌入：" class="headerlink" title="节点嵌入："></a>节点嵌入：</h4><p>DeepWalk，Node2vec，SDNE</p>
+<h4 id="图嵌入"><a href="#图嵌入" class="headerlink" title="图嵌入"></a>图嵌入</h4><p>graph2vec</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].<a href="https://zhuanlan.zhihu.com/p/87572912" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/87572912</a></p>
+<p>[2].图嵌入和知识图谱嵌入<a href="https://zhuanlan.zhihu.com/p/94201377" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/94201377</a></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>李航-《统计学习方法》</title>
+    <url>/2020/06/23/machine%20learning/%E6%9D%8E%E8%88%AA-%E3%80%8A%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E3%80%8B/</url>
+    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].代码实现<a href="https://github.com/fengdu78/lihang-code" target="_blank" rel="noopener">https://github.com/fengdu78/lihang-code</a></p>
+<p>[2].统计学习方法最全资源汇总<a href="https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA</a></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>梯度下降法</title>
+    <url>/2020/07/27/machine%20learning/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/</url>
+    <content><![CDATA[<p>数据样本如下：(样本来自于)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>x1</th>
+<th>x2</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>19</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5</td>
+<td>26</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>19</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这里$x_1$和$x_2$是样本值，y是预测目标，我们假设以一条直线来拟合上面的数据，设待拟合的函数如下：</p>
+<p>$h(\theta)=\theta_1 x_1+\theta_2 x_2\tag{1}$</p>
+<p>我们的目标是求出$\theta_1$和$\theta_2$的值，让$h(\theta)$尽量逼近目标值y。</p>
+<p>对于这个线性回归问题，采用最小二乘法和梯度下降就可以求出两个参数。下面的损失函数等借用最小二乘法的概念解释。</p>
+<h3 id="梯度下降法原理："><a href="#梯度下降法原理：" class="headerlink" title="梯度下降法原理："></a>梯度下降法原理：</h3><p><strong>损失函数</strong>如下：</p>
+<script type="math/tex; mode=display">
+J(\theta)=\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]^2\tag{2}</script><p>这里m代表每次取多少样本进行训练，若采用SGD训练，则每次随机取一组样本，m=1;若是批处理，则m等于每次抽取作为训练样本的数量。$\theta$是参数，其对应于（1）式中的$\theta_1,\theta_2$。</p>
+<p><strong>训练目标如下：</strong></p>
+<p>让损失函数$J(\theta)$的值最小，则由梯度下降法，先对$J(\theta)$求偏导：</p>
+<script type="math/tex; mode=display">
+\frac{ \part }{\part\theta_j}J(\theta)=2\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i](\frac{\part}{\part\theta_j}h_{\theta}(x^i))\\=\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{3}</script><p>由于是要最小化损失函数，故参数$\theta$的更新是按其负梯度方向的：</p>
+<script type="math/tex; mode=display">
+\theta_j:=\theta_j-\alpha\frac{\part}{\part\theta_j}J(\theta)\\=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]x^i_j\tag{4}</script><blockquote>
+<p>每次向山下走时，都以下降最多的路线。</p>
+<p>从二维角度考虑，则利用函数$y=x^2+1$，若要使得函数达到最小值，则对x求导，得到$y’=\frac{1}{2}x$，再利用梯度下降的方式，使得$x \rarr 0$</p>
+</blockquote>
+<h3 id="批量梯度下降法-Batch-gradient-descent"><a href="#批量梯度下降法-Batch-gradient-descent" class="headerlink" title="批量梯度下降法(Batch gradient descent)"></a>批量梯度下降法(Batch gradient descent)</h3><p>每次迭代使用所有的样本。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#用y = Θ1*x1 + Θ2*x2来拟合下面的输入和输出</span></span><br><span class="line"><span class="comment">#input1  1   2   5   4</span></span><br><span class="line"><span class="comment">#input2  4   5   1   2</span></span><br><span class="line"><span class="comment">#output  19  26  19  20</span></span><br><span class="line">input_x = [[<span class="number">1</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">5</span>], [<span class="number">5</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>]]  <span class="comment">#输入</span></span><br><span class="line">y = [<span class="number">19</span>,<span class="number">26</span>,<span class="number">19</span>,<span class="number">20</span>]   <span class="comment">#输出</span></span><br><span class="line">theta = [<span class="number">1</span>,<span class="number">1</span>]       <span class="comment">#θ参数初始化</span></span><br><span class="line">loss = <span class="number">10</span>           <span class="comment">#loss先定义一个数，为了进入循环迭代</span></span><br><span class="line">step_size = <span class="number">0.01</span>    <span class="comment">#步长</span></span><br><span class="line">eps =<span class="number">0.0001</span>         <span class="comment">#精度要求</span></span><br><span class="line">max_iters = <span class="number">10000</span>   <span class="comment">#最大迭代次数</span></span><br><span class="line">error =<span class="number">0</span>            <span class="comment">#损失值</span></span><br><span class="line">iter_count = <span class="number">0</span>      <span class="comment">#当前迭代次数</span></span><br><span class="line"> </span><br><span class="line">err1=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]      <span class="comment">#求Θ1梯度的中间变量1</span></span><br><span class="line">err2=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]      <span class="comment">#求Θ2梯度的中间变量2</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>( loss &gt; eps <span class="keyword">and</span> iter_count &lt; max_iters):   <span class="comment">#迭代条件,使得损失值小于某一个固定的值，就行</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    err1sum = <span class="number">0</span></span><br><span class="line">    err2sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">4</span>):     <span class="comment">#每次迭代所有的样本都进行训练</span></span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]  <span class="comment">#预测值</span></span><br><span class="line">        err1[i]=(pred_y-y[i])*input_x[i][<span class="number">0</span>] <span class="comment">#这个式子是J(\theta)对\theta_1求偏导后得到的式子，然后将样本点代入</span></span><br><span class="line">        err1sum=err1sum+err1[i]                 <span class="comment">#这个是求和</span></span><br><span class="line">        err2[i]=(pred_y-y[i])*input_x[i][<span class="number">1</span>]</span><br><span class="line">        err2sum=err2sum+err2[i]</span><br><span class="line">    theta[<span class="number">0</span>] = theta[<span class="number">0</span>] - step_size * err1sum/<span class="number">4</span>  <span class="comment">#对应(4)式</span></span><br><span class="line">    theta[<span class="number">1</span>] = theta[<span class="number">1</span>] - step_size * err2sum/<span class="number">4</span>  <span class="comment">#对应(4)式</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">4</span>):</span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]   <span class="comment">#预测值</span></span><br><span class="line">        error = (<span class="number">1</span>/(<span class="number">2</span>*<span class="number">4</span>))*(pred_y - y[i])**<span class="number">2</span>  <span class="comment">#损失值</span></span><br><span class="line">        loss = loss + error  <span class="comment">#总损失值</span></span><br><span class="line">    iter_count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"iters_count"</span>, iter_count)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'theta: '</span>,theta )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'final loss: '</span>, loss)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'iters: '</span>, iter_count)</span><br></pre></td></tr></table></figure>
+<p>最后的输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theta:  [3.0044552563214433, 3.9955447274498894]</span><br><span class="line">final loss:  9.428456066652548e-05</span><br><span class="line">iters:  9</span><br></pre></td></tr></table></figure>
+<h3 id="随机梯度下降法-Stochastic-gradientdescent-SGD"><a href="#随机梯度下降法-Stochastic-gradientdescent-SGD" class="headerlink" title="随机梯度下降法(Stochastic gradientdescent):SGD"></a>随机梯度下降法(Stochastic gradientdescent):SGD</h3><p>针对BGD算法训练速度过慢的缺点，提出了SGD算法，普通的BGD算法是每次迭代把所有样本都过一遍，每训练一组样本就把梯度更新一次。而SGD算法是从样本中随机抽出一组，训练后按梯度更新一次，然后再抽取一组，再更新一次，在样本量及其大的情况下，可能不用训练完所有的样本就可以获得一个损失值在可接受范围之内的模型了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#用y = Θ1*x1 + Θ2*x2来拟合下面的输入和输出</span></span><br><span class="line"><span class="comment">#input1  1   2   5   4</span></span><br><span class="line"><span class="comment">#input2  4   5   1   2</span></span><br><span class="line"><span class="comment">#output  19  26  19  20</span></span><br><span class="line">input_x = [[<span class="number">1</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">5</span>], [<span class="number">5</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>]]  <span class="comment">#输入</span></span><br><span class="line">y = [<span class="number">19</span>,<span class="number">26</span>,<span class="number">19</span>,<span class="number">20</span>]   <span class="comment">#输出</span></span><br><span class="line">theta = [<span class="number">1</span>,<span class="number">1</span>]       <span class="comment">#θ参数初始化</span></span><br><span class="line">loss = <span class="number">10</span>           <span class="comment">#loss先定义一个数，为了进入循环迭代</span></span><br><span class="line">step_size = <span class="number">0.01</span>    <span class="comment">#步长</span></span><br><span class="line">eps =<span class="number">0.0001</span>         <span class="comment">#精度要求</span></span><br><span class="line">max_iters = <span class="number">10000</span>   <span class="comment">#最大迭代次数</span></span><br><span class="line">error =<span class="number">0</span>            <span class="comment">#损失值</span></span><br><span class="line">iter_count = <span class="number">0</span>      <span class="comment">#当前迭代次数</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>( loss &gt; eps <span class="keyword">and</span> iter_count &lt; max_iters):    <span class="comment">#迭代条件</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    i = random.randint(<span class="number">0</span>,<span class="number">3</span>)  <span class="comment">#每次迭代在input_x中随机选取一组样本进行权重的更新</span></span><br><span class="line">    pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>] <span class="comment">#预测值</span></span><br><span class="line">    theta[<span class="number">0</span>] = theta[<span class="number">0</span>] - step_size * (pred_y - y[i]) * input_x[i][<span class="number">0</span>]</span><br><span class="line">    theta[<span class="number">1</span>] = theta[<span class="number">1</span>] - step_size * (pred_y - y[i]) * input_x[i][<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">3</span>):</span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>] <span class="comment">#预测值</span></span><br><span class="line">        error = <span class="number">0.5</span>*(pred_y - y[i])**<span class="number">2</span></span><br><span class="line">        loss = loss + error</span><br><span class="line">    iter_count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'iters_count'</span>, iter_count)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'theta: '</span>,theta )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'final loss: '</span>, loss)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'iters: '</span>, iter_count)</span><br></pre></td></tr></table></figure>
+<h3 id="小批量梯度下降-Mini-batch-gradient-descent-：MBGD"><a href="#小批量梯度下降-Mini-batch-gradient-descent-：MBGD" class="headerlink" title="小批量梯度下降(Mini-batch gradient descent)：MBGD"></a>小批量梯度下降(Mini-batch gradient descent)：MBGD</h3><p>SGD相对来说要快很多，但是也有存在问题，由于单个样本的训练可能会带来很多噪声，使得SGD并不是每次迭代都向着整体最优化方向，因此在刚开始训练时可能收敛得很快，但是训练一段时间后就会变得很慢。在此基础上又提出了小批量梯度下降法，它是每次从样本中随机抽取一小批进行训练，而不是一组。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment">#用y = Θ1*x1 + Θ2*x2来拟合下面的输入和输出</span></span><br><span class="line"><span class="comment">#input1  1   2   5   4</span></span><br><span class="line"><span class="comment">#input2  4   5   1   2</span></span><br><span class="line"><span class="comment">#output  19  26  19  20</span></span><br><span class="line">input_x = [[<span class="number">1</span>,<span class="number">4</span>], [<span class="number">2</span>,<span class="number">5</span>], [<span class="number">5</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>]]  <span class="comment">#输入</span></span><br><span class="line">y = [<span class="number">19</span>,<span class="number">26</span>,<span class="number">19</span>,<span class="number">20</span>]       <span class="comment">#输出</span></span><br><span class="line">theta = [<span class="number">1</span>,<span class="number">1</span>]           <span class="comment">#θ参数初始化</span></span><br><span class="line">loss = <span class="number">10</span>               <span class="comment">#loss先定义一个数，为了进入循环迭代</span></span><br><span class="line">step_size = <span class="number">0.01</span>        <span class="comment">#步长</span></span><br><span class="line">eps =<span class="number">0.0001</span>             <span class="comment">#精度要求</span></span><br><span class="line">max_iters = <span class="number">10000</span>       <span class="comment">#最大迭代次数</span></span><br><span class="line">error =<span class="number">0</span>                <span class="comment">#损失值</span></span><br><span class="line">iter_count = <span class="number">0</span>          <span class="comment">#当前迭代次数</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>( loss &gt; eps <span class="keyword">and</span> iter_count &lt; max_iters):  <span class="comment">#迭代条件</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    <span class="comment">#这里每次批量选取的是2组样本进行更新，另一个点是随机点+1的相邻点</span></span><br><span class="line">    i = random.randint(<span class="number">0</span>,<span class="number">3</span>)     <span class="comment">#随机抽取一组样本</span></span><br><span class="line">    j = (i+<span class="number">1</span>)%<span class="number">4</span>                 <span class="comment">#抽取另一组样本，j=i+1</span></span><br><span class="line">    pred_y0 = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]  <span class="comment">#预测值1</span></span><br><span class="line">    pred_y1 = theta[<span class="number">0</span>]*input_x[j][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[j][<span class="number">1</span>]  <span class="comment">#预测值2</span></span><br><span class="line">    theta[<span class="number">0</span>] = theta[<span class="number">0</span>] - step_size * (<span class="number">1</span>/<span class="number">2</span>) * ((pred_y0 - y[i]) * input_x[i][<span class="number">0</span>]+(pred_y1 - y[j]) * input_x[j][<span class="number">0</span>])  <span class="comment">#对应(4)式</span></span><br><span class="line">    theta[<span class="number">1</span>] = theta[<span class="number">1</span>] - step_size * (<span class="number">1</span>/<span class="number">2</span>) * ((pred_y0 - y[i]) * input_x[i][<span class="number">1</span>]+(pred_y1 - y[j]) * input_x[j][<span class="number">1</span>])  <span class="comment">#对应(4)式</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">3</span>):</span><br><span class="line">        pred_y = theta[<span class="number">0</span>]*input_x[i][<span class="number">0</span>]+theta[<span class="number">1</span>]*input_x[i][<span class="number">1</span>]     <span class="comment">#总预测值</span></span><br><span class="line">        error = (<span class="number">1</span>/(<span class="number">2</span>*<span class="number">2</span>))*(pred_y - y[i])**<span class="number">2</span>                    <span class="comment">#损失值</span></span><br><span class="line">        loss = loss + error       <span class="comment">#总损失值</span></span><br><span class="line">    iter_count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'iters_count'</span>, iter_count)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">print</span> (<span class="string">'theta: '</span>,theta )</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'final loss: '</span>, loss)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'iters: '</span>, iter_count)</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].例子<a href="https://blog.csdn.net/Softdiamonds/article/details/80339083#" target="_blank" rel="noopener">https://blog.csdn.net/Softdiamonds/article/details/80339083#</a></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>目标函数和损失函数</title>
+    <url>/2020/07/25/machine%20learning/%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%92%8C%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>度量的是预测值和真实值之间的差异。损失函数通常写成$L(\hat{y},y)$，这里$\hat{y}$表示预测值，$y$表示真实值。比如平方差损失函数$L(\hat{y},y)=(\hat{y}-y)^2$。</p>
+<h3 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h3><p>更为宽泛的概念。</p>
+<p>目标函数是优化问题中的概念。</p>
+<details>   
+    <summary>优化问题包括</summary>
+    (1).目标函数，最终是要最大化或者最小化的函数；</br>
+    (2).约束条件：约束条件是可选的，如x<0，
+     </details>
+
+<h3 id="区分两者的例子"><a href="#区分两者的例子" class="headerlink" title="区分两者的例子"></a>区分两者的例子</h3><h4 id="既是损失函数又是目标函数的例子"><a href="#既是损失函数又是目标函数的例子" class="headerlink" title="既是损失函数又是目标函数的例子"></a>既是损失函数又是目标函数的例子</h4><p><strong>最小二乘的拟合函数：</strong></p>
+<p>给定一组的样本点$\{(x_1,y_1),…,(x_n,y_n)\}$,我们要求用一条直线去拟合这些样本点。假设求出的模型形式为$y=\beta^Tx$。然后最小化下面的方程：</p>
+<script type="math/tex; mode=display">
+arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2\}</script><p>这里这个式子既是损失函数，也是目标函数。</p>
+<h4 id="是目标函数但大于损失函数"><a href="#是目标函数但大于损失函数" class="headerlink" title="是目标函数但大于损失函数"></a>是目标函数但大于损失函数</h4><p><strong>脊回归(Ridge regression)：</strong></p>
+<p>需要对$\beta$做正则化处理。需要优化的函数变成：</p>
+<script type="math/tex; mode=display">
+arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2+\lambda\beta^T\beta\}</script><p>上式可以称作目标函数，但却不是损失函数。损失函数仅仅是其中的一部分</p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>表示学习与深度学习</title>
+    <url>/2020/05/26/machine%20learning/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="My"><a href="#My" class="headerlink" title="My"></a>My</h3><p>表示学习就是将原始数据转换成计算机能有效识别的特征，又分为局部表示和分布式表示。局部表示是用某一维来表示原始数据的某一实体，而分布式表示则是用向量整体来表示，是低维稠密向量。</p>
+<p>嵌入则是将局部表示转换成分布式表示。</p>
+<p>深度学习则是如何有效表示学习+实现这种表示学习的算法。最终目标是提高模型的准确性。</p>
+<h3 id="1-表示学习"><a href="#1-表示学习" class="headerlink" title="1 表示学习"></a>1 表示学习</h3><blockquote>
+<p>定义：<strong>为了提高机器学习系统的准确率，我们就需要将输入信息转换为有效的特征，或者更一般性称为表示（Representation）。如果有一种算法可以自动地学习出有效的特征，并提高最终机器学习模型的性能，那么这种学习就是可以叫做表示学习（Representation Learning）</strong>。</p>
+</blockquote>
+<p><strong>关键：</strong>解决语义鸿沟问题。(输入数据的底层特征和高层语义信息之间的不一致和差异性)，比较好的是在高层语义信息上进行预测模型建模。</p>
+<p><strong>核心问题：</strong>1.“什么是一个好的表示”；2.“如何学习到好的表示”。</p>
+<p><strong>好的表示学习的优点：</strong>1.较强的表示能力；2.包含更高层的语义信息，使得后续的学习任务变得简单；3.具有一般性，任务或领域独立。</p>
+<p><strong>两种表示学习方式：</strong>1.局部表示(Local Representation)；2.分布式表示(Distributed Representation).</p>
+<p><strong>表示学习的关键：</strong>构建具有一定深度的多层次特征表示。</p>
+<h4 id="1-1-局部表示"><a href="#1-1-局部表示" class="headerlink" title="1.1 局部表示"></a>1.1 局部表示</h4><p>一般表示为向量的形式。“one-hot”局部表示，以不同的名字来命名不同的颜色，相当于给颜色取了一个代号，比如(0,0,0,1,0)表示红色，(1,0,0,0)表示绿色，也称作离散表示或符号表示。</p>
+<p><strong>局部表示的两个不足之处：</strong>1.one-hot向量的维数很高，不能扩展。若有一种新的颜色出现，则需要增加一维，所对应的神经网络改动会很大。2.不能很好地刻画不同颜色之间的相似度。</p>
+<h4 id="1-2-分布式表示"><a href="#1-2-分布式表示" class="headerlink" title="1.2 分布式表示"></a>1.2 分布式表示</h4><p>可以表示为低维的稠密向量。举例：表示颜色的方法可以为RGB值，不同的颜色对应R，G，B三维空间中的一个点。如(255,255,255)表示白色，(0,0,0)表示黑色，也即相较于局部表示，分布式表示用稠密向量的整体表示某个实体，而局部表示则是用某一维来表示某个实体。</p>
+<h4 id="1-3-嵌入-Embedding"><a href="#1-3-嵌入-Embedding" class="headerlink" title="1.3 嵌入(Embedding)"></a>1.3 嵌入(Embedding)</h4><p>使用神经网络将高维的局部表示空间$\R^{|v|}$,映射到一个非常低维的分布式表示空间$\R^d$中。使得特征不再是坐标轴上的点，而是分散在整个低维空间中。如下图所示</p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/局部表示嵌入到分布式表示.png" width="300"/></p>
+<p><strong>嵌入：</strong>将一个度量空间中的一些对象映射到另一个低维的度量空间中，并尽可能保持不同对象之间的拓扑关系。</p>
+<p><strong>“好的高层语义表示：”</strong>从底层特征开始，经过多步非线性转换得到。</p>
+<h3 id="2-深度学习"><a href="#2-深度学习" class="headerlink" title="2.深度学习"></a>2.深度学习</h3><p>为了学习一种好的表示，构建一种有深度的模型，并通过学习算法让模型自动学习出特征表示(底层特征-&gt;中层特征-&gt;高层特征)，最终提升预测模型的准确率。</p>
+<p><strong>深度：</strong>原始数据进行非线性特征转换的次数，若一个表示学习系统是一个有向图结构，则深度也是从输入节点到输出节点所经过的最长路径的长度。</p>
+<p><strong>深度学习和表示学习的关系：</strong></p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/深度学习和表示学习.png" /></p>
+<p><strong>深度学习要解决的关键问题：</strong>贡献度分配问题，一个系统的不同组件或参数对于最终输出结果的贡献或影响。即模型的各个部分对于最终结果的影响程度。深度学习主要采用的模型是神经网络模型，利用神经网络的反向误差传播算法来解决各个部分贡献度分配问题。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>表示学习与深度学习<a href="https://www.jianshu.com/p/b1dcd8811326" target="_blank" rel="noopener">https://www.jianshu.com/p/b1dcd8811326</a></p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
       </categories>
   </entry>
   <entry>
@@ -1424,6 +959,192 @@ P_r(n_i|f(u))=\frac{exp(f(n_i)\cdot f(u))}{\sum_{v\in V }exp(f(v)\cdot f(u))}\ta
       </categories>
   </entry>
   <entry>
+    <title>(word2vec第3弹)词和短语的分布式表示及其构成</title>
+    <url>/2020/08/02/papers/(word2vec)Distributed%20Representations%20of%20Words%20and%20Phrases%20and%20their%20Compositionality/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h3 id="0-简介"><a href="#0-简介" class="headerlink" title="0 简介"></a>0 简介</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">论文中文：词和短语的分布式表示及其构成</span><br><span class="line">论文英文：Distributed Representations of Words and Phrases and their Compositionality.</span><br><span class="line">时间：2013年</span><br><span class="line">作者：Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff</span><br><span class="line">发表期刊：介绍性文章</span><br></pre></td></tr></table></figure>
+<p>讲解Skip-gram模型的优化及其扩展。</p>
+<p>本文提出了几个扩展，提高了向量的质量和训练速度，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.通过对frequent words(高频词)进行二次采样，进行训练加速，并提高了低频词的向量表示。</span><br><span class="line"></span><br><span class="line">2.学习更多的regular word representations(常规词表示)。</span><br><span class="line"></span><br><span class="line">3.提出一个分层softmax的简单替代方法-negative sampling(负采样)。</span><br><span class="line"></span><br><span class="line">4.提出一种简化的噪声对比估计(Noise Contrastive Estimation, NCE),可以更快和更好地表示频繁单词。</span><br></pre></td></tr></table></figure>
+<p>词表示(word representations)的一个固有限制：</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h3><p>skip-gram模型：从大量非结构化文本数据中学习高质量向量表示的有效方法。</p>
+<p>学习高质量分布式向量表示的方法。</p>
+<p>词表示的一个缺陷：不关心词序，而且无法表示习惯用语。</p>
+<h3 id="2-Skip-gram模型"><a href="#2-Skip-gram模型" class="headerlink" title="2 Skip-gram模型"></a>2 Skip-gram模型</h3><p><strong>模型结构：</strong></p>
+<p><img src='https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图1.png' width='200'></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图2.png" alt="skip-gram模型图2" style="zoom:70%;" /></p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/skip-gram模型图3.jpg" alt="skip-gram模型图3" style="zoom:80%;" /></p>
+<p>输入层与隐藏层的权重矩阵：VxN，V是词库大小，N是一个词的特征表示长度，300一般</p>
+<p><strong>训练目标：</strong>能够预测文本中某个词周围可能出现的词。已知中心词，预测周围词</p>
+<p><strong>目标函数：</strong>若一份文档由T个词组成，$w_1,w_2,w_3,…,w_T$，模型的目标函数是最大化他们的平均对数概率：</p>
+<p>​        $max~\frac{1}{T}\sum_{t=1}^{T}\sum_{-c\le j\le c,j\ne0}log[p(w_{t+j}|w_t)]$</p>
+<blockquote>
+<p>滑动窗口式目标函数，每个词都作为一次中心词，确定完中心词后，把以[-c,c]作为滑动窗口，计算对数概率的乘积</p>
+</blockquote>
+<p>c是训练上下文的大小，c较大则训练例增大，准确性更高，训练时间更长。</p>
+<p><strong>基本方式计算$p(w_{t+j}|w_t)$：</strong></p>
+<p>具体对(1)的推导过程参见[2]。</p>
+<p>基本的Skip-gram公式使用softmax函数来定义$p(w_{t+j}|w_t)$</p>
+<script type="math/tex; mode=display">
+p(w_O|w_I)=\frac{exp(v'^T_{w_O}v_{w_I})}{\sum_{w=1}^Vexp(v'^T_wv_{w_I})}\tag{1}</script><blockquote>
+<p>$w_I$是已知的中心词，$w_O$是周围的一个词。</p>
+<p>这个公式表达的是具体去计算某一个周围词的概率。</p>
+<p>公式的含义就是用隐-出矩阵的作为周围词的那一列的向量的转置，乘以入-隐矩阵的作为中心词的哪一行的行向量的转置</p>
+</blockquote>
+<ul>
+<li><p>$v_{w_I}$是表示输入-隐藏层的权重矩阵$\bold{W}$的第I行的行向量的转置，是列向量(是Nx1)。也即one-hot编码中不为0的哪一行中的位置。$\bold{W}$是VxN的矩阵。(单词w的中心词向量)</p>
+</li>
+<li><p>$\bold{v}’_{w_O}$是隐藏层-输出层的权重矩阵$\bold{W}’$中的第O列，是Nx1的列向量，，这里的j是输出向量中第j位的单词。$\bold{W}’$是NxV的矩阵。(单词w的上下文词向量)</p>
+</li>
+<li><p>V是输入词向量的维度，模型词汇表的大小；N是隐藏层的维度。</p>
+</li>
+</ul>
+<h3 id="3-论文的改进处"><a href="#3-论文的改进处" class="headerlink" title="3 论文的改进处"></a>3 论文的改进处</h3><h4 id="3-1-采用Hierarchical-Softmax计算-p-w-t-j-w-t"><a href="#3-1-采用Hierarchical-Softmax计算-p-w-t-j-w-t" class="headerlink" title="3.1 采用Hierarchical Softmax计算$p(w_{t+j}|w_t)$"></a>3.1 采用Hierarchical Softmax计算$p(w_{t+j}|w_t)$</h4><p>Hierarchical Softmax，意即分层softmax。结构见下图：”</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/word2vec-H-softmax.png" alt="word2vec-H-softmax" style="zoom:80%;" /></p>
+<p>这里W个字作为叶子节点$w_1,w_2,w_3…$，</p>
+<p><strong>计算方式：</strong></p>
+<script type="math/tex; mode=display">
+p(w|w_i)=\prod^{L(w)-1}_{j=1}\sigma(【n(w,j+1)=ch(n(w,j))】v'^T_{n(w,j)}v_{wI})</script><p>​    n(w,j)：从根节点到单词w的第j个中间节点；</p>
+<p>​    L(w)：从根节点到单词w的路径长度；</p>
+<p>​    ch(n)：是n的左孩子或者右孩子；</p>
+<p>​    【x】：若x为true，则为1；反之则为-1；</p>
+<p>​    $\sigma(x)=\frac{1}{1+exp(-x)}$，并且可以证明$\sum_{w=1}^Wp(w|w_I)=1$</p>
+<p><strong>特点：</strong></p>
+<p>​    与此同时，计算$log(p(w_O|w_I))$和$\nabla log(p(w_O|w_I))$的消耗与$L(w_O)$成正比。</p>
+<p>​    不同于标准的Skip-gram，为每个单词分配两个表征$v_w与v’_w$，分层softmax为每个单词分配一个词向量$v_w$，以及为每个 内部节点分配向量表征$v’_n$。</p>
+<p><strong>优势：</strong></p>
+<p>​    对于Huffman树，高频词的编码较短(靠近根节点)，以此加快训练。</p>
+<h4 id="3-2-负采样Negative-Sampling"><a href="#3-2-负采样Negative-Sampling" class="headerlink" title="3.2 负采样Negative Sampling"></a>3.2 负采样Negative Sampling</h4><p> <strong>随机梯度下降法存在的问题：</strong></p>
+<p>1.我们每次只对窗口中出现的几个单词进行升级，但是在计算梯度的过程中，是对整个参数矩阵进行运算，但这样的参数矩阵中的大部分值都是0，见下面的</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta}J_t(\theta)=\left[\begin{matrix}0\\\vdots\\\nabla_{v_{like}}\\\vdots\\0\\\nabla_{u_I}\\\vdots\\\nabla_{u_{learning}}\\\vdots\end{matrix}\right]\in\R^{2dV}</script><p>2.我们所使用的目标函数是softmax函数</p>
+<p>$softmax(u_o^Tv_c)=p(o|c)=\hat{y}_o=\frac{e^{u^T_o}v_c}{\sum^W_{w=1}e^{u^T_w}v_c}$,由分母可以知道，分母需要把窗口所有的单词的“得分”都算出来再求和，这种方式效率较低。</p>
+<p><strong>负采样的核心思想：</strong></p>
+<p>计算目标单词和窗口中的单词的真实单词对“得分”，再加上一些“噪声”，即词表中的随机单词和目标单词的“得分”。</p>
+<p>真实单词对“得分”和“噪声”作为代价函数。</p>
+<p>每次优化参数，只关注代价函数中涉及的词向量。</p>
+<p>见如下公式：</p>
+<script type="math/tex; mode=display">
+J(\theta)=\frac{1}{T}\sum^T_{t=1}J_t(\theta)</script><script type="math/tex; mode=display">
+J_t(\theta)=log\sigma(u_o^Tv_c)+\sum^k_{j=1}\Bbb{E}_{j~P(w)}[log\sigma(-u_j^Tv_c)]</script><p>采用上述公式解决了之前说的两个问题：</p>
+<ol>
+<li>我们仅对K个参数进行采样</li>
+<li>我们放弃softmax函数，采用sigmoid函数，这样就不存在先求一遍窗口中所有单词的‘“得分”的情况了。</li>
+</ol>
+<h4 id="3-3-高频词的二次取样"><a href="#3-3-高频词的二次取样" class="headerlink" title="3.3 高频词的二次取样"></a>3.3 高频词的二次取样</h4><p>高频出现的词，信息价值很少 → the经常与很多单词co-occurs → 经过长时间训练，词向量没有显著的改变 → 平衡rare and frequency words → 对每个词按概率进行discard。</p>
+<p>概率计算：$P(w_i)=1-\sqrt{\frac{t}{f(w_i)}}$</p>
+<p>$f(w_i)$：单词$w_i$的频率；</p>
+<p>t：阀值，$10^{-5}$</p>
+<p><strong>优势：</strong></p>
+<p>​    1.在保留频率排序的同时，对频率大于t的词进行了启发式的子抽样</p>
+<p>​    2.加快了学习速度，提高了罕见词词向量的准确性。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. 翻译参考</p>
+<p><a href="https://blog.csdn.net/u010555997/article/details/76598666" target="_blank" rel="noopener">https://blog.csdn.net/u010555997/article/details/76598666</a> （前半部分）</p>
+<p><a href="https://blog.csdn.net/qq_27859417/article/details/84929114" target="_blank" rel="noopener">https://blog.csdn.net/qq_27859417/article/details/84929114</a> (概述理解)</p>
+<p>[2].分层softmax介绍</p>
+<p>word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
+<p>[3].整体阅读</p>
+<p><a href="https://hiyoungai.com/posts/28911bbb.html" target="_blank" rel="noopener">https://hiyoungai.com/posts/28911bbb.html</a></p>
+<p>[4].skip-gram模型的深层次解析+语言模型的一些基础知识<a href="https://blog.csdn.net/omashion/article/details/72667203" target="_blank" rel="noopener">https://blog.csdn.net/omashion/article/details/72667203</a></p>
+<p>[5].负采样<a href="https://zhuanlan.zhihu.com/p/29488930" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29488930</a></p>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>(word2vec第1弹)-向量空间中单词表示的有效评估</title>
+    <url>/2020/08/02/papers/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/</url>
+    <content><![CDATA[<p>什么是N-gram模型？</p>
+<p>随机梯度下降和反向传播算法。</p>
+<p>RNN模型</p>
+<p>题目</p>
+<p>Efficient Estimation of Word Representations in Vector Space</p>
+<p>背景说明：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.word2vec是用于词向量计算的工具</span><br><span class="line">2.该工具得到的训练结果：词向量(word embedding),度量词与词之间的相似性。</span><br><span class="line">3.word2vec算法的背后是一个浅层的神经网络</span><br><span class="line">4.word2vec算法或模型是指背后用于计算word vector的CBOW模型和Skip-gram模型。</span><br></pre></td></tr></table></figure>
+<p>由google的Mikolov于2013年发表。</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>两种新的模型体系结构，用于从非常大的数据集中计算单词的连续矢量表示。</p>
+<p>准确性提高，计算成本降低很多。</p>
+<p>用于句法和语义词的相似性。</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>之前是将词作为原子之间的相似性的原子单位，并且在词汇表中表示为索引。典型的是N-gram模型。</p>
+<p>但是这样简单的技术是有限制的，在自动语音识别（由高质量的转录语音数据大小决定）和机器翻译（现有较少的单词库）中，存储的数据是有限的。</p>
+<p>引出使用单词的分布式表示，并且基于神经网络的语音模型优于N-gram模型。</p>
+<h4 id="1-1-Goals-of-the-Paper"><a href="#1-1-Goals-of-the-Paper" class="headerlink" title="1.1 Goals of the Paper"></a>1.1 Goals of the Paper</h4><p><strong>主要目的</strong>：从词汇表中数十亿个单词和数以百计的单词的巨大数据集中引入可用于学习高质量单词矢量的技术。</p>
+<p>单词矢量的最大维数在50~100之间。</p>
+<p>所提出的技术：相似的单词趋于彼此接近，且单词可以有多个相似度。(若名词有多个单词结尾，则在原始矢量空间的子空间中搜索相似的单词，可以找到有相似结尾的单词。)</p>
+<p><strong>单词表示的相似性：</strong>使用对单词向量执行简单代数运算的单词偏移技术，例如，显示出vector（“ King”）-vector（“ Man”）+ vector（“ Woman”）产生的矢量与单词Queen的矢量表示最接近 。</p>
+<p><strong>本文的工作</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.开发保留词间线性规则性的新模型架构来最大化上述向量运算的准确性</span><br><span class="line">2.设计了一种新的综合测验集，用于测量句法和语义规律性，</span><br><span class="line">3.单词向量的维数和训练数据的数量对于训练时间和准确性的影响。</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-Previous-Work"><a href="#1-2-Previous-Work" class="headerlink" title="1.2 Previous Work"></a>1.2 Previous Work</h4><p>将单词作为连续向量的表示，典型的是<strong>NNLM模型</strong>。用于估计神经网络语言模型的模型架构。其中使用具有线性投影层和非线性隐藏层的前馈神经网络来共同学习单词向量表示和统计语言模型。</p>
+<p>其中单词向量是使用带有单个隐藏层的神经网络进行精细学习的。 单词向量被训练为训练NNLM。 因此，即使不构建完整的NNLM，也可以学习单词向量。 在这项工作中，我们直接扩展了该体系结构，并重点关注了使用简单模型学习单词向量的第一步。</p>
+<h3 id="2-Model-Architectures"><a href="#2-Model-Architectures" class="headerlink" title="2.Model Architectures"></a>2.Model Architectures</h3><p>评估单词的连续表示的模型有：Latent Semantic Analysis (LSA) 和 Latent Dirichlet Allocation (LDA)。本文中采用的是<strong>由神经网络学习的词的分布式表示形式</strong>，这种方式在保留词之间的线性规则上好于LSA，在大型数据集上，比LDA更为便宜。</p>
+<p>对于接下来的这几个模型，模型的复杂度和下面的公式成比例：</p>
+<script type="math/tex; mode=display">
+O=E\times T \times Q</script><p>其中E是模型训练的Epochs的数目，T是training set中的单词的数目，Q是每个框架模型的进一步定义，一般的E=3~50，T高达十亿。下面的所有模型都采用随机梯度下降和反向传播训练。</p>
+<h4 id="2-1-Feedforward-Neural-Net-Language-Model-NNLM"><a href="#2-1-Feedforward-Neural-Net-Language-Model-NNLM" class="headerlink" title="2.1 Feedforward Neural Net Language Model(NNLM)"></a>2.1 Feedforward Neural Net Language Model(NNLM)</h4><p>前馈神经网络语言模型</p>
+<p>它由输入，投影，隐藏和输出层组成。 在输入层，使用1-of-V编码对N个先前的单词进行编码，其中V是词汇量。 然后，使用共享的投影矩阵将输入层投影到尺寸为N×D的投影层P上。 由于只有N个输入在给定时间处于活动状态，所以投影层的组成相对便宜。 由于投影层中的值很密集，NNLM体系结构在投影层和隐藏层之间的计算变得很复杂。 对于N = 10的常见选择，投影层（P）的大小可能为500到2000，而隐藏层的大小H通常为500到1000单位。 此外，隐藏层用于计算词汇表中所有单词的概率分布，从而导致维数为V的输出层。 因此，每个训练示例的计算复杂度为下式子(2)</p>
+<script type="math/tex; mode=display">
+Q=N\times D+N\times D\times H+H\times V ---(2)</script><p>其中主导项是H×V。但是，为避免这种情况提出了一些实际的解决方案。要么使用softmax的分层版本[25，23，18]，要么使用在训练过程中未标准化的模型来完全避免标准化模型[4，9]。用词汇表的二叉树表示，需要评估的输出单位数可以降低到log2（V）左右。因此，大多数复杂性是由项N×D×H引起的。在我们的模型中，我们使用层次化的软件最大值，其中词汇表示霍夫曼二叉树。这遵循先前的观察，即词频在神经网络语言模型中很容易获得类[16]。霍夫曼树将短的二进制代码分配给频繁的单词，这进一步减少了需要经过估值的输出单元的数量：而平衡二叉树需要对账本进行估值的log2（V），而基于霍夫曼树的分层软最大值仅需要log2（Unigram perplexity（V））。例如，当词汇量为一百万个单词时，这会使评估速度提高大约两倍。尽管对于N×D×H项中的计算瓶颈而言，这对于神经网络LM而言并不是至关重要的提速，但我们将提出一种建议，该结构必须具有隐藏层并且因此在很大程度上取决于softmax归一化的效率。</p>
+<h3 id="2-2-Recurrent-Neural-Net-Language-Model-RNNLM"><a href="#2-2-Recurrent-Neural-Net-Language-Model-RNNLM" class="headerlink" title="2.2 Recurrent Neural Net Language Model (RNNLM)"></a>2.2 Recurrent Neural Net Language Model (RNNLM)</h3><p>递归神经网络语言模型。</p>
+<p>已经提出了基于递归神经网络的语言模型来克服前馈NNLM的某些限制，例如需要指定上下文长度（模型N的顺序），并且因为理论上RNN可以比浅层神经网络更有效地表示更复杂的模式[15，2]。 RNN模型没有投影层。 仅输入，隐藏和输出层。 这种类型的模型的特殊之处在于递归矩阵，它使用延时连接将隐藏层与其自身相连。 这允许循环模型形成某种形式的短期内存，该信息是由隐藏层状态表示的过去的信息组成的，该信息根据当前输入和上一时间步中隐藏层的状态进行更新。 RNN模型的每个训练示例的复杂度为</p>
+<script type="math/tex; mode=display">
+Q=H\times H+H\times V---(3)</script><p>其中，单词表示D的维数与隐藏层H相同。再次，可以使用分层softmax有效地将术语H×V简化为H×log2（V）。 那么，大多数复杂度来自H×H。</p>
+<h3 id="2-3-Parallel-Training-of-Neural-Networks"><a href="#2-3-Parallel-Training-of-Neural-Networks" class="headerlink" title="2.3  Parallel Training of Neural Networks"></a>2.3  Parallel Training of Neural Networks</h3><p>神经网络并行训练。</p>
+<p>为了在海量数据集上训练模型，我们在称为DistBelief [6]的大规模分布式框架的基础上实现了多个模型，包括前馈NNLM和本文提出的新模型。 该框架允许我们并行运行同一模型的多个副本，并且每个副本通过保留所有参数的集中式服务器同步其梯度更新。 对于这种并行训练，我们使用称为Adagrad [7]的自适应学习速率程序进行小批量异步梯度下降。 在此框架下，通常使用一百个或多个模型副本，每个副本在数据中心的不同计算机上使用许多CPU内核。</p>
+<h3 id="3-New-Log-linear-Models-对数线性模型"><a href="#3-New-Log-linear-Models-对数线性模型" class="headerlink" title="3 New Log-linear Models(对数线性模型)"></a>3 New Log-linear Models(对数线性模型)</h3><p>上面这些模型的非线性隐藏层导致了复杂性较高。新的架构直接遵循我们早期工作[13，14]中提出的架构，发现神经网络语言模型可以成功地分两个步骤进行训练：首先，使用简单模型对连续的单词向量进行学习，然后在这些单词的分布式表示之上限制N-gram NLM。 虽然后来有大量工作集中在学习单词向量上，但我们认为[13]中提出的简化简单方法的方法。 请注意，相关模型也已经提早提出[26，8]。</p>
+<h4 id="3-1-Continuous-Bag-of-Words-Model-连续词袋模型"><a href="#3-1-Continuous-Bag-of-Words-Model-连续词袋模型" class="headerlink" title="3.1 Continuous Bag-of-Words Model(连续词袋模型)"></a>3.1 Continuous Bag-of-Words Model(连续词袋模型)</h4><p>所提出的第一个体系结构类似于前馈NNLM，其中去除了非线性隐藏层，并且所有单词都共享了投影层（不仅仅是投影矩阵）。因此，所有单词都投影到同一位置（对它们的向量进行平均）。我们将此架构称为“词袋模型”，因为历史中的词序不会影响投影。此外，我们也使用未来的话语。通过构建一个对数线性分类器，在输入中包含四个未来和四个历史单词，我们的训练标准是正确分类当前（中间）单词，从而在下一节介绍的任务上获得了最佳性能。那么训练的复杂度如下：</p>
+<script type="math/tex; mode=display">
+Q=N\times D+D\times \log_2(V)---(4)</script><p>我们将这个模型进一步称为CBOW，与标准的词袋模型不同，它使用上下文的连续分布式表示。该模型的体系结构如图1所示。请注意，输入和投影层之间的权重矩阵以与NNLM中相同的方式共享给所有单词位置。</p>
+<h4 id="3-2-Continuous-Skip-gram-Model"><a href="#3-2-Continuous-Skip-gram-Model" class="headerlink" title="3.2 Continuous Skip-gram Model"></a>3.2 Continuous Skip-gram Model</h4><p>第二种结构与CBOW类似，但是它不是根据上下文来预测当前单词，而是尝试根据同一句子中的另一个单词来最大化单词的分类。更准确地说，我们将每个当前单词用作具有连续投影层的对数线性分类器的输入，并预测当前单词前后的特定范围内的单词。我们发现，增加范围可以提高所得词向量的质量，但同时也会增加计算复杂度。由于距离较远的单词通常比与距离最近的单词更不相关，因此我们在训练示例中通过从这些单词中抽取较少的采样来给予距离较远的单词较少的权重。这种架构的训练复杂度是</p>
+<script type="math/tex; mode=display">
+Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离。因此，如果我们选择C = 5，则对于每个训练词，我们将随机选择范围<1; C>的数字R，将历史中的R个单词和当前单词的未来中的R个单词用作正确的标签。这将要求我们对R×2个单词进行分类，将当前单词作为输入，并将每个R + R单词作为输出。在以下实验中，我们使用C = 10。</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/CBOW-SkipGram.png" alt="CBOW-SkipGram"></p>
+<h3 id="4-Result"><a href="#4-Result" class="headerlink" title="4.Result"></a>4.Result</h3><h3 id="6-Conclusion"><a href="#6-Conclusion" class="headerlink" title="6 Conclusion"></a>6 Conclusion</h3><p> 本文研究了语法模型和语义语言任务的集合中各种模型衍生的单词的矢量表示的质量。我们观察到，与流行的神经网络模型（前馈模型和递归模型）相比，可以使用非常简单的模型结构来训练高质量的单词向量。由于计算复杂度低得多，因此可以从更大的数据集中计算出非常准确的高维词向量。使用Dist Belief分布的框架，即使在具有一万亿个单词的语料库上，也应该能够训练CBOW和Skip-gram模型，从而使词汇量基本上不受限制。这比以前发布的同类最佳结果最好的数量级大几个数量级。SemEval-2012 Task 2 [11]是一个有趣的任务，其中单词向量最近被显示为明显优于以前的最新技术水平。公开使用的RNN向量与其他技术一起使用，使Spearman的排名相关性比以前的最佳结果提高了50％以上[31]。基于神经网络的词向量先前已应用于许多其他NLP任务，例如情感分析[12]和复述检测[28]。可以预期，这些应用程序可以从本文描述的模型架构中受益。我们正在进行的工作表明，单词向量可以成功地应用于知识库中事实的自动扩展，也可以用于验证现有事实的正确性。机器翻译实验的结果看起来也很有希望。将来，比较我们的技术需求潜在关系分析[30]和其他方法也将很有趣。相信我们全面的测试集将帮助研究团体改进现有的估计词向量的技术。我们还预计，高质量的字向量将成为未来NLP应用程序的重要组成部分。</p>
+<p>[1].翻译参考</p>
+<p><a href="https://www.jianshu.com/p/4517181ca9c3" target="_blank" rel="noopener">https://www.jianshu.com/p/4517181ca9c3</a></p>
+<p>[2].N-gram模型</p>
+<p><a href="https://blog.csdn.net/songbinxu/article/details/80209197" target="_blank" rel="noopener">https://blog.csdn.net/songbinxu/article/details/80209197</a></p>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+      <tags>
+        <tag>word2vec</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>word2vec的总结</title>
+    <url>/2020/08/02/papers/word2vec/</url>
+    <content><![CDATA[<p>word2vec是<strong>word embedding</strong>的一种</p>
+<p>（word embedding :把人类的抽象符号转换成数值形式，或是嵌入到一个数学空间中，就是词嵌入）</p>
+<p><strong>word2vec的最终目的：</strong></p>
+<p>模型训练完后的副产物-模型参数</p>
+<p>将参数作为输入x的某种向量化的表示，这个向量就是词向量</p>
+<p><strong>word2vec的两种模型</strong></p>
+<p>skip-gram 模型：用词的输入，来预测上下文</p>
+<p>CBOW模型：用上下文输入，来预测词</p>
+<p><strong>word2vec的精髓</strong></p>
+<p>用输入的向量来训练出权重，</p>
+<p><strong>word2vec的三个创新</strong></p>
+<p>(1).将常见的单词组合或者词组作为单个“word”来处理</p>
+<p>(2).对高频词进行抽样来减少训练样本的个数</p>
+<p>(3).对优化目标采用“negative sampling”方法，这样每个训练样本的训练只会更新一小部分的模型权重，从而降低计算负担。(更新的negative words是那些频率较高的单词，这样更有可能和输入有关)</p>
+<p><strong>最后的输出是：</strong></p>
+<p>后验分布：在已知是这个周围词的情况下，还是输入的中心词的概率</p>
+<hr>
+<p>[6].word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
+<p>[1].<strong>激活函数的介绍</strong></p>
+<p>「激活函数」指的是什么？ - Lunarnai的回答 - 知乎 <a href="https://www.zhihu.com/question/304499337/answer/549345296" target="_blank" rel="noopener">https://www.zhihu.com/question/304499337/answer/549345296</a></p>
+<p>[2].<strong>反向传播算法</strong> <a href="https://zhuanlan.zhihu.com/p/33411558" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33411558</a></p>
+<p>[3].softmax函数的介绍</p>
+<p><a href="https://www.cnblogs.com/alexanderkun/p/8098781.html" target="_blank" rel="noopener">https://www.cnblogs.com/alexanderkun/p/8098781.html</a></p>
+<p>[4].<a href="http://liweithu.com/word2vec" target="_blank" rel="noopener">http://liweithu.com/word2vec</a></p>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Ajax+Django框架介绍</title>
     <url>/2020/05/16/python/Django%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<h3 id="Django前后端交互"><a href="#Django前后端交互" class="headerlink" title="Django前后端交互"></a>Django前后端交互</h3><p>实现数据交互的两种方法：form表单和ajax数据交互。</p>
@@ -1531,6 +1252,17 @@ P_r(n_i|f(u))=\frac{exp(f(n_i)\cdot f(u))}{\sum_{v\in V }exp(f(v)\cdot f(u))}\ta
       </categories>
   </entry>
   <entry>
+    <title>endswitch()函数</title>
+    <url>/2020/05/06/python/endswitch()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="一-功能："><a href="#一-功能：" class="headerlink" title="一.功能："></a>一.功能：</h3><p>判断字符串是否以指定字符或者字符串结尾。</p>
+<h3 id="二-函数原型："><a href="#二-函数原型：" class="headerlink" title="二.函数原型："></a>二.函数原型：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.endswith(&quot;suffix&quot;,    	&#x3D;&gt; 后缀，可以是单个字符，也可以是字符串，还可以是元组;</span><br><span class="line">	      start &#x3D; 0,  	&#x3D;&gt; 索引字符串的起始位置;</span><br><span class="line">	      end &#x3D; len(str))	&#x3D;&gt; 索引字符串的结束位置。</span><br><span class="line">返回值：布尔类型（True,False）</span><br></pre></td></tr></table></figure>
+<h3 id="三-例子"><a href="#三-例子" class="headerlink" title="三.例子"></a>三.例子</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str=<span class="string">"Hello World"</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>)  <span class="comment">#判断是否以d结尾</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>,<span class="number">0</span>,<span class="number">6</span>) <span class="comment">#索引"Hello W"是否以d结尾</span></span><br><span class="line">str[<span class="number">0</span>:<span class="number">6</span>].endswitch(<span class="string">"d"</span>) <span class="comment">#只索引str[0:6]的</span></span><br><span class="line">str.endswitch((<span class="string">"e"</span>,<span class="string">"o"</span>)) <span class="comment">#遍历元组中的元素，存在则返回True</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>invalid syntax问题</title>
     <url>/2020/05/11/python/invalid%20syntax%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>学习python时，明明代码没有一点问题，但是每次运行时都会显示<strong>”SyntaxError: invalid syntax”</strong>。</p>
@@ -1540,17 +1272,6 @@ P_r(n_i|f(u))=\frac{exp(f(n_i)\cdot f(u))}{\sum_{v\in V }exp(f(v)\cdot f(u))}\ta
 <h4 id="2-路径问题："><a href="#2-路径问题：" class="headerlink" title="2.路径问题："></a>2.路径问题：</h4><p>记得仔细查看自己的路径是否正确；</p>
 <h4 id="3-安装第三方模块时："><a href="#3-安装第三方模块时：" class="headerlink" title="3.安装第三方模块时："></a>3.安装第三方模块时：</h4><p>在安装第三方模块时也有可能出现“SyntaxError: invalid syntax”这个问题，这时需要检查一些是否是在cmd窗口下安装，同时，要到python的安装目录里面，找到pip所在的目录里面进行安装；</p>
 <h4 id="4-编写问题："><a href="#4-编写问题：" class="headerlink" title="4.编写问题："></a>4.编写问题：</h4><p>忘记在 if , elif , else , for , while , class ,def 声明末尾添加 冒号( : )；<br>误将 = 当成 == 使用；</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>endswitch()函数</title>
-    <url>/2020/05/06/python/endswitch()%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="一-功能："><a href="#一-功能：" class="headerlink" title="一.功能："></a>一.功能：</h3><p>判断字符串是否以指定字符或者字符串结尾。</p>
-<h3 id="二-函数原型："><a href="#二-函数原型：" class="headerlink" title="二.函数原型："></a>二.函数原型：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.endswith(&quot;suffix&quot;,    	&#x3D;&gt; 后缀，可以是单个字符，也可以是字符串，还可以是元组;</span><br><span class="line">	      start &#x3D; 0,  	&#x3D;&gt; 索引字符串的起始位置;</span><br><span class="line">	      end &#x3D; len(str))	&#x3D;&gt; 索引字符串的结束位置。</span><br><span class="line">返回值：布尔类型（True,False）</span><br></pre></td></tr></table></figure>
-<h3 id="三-例子"><a href="#三-例子" class="headerlink" title="三.例子"></a>三.例子</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str=<span class="string">"Hello World"</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>)  <span class="comment">#判断是否以d结尾</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>,<span class="number">0</span>,<span class="number">6</span>) <span class="comment">#索引"Hello W"是否以d结尾</span></span><br><span class="line">str[<span class="number">0</span>:<span class="number">6</span>].endswitch(<span class="string">"d"</span>) <span class="comment">#只索引str[0:6]的</span></span><br><span class="line">str.endswitch((<span class="string">"e"</span>,<span class="string">"o"</span>)) <span class="comment">#遍历元组中的元素，存在则返回True</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1762,6 +1483,17 @@ P_r(n_i|f(u))=\frac{exp(f(n_i)\cdot f(u))}{\sum_{v\in V }exp(f(v)\cdot f(u))}\ta
       </categories>
   </entry>
   <entry>
+    <title>plt-figure()函数</title>
+    <url>/2020/05/07/python/plt-figure()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="一-简介："><a href="#一-简介：" class="headerlink" title="一.简介："></a>一.简介：</h3><p>创建一个图形实例</p>
+<h3 id="二-语法说明"><a href="#二-语法说明" class="headerlink" title="二.语法说明"></a>二.语法说明</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">figure(num=<span class="literal">None</span>, figsize=<span class="literal">None</span>, dpi=<span class="literal">None</span>, facecolor=<span class="literal">None</span>, edgecolor=<span class="literal">None</span>, frameon=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">      num : 图像编号或名称，数字为编号，字符串为名称</span></span><br><span class="line"><span class="string">  figsize : 指定figure的宽和高，单位为英寸</span></span><br><span class="line"><span class="string">      dpi : 指定绘图对象的分辨率，即每英寸多少个像素，缺省值为80</span></span><br><span class="line"><span class="string">facecolor : 背景的颜色</span></span><br><span class="line"><span class="string">edgecolor : 边框颜色</span></span><br><span class="line"><span class="string">  frameon : 是否显示边框</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<h3 id="三-举例"><a href="#三-举例" class="headerlink" title="三.举例"></a>三.举例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">4</span>, <span class="number">3</span>), facecolor=<span class="string">'blue'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>py2neo库的介绍</title>
     <url>/2020/05/12/python/py2neo%E5%BA%93/</url>
     <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><p>这个库是python和neo4j进行连接的库，可以用这个库的相关函数对Neo4j的数据库进行操作。</p>
@@ -1772,17 +1504,6 @@ P_r(n_i|f(u))=\frac{exp(f(n_i)\cdot f(u))}{\sum_{v\in V }exp(f(v)\cdot f(u))}\ta
 <p><a href="https://blog.csdn.net/amao1998/article/details/81041143" target="_blank" rel="noopener">https://blog.csdn.net/amao1998/article/details/81041143</a></p>
 <p>这里neo4j-driver和py2neo是有区别的，</p>
 <p>前者是官方支持的，后者则在用户友好度上有优势，但还是建议使用前者。</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>plt-figure()函数</title>
-    <url>/2020/05/07/python/plt-figure()%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="一-简介："><a href="#一-简介：" class="headerlink" title="一.简介："></a>一.简介：</h3><p>创建一个图形实例</p>
-<h3 id="二-语法说明"><a href="#二-语法说明" class="headerlink" title="二.语法说明"></a>二.语法说明</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">figure(num=<span class="literal">None</span>, figsize=<span class="literal">None</span>, dpi=<span class="literal">None</span>, facecolor=<span class="literal">None</span>, edgecolor=<span class="literal">None</span>, frameon=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">      num : 图像编号或名称，数字为编号，字符串为名称</span></span><br><span class="line"><span class="string">  figsize : 指定figure的宽和高，单位为英寸</span></span><br><span class="line"><span class="string">      dpi : 指定绘图对象的分辨率，即每英寸多少个像素，缺省值为80</span></span><br><span class="line"><span class="string">facecolor : 背景的颜色</span></span><br><span class="line"><span class="string">edgecolor : 边框颜色</span></span><br><span class="line"><span class="string">  frameon : 是否显示边框</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
-<h3 id="三-举例"><a href="#三-举例" class="headerlink" title="三.举例"></a>三.举例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">4</span>, <span class="number">3</span>), facecolor=<span class="string">'blue'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>python</category>
@@ -2783,6 +2504,27 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
+    <title>Pytorch的使用</title>
+    <url>/2020/06/09/tools/Pytorch/</url>
+    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>pytorch的中文社区库github上的<a href="https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion" target="_blank" rel="noopener">https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion</a></p>
+<p>对应的英文库<a href="https://github.com/bharathgs/Awesome-pytorch-list" target="_blank" rel="noopener">https://github.com/bharathgs/Awesome-pytorch-list</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Vmware使用问题</title>
+    <url>/2020/04/19/tools/Vmware%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>在使用VM时出现了如下的问题：</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/VMware锁定问题问题.jpg" alt=""></h1><h3 id="二-原因："><a href="#二-原因：" class="headerlink" title="二.原因："></a>二.原因：</h3><p>虚拟机异常关闭导致的。</p>
+<h3 id="三-解决办法："><a href="#三-解决办法：" class="headerlink" title="三.解决办法："></a>三.解决办法：</h3><p> 找到虚拟机所安装的位置，把所有.lck<em>文件都删除即可</em>。</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
     <title>tools/Neo4j的相关操作</title>
     <url>/2020/05/13/tools/Neo4j%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。</p>
@@ -2838,27 +2580,6 @@ f3    &x\gt0
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>Cypher语句使用案例<a href="https://blog.csdn.net/u013032852/article/details/82997088?utm_source=blogxgwz7" target="_blank" rel="noopener">https://blog.csdn.net/u013032852/article/details/82997088?utm_source=blogxgwz7</a></p>
 <p>用Neo4j构建明星关系图谱<a href="https://zhuanlan.zhihu.com/p/61096301" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61096301</a></p>
 <p>Neo4j的前端可视化组件<a href="https://zhuanlan.zhihu.com/p/126219777" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/126219777</a></p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Pytorch的使用</title>
-    <url>/2020/06/09/tools/Pytorch/</url>
-    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>pytorch的中文社区库github上的<a href="https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion" target="_blank" rel="noopener">https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion</a></p>
-<p>对应的英文库<a href="https://github.com/bharathgs/Awesome-pytorch-list" target="_blank" rel="noopener">https://github.com/bharathgs/Awesome-pytorch-list</a></p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Vmware使用问题</title>
-    <url>/2020/04/19/tools/Vmware%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>在使用VM时出现了如下的问题：</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/VMware锁定问题问题.jpg" alt=""></h1><h3 id="二-原因："><a href="#二-原因：" class="headerlink" title="二.原因："></a>二.原因：</h3><p>虚拟机异常关闭导致的。</p>
-<h3 id="三-解决办法："><a href="#三-解决办法：" class="headerlink" title="三.解决办法："></a>三.解决办法：</h3><p> 找到虚拟机所安装的位置，把所有.lck<em>文件都删除即可</em>。</p>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -3146,24 +2867,6 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
-    <title>小米2手机刷机</title>
-    <url>/2020/06/03/%E5%85%B6%E4%BB%96/%E5%B0%8F%E7%B1%B32s%E5%8D%A1%E5%88%B7%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h3 id="一-问题描述"><a href="#一-问题描述" class="headerlink" title="一.问题描述"></a>一.问题描述</h3><p>一部小米2手机，如何把系统刷机到MIUI5或者其他版本？</p>
-<h3 id="二-方式"><a href="#二-方式" class="headerlink" title="二.方式"></a>二.方式</h3><h4 id="卡刷1："><a href="#卡刷1：" class="headerlink" title="卡刷1："></a>卡刷1：</h4><p>1.到官网论坛，选择下载需要的卡刷包。</p>
-<p>2.将下载好的ROM重新命名为update.zip</p>
-<p>3.将小米2连接上电脑，通常情况下会产生一个可移动磁盘（XIAOMI）和一个小米2的手机图标（MI2），如果没有小米2的图标(MI2)，请安装产生的可移动磁盘（XIAOMI）里的可执行文件Setup.exe，安装驱动，成功后继续第4步。如果产生了小米2的图标，请直接第4步。</p>
-<p>4.打开小米2图标，打开我的电脑里小米2的手机图标（MI2），里面有个内存设备，打开。将下载好的并且重命名后的文件update.zip拷贝到内存设备磁盘中（必须是根目录）。拷贝完后关闭手机。</p>
-<p>5.先关机，按住开机键+音量上 屏幕亮后立即松开电源键 音量上一直按住 进入recovery 。选择简体中文 然后选择 清除数据 确认 里面三个选项都清除 。（音量键上下选择，电源键确定）。然后选择将update.zip安装至第一系统。等待刷机成功重启。</p>
-<p>6.刷机成功后返回主菜单，选择重启系统，选择（最近）这个系统，因为进错了会无限重启。 </p>
-<h4 id="卡刷2："><a href="#卡刷2：" class="headerlink" title="卡刷2："></a>卡刷2：</h4><p>下载奇兔刷机，然后按照操作一键刷机。</p>
-<p>或者下载小米手机助手</p>
-<h4 id="如何识别线刷包和卡刷包："><a href="#如何识别线刷包和卡刷包：" class="headerlink" title="如何识别线刷包和卡刷包："></a>如何识别线刷包和卡刷包：</h4><p><a href="http://rom.7to.cn/jiaochengdetail/17162" target="_blank" rel="noopener">http://rom.7to.cn/jiaochengdetail/17162</a></p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
     <title>如何写出合适的参考文献</title>
     <url>/2020/05/31/%E5%85%B6%E4%BB%96/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E5%90%88%E9%80%82%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/</url>
     <content><![CDATA[<h3 id="一-论文下载与找寻"><a href="#一-论文下载与找寻" class="headerlink" title="一.论文下载与找寻"></a>一.论文下载与找寻</h3><p>从浏览器中的Blog中找话</p>
@@ -3184,6 +2887,24 @@ f3    &x\gt0
 <p><a href="https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html</a></p>
 <p>参考文献中显示符合重复是啥意思：</p>
 <p><a href="http://www.nxhh.net/lunwen/95159.html" target="_blank" rel="noopener">http://www.nxhh.net/lunwen/95159.html</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>小米2手机刷机</title>
+    <url>/2020/06/03/%E5%85%B6%E4%BB%96/%E5%B0%8F%E7%B1%B32s%E5%8D%A1%E5%88%B7%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="一-问题描述"><a href="#一-问题描述" class="headerlink" title="一.问题描述"></a>一.问题描述</h3><p>一部小米2手机，如何把系统刷机到MIUI5或者其他版本？</p>
+<h3 id="二-方式"><a href="#二-方式" class="headerlink" title="二.方式"></a>二.方式</h3><h4 id="卡刷1："><a href="#卡刷1：" class="headerlink" title="卡刷1："></a>卡刷1：</h4><p>1.到官网论坛，选择下载需要的卡刷包。</p>
+<p>2.将下载好的ROM重新命名为update.zip</p>
+<p>3.将小米2连接上电脑，通常情况下会产生一个可移动磁盘（XIAOMI）和一个小米2的手机图标（MI2），如果没有小米2的图标(MI2)，请安装产生的可移动磁盘（XIAOMI）里的可执行文件Setup.exe，安装驱动，成功后继续第4步。如果产生了小米2的图标，请直接第4步。</p>
+<p>4.打开小米2图标，打开我的电脑里小米2的手机图标（MI2），里面有个内存设备，打开。将下载好的并且重命名后的文件update.zip拷贝到内存设备磁盘中（必须是根目录）。拷贝完后关闭手机。</p>
+<p>5.先关机，按住开机键+音量上 屏幕亮后立即松开电源键 音量上一直按住 进入recovery 。选择简体中文 然后选择 清除数据 确认 里面三个选项都清除 。（音量键上下选择，电源键确定）。然后选择将update.zip安装至第一系统。等待刷机成功重启。</p>
+<p>6.刷机成功后返回主菜单，选择重启系统，选择（最近）这个系统，因为进错了会无限重启。 </p>
+<h4 id="卡刷2："><a href="#卡刷2：" class="headerlink" title="卡刷2："></a>卡刷2：</h4><p>下载奇兔刷机，然后按照操作一键刷机。</p>
+<p>或者下载小米手机助手</p>
+<h4 id="如何识别线刷包和卡刷包："><a href="#如何识别线刷包和卡刷包：" class="headerlink" title="如何识别线刷包和卡刷包："></a>如何识别线刷包和卡刷包：</h4><p><a href="http://rom.7to.cn/jiaochengdetail/17162" target="_blank" rel="noopener">http://rom.7to.cn/jiaochengdetail/17162</a></p>
 ]]></content>
       <categories>
         <category>其他</category>
