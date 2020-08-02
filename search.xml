@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++的Vector操作</title>
+    <url>/2020/04/18/C++/C++%E7%9A%84Vector%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h3 id="一-头文件"><a href="#一-头文件" class="headerlink" title="一.头文件"></a>一.头文件</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="二-vector申明及初始化"><a href="#二-vector申明及初始化" class="headerlink" title="二.vector申明及初始化"></a>二.vector申明及初始化</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; vec(5)；//申明一个初始大小为5的int型向量</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vect</span><span class="params">(<span class="number">10</span>,<span class="number">1</span>)</span></span>; <span class="comment">//申明一个初始大小为10，且值都为1的向量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vec</span><span class="params">(num,num+<span class="number">5</span>)</span></span>;<span class="comment">// 将num数组的元素用于初始化vec向量(数组首地址，数组尾地址)</span></span><br></pre></td></tr></table></figure>
+<h3 id="三-vector的基本操作"><a href="#三-vector的基本操作" class="headerlink" title="三.vector的基本操作"></a>三.vector的基本操作</h3><h4 id="1-容量的访问"><a href="#1-容量的访问" class="headerlink" title="1.容量的访问"></a>1.容量的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.向量大小：len=vec.<span class="built_in">size</span>()</span><br><span class="line">b.向量最大容量：(<span class="keyword">int</span>)vec.max_size();</span><br><span class="line">c.更改向量大小：vec.resize(num);   </span><br><span class="line">d.向量真实大小：<span class="keyword">int</span> len=vec.capacity()</span><br><span class="line">e.向量判空：vec.empty();   </span><br><span class="line">f.减少向量大小到满足元素所占存储空间的大小：vec.shrink_to_fit();</span><br></pre></td></tr></table></figure>
+<h4 id="2-修改"><a href="#2-修改" class="headerlink" title="2.修改"></a>2.修改</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.末尾添加元素：vec.push_back(要添加的元素）</span><br><span class="line">b.末尾删除元素：vec.pop_back(空)；</span><br><span class="line">                       </span><br><span class="line">c.任意位置插入元素：vec.insert();</span><br><span class="line">iterator insert( iterator loc, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入值为val的元素,返回指向这个元素的迭代器,</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, size_type num, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入num个值为val的元素</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, input_iterator start, input_iterator <span class="built_in">end</span> );<span class="comment">//在指定位置loc前插入区间[start, end)的所有元素 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d.任意位置删除元素：vec.erase();</span><br><span class="line">vec.erase(pos)，删除pos位置的数据</span><br><span class="line">vec.erase(beg，<span class="built_in">end</span>); 删除[beg，<span class="built_in">end</span>]区间的数据</span><br><span class="line"></span><br><span class="line">e.交换两个向量的元素：vec.swap();</span><br><span class="line"></span><br><span class="line">f.清空向量元素:vec.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
+<h4 id="3-元素的访问"><a href="#3-元素的访问" class="headerlink" title="3.元素的访问"></a>3.元素的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">下标访问法：vec[<span class="number">1</span>]；<span class="comment">//并不会检查是否越界</span></span><br><span class="line">at访问法：vec.at(<span class="number">1</span>);<span class="comment">//at会检查是否越界，是则抛出out of range的异常</span></span><br><span class="line">访问第一个元素：vec.front();</span><br><span class="line">访问最后一个元素：vec.back();</span><br><span class="line">返回一个指针：<span class="keyword">int</span>*p=vec.data(); <span class="comment">//可以返回一个指针指向这个数组，</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-迭代器"><a href="#4-迭代器" class="headerlink" title="4.迭代器"></a>4.迭代器</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">开始指针：vec.<span class="built_in">begin</span>();</span><br><span class="line">末尾指针：vec.<span class="built_in">end</span>();  <span class="comment">//指向最后一个元素的下一个位置</span></span><br><span class="line"><span class="comment">//对于iterator,有vector&lt;char&gt;::iterator theIterator = vec.begin();</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-有用的封装函数"><a href="#5-有用的封装函数" class="headerlink" title="5.有用的封装函数"></a>5.有用的封装函数</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.元素翻转：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">reverse(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">b.元素排序</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">sort(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());<span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line">c.元素求和</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line">accumulate(要累加的头迭代指标，要累加的尾迭代指标，累加的值)</span><br><span class="line">例：sum=accumulate(vec.<span class="built_in">begin</span>()，vec.<span class="built_in">end</span>(),<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>-———————————————————-</p>
+<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>1.在定义动态，没有规定大小的vector型数组时，向数组中添加元素不能用下标访问法，只能用str.push_back()往容器里面加入元素，等加入了元素后，才可以用下标访问法</p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C++的一些概念</title>
     <url>/2020/04/18/C++/C++%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<p><strong>多态的概念</strong></p>
@@ -25,6 +42,45 @@
 ]]></content>
       <categories>
         <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ECharts前端可视化</title>
+    <url>/2020/05/19/frontEnd/ECharts%E5%89%8D%E7%AB%AF%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%84%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="大致框架"><a href="#大致框架" class="headerlink" title="大致框架"></a>大致框架</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>ECharts 关系图<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.2.1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width:1000px;height:800px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> categories = [];</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span></span><br><span class="line">            categories[i] = &#123;</span><br><span class="line"><span class="actionscript">                name: <span class="string">'类目'</span> + i</span></span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        option = &#123;</span><br><span class="line"><span class="actionscript">            <span class="comment">// 图的标题</span></span></span><br><span class="line">            title: &#123;</span><br><span class="line"><span class="actionscript">                text: <span class="string">'ECharts 关系图'</span></span></span><br><span class="line">            &#125;,</span><br><span class="line"><span class="actionscript">            <span class="comment">// 提示框的配置</span></span></span><br><span class="line">            tooltip: &#123;</span><br><span class="line"><span class="actionscript">                formatter: <span class="function"><span class="keyword">function</span> <span class="params">(x)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> x.data.des;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"><span class="actionscript">            <span class="comment">// 工具箱</span></span></span><br><span class="line">            toolbox: &#123;</span><br><span class="line"><span class="actionscript">                <span class="comment">// 显示工具箱</span></span></span><br><span class="line"><span class="actionscript">                show: <span class="literal">true</span>,</span></span><br><span class="line">                feature: &#123;</span><br><span class="line">                    mark: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="actionscript">                    <span class="comment">// 还原</span></span></span><br><span class="line">                    restore: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="actionscript">                    <span class="comment">// 保存为图片</span></span></span><br><span class="line">                    saveAsImage: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            legend: [&#123;</span><br><span class="line"><span class="actionscript">                <span class="comment">// selectedMode: 'single',</span></span></span><br><span class="line"><span class="actionscript">                data: categories.map(<span class="function"><span class="keyword">function</span> <span class="params">(a)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> a.name;</span></span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;],</span><br><span class="line">            series: [&#123;</span><br><span class="line"><span class="actionscript">                type: <span class="string">'graph'</span>, <span class="comment">// 类型:关系图</span></span></span><br><span class="line"><span class="actionscript">                layout: <span class="string">'force'</span>, <span class="comment">//图的布局，类型为力导图</span></span></span><br><span class="line"><span class="actionscript">                symbolSize: <span class="number">40</span>, <span class="comment">// 调整节点的大小</span></span></span><br><span class="line"><span class="actionscript">                roam: <span class="literal">true</span>, <span class="comment">// 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启</span></span></span><br><span class="line"><span class="actionscript">                edgeSymbol: [<span class="string">'circle'</span>, <span class="string">'arrow'</span>],</span></span><br><span class="line">                edgeSymbolSize: [2, 10],</span><br><span class="line">                edgeLabel: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        textStyle: &#123;</span><br><span class="line">                            fontSize: 20</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                force: &#123;</span><br><span class="line">                    repulsion: 2500,</span><br><span class="line">                    edgeLength: [10, 50]</span><br><span class="line">                &#125;,</span><br><span class="line"><span class="actionscript">                draggable: <span class="literal">true</span>,</span></span><br><span class="line">                lineStyle: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        width: 2,</span><br><span class="line"><span class="actionscript">                        color: <span class="string">'#4b565b'</span>,</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                edgeLabel: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">                        formatter: <span class="function"><span class="keyword">function</span> <span class="params">(x)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                            <span class="keyword">return</span> x.data.name;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                label: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span>,</span></span><br><span class="line">                        textStyle: &#123;&#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 数据</span></span></span><br><span class="line">                data: [&#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes01'</span>,</span></span><br><span class="line">                    symbolSize: 70,</span><br><span class="line">                    category: 0,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node02'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes02'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node03'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes3'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node04'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes04'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node05'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes05'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;],</span><br><span class="line">                links: [&#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node02'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link01'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link01des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node03'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link02'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link02des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node04'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link03'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link03des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node05'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link04'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link05des'</span></span></span><br><span class="line">                &#125;],</span><br><span class="line">                categories: categories,</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;;</span><br><span class="line">        myChart.setOption(option);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Series里的参数表"><a href="#Series里的参数表" class="headerlink" title="Series里的参数表"></a>Series里的参数表</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>介绍</th>
+<th>使用举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>edgeSymbol</td>
+<td>使得图是有箭头的</td>
+<td>edgeSymbol: [‘circle’, ‘arrow’]</td>
+</tr>
+<tr>
+<td>force</td>
+<td>力导向图中的点之间动态距离的设置，</td>
+<td>force: {                // gravity: 0  //引力              <br />                                 edgeLength: 5, //默认距离    <br />                                repulsion: 20 //斥力          <br />  },</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].重要的参考<a href="https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL" target="_blank" rel="noopener">https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL</a></p>
+<p>[2].ECharts详细说明<a href="https://www.it610.com/article/3564022.htm" target="_blank" rel="noopener">https://www.it610.com/article/3564022.htm</a></p>
+<p>[3].非常详细的介绍<a href="https://blog.csdn.net/qq_40576686/article/details/78711191" target="_blank" rel="noopener">https://blog.csdn.net/qq_40576686/article/details/78711191</a></p>
+]]></content>
+      <categories>
+        <category>frontEnd</category>
       </categories>
   </entry>
   <entry>
@@ -105,68 +161,18 @@
       </categories>
   </entry>
   <entry>
-    <title>C++的Vector操作</title>
-    <url>/2020/04/18/C++/C++%E7%9A%84Vector%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h3 id="一-头文件"><a href="#一-头文件" class="headerlink" title="一.头文件"></a>一.头文件</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="二-vector申明及初始化"><a href="#二-vector申明及初始化" class="headerlink" title="二.vector申明及初始化"></a>二.vector申明及初始化</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; vec(5)；//申明一个初始大小为5的int型向量</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vect</span><span class="params">(<span class="number">10</span>,<span class="number">1</span>)</span></span>; <span class="comment">//申明一个初始大小为10，且值都为1的向量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">vec</span><span class="params">(num,num+<span class="number">5</span>)</span></span>;<span class="comment">// 将num数组的元素用于初始化vec向量(数组首地址，数组尾地址)</span></span><br></pre></td></tr></table></figure>
-<h3 id="三-vector的基本操作"><a href="#三-vector的基本操作" class="headerlink" title="三.vector的基本操作"></a>三.vector的基本操作</h3><h4 id="1-容量的访问"><a href="#1-容量的访问" class="headerlink" title="1.容量的访问"></a>1.容量的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.向量大小：len=vec.<span class="built_in">size</span>()</span><br><span class="line">b.向量最大容量：(<span class="keyword">int</span>)vec.max_size();</span><br><span class="line">c.更改向量大小：vec.resize(num);   </span><br><span class="line">d.向量真实大小：<span class="keyword">int</span> len=vec.capacity()</span><br><span class="line">e.向量判空：vec.empty();   </span><br><span class="line">f.减少向量大小到满足元素所占存储空间的大小：vec.shrink_to_fit();</span><br></pre></td></tr></table></figure>
-<h4 id="2-修改"><a href="#2-修改" class="headerlink" title="2.修改"></a>2.修改</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.末尾添加元素：vec.push_back(要添加的元素）</span><br><span class="line">b.末尾删除元素：vec.pop_back(空)；</span><br><span class="line">                       </span><br><span class="line">c.任意位置插入元素：vec.insert();</span><br><span class="line">iterator insert( iterator loc, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入值为val的元素,返回指向这个元素的迭代器,</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, size_type num, <span class="keyword">const</span> TYPE &amp;val ); <span class="comment">//在指定位置loc前插入num个值为val的元素</span></span><br><span class="line"><span class="keyword">void</span> insert( iterator loc, input_iterator start, input_iterator <span class="built_in">end</span> );<span class="comment">//在指定位置loc前插入区间[start, end)的所有元素 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d.任意位置删除元素：vec.erase();</span><br><span class="line">vec.erase(pos)，删除pos位置的数据</span><br><span class="line">vec.erase(beg，<span class="built_in">end</span>); 删除[beg，<span class="built_in">end</span>]区间的数据</span><br><span class="line"></span><br><span class="line">e.交换两个向量的元素：vec.swap();</span><br><span class="line"></span><br><span class="line">f.清空向量元素:vec.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
-<h4 id="3-元素的访问"><a href="#3-元素的访问" class="headerlink" title="3.元素的访问"></a>3.元素的访问</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">下标访问法：vec[<span class="number">1</span>]；<span class="comment">//并不会检查是否越界</span></span><br><span class="line">at访问法：vec.at(<span class="number">1</span>);<span class="comment">//at会检查是否越界，是则抛出out of range的异常</span></span><br><span class="line">访问第一个元素：vec.front();</span><br><span class="line">访问最后一个元素：vec.back();</span><br><span class="line">返回一个指针：<span class="keyword">int</span>*p=vec.data(); <span class="comment">//可以返回一个指针指向这个数组，</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-迭代器"><a href="#4-迭代器" class="headerlink" title="4.迭代器"></a>4.迭代器</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">开始指针：vec.<span class="built_in">begin</span>();</span><br><span class="line">末尾指针：vec.<span class="built_in">end</span>();  <span class="comment">//指向最后一个元素的下一个位置</span></span><br><span class="line"><span class="comment">//对于iterator,有vector&lt;char&gt;::iterator theIterator = vec.begin();</span></span><br></pre></td></tr></table></figure>
-<h4 id="5-有用的封装函数"><a href="#5-有用的封装函数" class="headerlink" title="5.有用的封装函数"></a>5.有用的封装函数</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">a.元素翻转：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">reverse(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">b.元素排序</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">sort(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());<span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line">c.元素求和</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line">accumulate(要累加的头迭代指标，要累加的尾迭代指标，累加的值)</span><br><span class="line">例：sum=accumulate(vec.<span class="built_in">begin</span>()，vec.<span class="built_in">end</span>(),<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<p>-———————————————————-</p>
-<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>1.在定义动态，没有规定大小的vector型数组时，向数组中添加元素不能用下标访问法，只能用str.push_back()往容器里面加入元素，等加入了元素后，才可以用下标访问法</p>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>java下载过程中遇到的问题</title>
-    <url>/2020/05/10/java/java%E4%B8%8B%E8%BD%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在下载Neo4j时，要先下载Java，在访问官网时，得到了如下的两类</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/插入.png" alt="插入"></p>
-<p>不知道该下载哪一种</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一般都是下载.exe，是直接帮安装的。而.zip则是由源码的</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ECharts前端可视化</title>
-    <url>/2020/05/19/frontEnd/ECharts%E5%89%8D%E7%AB%AF%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%84%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="大致框架"><a href="#大致框架" class="headerlink" title="大致框架"></a>大致框架</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>ECharts 关系图<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.2.1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width:1000px;height:800px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> categories = [];</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span></span><br><span class="line">            categories[i] = &#123;</span><br><span class="line"><span class="actionscript">                name: <span class="string">'类目'</span> + i</span></span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        option = &#123;</span><br><span class="line"><span class="actionscript">            <span class="comment">// 图的标题</span></span></span><br><span class="line">            title: &#123;</span><br><span class="line"><span class="actionscript">                text: <span class="string">'ECharts 关系图'</span></span></span><br><span class="line">            &#125;,</span><br><span class="line"><span class="actionscript">            <span class="comment">// 提示框的配置</span></span></span><br><span class="line">            tooltip: &#123;</span><br><span class="line"><span class="actionscript">                formatter: <span class="function"><span class="keyword">function</span> <span class="params">(x)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> x.data.des;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"><span class="actionscript">            <span class="comment">// 工具箱</span></span></span><br><span class="line">            toolbox: &#123;</span><br><span class="line"><span class="actionscript">                <span class="comment">// 显示工具箱</span></span></span><br><span class="line"><span class="actionscript">                show: <span class="literal">true</span>,</span></span><br><span class="line">                feature: &#123;</span><br><span class="line">                    mark: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="actionscript">                    <span class="comment">// 还原</span></span></span><br><span class="line">                    restore: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;,</span><br><span class="line"><span class="actionscript">                    <span class="comment">// 保存为图片</span></span></span><br><span class="line">                    saveAsImage: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span></span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            legend: [&#123;</span><br><span class="line"><span class="actionscript">                <span class="comment">// selectedMode: 'single',</span></span></span><br><span class="line"><span class="actionscript">                data: categories.map(<span class="function"><span class="keyword">function</span> <span class="params">(a)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> a.name;</span></span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;],</span><br><span class="line">            series: [&#123;</span><br><span class="line"><span class="actionscript">                type: <span class="string">'graph'</span>, <span class="comment">// 类型:关系图</span></span></span><br><span class="line"><span class="actionscript">                layout: <span class="string">'force'</span>, <span class="comment">//图的布局，类型为力导图</span></span></span><br><span class="line"><span class="actionscript">                symbolSize: <span class="number">40</span>, <span class="comment">// 调整节点的大小</span></span></span><br><span class="line"><span class="actionscript">                roam: <span class="literal">true</span>, <span class="comment">// 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启</span></span></span><br><span class="line"><span class="actionscript">                edgeSymbol: [<span class="string">'circle'</span>, <span class="string">'arrow'</span>],</span></span><br><span class="line">                edgeSymbolSize: [2, 10],</span><br><span class="line">                edgeLabel: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        textStyle: &#123;</span><br><span class="line">                            fontSize: 20</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                force: &#123;</span><br><span class="line">                    repulsion: 2500,</span><br><span class="line">                    edgeLength: [10, 50]</span><br><span class="line">                &#125;,</span><br><span class="line"><span class="actionscript">                draggable: <span class="literal">true</span>,</span></span><br><span class="line">                lineStyle: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        width: 2,</span><br><span class="line"><span class="actionscript">                        color: <span class="string">'#4b565b'</span>,</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                edgeLabel: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">                        formatter: <span class="function"><span class="keyword">function</span> <span class="params">(x)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                            <span class="keyword">return</span> x.data.name;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                label: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line"><span class="actionscript">                        show: <span class="literal">true</span>,</span></span><br><span class="line">                        textStyle: &#123;&#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 数据</span></span></span><br><span class="line">                data: [&#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes01'</span>,</span></span><br><span class="line">                    symbolSize: 70,</span><br><span class="line">                    category: 0,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node02'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes02'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node03'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes3'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node04'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes04'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    name: <span class="string">'node05'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'nodedes05'</span>,</span></span><br><span class="line">                    symbolSize: 50,</span><br><span class="line">                    category: 1,</span><br><span class="line">                &#125;],</span><br><span class="line">                links: [&#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node02'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link01'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link01des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node03'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link02'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link02des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node04'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link03'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link03des'</span></span></span><br><span class="line">                &#125;, &#123;</span><br><span class="line"><span class="actionscript">                    source: <span class="string">'node01'</span>,</span></span><br><span class="line"><span class="actionscript">                    target: <span class="string">'node05'</span>,</span></span><br><span class="line"><span class="actionscript">                    name: <span class="string">'link04'</span>,</span></span><br><span class="line"><span class="actionscript">                    des: <span class="string">'link05des'</span></span></span><br><span class="line">                &#125;],</span><br><span class="line">                categories: categories,</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;;</span><br><span class="line">        myChart.setOption(option);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="Series里的参数表"><a href="#Series里的参数表" class="headerlink" title="Series里的参数表"></a>Series里的参数表</h1><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>介绍</th>
-<th>使用举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>edgeSymbol</td>
-<td>使得图是有箭头的</td>
-<td>edgeSymbol: [‘circle’, ‘arrow’]</td>
-</tr>
-<tr>
-<td>force</td>
-<td>力导向图中的点之间动态距离的设置，</td>
-<td>force: {                // gravity: 0  //引力              <br />                                 edgeLength: 5, //默认距离    <br />                                repulsion: 20 //斥力          <br />  },</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].重要的参考<a href="https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL" target="_blank" rel="noopener">https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL</a></p>
-<p>[2].ECharts详细说明<a href="https://www.it610.com/article/3564022.htm" target="_blank" rel="noopener">https://www.it610.com/article/3564022.htm</a></p>
-<p>[3].非常详细的介绍<a href="https://blog.csdn.net/qq_40576686/article/details/78711191" target="_blank" rel="noopener">https://blog.csdn.net/qq_40576686/article/details/78711191</a></p>
+    <title>html的简单介绍</title>
+    <url>/2020/05/15/frontEnd/html%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">content= $(<span class="string">'#liang'</span>).val()</span><br></pre></td></tr></table></figure>
+<p>这句话的含义就是，选取前面定义过的id=’liang’的标签，并取值赋给content</p>
+<p>$其实就是copy函数名，在传统的编程语言中，$不能用在函数名中知，但是javascript中可以，这个$函数的作用就是通过ID获取Element。跟你直道接调用getElementById()效果是一样的。</p>
+<h3 id="Js弹出对话框的三种形式："><a href="#Js弹出对话框的三种形式：" class="headerlink" title="Js弹出对话框的三种形式："></a>Js弹出对话框的三种形式：</h3><p>alert(str);    弹出的框中只有确认按钮</p>
+<p>confirm(str);     弹出的框中既有确认按钮，也有取消按钮，并且有返回值，可以被调用。</p>
+<p>prompt(str);       弹出提示对话框，使用户输入有关信息，并接受返回值，</p>
+<p>将js代码放入body里面的最底部，这样方便先加载静态显示的内容，再加载js动态效果</p>
+<h3 id="style-’text-javascript’"><a href="#style-’text-javascript’" class="headerlink" title="style=’text/javascript’"></a>style=’text/javascript’</h3><p>type=”text/javascript”是说明这一段脚本语言是javascript。告诉浏览来器这一段要按照javascript来解释执行。</p>
+<h3 id="html的文件路径问题"><a href="#html的文件路径问题" class="headerlink" title="html的文件路径问题"></a>html的文件路径问题</h3><p>没有在页面引入Qjuery，引用路径：可以是绝对路径引用（以根目录为基准），也可以是相对路径引用(以网页文件当前所在文档为基准开始向下找，当前所在文档为基准，用两个点”..”表示上一级文件夹同级寻找。)</p>
+<p><a href="https://blog.csdn.net/wildand/article/details/89501599" target="_blank" rel="noopener">https://blog.csdn.net/wildand/article/details/89501599</a></p>
 ]]></content>
       <categories>
         <category>frontEnd</category>
@@ -183,6 +189,59 @@
       </categories>
   </entry>
   <entry>
+    <title>java下载过程中遇到的问题</title>
+    <url>/2020/05/10/java/java%E4%B8%8B%E8%BD%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在下载Neo4j时，要先下载Java，在访问官网时，得到了如下的两类</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/插入.png" alt="插入"></p>
+<p>不知道该下载哪一种</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一般都是下载.exe，是直接帮安装的。而.zip则是由源码的</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>知识图谱的基本概念</title>
+    <url>/2020/05/30/knowledge%20graph/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</url>
+    <content><![CDATA[<h3 id="1-起源发展"><a href="#1-起源发展" class="headerlink" title="1 起源发展"></a>1 起源发展</h3><p>于2012年5月17日由[Google]正式提出，其初衷是为了提高搜索引擎的能力，改善用户的搜索质量以及搜索体验。随着人工智能的技术发展和应用，知识图谱逐渐成为关键技术之一，现已被广泛应用于智能搜索、智能问答、个性化推荐、内容分发等领域。知识图谱的大致介绍如下图所示：</p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/什么是知识图谱.png" width="550"/></p>
+<h3 id="2-知识图谱的架构"><a href="#2-知识图谱的架构" class="headerlink" title="2 知识图谱的架构"></a>2 知识图谱的架构</h3><p>包括自身的逻辑架构以及构建知识图谱所采用的技术（体系）架构。 </p>
+<p><strong>逻辑层面架构：</strong></p>
+<p>分为数据层和模式层：数据层是由一系列的事实组成，知识将以事实为单位进行存储，用三元组来表达事实，可以用图数据库存储。模式层构建在数据层之上，是知识图谱的核心，通常采用本体库来管理知识图谱的模式层。 </p>
+<p><strong>技术层面的架构：</strong></p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/知识图谱技术架构.jpeg" width="500"/></p>
+<p> <strong>知识图谱的构建方式：</strong></p>
+<p>1).自顶向下：先为知识图谱定义好本体与数据模式，再将实体加入到知识库中。 </p>
+<p>2).自底向上：从一些开放链接数据中提取实体，选择其中置信度较高的加入到知识库中，再构建顶层的本体模式。（大多数）</p>
+<p><strong>典型的知识图谱案例：</strong><a href="https://www.cnblogs.com/timssd/p/8437077.html" target="_blank" rel="noopener">https://www.cnblogs.com/timssd/p/8437077.html</a></p>
+<h3 id="3-知识表示"><a href="#3-知识表示" class="headerlink" title="3 知识表示"></a>3 知识表示</h3><p><strong>早期知识表示方法：</strong></p>
+<ul>
+<li>一阶谓词逻辑（First-Order Logic）</li>
+<li>产生式规则（Production Rule）</li>
+<li>框架（Framework）</li>
+<li>语义网络（Semantic Network）</li>
+</ul>
+<p><strong>基于语义网的知识表示框架：</strong></p>
+<ul>
+<li>RDF和RDFS</li>
+<li>OWL和OWL2 Fragments</li>
+<li>SPARQL查询语言</li>
+<li>Json-LD、RDFa、HTML5 、MicroData等新型知识表示</li>
+</ul>
+<h3 id="知识存储"><a href="#知识存储" class="headerlink" title="知识存储"></a>知识存储</h3><p><strong>关系数据库和图数据库：</strong></p>
+<p><a href="https://www.cnblogs.com/jpfss/p/11280880.html" target="_blank" rel="noopener">https://www.cnblogs.com/jpfss/p/11280880.html</a></p>
+<h3 id="知识推理"><a href="#知识推理" class="headerlink" title="知识推理"></a>知识推理</h3><p><strong>关系推理分类：</strong></p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/关系推理分类.jpg" width="400" /></p>
+<p><strong>基于知识图谱的关系推演：</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/42340077" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/42340077</a></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>[1].知识图谱中的关系推理 <a href="https://blog.csdn.net/u010159842/article/details/80492069" target="_blank" rel="noopener">https://blog.csdn.net/u010159842/article/details/80492069</a></p>
+<p>[2].本体、实体的概念区别：<a href="https://blog.csdn.net/Solitarily/article/details/78768139" target="_blank" rel="noopener">https://blog.csdn.net/Solitarily/article/details/78768139</a></p>
+]]></content>
+      <categories>
+        <category>knowledge graph</category>
+      </categories>
+  </entry>
+  <entry>
     <title>linux环境变量</title>
     <url>/2020/06/09/linux/linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h3 id="export命令"><a href="#export命令" class="headerlink" title="export命令"></a>export命令</h3><p>linux的export命令：设置或显示环境变量，在程序中先执行export，告诉系统某某某程序在对应路径下。 在linux里设置环境变量的方法：要么直接在命令行中执行（只对当前有效），要么在profile，.bashrc中设置（重启系统后生效）。</p>
@@ -194,24 +253,6 @@
 ]]></content>
       <categories>
         <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>html的简单介绍</title>
-    <url>/2020/05/15/frontEnd/html%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">content= $(<span class="string">'#liang'</span>).val()</span><br></pre></td></tr></table></figure>
-<p>这句话的含义就是，选取前面定义过的id=’liang’的标签，并取值赋给content</p>
-<p>$其实就是copy函数名，在传统的编程语言中，$不能用在函数名中知，但是javascript中可以，这个$函数的作用就是通过ID获取Element。跟你直道接调用getElementById()效果是一样的。</p>
-<h3 id="Js弹出对话框的三种形式："><a href="#Js弹出对话框的三种形式：" class="headerlink" title="Js弹出对话框的三种形式："></a>Js弹出对话框的三种形式：</h3><p>alert(str);    弹出的框中只有确认按钮</p>
-<p>confirm(str);     弹出的框中既有确认按钮，也有取消按钮，并且有返回值，可以被调用。</p>
-<p>prompt(str);       弹出提示对话框，使用户输入有关信息，并接受返回值，</p>
-<p>将js代码放入body里面的最底部，这样方便先加载静态显示的内容，再加载js动态效果</p>
-<h3 id="style-’text-javascript’"><a href="#style-’text-javascript’" class="headerlink" title="style=’text/javascript’"></a>style=’text/javascript’</h3><p>type=”text/javascript”是说明这一段脚本语言是javascript。告诉浏览来器这一段要按照javascript来解释执行。</p>
-<h3 id="html的文件路径问题"><a href="#html的文件路径问题" class="headerlink" title="html的文件路径问题"></a>html的文件路径问题</h3><p>没有在页面引入Qjuery，引用路径：可以是绝对路径引用（以根目录为基准），也可以是相对路径引用(以网页文件当前所在文档为基准开始向下找，当前所在文档为基准，用两个点”..”表示上一级文件夹同级寻找。)</p>
-<p><a href="https://blog.csdn.net/wildand/article/details/89501599" target="_blank" rel="noopener">https://blog.csdn.net/wildand/article/details/89501599</a></p>
-]]></content>
-      <categories>
-        <category>frontEnd</category>
       </categories>
   </entry>
   <entry>
@@ -375,13 +416,14 @@
       </categories>
   </entry>
   <entry>
-    <title>Sigmoid函数介绍</title>
-    <url>/2020/07/20/machine%20learning/Sigmoid%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="Sigmoid函数形式"><a href="#Sigmoid函数形式" class="headerlink" title="Sigmoid函数形式"></a>Sigmoid函数形式</h3><script type="math/tex; mode=display">
-\sigma(x)=\frac{1}{1+e^{-x}}</script><p>其导数形式：$\sigma’(x)=\frac{e^{-x}}{(1+e^{-x})^2}=\sigma(x)[1-\sigma(x)]$</p>
-<p>并且由此可以得到</p>
-<p>$[log~\sigma(x)]’=1-\sigma(x)$</p>
-<p>$[log(1-\sigma(x))]’=-\sigma(x)$</p>
+    <title>Hierarchical softmax</title>
+    <url>/2020/06/11/machine%20learning/Hierarchical%20softmax/</url>
+    <content><![CDATA[<p>构造一棵树，依据训练样本数据中的单词出现的频率，构建起来的一棵Huffman tree，频率越高，节点越短。得到构造的二叉树的结构：</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/分层softmax.png" alt="分层softmax"></p>
+<p>对于每一个节点，都是一个二分类[0,1]，可以用sigmod去处理节点信息。sigmod函数如下：</p>
+<script type="math/tex; mode=display">
+\sigma (x)=\frac{1}{1+exp(-x)}</script><p>此时，当我们知道了目标单词x,我们只需要计算root节点到该词的路径乘积即可，不需去遍历所有的节点信息，时间复杂度变成O($\log_2$(v))</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax2.png" alt="softmax2"></p>
 ]]></content>
       <categories>
         <category>machine learning</category>
@@ -409,53 +451,34 @@
       </categories>
   </entry>
   <entry>
-    <title>知识图谱的基本概念</title>
-    <url>/2020/05/30/knowledge%20graph/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</url>
-    <content><![CDATA[<h3 id="1-起源发展"><a href="#1-起源发展" class="headerlink" title="1 起源发展"></a>1 起源发展</h3><p>于2012年5月17日由[Google]正式提出，其初衷是为了提高搜索引擎的能力，改善用户的搜索质量以及搜索体验。随着人工智能的技术发展和应用，知识图谱逐渐成为关键技术之一，现已被广泛应用于智能搜索、智能问答、个性化推荐、内容分发等领域。知识图谱的大致介绍如下图所示：</p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/什么是知识图谱.png" width="550"/></p>
-<h3 id="2-知识图谱的架构"><a href="#2-知识图谱的架构" class="headerlink" title="2 知识图谱的架构"></a>2 知识图谱的架构</h3><p>包括自身的逻辑架构以及构建知识图谱所采用的技术（体系）架构。 </p>
-<p><strong>逻辑层面架构：</strong></p>
-<p>分为数据层和模式层：数据层是由一系列的事实组成，知识将以事实为单位进行存储，用三元组来表达事实，可以用图数据库存储。模式层构建在数据层之上，是知识图谱的核心，通常采用本体库来管理知识图谱的模式层。 </p>
-<p><strong>技术层面的架构：</strong></p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/知识图谱技术架构.jpeg" width="500"/></p>
-<p> <strong>知识图谱的构建方式：</strong></p>
-<p>1).自顶向下：先为知识图谱定义好本体与数据模式，再将实体加入到知识库中。 </p>
-<p>2).自底向上：从一些开放链接数据中提取实体，选择其中置信度较高的加入到知识库中，再构建顶层的本体模式。（大多数）</p>
-<p><strong>典型的知识图谱案例：</strong><a href="https://www.cnblogs.com/timssd/p/8437077.html" target="_blank" rel="noopener">https://www.cnblogs.com/timssd/p/8437077.html</a></p>
-<h3 id="3-知识表示"><a href="#3-知识表示" class="headerlink" title="3 知识表示"></a>3 知识表示</h3><p><strong>早期知识表示方法：</strong></p>
-<ul>
-<li>一阶谓词逻辑（First-Order Logic）</li>
-<li>产生式规则（Production Rule）</li>
-<li>框架（Framework）</li>
-<li>语义网络（Semantic Network）</li>
-</ul>
-<p><strong>基于语义网的知识表示框架：</strong></p>
-<ul>
-<li>RDF和RDFS</li>
-<li>OWL和OWL2 Fragments</li>
-<li>SPARQL查询语言</li>
-<li>Json-LD、RDFa、HTML5 、MicroData等新型知识表示</li>
-</ul>
-<h3 id="知识存储"><a href="#知识存储" class="headerlink" title="知识存储"></a>知识存储</h3><p><strong>关系数据库和图数据库：</strong></p>
-<p><a href="https://www.cnblogs.com/jpfss/p/11280880.html" target="_blank" rel="noopener">https://www.cnblogs.com/jpfss/p/11280880.html</a></p>
-<h3 id="知识推理"><a href="#知识推理" class="headerlink" title="知识推理"></a>知识推理</h3><p><strong>关系推理分类：</strong></p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/关系推理分类.jpg" width="400" /></p>
-<p><strong>基于知识图谱的关系推演：</strong></p>
-<p><a href="https://zhuanlan.zhihu.com/p/42340077" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/42340077</a></p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>[1].知识图谱中的关系推理 <a href="https://blog.csdn.net/u010159842/article/details/80492069" target="_blank" rel="noopener">https://blog.csdn.net/u010159842/article/details/80492069</a></p>
-<p>[2].本体、实体的概念区别：<a href="https://blog.csdn.net/Solitarily/article/details/78768139" target="_blank" rel="noopener">https://blog.csdn.net/Solitarily/article/details/78768139</a></p>
+    <title>Sigmoid函数介绍</title>
+    <url>/2020/07/20/machine%20learning/Sigmoid%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="Sigmoid函数形式"><a href="#Sigmoid函数形式" class="headerlink" title="Sigmoid函数形式"></a>Sigmoid函数形式</h3><script type="math/tex; mode=display">
+\sigma(x)=\frac{1}{1+e^{-x}}</script><p>其导数形式：$\sigma’(x)=\frac{e^{-x}}{(1+e^{-x})^2}=\sigma(x)[1-\sigma(x)]$</p>
+<p>并且由此可以得到</p>
+<p>$[log~\sigma(x)]’=1-\sigma(x)$</p>
+<p>$[log(1-\sigma(x))]’=-\sigma(x)$</p>
 ]]></content>
       <categories>
-        <category>knowledge graph</category>
+        <category>machine learning</category>
       </categories>
   </entry>
   <entry>
-    <title>前馈神经网络</title>
-    <url>/2020/06/11/machine%20learning/%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<p>前馈神经网络的结构以下几个特点：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*每层神经元与下一层神经元之间完全互连</span><br><span class="line">*神经元之间不存在同层连接</span><br><span class="line">*神经元之间不存在跨层连接</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/前馈神经网络.png" alt="前馈神经网络"></p>
-<p>由此可以得知：”前馈“指的是网络拓扑结构中不存在环或回路，</p>
+    <title>softmax简要介绍</title>
+    <url>/2020/07/13/machine%20learning/softmax%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>应用于多分类的场景中。</p>
+<p>把一些输入映射为0-1之间的实数，并且归一化保证和为1.</p>
+<p>max是分类，非黑即白，非大即小。而所希望的是取到某个分类的概率，因此加上soft。最后的输出是每个分类被取到的概率。</p>
+<h3 id="什么是Softmax公式"><a href="#什么是Softmax公式" class="headerlink" title="什么是Softmax公式"></a>什么是Softmax公式</h3><p>首先上图：</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax图片.jpg" alt="softmax图片" style="zoom:80%;" /></p>
+<p><strong>softmax公式：</strong></p>
+<p>若有一个数组V，$V_i$表示V中的第i个元素，则这个元素的softmax的值为：</p>
+<script type="math/tex; mode=display">
+S_i=\frac{e^i}{\sum_je^j}</script><p>该元素的指数值除以所有元素指数和的比值。</p>
+<h3 id="softmax-和k个二元分类器的区别："><a href="#softmax-和k个二元分类器的区别：" class="headerlink" title="softmax 和k个二元分类器的区别："></a>softmax 和k个二元分类器的区别：</h3><p>若分类的类别是互相排斥的，则可以使用Softmax更为方便；</p>
+<p>若分类的类别并不是互相排斥的，则建立k个独立的logistic回归分类器更合适。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].softmax简要介绍</p>
+<p><a href="https://blog.csdn.net/bitcarmanlee/article/details/82320853" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/82320853</a></p>
 ]]></content>
       <categories>
         <category>machine learning</category>
@@ -481,14 +504,12 @@
       </categories>
   </entry>
   <entry>
-    <title>Hierarchical softmax</title>
-    <url>/2020/06/11/machine%20learning/Hierarchical%20softmax/</url>
-    <content><![CDATA[<p>构造一棵树，依据训练样本数据中的单词出现的频率，构建起来的一棵Huffman tree，频率越高，节点越短。得到构造的二叉树的结构：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/分层softmax.png" alt="分层softmax"></p>
-<p>对于每一个节点，都是一个二分类[0,1]，可以用sigmod去处理节点信息。sigmod函数如下：</p>
-<script type="math/tex; mode=display">
-\sigma (x)=\frac{1}{1+exp(-x)}</script><p>此时，当我们知道了目标单词x,我们只需要计算root节点到该词的路径乘积即可，不需去遍历所有的节点信息，时间复杂度变成O($\log_2$(v))</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax2.png" alt="softmax2"></p>
+    <title>前馈神经网络</title>
+    <url>/2020/06/11/machine%20learning/%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<p>前馈神经网络的结构以下几个特点：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*每层神经元与下一层神经元之间完全互连</span><br><span class="line">*神经元之间不存在同层连接</span><br><span class="line">*神经元之间不存在跨层连接</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/前馈神经网络.png" alt="前馈神经网络"></p>
+<p>由此可以得知：”前馈“指的是网络拓扑结构中不存在环或回路，</p>
 ]]></content>
       <categories>
         <category>machine learning</category>
@@ -525,46 +546,10 @@
       </categories>
   </entry>
   <entry>
-    <title>softmax简要介绍</title>
-    <url>/2020/07/13/machine%20learning/softmax%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>应用于多分类的场景中。</p>
-<p>把一些输入映射为0-1之间的实数，并且归一化保证和为1.</p>
-<p>max是分类，非黑即白，非大即小。而所希望的是取到某个分类的概率，因此加上soft。最后的输出是每个分类被取到的概率。</p>
-<h3 id="什么是Softmax公式"><a href="#什么是Softmax公式" class="headerlink" title="什么是Softmax公式"></a>什么是Softmax公式</h3><p>首先上图：</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/softmax图片.jpg" alt="softmax图片" style="zoom:80%;" /></p>
-<p><strong>softmax公式：</strong></p>
-<p>若有一个数组V，$V_i$表示V中的第i个元素，则这个元素的softmax的值为：</p>
-<script type="math/tex; mode=display">
-S_i=\frac{e^i}{\sum_je^j}</script><p>该元素的指数值除以所有元素指数和的比值。</p>
-<h3 id="softmax-和k个二元分类器的区别："><a href="#softmax-和k个二元分类器的区别：" class="headerlink" title="softmax 和k个二元分类器的区别："></a>softmax 和k个二元分类器的区别：</h3><p>若分类的类别是互相排斥的，则可以使用Softmax更为方便；</p>
-<p>若分类的类别并不是互相排斥的，则建立k个独立的logistic回归分类器更合适。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].softmax简要介绍</p>
-<p><a href="https://blog.csdn.net/bitcarmanlee/article/details/82320853" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/82320853</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>目标函数和损失函数</title>
-    <url>/2020/07/25/machine%20learning/%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%92%8C%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>度量的是预测值和真实值之间的差异。损失函数通常写成$L(\hat{y},y)$，这里$\hat{y}$表示预测值，$y$表示真实值。比如平方差损失函数$L(\hat{y},y)=(\hat{y}-y)^2$。</p>
-<h3 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h3><p>更为宽泛的概念。</p>
-<p>目标函数是优化问题中的概念。</p>
-<details>   
-    <summary>优化问题包括</summary>
-    (1).目标函数，最终是要最大化或者最小化的函数；</br>
-    (2).约束条件：约束条件是可选的，如x<0，
-     </details>
-
-<h3 id="区分两者的例子"><a href="#区分两者的例子" class="headerlink" title="区分两者的例子"></a>区分两者的例子</h3><h4 id="既是损失函数又是目标函数的例子"><a href="#既是损失函数又是目标函数的例子" class="headerlink" title="既是损失函数又是目标函数的例子"></a>既是损失函数又是目标函数的例子</h4><p><strong>最小二乘的拟合函数：</strong></p>
-<p>给定一组的样本点$\{(x_1,y_1),…,(x_n,y_n)\}$,我们要求用一条直线去拟合这些样本点。假设求出的模型形式为$y=\beta^Tx$。然后最小化下面的方程：</p>
-<script type="math/tex; mode=display">
-arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2\}</script><p>这里这个式子既是损失函数，也是目标函数。</p>
-<h4 id="是目标函数但大于损失函数"><a href="#是目标函数但大于损失函数" class="headerlink" title="是目标函数但大于损失函数"></a>是目标函数但大于损失函数</h4><p><strong>脊回归(Ridge regression)：</strong></p>
-<p>需要对$\beta$做正则化处理。需要优化的函数变成：</p>
-<script type="math/tex; mode=display">
-arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2+\lambda\beta^T\beta\}</script><p>上式可以称作目标函数，但却不是损失函数。损失函数仅仅是其中的一部分</p>
+    <title>李航-《统计学习方法》</title>
+    <url>/2020/06/23/machine%20learning/%E6%9D%8E%E8%88%AA-%E3%80%8A%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E3%80%8B/</url>
+    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].代码实现<a href="https://github.com/fengdu78/lihang-code" target="_blank" rel="noopener">https://github.com/fengdu78/lihang-code</a></p>
+<p>[2].统计学习方法最全资源汇总<a href="https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA</a></p>
 ]]></content>
       <categories>
         <category>machine learning</category>
@@ -638,10 +623,57 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^m[h_{\theta}(x^i)-y^i]^2\tag{2}</script><p>这�
       </categories>
   </entry>
   <entry>
-    <title>李航-《统计学习方法》</title>
-    <url>/2020/06/23/machine%20learning/%E6%9D%8E%E8%88%AA-%E3%80%8A%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E3%80%8B/</url>
-    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].代码实现<a href="https://github.com/fengdu78/lihang-code" target="_blank" rel="noopener">https://github.com/fengdu78/lihang-code</a></p>
-<p>[2].统计学习方法最全资源汇总<a href="https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XXldfRkELDs931YoOzXXlA</a></p>
+    <title>目标函数和损失函数</title>
+    <url>/2020/07/25/machine%20learning/%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%92%8C%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>度量的是预测值和真实值之间的差异。损失函数通常写成$L(\hat{y},y)$，这里$\hat{y}$表示预测值，$y$表示真实值。比如平方差损失函数$L(\hat{y},y)=(\hat{y}-y)^2$。</p>
+<h3 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h3><p>更为宽泛的概念。</p>
+<p>目标函数是优化问题中的概念。</p>
+<details>   
+    <summary>优化问题包括</summary>
+    (1).目标函数，最终是要最大化或者最小化的函数；</br>
+    (2).约束条件：约束条件是可选的，如x<0，
+     </details>
+
+<h3 id="区分两者的例子"><a href="#区分两者的例子" class="headerlink" title="区分两者的例子"></a>区分两者的例子</h3><h4 id="既是损失函数又是目标函数的例子"><a href="#既是损失函数又是目标函数的例子" class="headerlink" title="既是损失函数又是目标函数的例子"></a>既是损失函数又是目标函数的例子</h4><p><strong>最小二乘的拟合函数：</strong></p>
+<p>给定一组的样本点$\{(x_1,y_1),…,(x_n,y_n)\}$,我们要求用一条直线去拟合这些样本点。假设求出的模型形式为$y=\beta^Tx$。然后最小化下面的方程：</p>
+<script type="math/tex; mode=display">
+arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2\}</script><p>这里这个式子既是损失函数，也是目标函数。</p>
+<h4 id="是目标函数但大于损失函数"><a href="#是目标函数但大于损失函数" class="headerlink" title="是目标函数但大于损失函数"></a>是目标函数但大于损失函数</h4><p><strong>脊回归(Ridge regression)：</strong></p>
+<p>需要对$\beta$做正则化处理。需要优化的函数变成：</p>
+<script type="math/tex; mode=display">
+arg~\underset{\beta}{min}\{\sum_{i=0}^n(\beta^Tx_i-y_i)^2+\lambda\beta^T\beta\}</script><p>上式可以称作目标函数，但却不是损失函数。损失函数仅仅是其中的一部分</p>
+]]></content>
+      <categories>
+        <category>machine learning</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>表示学习与深度学习</title>
+    <url>/2020/05/26/machine%20learning/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="My"><a href="#My" class="headerlink" title="My"></a>My</h3><p>表示学习就是将原始数据转换成计算机能有效识别的特征，又分为局部表示和分布式表示。局部表示是用某一维来表示原始数据的某一实体，而分布式表示则是用向量整体来表示，是低维稠密向量。</p>
+<p>嵌入则是将局部表示转换成分布式表示。</p>
+<p>深度学习则是如何有效表示学习+实现这种表示学习的算法。最终目标是提高模型的准确性。</p>
+<h3 id="1-表示学习"><a href="#1-表示学习" class="headerlink" title="1 表示学习"></a>1 表示学习</h3><blockquote>
+<p>定义：<strong>为了提高机器学习系统的准确率，我们就需要将输入信息转换为有效的特征，或者更一般性称为表示（Representation）。如果有一种算法可以自动地学习出有效的特征，并提高最终机器学习模型的性能，那么这种学习就是可以叫做表示学习（Representation Learning）</strong>。</p>
+</blockquote>
+<p><strong>关键：</strong>解决语义鸿沟问题。(输入数据的底层特征和高层语义信息之间的不一致和差异性)，比较好的是在高层语义信息上进行预测模型建模。</p>
+<p><strong>核心问题：</strong>1.“什么是一个好的表示”；2.“如何学习到好的表示”。</p>
+<p><strong>好的表示学习的优点：</strong>1.较强的表示能力；2.包含更高层的语义信息，使得后续的学习任务变得简单；3.具有一般性，任务或领域独立。</p>
+<p><strong>两种表示学习方式：</strong>1.局部表示(Local Representation)；2.分布式表示(Distributed Representation).</p>
+<p><strong>表示学习的关键：</strong>构建具有一定深度的多层次特征表示。</p>
+<h4 id="1-1-局部表示"><a href="#1-1-局部表示" class="headerlink" title="1.1 局部表示"></a>1.1 局部表示</h4><p>一般表示为向量的形式。“one-hot”局部表示，以不同的名字来命名不同的颜色，相当于给颜色取了一个代号，比如(0,0,0,1,0)表示红色，(1,0,0,0)表示绿色，也称作离散表示或符号表示。</p>
+<p><strong>局部表示的两个不足之处：</strong>1.one-hot向量的维数很高，不能扩展。若有一种新的颜色出现，则需要增加一维，所对应的神经网络改动会很大。2.不能很好地刻画不同颜色之间的相似度。</p>
+<h4 id="1-2-分布式表示"><a href="#1-2-分布式表示" class="headerlink" title="1.2 分布式表示"></a>1.2 分布式表示</h4><p>可以表示为低维的稠密向量。举例：表示颜色的方法可以为RGB值，不同的颜色对应R，G，B三维空间中的一个点。如(255,255,255)表示白色，(0,0,0)表示黑色，也即相较于局部表示，分布式表示用稠密向量的整体表示某个实体，而局部表示则是用某一维来表示某个实体。</p>
+<h4 id="1-3-嵌入-Embedding"><a href="#1-3-嵌入-Embedding" class="headerlink" title="1.3 嵌入(Embedding)"></a>1.3 嵌入(Embedding)</h4><p>使用神经网络将高维的局部表示空间$\R^{|v|}$,映射到一个非常低维的分布式表示空间$\R^d$中。使得特征不再是坐标轴上的点，而是分散在整个低维空间中。如下图所示</p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/局部表示嵌入到分布式表示.png" width="300"/></p>
+<p><strong>嵌入：</strong>将一个度量空间中的一些对象映射到另一个低维的度量空间中，并尽可能保持不同对象之间的拓扑关系。</p>
+<p><strong>“好的高层语义表示：”</strong>从底层特征开始，经过多步非线性转换得到。</p>
+<h3 id="2-深度学习"><a href="#2-深度学习" class="headerlink" title="2.深度学习"></a>2.深度学习</h3><p>为了学习一种好的表示，构建一种有深度的模型，并通过学习算法让模型自动学习出特征表示(底层特征-&gt;中层特征-&gt;高层特征)，最终提升预测模型的准确率。</p>
+<p><strong>深度：</strong>原始数据进行非线性特征转换的次数，若一个表示学习系统是一个有向图结构，则深度也是从输入节点到输出节点所经过的最长路径的长度。</p>
+<p><strong>深度学习和表示学习的关系：</strong></p>
+<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/深度学习和表示学习.png" /></p>
+<p><strong>深度学习要解决的关键问题：</strong>贡献度分配问题，一个系统的不同组件或参数对于最终输出结果的贡献或影响。即模型的各个部分对于最终结果的影响程度。深度学习主要采用的模型是神经网络模型，利用神经网络的反向误差传播算法来解决各个部分贡献度分配问题。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>表示学习与深度学习<a href="https://www.jianshu.com/p/b1dcd8811326" target="_blank" rel="noopener">https://www.jianshu.com/p/b1dcd8811326</a></p>
 ]]></content>
       <categories>
         <category>machine learning</category>
@@ -1021,70 +1053,6 @@ J_t(\theta)=log\sigma(u_o^Tv_c)+\sum^k_{j=1}\Bbb{E}_{j~P(w)}[log\sigma(-u_j^Tv_c
       </categories>
   </entry>
   <entry>
-    <title>表示学习与深度学习</title>
-    <url>/2020/05/26/machine%20learning/%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h3 id="My"><a href="#My" class="headerlink" title="My"></a>My</h3><p>表示学习就是将原始数据转换成计算机能有效识别的特征，又分为局部表示和分布式表示。局部表示是用某一维来表示原始数据的某一实体，而分布式表示则是用向量整体来表示，是低维稠密向量。</p>
-<p>嵌入则是将局部表示转换成分布式表示。</p>
-<p>深度学习则是如何有效表示学习+实现这种表示学习的算法。最终目标是提高模型的准确性。</p>
-<h3 id="1-表示学习"><a href="#1-表示学习" class="headerlink" title="1 表示学习"></a>1 表示学习</h3><blockquote>
-<p>定义：<strong>为了提高机器学习系统的准确率，我们就需要将输入信息转换为有效的特征，或者更一般性称为表示（Representation）。如果有一种算法可以自动地学习出有效的特征，并提高最终机器学习模型的性能，那么这种学习就是可以叫做表示学习（Representation Learning）</strong>。</p>
-</blockquote>
-<p><strong>关键：</strong>解决语义鸿沟问题。(输入数据的底层特征和高层语义信息之间的不一致和差异性)，比较好的是在高层语义信息上进行预测模型建模。</p>
-<p><strong>核心问题：</strong>1.“什么是一个好的表示”；2.“如何学习到好的表示”。</p>
-<p><strong>好的表示学习的优点：</strong>1.较强的表示能力；2.包含更高层的语义信息，使得后续的学习任务变得简单；3.具有一般性，任务或领域独立。</p>
-<p><strong>两种表示学习方式：</strong>1.局部表示(Local Representation)；2.分布式表示(Distributed Representation).</p>
-<p><strong>表示学习的关键：</strong>构建具有一定深度的多层次特征表示。</p>
-<h4 id="1-1-局部表示"><a href="#1-1-局部表示" class="headerlink" title="1.1 局部表示"></a>1.1 局部表示</h4><p>一般表示为向量的形式。“one-hot”局部表示，以不同的名字来命名不同的颜色，相当于给颜色取了一个代号，比如(0,0,0,1,0)表示红色，(1,0,0,0)表示绿色，也称作离散表示或符号表示。</p>
-<p><strong>局部表示的两个不足之处：</strong>1.one-hot向量的维数很高，不能扩展。若有一种新的颜色出现，则需要增加一维，所对应的神经网络改动会很大。2.不能很好地刻画不同颜色之间的相似度。</p>
-<h4 id="1-2-分布式表示"><a href="#1-2-分布式表示" class="headerlink" title="1.2 分布式表示"></a>1.2 分布式表示</h4><p>可以表示为低维的稠密向量。举例：表示颜色的方法可以为RGB值，不同的颜色对应R，G，B三维空间中的一个点。如(255,255,255)表示白色，(0,0,0)表示黑色，也即相较于局部表示，分布式表示用稠密向量的整体表示某个实体，而局部表示则是用某一维来表示某个实体。</p>
-<h4 id="1-3-嵌入-Embedding"><a href="#1-3-嵌入-Embedding" class="headerlink" title="1.3 嵌入(Embedding)"></a>1.3 嵌入(Embedding)</h4><p>使用神经网络将高维的局部表示空间$\R^{|v|}$,映射到一个非常低维的分布式表示空间$\R^d$中。使得特征不再是坐标轴上的点，而是分散在整个低维空间中。如下图所示</p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/局部表示嵌入到分布式表示.png" width="300"/></p>
-<p><strong>嵌入：</strong>将一个度量空间中的一些对象映射到另一个低维的度量空间中，并尽可能保持不同对象之间的拓扑关系。</p>
-<p><strong>“好的高层语义表示：”</strong>从底层特征开始，经过多步非线性转换得到。</p>
-<h3 id="2-深度学习"><a href="#2-深度学习" class="headerlink" title="2.深度学习"></a>2.深度学习</h3><p>为了学习一种好的表示，构建一种有深度的模型，并通过学习算法让模型自动学习出特征表示(底层特征-&gt;中层特征-&gt;高层特征)，最终提升预测模型的准确率。</p>
-<p><strong>深度：</strong>原始数据进行非线性特征转换的次数，若一个表示学习系统是一个有向图结构，则深度也是从输入节点到输出节点所经过的最长路径的长度。</p>
-<p><strong>深度学习和表示学习的关系：</strong></p>
-<p><img src ="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/深度学习和表示学习.png" /></p>
-<p><strong>深度学习要解决的关键问题：</strong>贡献度分配问题，一个系统的不同组件或参数对于最终输出结果的贡献或影响。即模型的各个部分对于最终结果的影响程度。深度学习主要采用的模型是神经网络模型，利用神经网络的反向误差传播算法来解决各个部分贡献度分配问题。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>表示学习与深度学习<a href="https://www.jianshu.com/p/b1dcd8811326" target="_blank" rel="noopener">https://www.jianshu.com/p/b1dcd8811326</a></p>
-]]></content>
-      <categories>
-        <category>machine learning</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>word2vec的总结</title>
-    <url>/2020/04/18/paper/word2vec/</url>
-    <content><![CDATA[<p>word2vec是<strong>word embedding</strong>的一种</p>
-<p>（word embedding :把人类的抽象符号转换成数值形式，或是嵌入到一个数学空间中，就是词嵌入）</p>
-<p><strong>word2vec的最终目的：</strong></p>
-<p>模型训练完后的副产物-模型参数</p>
-<p>将参数作为输入x的某种向量化的表示，这个向量就是词向量</p>
-<p><strong>word2vec的两种模型</strong></p>
-<p>skip-gram 模型：用词的输入，来预测上下文</p>
-<p>CBOW模型：用上下文输入，来预测词</p>
-<p><strong>word2vec的精髓</strong></p>
-<p>用输入的向量来训练出权重，</p>
-<p><strong>word2vec的三个创新</strong></p>
-<p>(1).将常见的单词组合或者词组作为单个“word”来处理</p>
-<p>(2).对高频词进行抽样来减少训练样本的个数</p>
-<p>(3).对优化目标采用“negative sampling”方法，这样每个训练样本的训练只会更新一小部分的模型权重，从而降低计算负担。(更新的negative words是那些频率较高的单词，这样更有可能和输入有关)</p>
-<p><strong>最后的输出是：</strong></p>
-<p>后验分布：在已知是这个周围词的情况下，还是输入的中心词的概率</p>
-<hr>
-<p>[6].word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
-<p>[1].<strong>激活函数的介绍</strong></p>
-<p>「激活函数」指的是什么？ - Lunarnai的回答 - 知乎 <a href="https://www.zhihu.com/question/304499337/answer/549345296" target="_blank" rel="noopener">https://www.zhihu.com/question/304499337/answer/549345296</a></p>
-<p>[2].<strong>反向传播算法</strong> <a href="https://zhuanlan.zhihu.com/p/33411558" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33411558</a></p>
-<p>[3].softmax函数的介绍</p>
-<p><a href="https://www.cnblogs.com/alexanderkun/p/8098781.html" target="_blank" rel="noopener">https://www.cnblogs.com/alexanderkun/p/8098781.html</a></p>
-<p>[4].<a href="http://liweithu.com/word2vec" target="_blank" rel="noopener">http://liweithu.com/word2vec</a></p>
-]]></content>
-      <categories>
-        <category>paper</category>
-      </categories>
-  </entry>
-  <entry>
     <title>(word2vec第1弹)-向量空间中单词表示的有效评估</title>
     <url>/2020/04/18/paper/(word2vec)Efficient%20Estimation%20of%20Word%20Representations%20in%20Vector%20Space/</url>
     <content><![CDATA[<p>什么是N-gram模型？</p>
@@ -1145,6 +1113,94 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </tags>
   </entry>
   <entry>
+    <title>word2vec的总结</title>
+    <url>/2020/04/18/paper/word2vec/</url>
+    <content><![CDATA[<p>word2vec是<strong>word embedding</strong>的一种</p>
+<p>（word embedding :把人类的抽象符号转换成数值形式，或是嵌入到一个数学空间中，就是词嵌入）</p>
+<p><strong>word2vec的最终目的：</strong></p>
+<p>模型训练完后的副产物-模型参数</p>
+<p>将参数作为输入x的某种向量化的表示，这个向量就是词向量</p>
+<p><strong>word2vec的两种模型</strong></p>
+<p>skip-gram 模型：用词的输入，来预测上下文</p>
+<p>CBOW模型：用上下文输入，来预测词</p>
+<p><strong>word2vec的精髓</strong></p>
+<p>用输入的向量来训练出权重，</p>
+<p><strong>word2vec的三个创新</strong></p>
+<p>(1).将常见的单词组合或者词组作为单个“word”来处理</p>
+<p>(2).对高频词进行抽样来减少训练样本的个数</p>
+<p>(3).对优化目标采用“negative sampling”方法，这样每个训练样本的训练只会更新一小部分的模型权重，从而降低计算负担。(更新的negative words是那些频率较高的单词，这样更有可能和输入有关)</p>
+<p><strong>最后的输出是：</strong></p>
+<p>后验分布：在已知是这个周围词的情况下，还是输入的中心词的概率</p>
+<hr>
+<p>[6].word2vec详解（CBOW，skip-gram，负采样，分层Softmax） - 孙孙的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/53425736" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53425736</a></p>
+<p>[1].<strong>激活函数的介绍</strong></p>
+<p>「激活函数」指的是什么？ - Lunarnai的回答 - 知乎 <a href="https://www.zhihu.com/question/304499337/answer/549345296" target="_blank" rel="noopener">https://www.zhihu.com/question/304499337/answer/549345296</a></p>
+<p>[2].<strong>反向传播算法</strong> <a href="https://zhuanlan.zhihu.com/p/33411558" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33411558</a></p>
+<p>[3].softmax函数的介绍</p>
+<p><a href="https://www.cnblogs.com/alexanderkun/p/8098781.html" target="_blank" rel="noopener">https://www.cnblogs.com/alexanderkun/p/8098781.html</a></p>
+<p>[4].<a href="http://liweithu.com/word2vec" target="_blank" rel="noopener">http://liweithu.com/word2vec</a></p>
+]]></content>
+      <categories>
+        <category>paper</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Ajax+Django框架介绍</title>
+    <url>/2020/05/16/python/Django%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="Django前后端交互"><a href="#Django前后端交互" class="headerlink" title="Django前后端交互"></a>Django前后端交互</h3><p>实现数据交互的两种方法：form表单和ajax数据交互。</p>
+<h3 id="form表单-Django中自带的模板"><a href="#form表单-Django中自带的模板" class="headerlink" title="form表单(Django中自带的模板)"></a>form表单(Django中自带的模板)</h3><h4 id="i-1-前端表单部分"><a href="#i-1-前端表单部分" class="headerlink" title="i-1 前端表单部分"></a>i-1 前端表单部分</h4><p>通过form表单向后端提交数据</p>
+<p>这个中的action路径的填写：参考”html的form表单”</p>
+<h4 id="i-2-urls-py部分-绑定响应函数"><a href="#i-2-urls-py部分-绑定响应函数" class="headerlink" title="i-2 urls.py部分(绑定响应函数)"></a>i-2 urls.py部分(绑定响应函数)</h4><p>url(r’^type_add/$’, views.type_add, name=’type_add’),</p>
+<p>这里的r’^type_add/‘中，r是匹配的意思，单引号的中间是具体要匹配的，^是匹配要检索的文本的开头，还有一般是有在最后面加上$，这个$匹配文本的结束，不加也可以。上述的访问链接是 <a href="http://127.0.0.1:port/type_add/">http://127.0.0.1:port/type_add/</a></p>
+<p>path(‘在html绑定的url网页名\\’,调用的views中的视图函数)</p>
+<h4 id="i-3-views-py部分"><a href="#i-3-views-py部分" class="headerlink" title="i-3 views.py部分"></a>i-3 views.py部分</h4><p>具体构建响应函数的内容，并将处理后的结果连同html页面返回给前端用户。</p>
+<h4 id="i-4-url传输的具体的实例"><a href="#i-4-url传输的具体的实例" class="headerlink" title="i-4 url传输的具体的实例"></a>i-4 url传输的具体的实例</h4><p>在 user\templates\user 目录下新建 login.html 文件，&lt; form action=”/user/login/“ method=”post”<strong>&gt;</strong></p>
+<p>在 user\views.py 中编写视图层用户登录逻辑代码，login_view()</p>
+<p>在路由配置部分 path(‘login/‘,views.login_view)</p>
+<h3 id="后端的数据传给前端的两种方式"><a href="#后端的数据传给前端的两种方式" class="headerlink" title="后端的数据传给前端的两种方式"></a>后端的数据传给前端的两种方式</h3><p>把数据发送到html中的话，后端 return render(request,’index.html’,{‘data’:data}) ,前端：获取数据</p>
+<p>若是要在js中处理的话，后端 return render(request ,’index.html’,{‘data’: json.dumps(list),})       ,前端js拿取数据：var List=;</p>
+<p>注意在用指令python manage.py startapp app01后，要在setting.py中的INSTALLED_APPS={} 中加入’app01’合法注册</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].Djano基础教程+实例(重要)<a href="http://c.biancheng.net/django/" target="_blank" rel="noopener">http://c.biancheng.net/django/</a></p>
+<p>[2].Django框架的文件结构<a href="https://blog.csdn.net/xzy5210123/article/details/80178128" target="_blank" rel="noopener">https://blog.csdn.net/xzy5210123/article/details/80178128</a></p>
+<h3 id="给用户返回服务端的html静态文件的一个实例"><a href="#给用户返回服务端的html静态文件的一个实例" class="headerlink" title="给用户返回服务端的html静态文件的一个实例"></a>给用户返回服务端的html静态文件的一个实例</h3><p>1.准备前端的HTML文件</p>
+<p>2.在Views中处理HTML文件的返回</p>
+<p>3.在URL中实现路由</p>
+<h4 id="templates文件夹的设定："><a href="#templates文件夹的设定：" class="headerlink" title="templates文件夹的设定："></a>templates文件夹的设定：</h4><p>在非templates文件夹中，要返回html文件的话</p>
+<p>​    1.把文件夹设置成templates folder</p>
+<p>​    2.在setting.py文件夹中，找到TEMPLATES= 的DIRS，模仿templates ,加入</p>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC:"></a>MVC:</h3><p>M:model -数据</p>
+<p>V：views- 视图</p>
+<p>C：control</p>
+<h3 id="MVT"><a href="#MVT" class="headerlink" title="MVT"></a>MVT</h3><p>M : model -数据  数据库的访问部分</p>
+<p>V ：view- 视图     核心部分，实现逻辑处理</p>
+<p>T: templates           模板        存放静态html文件</p>
+<p>整个过程：用户发送url请求，在urls.py中匹配，调用对应的views方法，然后views中调用model的数据库处理部分得到值，填充到templates中，将填充好的html文件返回给用户。</p>
+<h3 id="在Django中配置html的静态文件"><a href="#在Django中配置html的静态文件" class="headerlink" title="在Django中配置html的静态文件"></a>在Django中配置html的静态文件</h3><p>在Django中，html页面中所依赖的css，js，images，等都阻止分享</p>
+<p>1.建立静态文件的文件夹 （在根目录下建立static文件夹，然后在这个文件夹下可以建立分类js文件夹，css文件夹，font文件夹，image文件夹等）</p>
+<p>2.配置文件夹为项目的合法静态文件夹       </p>
+<p>​    在setting.py中配置 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">STATICFILES_DIRS &#x3D;(os.path.join(BASE_DIR, &#39;static&#39;),)</span><br></pre></td></tr></table></figure>
+<p>然后可以在浏览器中直接<a href="http://127.0.0.1:8000/static/image/11.png访问文件，然后就可以直接在html文件中引用了" target="_blank" rel="noopener">http://127.0.0.1:8000/static/image/11.png访问文件，然后就可以直接在html文件中引用了</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Numpy包</title>
+    <url>/2020/04/18/python/Numpy%E5%8C%85/</url>
+    <content><![CDATA[<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h3><p>开源的数值计算</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h3 id="2-array数据类型-数组"><a href="#2-array数据类型-数组" class="headerlink" title="2 array数据类型-数组"></a>2 array数据类型-数组</h3><h4 id="2-1-产生数组"><a href="#2-1-产生数组" class="headerlink" title="2.1 产生数组"></a>2.1 产生数组</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#从列表中产生的</span></span><br><span class="line">L=[<span class="number">0</span>,<span class="number">1</span>] a=np.array(L) a=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>]) a=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],dtype=float)</span><br><span class="line"></span><br><span class="line"><span class="comment">#特殊的数组</span></span><br><span class="line">np.zeros(<span class="number">0</span>的个数,dtype=<span class="string">'int'</span>)	<span class="comment">#生成全0的数组</span></span><br><span class="line">np.ones(<span class="number">1</span>的个数,dtype=<span class="string">'bool'</span>)	<span class="comment">#生成全1的数组</span></span><br><span class="line">a=np.arange(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>)		<span class="comment">#生成整数序列,生成1~9的整数序列，以2为步长（1,10）左闭右开生成等差数列</span></span><br><span class="line">a=np.linspace(<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>)        <span class="comment">#生成1~10，的10个等差数列</span></span><br><span class="line">np.random.rand(<span class="number">10</span>)     <span class="comment">#生成随机数</span></span><br><span class="line">np.random.randint(<span class="number">1</span>,<span class="number">10</span>,(<span class="number">5</span>,<span class="number">5</span>))	<span class="comment">#创建一个5x5的随机二维数组</span></span><br><span class="line">np.random.random((<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>))	<span class="comment">#创建3x3x3的随机数组</span></span><br><span class="line">np.random.randint(<span class="number">1</span>,<span class="number">10</span>,<span class="number">5</span>)   <span class="comment">#生成1~10里面5个随机整数</span></span><br><span class="line">np.random.randn(<span class="number">10</span>)   <span class="comment">#生成10个随机数 范围在0~1不包括1</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-查看"><a href="#2-2-查看" class="headerlink" title="2.2 查看"></a>2.2 查看</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a.dtype		<span class="comment">#查看数组中的数据类型</span></span><br><span class="line">a.shape		<span class="comment">#查看形状，会返回一个元组，每个元素代表着一维的元素数目</span></span><br><span class="line">a.size		<span class="comment">#查看数组里面元素的个数</span></span><br><span class="line">a.ndim   	<span class="comment">#查看数组的维度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#一维数组</span></span><br><span class="line">a[<span class="number">0</span>]		<span class="comment">#查看下标为0的数据</span></span><br><span class="line">a[<span class="number">1</span>:<span class="number">3</span>]		<span class="comment">#切片操作，查看下标为1~2的数据</span></span><br><span class="line">y=a[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">-3</span>]]		<span class="comment">#这个操作会把a数组中的a[1],a[2],a[-3]的值放到y中</span></span><br><span class="line">mask=np.array([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],dtype=bool) </span><br><span class="line"></span><br><span class="line"><span class="comment">#多维数组</span></span><br><span class="line">np.array([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>]])</span><br><span class="line">a[<span class="number">1</span>,<span class="number">3</span>]		<span class="comment">#索引第2行第4列</span></span><br><span class="line">a[<span class="number">1</span>]  		<span class="comment">#索引第二行的所有元素</span></span><br><span class="line">a[:,<span class="number">1</span>] 		<span class="comment">#所有第二列的所有元素</span></span><br><span class="line">a[<span class="number">0</span>,<span class="number">3</span>:<span class="number">5</span>]  	<span class="comment">#第一行的第4个和第5个元素,左闭右开</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-3-修改"><a href="#2-3-修改" class="headerlink" title="2.3 修改"></a>2.3 修改</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=a[[<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]]	<span class="comment">#交换二维数组中的两行</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-参考"><a href="#3-参考" class="headerlink" title="3 参考"></a>3 参考</h3><p><a href="https://www.w3school.com.cn/python/python_arrays.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/python/python_arrays.asp</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>pandas包</title>
     <url>/2020/04/18/python/Pandas%E5%8C%85/</url>
     <content><![CDATA[<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>导入数据包</p>
@@ -1196,14 +1252,26 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </categories>
   </entry>
   <entry>
-    <title>Numpy包</title>
-    <url>/2020/04/18/python/Numpy%E5%8C%85/</url>
-    <content><![CDATA[<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h3><p>开源的数值计算</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<h3 id="2-array数据类型-数组"><a href="#2-array数据类型-数组" class="headerlink" title="2 array数据类型-数组"></a>2 array数据类型-数组</h3><h4 id="2-1-产生数组"><a href="#2-1-产生数组" class="headerlink" title="2.1 产生数组"></a>2.1 产生数组</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#从列表中产生的</span></span><br><span class="line">L=[<span class="number">0</span>,<span class="number">1</span>] a=np.array(L) a=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>]) a=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],dtype=float)</span><br><span class="line"></span><br><span class="line"><span class="comment">#特殊的数组</span></span><br><span class="line">np.zeros(<span class="number">0</span>的个数,dtype=<span class="string">'int'</span>)	<span class="comment">#生成全0的数组</span></span><br><span class="line">np.ones(<span class="number">1</span>的个数,dtype=<span class="string">'bool'</span>)	<span class="comment">#生成全1的数组</span></span><br><span class="line">a=np.arange(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>)		<span class="comment">#生成整数序列,生成1~9的整数序列，以2为步长（1,10）左闭右开生成等差数列</span></span><br><span class="line">a=np.linspace(<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>)        <span class="comment">#生成1~10，的10个等差数列</span></span><br><span class="line">np.random.rand(<span class="number">10</span>)     <span class="comment">#生成随机数</span></span><br><span class="line">np.random.randint(<span class="number">1</span>,<span class="number">10</span>,(<span class="number">5</span>,<span class="number">5</span>))	<span class="comment">#创建一个5x5的随机二维数组</span></span><br><span class="line">np.random.random((<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>))	<span class="comment">#创建3x3x3的随机数组</span></span><br><span class="line">np.random.randint(<span class="number">1</span>,<span class="number">10</span>,<span class="number">5</span>)   <span class="comment">#生成1~10里面5个随机整数</span></span><br><span class="line">np.random.randn(<span class="number">10</span>)   <span class="comment">#生成10个随机数 范围在0~1不包括1</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-2-查看"><a href="#2-2-查看" class="headerlink" title="2.2 查看"></a>2.2 查看</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a.dtype		<span class="comment">#查看数组中的数据类型</span></span><br><span class="line">a.shape		<span class="comment">#查看形状，会返回一个元组，每个元素代表着一维的元素数目</span></span><br><span class="line">a.size		<span class="comment">#查看数组里面元素的个数</span></span><br><span class="line">a.ndim   	<span class="comment">#查看数组的维度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#一维数组</span></span><br><span class="line">a[<span class="number">0</span>]		<span class="comment">#查看下标为0的数据</span></span><br><span class="line">a[<span class="number">1</span>:<span class="number">3</span>]		<span class="comment">#切片操作，查看下标为1~2的数据</span></span><br><span class="line">y=a[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">-3</span>]]		<span class="comment">#这个操作会把a数组中的a[1],a[2],a[-3]的值放到y中</span></span><br><span class="line">mask=np.array([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],dtype=bool) </span><br><span class="line"></span><br><span class="line"><span class="comment">#多维数组</span></span><br><span class="line">np.array([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>]])</span><br><span class="line">a[<span class="number">1</span>,<span class="number">3</span>]		<span class="comment">#索引第2行第4列</span></span><br><span class="line">a[<span class="number">1</span>]  		<span class="comment">#索引第二行的所有元素</span></span><br><span class="line">a[:,<span class="number">1</span>] 		<span class="comment">#所有第二列的所有元素</span></span><br><span class="line">a[<span class="number">0</span>,<span class="number">3</span>:<span class="number">5</span>]  	<span class="comment">#第一行的第4个和第5个元素,左闭右开</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-3-修改"><a href="#2-3-修改" class="headerlink" title="2.3 修改"></a>2.3 修改</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=a[[<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]]	<span class="comment">#交换二维数组中的两行</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-参考"><a href="#3-参考" class="headerlink" title="3 参考"></a>3 参考</h3><p><a href="https://www.w3school.com.cn/python/python_arrays.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/python/python_arrays.asp</a></p>
+    <title>endswitch()函数</title>
+    <url>/2020/05/06/python/endswitch()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="一-功能："><a href="#一-功能：" class="headerlink" title="一.功能："></a>一.功能：</h3><p>判断字符串是否以指定字符或者字符串结尾。</p>
+<h3 id="二-函数原型："><a href="#二-函数原型：" class="headerlink" title="二.函数原型："></a>二.函数原型：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.endswith(&quot;suffix&quot;,    	&#x3D;&gt; 后缀，可以是单个字符，也可以是字符串，还可以是元组;</span><br><span class="line">	      start &#x3D; 0,  	&#x3D;&gt; 索引字符串的起始位置;</span><br><span class="line">	      end &#x3D; len(str))	&#x3D;&gt; 索引字符串的结束位置。</span><br><span class="line">返回值：布尔类型（True,False）</span><br></pre></td></tr></table></figure>
+<h3 id="三-例子"><a href="#三-例子" class="headerlink" title="三.例子"></a>三.例子</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str=<span class="string">"Hello World"</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>)  <span class="comment">#判断是否以d结尾</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>,<span class="number">0</span>,<span class="number">6</span>) <span class="comment">#索引"Hello W"是否以d结尾</span></span><br><span class="line">str[<span class="number">0</span>:<span class="number">6</span>].endswitch(<span class="string">"d"</span>) <span class="comment">#只索引str[0:6]的</span></span><br><span class="line">str.endswitch((<span class="string">"e"</span>,<span class="string">"o"</span>)) <span class="comment">#遍历元组中的元素，存在则返回True</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>invalid syntax问题</title>
+    <url>/2020/05/11/python/invalid%20syntax%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>学习python时，明明代码没有一点问题，但是每次运行时都会显示<strong>”SyntaxError: invalid syntax”</strong>。</p>
+<h3 id="二-原因"><a href="#二-原因" class="headerlink" title="二.原因"></a>二.原因</h3><p><strong>”SyntaxError: invalid syntax”</strong>。意思是<strong>语法错误</strong></p>
+<p>有一下几种解决办法：</p>
+<h4 id="1-版本问题："><a href="#1-版本问题：" class="headerlink" title="1.版本问题："></a>1.版本问题：</h4><p>因为python2和python3是不兼容的，所以一些可以在python2上运行的代码不一定可以在python3上运行；可以尝试更换版本；</p>
+<h4 id="2-路径问题："><a href="#2-路径问题：" class="headerlink" title="2.路径问题："></a>2.路径问题：</h4><p>记得仔细查看自己的路径是否正确；</p>
+<h4 id="3-安装第三方模块时："><a href="#3-安装第三方模块时：" class="headerlink" title="3.安装第三方模块时："></a>3.安装第三方模块时：</h4><p>在安装第三方模块时也有可能出现“SyntaxError: invalid syntax”这个问题，这时需要检查一些是否是在cmd窗口下安装，同时，要到python的安装目录里面，找到pip所在的目录里面进行安装；</p>
+<h4 id="4-编写问题："><a href="#4-编写问题：" class="headerlink" title="4.编写问题："></a>4.编写问题：</h4><p>忘记在 if , elif , else , for , while , class ,def 声明末尾添加 冒号( : )；<br>误将 = 当成 == 使用；</p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1223,48 +1291,6 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
     <url>/2020/05/24/python/jieba%E5%BA%93/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/dongzixian/article/details/103240861" target="_blank" rel="noopener">https://blog.csdn.net/dongzixian/article/details/103240861</a></p>
 <p><a href="https://www.cnblogs.com/han20180705/p/9470622.html" target="_blank" rel="noopener">https://www.cnblogs.com/han20180705/p/9470622.html</a></p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Ajax+Django框架介绍</title>
-    <url>/2020/05/16/python/Django%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="Django前后端交互"><a href="#Django前后端交互" class="headerlink" title="Django前后端交互"></a>Django前后端交互</h3><p>实现数据交互的两种方法：form表单和ajax数据交互。</p>
-<h3 id="form表单-Django中自带的模板"><a href="#form表单-Django中自带的模板" class="headerlink" title="form表单(Django中自带的模板)"></a>form表单(Django中自带的模板)</h3><h4 id="i-1-前端表单部分"><a href="#i-1-前端表单部分" class="headerlink" title="i-1 前端表单部分"></a>i-1 前端表单部分</h4><p>通过form表单向后端提交数据</p>
-<p>这个中的action路径的填写：参考”html的form表单”</p>
-<h4 id="i-2-urls-py部分-绑定响应函数"><a href="#i-2-urls-py部分-绑定响应函数" class="headerlink" title="i-2 urls.py部分(绑定响应函数)"></a>i-2 urls.py部分(绑定响应函数)</h4><p>url(r’^type_add/$’, views.type_add, name=’type_add’),</p>
-<p>这里的r’^type_add/‘中，r是匹配的意思，单引号的中间是具体要匹配的，^是匹配要检索的文本的开头，还有一般是有在最后面加上$，这个$匹配文本的结束，不加也可以。上述的访问链接是 <a href="http://127.0.0.1:port/type_add/">http://127.0.0.1:port/type_add/</a></p>
-<p>path(‘在html绑定的url网页名\\’,调用的views中的视图函数)</p>
-<h4 id="i-3-views-py部分"><a href="#i-3-views-py部分" class="headerlink" title="i-3 views.py部分"></a>i-3 views.py部分</h4><p>具体构建响应函数的内容，并将处理后的结果连同html页面返回给前端用户。</p>
-<h4 id="i-4-url传输的具体的实例"><a href="#i-4-url传输的具体的实例" class="headerlink" title="i-4 url传输的具体的实例"></a>i-4 url传输的具体的实例</h4><p>在 user\templates\user 目录下新建 login.html 文件，&lt; form action=”/user/login/“ method=”post”<strong>&gt;</strong></p>
-<p>在 user\views.py 中编写视图层用户登录逻辑代码，login_view()</p>
-<p>在路由配置部分 path(‘login/‘,views.login_view)</p>
-<h3 id="后端的数据传给前端的两种方式"><a href="#后端的数据传给前端的两种方式" class="headerlink" title="后端的数据传给前端的两种方式"></a>后端的数据传给前端的两种方式</h3><p>把数据发送到html中的话，后端 return render(request,’index.html’,{‘data’:data}) ,前端：获取数据</p>
-<p>若是要在js中处理的话，后端 return render(request ,’index.html’,{‘data’: json.dumps(list),})       ,前端js拿取数据：var List=;</p>
-<p>注意在用指令python manage.py startapp app01后，要在setting.py中的INSTALLED_APPS={} 中加入’app01’合法注册</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].Djano基础教程+实例(重要)<a href="http://c.biancheng.net/django/" target="_blank" rel="noopener">http://c.biancheng.net/django/</a></p>
-<p>[2].Django框架的文件结构<a href="https://blog.csdn.net/xzy5210123/article/details/80178128" target="_blank" rel="noopener">https://blog.csdn.net/xzy5210123/article/details/80178128</a></p>
-<h3 id="给用户返回服务端的html静态文件的一个实例"><a href="#给用户返回服务端的html静态文件的一个实例" class="headerlink" title="给用户返回服务端的html静态文件的一个实例"></a>给用户返回服务端的html静态文件的一个实例</h3><p>1.准备前端的HTML文件</p>
-<p>2.在Views中处理HTML文件的返回</p>
-<p>3.在URL中实现路由</p>
-<h4 id="templates文件夹的设定："><a href="#templates文件夹的设定：" class="headerlink" title="templates文件夹的设定："></a>templates文件夹的设定：</h4><p>在非templates文件夹中，要返回html文件的话</p>
-<p>​    1.把文件夹设置成templates folder</p>
-<p>​    2.在setting.py文件夹中，找到TEMPLATES= 的DIRS，模仿templates ,加入</p>
-<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC:"></a>MVC:</h3><p>M:model -数据</p>
-<p>V：views- 视图</p>
-<p>C：control</p>
-<h3 id="MVT"><a href="#MVT" class="headerlink" title="MVT"></a>MVT</h3><p>M : model -数据  数据库的访问部分</p>
-<p>V ：view- 视图     核心部分，实现逻辑处理</p>
-<p>T: templates           模板        存放静态html文件</p>
-<p>整个过程：用户发送url请求，在urls.py中匹配，调用对应的views方法，然后views中调用model的数据库处理部分得到值，填充到templates中，将填充好的html文件返回给用户。</p>
-<h3 id="在Django中配置html的静态文件"><a href="#在Django中配置html的静态文件" class="headerlink" title="在Django中配置html的静态文件"></a>在Django中配置html的静态文件</h3><p>在Django中，html页面中所依赖的css，js，images，等都阻止分享</p>
-<p>1.建立静态文件的文件夹 （在根目录下建立static文件夹，然后在这个文件夹下可以建立分类js文件夹，css文件夹，font文件夹，image文件夹等）</p>
-<p>2.配置文件夹为项目的合法静态文件夹       </p>
-<p>​    在setting.py中配置 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">STATICFILES_DIRS &#x3D;(os.path.join(BASE_DIR, &#39;static&#39;),)</span><br></pre></td></tr></table></figure>
-<p>然后可以在浏览器中直接<a href="http://127.0.0.1:8000/static/image/11.png访问文件，然后就可以直接在html文件中引用了" target="_blank" rel="noopener">http://127.0.0.1:8000/static/image/11.png访问文件，然后就可以直接在html文件中引用了</a></p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1378,28 +1404,6 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </categories>
   </entry>
   <entry>
-    <title>endswitch()函数</title>
-    <url>/2020/05/06/python/endswitch()%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="一-功能："><a href="#一-功能：" class="headerlink" title="一.功能："></a>一.功能：</h3><p>判断字符串是否以指定字符或者字符串结尾。</p>
-<h3 id="二-函数原型："><a href="#二-函数原型：" class="headerlink" title="二.函数原型："></a>二.函数原型：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.endswith(&quot;suffix&quot;,    	&#x3D;&gt; 后缀，可以是单个字符，也可以是字符串，还可以是元组;</span><br><span class="line">	      start &#x3D; 0,  	&#x3D;&gt; 索引字符串的起始位置;</span><br><span class="line">	      end &#x3D; len(str))	&#x3D;&gt; 索引字符串的结束位置。</span><br><span class="line">返回值：布尔类型（True,False）</span><br></pre></td></tr></table></figure>
-<h3 id="三-例子"><a href="#三-例子" class="headerlink" title="三.例子"></a>三.例子</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str=<span class="string">"Hello World"</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>)  <span class="comment">#判断是否以d结尾</span></span><br><span class="line">str.endswitch(<span class="string">"d"</span>,<span class="number">0</span>,<span class="number">6</span>) <span class="comment">#索引"Hello W"是否以d结尾</span></span><br><span class="line">str[<span class="number">0</span>:<span class="number">6</span>].endswitch(<span class="string">"d"</span>) <span class="comment">#只索引str[0:6]的</span></span><br><span class="line">str.endswitch((<span class="string">"e"</span>,<span class="string">"o"</span>)) <span class="comment">#遍历元组中的元素，存在则返回True</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>plt-figure()函数</title>
-    <url>/2020/05/07/python/plt-figure()%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="一-简介："><a href="#一-简介：" class="headerlink" title="一.简介："></a>一.简介：</h3><p>创建一个图形实例</p>
-<h3 id="二-语法说明"><a href="#二-语法说明" class="headerlink" title="二.语法说明"></a>二.语法说明</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">figure(num=<span class="literal">None</span>, figsize=<span class="literal">None</span>, dpi=<span class="literal">None</span>, facecolor=<span class="literal">None</span>, edgecolor=<span class="literal">None</span>, frameon=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">      num : 图像编号或名称，数字为编号，字符串为名称</span></span><br><span class="line"><span class="string">  figsize : 指定figure的宽和高，单位为英寸</span></span><br><span class="line"><span class="string">      dpi : 指定绘图对象的分辨率，即每英寸多少个像素，缺省值为80</span></span><br><span class="line"><span class="string">facecolor : 背景的颜色</span></span><br><span class="line"><span class="string">edgecolor : 边框颜色</span></span><br><span class="line"><span class="string">  frameon : 是否显示边框</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
-<h3 id="三-举例"><a href="#三-举例" class="headerlink" title="三.举例"></a>三.举例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">4</span>, <span class="number">3</span>), facecolor=<span class="string">'blue'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-  </entry>
-  <entry>
     <title>python-os库的介绍</title>
     <url>/2020/05/12/python/os%E5%BA%93/</url>
     <content><![CDATA[<h3 id="一-system-函数"><a href="#一-system-函数" class="headerlink" title="一.system()函数"></a>一.system()函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(cmd)<span class="comment"># 命令行的命令用双印号括起来</span></span><br></pre></td></tr></table></figure>
@@ -1432,22 +1436,6 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
 <h3 id="二-popen-函数"><a href="#二-popen-函数" class="headerlink" title="二.popen()函数"></a>二.popen()函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">r&#x3D;os.popen(&#39;ping www.baidu,com&#39;)</span><br></pre></td></tr></table></figure>
 <h4 id="1-返回值：-1"><a href="#1-返回值：-1" class="headerlink" title="1.返回值："></a>1.返回值：</h4><p>返回脚本执行过程中的输出内容。</p>
 <p>但是当return str时，调用函数无法输出str的内容，此时可以打印一下该函数执行即可： print(fun(return str))</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>py2neo库的介绍</title>
-    <url>/2020/05/12/python/py2neo%E5%BA%93/</url>
-    <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><p>这个库是python和neo4j进行连接的库，可以用这个库的相关函数对Neo4j的数据库进行操作。</p>
-<p>安装指令：pip install py2neo</p>
-<h4 id="1-引用代码："><a href="#1-引用代码：" class="headerlink" title="1.引用代码："></a>1.引用代码：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> py2neo <span class="keyword">import</span> Graph,Node,Relationship</span><br></pre></td></tr></table></figure>
-<h3 id="二-相关操作"><a href="#二-相关操作" class="headerlink" title="二.相关操作"></a>二.相关操作</h3><h4 id="1-连接操作："><a href="#1-连接操作：" class="headerlink" title="1.连接操作："></a>1.连接操作：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test_graph = Graph(</span><br><span class="line">    <span class="string">"http://localhost:7474"</span>, </span><br><span class="line">    username=<span class="string">"neo4j"</span>, </span><br><span class="line">    password=<span class="string">"neo4j"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="2-节点的建立"><a href="#2-节点的建立" class="headerlink" title="2.节点的建立"></a>2.节点的建立</h4><p><a href="https://www.jianshu.com/p/a2497a33390f" target="_blank" rel="noopener">https://www.jianshu.com/p/a2497a33390f%20%20</a></p>
-<p><a href="https://blog.csdn.net/amao1998/article/details/81041143" target="_blank" rel="noopener">https://blog.csdn.net/amao1998/article/details/81041143</a></p>
-<p>这里neo4j-driver和py2neo是有区别的，</p>
-<p>前者是官方支持的，后者则在用户友好度上有优势，但还是建议使用前者。</p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1489,6 +1477,33 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
 </div>
 <h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://www.cnblogs.com/luban/p/9117360.html" target="_blank" rel="noopener">https://www.cnblogs.com/luban/p/9117360.html</a></p>
 <p><a href="https://blog.csdn.net/tefuirnever/article/details/93708964" target="_blank" rel="noopener">https://blog.csdn.net/tefuirnever/article/details/93708964</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>plt-figure()函数</title>
+    <url>/2020/05/07/python/plt-figure()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="一-简介："><a href="#一-简介：" class="headerlink" title="一.简介："></a>一.简介：</h3><p>创建一个图形实例</p>
+<h3 id="二-语法说明"><a href="#二-语法说明" class="headerlink" title="二.语法说明"></a>二.语法说明</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">figure(num=<span class="literal">None</span>, figsize=<span class="literal">None</span>, dpi=<span class="literal">None</span>, facecolor=<span class="literal">None</span>, edgecolor=<span class="literal">None</span>, frameon=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">      num : 图像编号或名称，数字为编号，字符串为名称</span></span><br><span class="line"><span class="string">  figsize : 指定figure的宽和高，单位为英寸</span></span><br><span class="line"><span class="string">      dpi : 指定绘图对象的分辨率，即每英寸多少个像素，缺省值为80</span></span><br><span class="line"><span class="string">facecolor : 背景的颜色</span></span><br><span class="line"><span class="string">edgecolor : 边框颜色</span></span><br><span class="line"><span class="string">  frameon : 是否显示边框</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<h3 id="三-举例"><a href="#三-举例" class="headerlink" title="三.举例"></a>三.举例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">4</span>, <span class="number">3</span>), facecolor=<span class="string">'blue'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>py2neo库的介绍</title>
+    <url>/2020/05/12/python/py2neo%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><p>这个库是python和neo4j进行连接的库，可以用这个库的相关函数对Neo4j的数据库进行操作。</p>
+<p>安装指令：pip install py2neo</p>
+<h4 id="1-引用代码："><a href="#1-引用代码：" class="headerlink" title="1.引用代码："></a>1.引用代码：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> py2neo <span class="keyword">import</span> Graph,Node,Relationship</span><br></pre></td></tr></table></figure>
+<h3 id="二-相关操作"><a href="#二-相关操作" class="headerlink" title="二.相关操作"></a>二.相关操作</h3><h4 id="1-连接操作："><a href="#1-连接操作：" class="headerlink" title="1.连接操作："></a>1.连接操作：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test_graph = Graph(</span><br><span class="line">    <span class="string">"http://localhost:7474"</span>, </span><br><span class="line">    username=<span class="string">"neo4j"</span>, </span><br><span class="line">    password=<span class="string">"neo4j"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="2-节点的建立"><a href="#2-节点的建立" class="headerlink" title="2.节点的建立"></a>2.节点的建立</h4><p><a href="https://www.jianshu.com/p/a2497a33390f" target="_blank" rel="noopener">https://www.jianshu.com/p/a2497a33390f%20%20</a></p>
+<p><a href="https://blog.csdn.net/amao1998/article/details/81041143" target="_blank" rel="noopener">https://blog.csdn.net/amao1998/article/details/81041143</a></p>
+<p>这里neo4j-driver和py2neo是有区别的，</p>
+<p>前者是官方支持的，后者则在用户友好度上有优势，但还是建议使用前者。</p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1623,91 +1638,6 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </categories>
   </entry>
   <entry>
-    <title>invalid syntax问题</title>
-    <url>/2020/05/11/python/invalid%20syntax%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>学习python时，明明代码没有一点问题，但是每次运行时都会显示<strong>”SyntaxError: invalid syntax”</strong>。</p>
-<h3 id="二-原因"><a href="#二-原因" class="headerlink" title="二.原因"></a>二.原因</h3><p><strong>”SyntaxError: invalid syntax”</strong>。意思是<strong>语法错误</strong></p>
-<p>有一下几种解决办法：</p>
-<h4 id="1-版本问题："><a href="#1-版本问题：" class="headerlink" title="1.版本问题："></a>1.版本问题：</h4><p>因为python2和python3是不兼容的，所以一些可以在python2上运行的代码不一定可以在python3上运行；可以尝试更换版本；</p>
-<h4 id="2-路径问题："><a href="#2-路径问题：" class="headerlink" title="2.路径问题："></a>2.路径问题：</h4><p>记得仔细查看自己的路径是否正确；</p>
-<h4 id="3-安装第三方模块时："><a href="#3-安装第三方模块时：" class="headerlink" title="3.安装第三方模块时："></a>3.安装第三方模块时：</h4><p>在安装第三方模块时也有可能出现“SyntaxError: invalid syntax”这个问题，这时需要检查一些是否是在cmd窗口下安装，同时，要到python的安装目录里面，找到pip所在的目录里面进行安装；</p>
-<h4 id="4-编写问题："><a href="#4-编写问题：" class="headerlink" title="4.编写问题："></a>4.编写问题：</h4><p>忘记在 if , elif , else , for , while , class ,def 声明末尾添加 冒号( : )；<br>误将 = 当成 == 使用；</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《如何阅读一本书》</title>
-    <url>/2020/04/16/read%20note/%E3%80%8A%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6%E3%80%8B/</url>
-    <content><![CDATA[<ul>
-<li>运用阅读以增加资讯和洞察力，和运用阅读以增加理解力是很容易区分开来的。</li>
-</ul>
-<p>（想想自己平时的状态，确实，无论是看csdn还是看新闻资讯，只是增加资讯，并没有真正在理解，）</p>
-<ul>
-<li><p>所谓吸收资讯，就只是知道某件事发生了，想要被启发，就要去理解，搞清楚这到底是怎么回事，为什么会发生，与其他的事实有什么关联，有什么类似的情况，同类的差异在哪里</p>
-</li>
-<li><p>除了知道作者所说的话之外，还要明白他的意思，懂得他为什么会这么说。</p>
-</li>
-<li><p>判断一本书是否具有可读性，（略读整本书，决定了值不值得花时间去认真读，或者将来</p>
-</li>
-</ul>
-<p>有需要的话，应该归为哪一类）</p>
-<p>读书名，读序，读目录，读摘要介绍，索引，也即把所有正文以外的部分全部阅读一遍。知道这本书大致是什么</p>
-<ol>
-<li>先看书名页，如果有序就先看序</li>
-<li>仔细研究目录，弄清楚作者的结构思路</li>
-<li>如果书中附有索引，也要看一下索引</li>
-<li>若书中附有新皮，读一下出版者的介绍</li>
-<li>在目录中挑几个和主题息息相关的章节读</li>
-<li>最后，把书随意再翻一翻，弄个一两段读一读，有时，连续读几页，但不要太多</li>
-</ol>
-<ul>
-<li>一般来说，就算是你想要仔细阅读的书，也要提前略读一下，这样才能从基本架构上找到一些想法</li>
-<li>霍布斯认为人的生命是一种机器运动，趋利避害，自我保存一种人的本性。（如果这个作为机器学习的原动力的话，该怎么实现，用遗传算法，每次筛选出更为有力的后代，然后让其继续繁衍）</li>
-<li>从书名中判断这本书是实用类的书还是理论类的书，给书籍进行分类，</li>
-<li>分析阅读的第二个规则:使用一个单一的句子，或者最多几句话来叙述整本书的内容。;第三:将书中重要篇章列举出来说明如何按照顺序组成一个整体的框架。</li>
-<li>两个心灵若想透过语言来进行交流，需要作者与读者都愿意才行。作者也是一样，无论他的写作技巧如何，如何读者没有呼应的技巧，则沟通不可能建立。就像在一座山的两头分头凿隧道，不论花多少力气，如果双方不是照着同样的工程原理进行计算，就永远不可能相遇。(爱情也是的，如果只是一方在努力，就永远不可能，相遇，同时，无论是身为作者还是读者，自己都得具备呼应的技巧，只能靠自己去磨练。)</li>
-<li>找出重要的关键词，理解词在语境中的不同含义，与作者共通。是读一本书的需求所在。</li>
-<li>真正读会一本书，要或赞同，反对的话，也要提出批评，给出反对的想法。有自己的思考。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>read note</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《如何让你爱的人爱上你》</title>
-    <url>/2020/04/16/read%20note/%E3%80%8A%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BD%A0%E7%88%B1%E7%9A%84%E4%BA%BA%E7%88%B1%E4%B8%8A%E4%BD%A0%E3%80%8B/</url>
-    <content><![CDATA[<p>1.</p>
-<p>——《从医学角度看人类性行为》先不管语义学，我们只探讨事实——任何微小的刺激都会导致爱情的发生。与意中人初次邂逅时你的一举一动都具有非常关键的作用。如果那件强力刺激事件以后你们之间发生了爱情，那么你就完全有权利把它叫做一见钟情，没有人会否定你的说法。</p>
-<p>2.</p>
-<p>因此，和你的意中人进行密集、强烈甚至带有威胁意味的目光接触，是让他（或她）爱上你的第一步。</p>
-<p>3.</p>
-<p>意中人聊天的时候，请大幅度增加你们的目光接触。寻找他（或她）的视神经，将你的视线死死锁住对方，制造那种你们已经相爱的暧昧气氛。</p>
-<p>4.</p>
-<p>电眼和意中人聊天的时候，凝视着他（或她）脸上最有魅力的地方，这样你的瞳孔就会自动放大，你的眼睛就变成了“电眼”。</p>
-<p>5.</p>
-<p>眷恋的眼神每次和意中人聊天的时候，将你的视线在他（或她）的脸上多停留一会儿——即使在谈话间的沉默时段也如此</p>
-<p>6.</p>
-<p>视线之旅和意中人交谈的时候，让你的视线来一场旅行——但开始的时候，仅限一些安全的区域。先用视线对他（或她）的面庞做个整体扫描，重点集中在对方的双眼。如果他（或她）看起来很享受你的视线抚摸的话，就朝下再走一小步，到达对方的脖颈、肩膀和上身。</p>
-<p>7.</p>
-<p>那就是让你的身体说话。首先请使用你的眼睛。看着她的双眼并延长你们之间的目光接触。她很可能会转移视线，你要对此做好心理准备。女性从小受到的教育就是，当发现男性盯着自己看时便垂下眼帘，但这并不意味着她对你不感兴趣。一个关于调情类型的科学分析告诉我们，如果一名女士在转移视线以后的45秒钟以内重新抬起眼睛的话，就说明她对你的关注持欢迎态度。</p>
-<p>8.，</p>
-<p>你的开场白越朴素、效果就越好，因为在恋情的初期，她最关注的并不是你的言谈。她在仔细观察你，她的大脑在高速运转，评估你的仪态举止。她明白：不管你说什么，其实都是用来接近她的借口。如果她对你有好感的话，这种行为她是可以接受的。</p>
-<p>9.</p>
-<p>尽管你不用背诵任何开场白，但从你双唇之间吐出来的第一句话却一定要慎之又慎。正如你对意中人最初的凝视应该取悦她的眼睛一样，你对她说的第一句话也要取悦她的耳朵。记住，你对意中人说的第一句话是迄今为止她借以评估你的最重要根据。如果你张口就是抱怨，在她的印象中，你就会成为一个牢骚满腹的人；如果你第一句就透着自负，她就会给你贴上自大狂的标签；但如果你的第一句话吸引了她，她就会觉得你是个魅力十足的人。</p>
-<p>10</p>
-<p>轻微的身体接触。在交谈和身体逐渐正面相对的过程中，会随之发生一种强有力的动作：轻微的身体接触。</p>
-<p>11</p>
-<p>遇见陌生的感兴趣的女生，就要想方设法去接触，去与其交流，经常出现在其面前，而不是扭扭捏捏的躲在一旁</p>
-<p>当你倾听意中人的讲话时，要让一抹肯定而自信的微笑露出来</p>
-]]></content>
-      <categories>
-        <category>read note</category>
-      </categories>
-  </entry>
-  <entry>
     <title>python语法小记</title>
     <url>/2020/05/13/python/python%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h3 id="with…as…语句"><a href="#with…as…语句" class="headerlink" title="with…as…语句"></a>with…as…语句</h3><h3 id="一-with…as…语句"><a href="#一-with…as…语句" class="headerlink" title="一.with…as…语句"></a>一.with…as…语句</h3><h4 id="1-作用："><a href="#1-作用：" class="headerlink" title="1.作用："></a>1.作用：</h4><p>1.解决异常退出时资源释放的问题</p>
@@ -1761,6 +1691,76 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </categories>
   </entry>
   <entry>
+    <title>《如何让你爱的人爱上你》</title>
+    <url>/2020/04/16/read%20note/%E3%80%8A%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BD%A0%E7%88%B1%E7%9A%84%E4%BA%BA%E7%88%B1%E4%B8%8A%E4%BD%A0%E3%80%8B/</url>
+    <content><![CDATA[<p>1.</p>
+<p>——《从医学角度看人类性行为》先不管语义学，我们只探讨事实——任何微小的刺激都会导致爱情的发生。与意中人初次邂逅时你的一举一动都具有非常关键的作用。如果那件强力刺激事件以后你们之间发生了爱情，那么你就完全有权利把它叫做一见钟情，没有人会否定你的说法。</p>
+<p>2.</p>
+<p>因此，和你的意中人进行密集、强烈甚至带有威胁意味的目光接触，是让他（或她）爱上你的第一步。</p>
+<p>3.</p>
+<p>意中人聊天的时候，请大幅度增加你们的目光接触。寻找他（或她）的视神经，将你的视线死死锁住对方，制造那种你们已经相爱的暧昧气氛。</p>
+<p>4.</p>
+<p>电眼和意中人聊天的时候，凝视着他（或她）脸上最有魅力的地方，这样你的瞳孔就会自动放大，你的眼睛就变成了“电眼”。</p>
+<p>5.</p>
+<p>眷恋的眼神每次和意中人聊天的时候，将你的视线在他（或她）的脸上多停留一会儿——即使在谈话间的沉默时段也如此</p>
+<p>6.</p>
+<p>视线之旅和意中人交谈的时候，让你的视线来一场旅行——但开始的时候，仅限一些安全的区域。先用视线对他（或她）的面庞做个整体扫描，重点集中在对方的双眼。如果他（或她）看起来很享受你的视线抚摸的话，就朝下再走一小步，到达对方的脖颈、肩膀和上身。</p>
+<p>7.</p>
+<p>那就是让你的身体说话。首先请使用你的眼睛。看着她的双眼并延长你们之间的目光接触。她很可能会转移视线，你要对此做好心理准备。女性从小受到的教育就是，当发现男性盯着自己看时便垂下眼帘，但这并不意味着她对你不感兴趣。一个关于调情类型的科学分析告诉我们，如果一名女士在转移视线以后的45秒钟以内重新抬起眼睛的话，就说明她对你的关注持欢迎态度。</p>
+<p>8.，</p>
+<p>你的开场白越朴素、效果就越好，因为在恋情的初期，她最关注的并不是你的言谈。她在仔细观察你，她的大脑在高速运转，评估你的仪态举止。她明白：不管你说什么，其实都是用来接近她的借口。如果她对你有好感的话，这种行为她是可以接受的。</p>
+<p>9.</p>
+<p>尽管你不用背诵任何开场白，但从你双唇之间吐出来的第一句话却一定要慎之又慎。正如你对意中人最初的凝视应该取悦她的眼睛一样，你对她说的第一句话也要取悦她的耳朵。记住，你对意中人说的第一句话是迄今为止她借以评估你的最重要根据。如果你张口就是抱怨，在她的印象中，你就会成为一个牢骚满腹的人；如果你第一句就透着自负，她就会给你贴上自大狂的标签；但如果你的第一句话吸引了她，她就会觉得你是个魅力十足的人。</p>
+<p>10</p>
+<p>轻微的身体接触。在交谈和身体逐渐正面相对的过程中，会随之发生一种强有力的动作：轻微的身体接触。</p>
+<p>11</p>
+<p>遇见陌生的感兴趣的女生，就要想方设法去接触，去与其交流，经常出现在其面前，而不是扭扭捏捏的躲在一旁</p>
+<p>当你倾听意中人的讲话时，要让一抹肯定而自信的微笑露出来</p>
+]]></content>
+      <categories>
+        <category>read note</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《如何阅读一本书》</title>
+    <url>/2020/04/16/read%20note/%E3%80%8A%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6%E3%80%8B/</url>
+    <content><![CDATA[<ul>
+<li>运用阅读以增加资讯和洞察力，和运用阅读以增加理解力是很容易区分开来的。</li>
+</ul>
+<p>（想想自己平时的状态，确实，无论是看csdn还是看新闻资讯，只是增加资讯，并没有真正在理解，）</p>
+<ul>
+<li><p>所谓吸收资讯，就只是知道某件事发生了，想要被启发，就要去理解，搞清楚这到底是怎么回事，为什么会发生，与其他的事实有什么关联，有什么类似的情况，同类的差异在哪里</p>
+</li>
+<li><p>除了知道作者所说的话之外，还要明白他的意思，懂得他为什么会这么说。</p>
+</li>
+<li><p>判断一本书是否具有可读性，（略读整本书，决定了值不值得花时间去认真读，或者将来</p>
+</li>
+</ul>
+<p>有需要的话，应该归为哪一类）</p>
+<p>读书名，读序，读目录，读摘要介绍，索引，也即把所有正文以外的部分全部阅读一遍。知道这本书大致是什么</p>
+<ol>
+<li>先看书名页，如果有序就先看序</li>
+<li>仔细研究目录，弄清楚作者的结构思路</li>
+<li>如果书中附有索引，也要看一下索引</li>
+<li>若书中附有新皮，读一下出版者的介绍</li>
+<li>在目录中挑几个和主题息息相关的章节读</li>
+<li>最后，把书随意再翻一翻，弄个一两段读一读，有时，连续读几页，但不要太多</li>
+</ol>
+<ul>
+<li>一般来说，就算是你想要仔细阅读的书，也要提前略读一下，这样才能从基本架构上找到一些想法</li>
+<li>霍布斯认为人的生命是一种机器运动，趋利避害，自我保存一种人的本性。（如果这个作为机器学习的原动力的话，该怎么实现，用遗传算法，每次筛选出更为有力的后代，然后让其继续繁衍）</li>
+<li>从书名中判断这本书是实用类的书还是理论类的书，给书籍进行分类，</li>
+<li>分析阅读的第二个规则:使用一个单一的句子，或者最多几句话来叙述整本书的内容。;第三:将书中重要篇章列举出来说明如何按照顺序组成一个整体的框架。</li>
+<li>两个心灵若想透过语言来进行交流，需要作者与读者都愿意才行。作者也是一样，无论他的写作技巧如何，如何读者没有呼应的技巧，则沟通不可能建立。就像在一座山的两头分头凿隧道，不论花多少力气，如果双方不是照着同样的工程原理进行计算，就永远不可能相遇。(爱情也是的，如果只是一方在努力，就永远不可能，相遇，同时，无论是身为作者还是读者，自己都得具备呼应的技巧，只能靠自己去磨练。)</li>
+<li>找出重要的关键词，理解词在语境中的不同含义，与作者共通。是读一本书的需求所在。</li>
+<li>真正读会一本书，要或赞同，反对的话，也要提出批评，给出反对的想法。有自己的思考。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>read note</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《我们仨》</title>
     <url>/2020/04/16/read%20note/%E3%80%8A%E6%88%91%E4%BB%AC%E4%BB%A8%E3%80%8B/</url>
     <content><![CDATA[<p>1.</p>
@@ -1797,20 +1797,61 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </categories>
   </entry>
   <entry>
-    <title>电视剧</title>
-    <url>/2020/04/16/read%20note/%E7%94%B5%E8%A7%86%E5%89%A7/</url>
-    <content><![CDATA[<h3 id="《欢乐颂》"><a href="#《欢乐颂》" class="headerlink" title="《欢乐颂》"></a>《欢乐颂》</h3><p><strong>人物：</strong></p>
-<p>何安迪，关雎尔，邱莹莹，樊胜美，曲绡绡，魏渭，王柏川，赵启平（赵医生），曲连杰（绡绡的哥哥），包亦凡（包总），魏国强（安迪的父亲），谭总（安迪的第一个朋友），林师兄（喜欢关雎尔），应勤（邱莹莹的老乡，喜欢邱莹莹），白主管（渣男），小明（安迪的弟弟），</p>
-<p>谢童（关雎尔的男朋友）</p>
-<p><strong>关键词：</strong></p>
-<p>欢乐颂公寓，22楼，</p>
-<p><strong>感悟：</strong></p>
-<p>1%感觉前期做的还可以。到了最后，剧情上最后结尾处理的不好，让人感觉还有下一集的感觉，不像是一部正常的电视剧结尾</p>
-<p>第42集结尾的剧情强行推向一个看似平和的场景，曲绡绡和赵医生之间明明很明显已经没有牵挂了，而且从赵医生对曲绡绡的回避可以看出，赵医生并不喜欢曲绡绡，但是结尾强行把他们两写和，而且赵医生都拒绝这么明显了，不知道曲绡绡有哪里来的勇气继续把赵医生的这种行为当成是羞涩。</p>
-<p>安迪和魏胃的分手也有点让人摸不着头脑，都在一起经历过这么多，彼此也已经有不少默契了，结果安迪父亲的事一被点燃，两人分手后，安迪仔象征性的难过，无论魏胃再怎么说，安迪都一脸漠然的回应，有时甚至连回应都不想回应。转折太过于突然。</p>
-<p>22楼的4个女生都关系好的让人无法相信。</p>
-<p>2%相较而言，感觉第一部已经算是好的了。第二部各种人设都已经崩溃了，安迪之前还和魏渭说再也不会结婚，结果第二部在包亦凡的软磨硬泡下，竟然和包亦凡在一起了。</p>
-<p>3%生活的很多事情，比如爱情，自己喜欢的，兴趣与爱好，不是任务，而是发自内心的想去做。</p>
+    <title>&lt;&lt;贫穷的本质&gt;&gt;读后感</title>
+    <url>/2020/06/24/read%20note/%E3%80%8A%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8%E3%80%8B/</url>
+    <content><![CDATA[<blockquote>
+<p>Poor countries are poor because they are hot, infertile, malaria infested, often landlocked; this makes it hard for them to be productive without an initial large investment to help them deal with these endemic problems. But they cannot pay for the investments precisely because they are poor—they are in what economists call a“poverty trap.” Until something is done about these problems, neither free markets nor democracy will do very much for them. This is why foreign aid is key: It can kick-start a virtuous cycle by helping poor countries invest in these critical areas and make them more productive. The resulting higher incomes will generate further investments; the beneficial spiral will continue. </p>
+</blockquote>
+<p><strong>穷人困境：</strong>穷人只所以穷，就是因为他们所在的国家贫瘠、疾病流行，还经常闭关锁国，导致他们如果没有一笔足够大的初始投资去克服这些问题，就没办法使得自己变得有效益。但他们大多数是承担不起这个投资的，因为他们穷，这样恶性循环，积贫积弱。</p>
+<p>对于这种情况，由国外援助来解决初始资金的投资问题，敲开良性循环的口子。</p>
+<blockquote>
+<p>The Elusive Quest for Growth</p>
+</blockquote>
+<p>在迷雾中挣扎成长。</p>
+<blockquote>
+<p>Both argue that aid does more bad than good: It prevents people from searching for their own solutions, while corrupting and undermining local institutions and creating a self-perpetuating lobby of aid agencies. The best bet for poor countries is to rely on one simple idea: When markets are free and the incentives are right, people can find ways to solve their problems. They do not need handouts, from foreigners or from their own governments.</p>
+</blockquote>
+<p>援助所带来的坏处要大于其好的初衷：它会阻碍穷人去寻找自己的解决方案，同时腐化当地机构，削弱当地机构的威信力和执行力，使得一些援助机构形同虚设。</p>
+<p><strong>对于穷国的最好的办法是，提供自由的市场和恰当的奖励机制，让人们自己去找到解决问题的方法，避免接收外国人的援助或政府的施舍。</strong></p>
+<blockquote>
+<p> The point is simple: Talking about the problems of the world without talking about some accessible solutions is the way to paralysis rather than progress. </p>
+</blockquote>
+<p>道理很简单：只谈论问题却不谈论问题的解决办法，这是止步不前而不是进步。</p>
+<blockquote>
+<p>童年时期适度的营养摄入具有深远意义。营养不良的儿童的个子更有可能长不高、学习成绩更差、生下来的孩子更瘦小。</p>
+<p>在菲律宾，一项研究表明，那些既要挣基本工资又要挣计件工资的，他们在挣计件工资时要多吃25%的食物。在挣计件工资时，工作能力十分重要，因为干的越多，挣得钱也就越多。</p>
+</blockquote>
+<p>让劳动者按照自己付出的努力和最后的结果来评估这个人的所得，才能调动其的积极性，让其自发地创造性的去完成任务，提高效率。</p>
+<blockquote>
+<p>实际上，存在着一种“心理沉没成本”—-人们更有可能会利用他们为之支付很多钱的东西。此外，人们可能会根据价格来判断质量，恰恰是由于某物品是廉价的，热们便有可能认为它没有价值。</p>
+<p>“时间矛盾”概念，我们对当前与未来的看法是截然不同的，当前的我们是冲动的，很大程度上由感性与即时欲望支配；花一点点时间或放弃一点点舒适感都是我们当前需要经历的，较之在没有迫切感的情况下去想这些事，当前的这种感觉更令人不愉快。但当我们为将来而计划时，那种渴望的快感似乎就不那么重要了。</p>
+</blockquote>
+<p>终于明白为啥构思计划时感觉很简单，真正去实施时却困难重重了，原来要克服一点点的即时欲望，要有迫切感。</p>
+<blockquote>
+<p>诱惑是生理需求的(性、糖、脂肪类食品、烟等)的表现。在这种情况下，富人更容易满足“受到诱惑的自己”。在决定是否存钱时，他们认为，任何为将来存的钱都会用于实现长期目标。因此，如果糖和茶是一种诱惑物的原型，那么富人不太可能会有所困扰—-他们并不是不会受到诱惑，而是无须担心多喝一杯茶就会花掉自己辛苦赚来的钱。</p>
+</blockquote>
+<p>正如自己现在的处境，自己对于时间上想要做的事情是很渴求的，但也经不住玩游戏、看视频的诱惑，但是有钱人的家里是不会让自己的孩子去做事情，不占用孩子自己的时间，因此他们有大把的时间用来试错，即使一天中懈怠了一上午或一下午，他们仍然有剩下的时间去充足地做自己想做的事情，而我自己则不行，一旦懈怠一会儿，就会导致一天下来，什么自己的事情也做不了，毕竟一天中自己有将近五个小时是被占用帮父母做事的状态。</p>
+<blockquote>
+<p>一点儿希望、保障以及安慰可以成为一种强大的激励措施。我们都很容易过上一种安稳的生活，制定一些我们有信心实现的目标(一台新沙发、50英寸的平板电视、第二辆汽车等)，寻求一些机构(储蓄账户、养老金计划、住房贷款等)的帮助。然后，像维多利亚时代的人那样，依据动力与规则行事。…….当你想要的一切看上去都很遥远时，你很难感受到动力。将目标设置得更近一些，或许是穷人实现这些目标的有效方式。</p>
+</blockquote>
+<p>将目标设置得近一些，寻求外在力量的监督和帮助。自己的话，想要发表论文的话，最近的目标就应该是把一些外围的基础知识给弄扎实了，然后潜心看几篇论文，把论文给弄懂。</p>
+<blockquote>
+<p>想要摆脱贫困，就要学会对长期目标进行思考，并习惯为此做出一些短期的牺牲。</p>
+</blockquote>
+<p>长期目标？？？！！！！ 短期享乐！！！？？？？</p>
+<blockquote>
+<p>自我控制就像是一块肌肉，我们用这块肌肉时就会感到劳累。……此外，穷人还生活在巨大的压力之下，而由压力产生的皮质醇会使我们做出更冲动的举动，因此，穷人只能以更少的资源完成更艰苦的任务。</p>
+</blockquote>
+<p>原来如此，自己每次都在本来可以学习的时间段里，冲动性地去玩游戏或者刷视频，就是潜意识里想要去缓解这种不自觉的压力(强迫自己去学习，不学就怎么样，怎么样的压力)。</p>
+<p>因此，解决办法就是不要给自己施压，放轻松地去做，简单一些，凭借着一种最为直接的想法，我就是想学习补充自己，了解自己的动力，而不是强迫自己的压力。</p>
+<blockquote>
+<p>这就是穷人和他们所做生意的矛盾之处，他们精力充沛，拥有丰富的资源，而且努力地做着白手起家的生意。但他们的大部分精力都花在了很小的生意上，而且他们同周围很多其他人都在做着相同的生意。结果，他们失去了过上一种富裕生活的机会。孟买那些富有创意的拾沙女们，发现了利用现成资源赚钱的机会：一些自由的时间和海滩上的沙子。但商业精英没有指出的是，尽管她们有这样的聪明才智，但这种生意几乎赚不了几个钱。</p>
+</blockquote>
+<p>也许，这就是菜市场有很多个卖菜的，但是很少有听说靠卖菜的起家的事迹。</p>
+<blockquote>
+<p>确实有超过10亿人在经营着自己的农场或公司，但他们中的大多数人这样做是因为别无选择。他们只想生存下去。因为他们没有才华、技能或是必要的风险承受能力。小额信贷及其他有助于小企业发展的方式，仍然在穷人的生活中扮演着重要角色。因为这些小企业要存活下去。或许，在可预见的未来，这是很多穷人得以生存的唯一方式。但是，如果我们认为他们能以此铺出一条逃脱贫穷的路，那么我们简直是在自欺欺人。</p>
+</blockquote>
+<p>如果不具有一技之长，那么做着同样的活，又凭什么你能致富脱贫，而我不能呢？</p>
 ]]></content>
       <categories>
         <category>read note</category>
@@ -1851,6 +1892,26 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </categories>
   </entry>
   <entry>
+    <title>电视剧</title>
+    <url>/2020/04/16/read%20note/%E7%94%B5%E8%A7%86%E5%89%A7/</url>
+    <content><![CDATA[<h3 id="《欢乐颂》"><a href="#《欢乐颂》" class="headerlink" title="《欢乐颂》"></a>《欢乐颂》</h3><p><strong>人物：</strong></p>
+<p>何安迪，关雎尔，邱莹莹，樊胜美，曲绡绡，魏渭，王柏川，赵启平（赵医生），曲连杰（绡绡的哥哥），包亦凡（包总），魏国强（安迪的父亲），谭总（安迪的第一个朋友），林师兄（喜欢关雎尔），应勤（邱莹莹的老乡，喜欢邱莹莹），白主管（渣男），小明（安迪的弟弟），</p>
+<p>谢童（关雎尔的男朋友）</p>
+<p><strong>关键词：</strong></p>
+<p>欢乐颂公寓，22楼，</p>
+<p><strong>感悟：</strong></p>
+<p>1%感觉前期做的还可以。到了最后，剧情上最后结尾处理的不好，让人感觉还有下一集的感觉，不像是一部正常的电视剧结尾</p>
+<p>第42集结尾的剧情强行推向一个看似平和的场景，曲绡绡和赵医生之间明明很明显已经没有牵挂了，而且从赵医生对曲绡绡的回避可以看出，赵医生并不喜欢曲绡绡，但是结尾强行把他们两写和，而且赵医生都拒绝这么明显了，不知道曲绡绡有哪里来的勇气继续把赵医生的这种行为当成是羞涩。</p>
+<p>安迪和魏胃的分手也有点让人摸不着头脑，都在一起经历过这么多，彼此也已经有不少默契了，结果安迪父亲的事一被点燃，两人分手后，安迪仔象征性的难过，无论魏胃再怎么说，安迪都一脸漠然的回应，有时甚至连回应都不想回应。转折太过于突然。</p>
+<p>22楼的4个女生都关系好的让人无法相信。</p>
+<p>2%相较而言，感觉第一部已经算是好的了。第二部各种人设都已经崩溃了，安迪之前还和魏渭说再也不会结婚，结果第二部在包亦凡的软磨硬泡下，竟然和包亦凡在一起了。</p>
+<p>3%生活的很多事情，比如爱情，自己喜欢的，兴趣与爱好，不是任务，而是发自内心的想去做。</p>
+]]></content>
+      <categories>
+        <category>read note</category>
+      </categories>
+  </entry>
+  <entry>
     <title>番剧</title>
     <url>/2020/04/16/read%20note/%E7%95%AA%E5%89%A7/</url>
     <content><![CDATA[<h3 id="《英雄时代》"><a href="#《英雄时代》" class="headerlink" title="《英雄时代》"></a>《英雄时代》</h3><p><strong>亮点：</strong></p>
@@ -1876,20 +1937,138 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
       </categories>
   </entry>
   <entry>
-    <title>jupyter Notebook的使用</title>
-    <url>/2020/04/18/tools/JupyterNotebook%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="一-其他"><a href="#一-其他" class="headerlink" title="一.其他"></a>一.其他</h3><p>对于一个单元格的运行，ctrl+enter，光标不下移动而出结果；而shift+enter，则光标移动到下一个新的单元格</p>
-<h3 id="二-使用说明"><a href="#二-使用说明" class="headerlink" title="二.使用说明"></a>二.使用说明</h3><p>1.如何使jupyter notebook打开的目录是干净的</p>
-<p>修改c\Users\28708.jupter\里的.py文件，修改保存路径</p>
-<p>c.NotebookApp.notebook_dir=‘需要的路径’</p>
-<p>同时，每次打开，必须从cmd中输入jupyter notebook，打开，才是运行.py配置后的结果</p>
-<p>2.笔记本的基本操作</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/jupyter1.png" alt="jupyter1"></p>
-<p>3.Conda类目下对conda环境和包进行一系列操作</p>
-<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/jupyter2.png" alt="jupyter2"></p>
-<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://blog.csdn.net/xiewenrui1996/article/details/90301335" target="_blank" rel="noopener">https://blog.csdn.net/xiewenrui1996/article/details/90301335</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/33207896" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33207896</a></p>
-<p><a href="https://www.jianshu.com/p/91365f343585/" target="_blank" rel="noopener">https://www.jianshu.com/p/91365f343585/</a></p>
+    <title>AA常用的好用工具</title>
+    <url>/2020/07/30/tools/AA%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h3 id="编辑用的工具"><a href="#编辑用的工具" class="headerlink" title="编辑用的工具"></a>编辑用的工具</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>工具</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>论文编辑软件</td>
+<td>TexStudio</td>
+<td></td>
+</tr>
+<tr>
+<td>剪贴板500条存留</td>
+<td>Ditto</td>
+<td>可以保留剪贴板的500条历史记录，方便回溯查找</td>
+</tr>
+<tr>
+<td>让界面半透明工具</td>
+<td>class2k</td>
+<td>在进行文档编辑时特别方便</td>
+</tr>
+<tr>
+<td>Markdown公式识别软件</td>
+<td>Mathpix</td>
+<td>对于学生党一个月只有100条</td>
+</tr>
+<tr>
+<td>画流程图</td>
+<td>Processon</td>
+<td></td>
+</tr>
+<tr>
+<td>可以保存网页的内容</td>
+<td>Web-clipper</td>
+<td>谷歌的插件，方便写博客做笔记时参考其他人的内容，不用自己手动一个个敲。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>网站设计和创意元素设计</td>
+<td>No Design</td>
+<td><a href="https://nodesign.dev/" target="_blank" rel="noopener">https://nodesign.dev/</a></td>
+</tr>
+<tr>
+<td>简历模板软件</td>
+<td>Good Resume</td>
+<td><a href="https://good-resume.com/" target="_blank" rel="noopener">https://good-resume.com/</a></td>
+</tr>
+<tr>
+<td>监视某个网站是否更新的Chrome插件</td>
+<td>Page Monitor</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>工具</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后端去测试前端的调试工具</td>
+<td>Postman</td>
+<td></td>
+</tr>
+<tr>
+<td>刷机工具</td>
+<td>奇兔刷机、小米手机助手</td>
+<td>奇兔刷机每天有刷机次数限制</td>
+</tr>
+<tr>
+<td>录像工具</td>
+<td>KK录像机</td>
+<td>KK录像机只能录流畅的，高清的要钱</td>
+</tr>
+<tr>
+<td>磁盘清理工具</td>
+<td>TreeSize</td>
+<td>可以显示C和D盘每个文件夹的大小</td>
+</tr>
+<tr>
+<td>视频播放下载工具</td>
+<td>Zyplayer</td>
+<td><a href="http://zyplayer.fun/" target="_blank" rel="noopener">http://zyplayer.fun/</a></td>
+</tr>
+<tr>
+<td>桌面整理</td>
+<td>腾讯桌面助手</td>
+<td>对桌面的文件进行分区，还可以把常用的文件夹直接展示在桌面上，方便打开</td>
+</tr>
+<tr>
+<td>多目录跳转</td>
+<td>Q-dir</td>
+<td>可以同时看到不同的文件夹的目录，这样方便操作</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -1966,6 +2145,26 @@ Q=C\times (D+D\times \log_2(V))---(5)</script><p>其中C是单词的最大距离
 </table>
 </div>
 <h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://www.cnblogs.com/xxmmqg/p/12766319.html" target="_blank" rel="noopener">https://www.cnblogs.com/xxmmqg/p/12766319.html</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jupyter Notebook的使用</title>
+    <url>/2020/04/18/tools/JupyterNotebook%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="一-其他"><a href="#一-其他" class="headerlink" title="一.其他"></a>一.其他</h3><p>对于一个单元格的运行，ctrl+enter，光标不下移动而出结果；而shift+enter，则光标移动到下一个新的单元格</p>
+<h3 id="二-使用说明"><a href="#二-使用说明" class="headerlink" title="二.使用说明"></a>二.使用说明</h3><p>1.如何使jupyter notebook打开的目录是干净的</p>
+<p>修改c\Users\28708.jupter\里的.py文件，修改保存路径</p>
+<p>c.NotebookApp.notebook_dir=‘需要的路径’</p>
+<p>同时，每次打开，必须从cmd中输入jupyter notebook，打开，才是运行.py配置后的结果</p>
+<p>2.笔记本的基本操作</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/jupyter1.png" alt="jupyter1"></p>
+<p>3.Conda类目下对conda环境和包进行一系列操作</p>
+<p><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/jupyter2.png" alt="jupyter2"></p>
+<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://blog.csdn.net/xiewenrui1996/article/details/90301335" target="_blank" rel="noopener">https://blog.csdn.net/xiewenrui1996/article/details/90301335</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/33207896" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33207896</a></p>
+<p><a href="https://www.jianshu.com/p/91365f343585/" target="_blank" rel="noopener">https://www.jianshu.com/p/91365f343585/</a></p>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -2305,16 +2504,6 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
-    <title>Pytorch的使用</title>
-    <url>/2020/06/09/tools/Pytorch/</url>
-    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>pytorch的中文社区库github上的<a href="https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion" target="_blank" rel="noopener">https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion</a></p>
-<p>对应的英文库<a href="https://github.com/bharathgs/Awesome-pytorch-list" target="_blank" rel="noopener">https://github.com/bharathgs/Awesome-pytorch-list</a></p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-  </entry>
-  <entry>
     <title>tools/Neo4j的相关操作</title>
     <url>/2020/05/13/tools/Neo4j%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Neo4j Desktop是安装在Windows或Mac计算机上的应用软件，它包含试用的企业版数据库引擎，可以创建本地的图数据库；它也支持到远端数据库的连接。Neo4j Desktop 还包含一个应用管理器，可以方便地下载和安装Neo4j扩展应用，例如ETL、Bloom等。</p>
@@ -2376,45 +2565,21 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
-    <title>Vmware使用问题</title>
-    <url>/2020/04/19/tools/Vmware%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>在使用VM时出现了如下的问题：</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/VMware锁定问题问题.jpg" alt=""></h1><h3 id="二-原因："><a href="#二-原因：" class="headerlink" title="二.原因："></a>二.原因：</h3><p>虚拟机异常关闭导致的。</p>
-<h3 id="三-解决办法："><a href="#三-解决办法：" class="headerlink" title="三.解决办法："></a>三.解决办法：</h3><p> 找到虚拟机所安装的位置，把所有.lck<em>文件都删除即可</em>。</p>
+    <title>Pytorch的使用</title>
+    <url>/2020/06/09/tools/Pytorch/</url>
+    <content><![CDATA[<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>pytorch的中文社区库github上的<a href="https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion" target="_blank" rel="noopener">https://github.com/xavier-zy/Awesome-pytorch-list-CNVersion</a></p>
+<p>对应的英文库<a href="https://github.com/bharathgs/Awesome-pytorch-list" target="_blank" rel="noopener">https://github.com/bharathgs/Awesome-pytorch-list</a></p>
 ]]></content>
       <categories>
         <category>tools</category>
       </categories>
   </entry>
   <entry>
-    <title>jupyter Notebook使用其他环境</title>
-    <url>/2020/05/11/tools/jupyterNotebook%E4%BD%BF%E7%94%A8%E5%85%B6%E4%BB%96%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h3 id="1-问题："><a href="#1-问题：" class="headerlink" title="1.问题："></a>1.问题：</h3><p>在Andaconda中已经配置了某个虚拟环境：UseTensor，在这个环境中安装了pykg2vec库，但是在jupyternotebook中并没法使用这个环境。</p>
-<h3 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2.解决办法"></a>2.解决办法</h3><p>以管理员方式打开Anaconda Promt，</p>
-<p>在Anaconda Promt中进入所创建的虚拟环境，然后执行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install ipykernel</span><br><span class="line">#或者 pip install ipkernel</span><br></pre></td></tr></table></figure>
-<p>然后将自己的环境添加到ipython的kernel里，输入一下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(你创建的虚拟环境名)&gt;python -m ipykernel install --user --name (你创建的环境名) --display-name &quot;任意的名字，在jupyternotebook中展示的&quot;</span><br></pre></td></tr></table></figure>
-<p>然后再刷新一下jupyternotebook的网页即可。</p>
-<h3 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3.其他操作"></a>3.其他操作</h3><h4 id="3-1-查看已经安装的kernelspec的命令如下："><a href="#3-1-查看已经安装的kernelspec的命令如下：" class="headerlink" title="3.1 查看已经安装的kernelspec的命令如下："></a>3.1 查看已经安装的kernelspec的命令如下：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter kernelspec list</span><br></pre></td></tr></table></figure>
-<h4 id="3-2-删除某个kernel环境"><a href="#3-2-删除某个kernel环境" class="headerlink" title="3.2 删除某个kernel环境"></a>3.2 删除某个kernel环境</h4><p>输入jupyter kernelspec list 查看安装的kernel和位置，根据显示的路径进入，其中把对应文件夹删除即可。</p>
-<p>或者，直接输入以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter kernelspec remove 环境名称</span><br></pre></td></tr></table></figure>
-<h3 id="4-可能遇到的问题"><a href="#4-可能遇到的问题" class="headerlink" title="4.可能遇到的问题"></a>4.可能遇到的问题</h3><p>4.1 在按照上述步骤添加完虚拟环境后，在jupyternotebook中切换到刚创建的环境一直显示“服务正在启动”和“服务重连失败”，然后在Anaconda Promt的虚拟环境中尝试执行jupyter notebook命令，直接报下面的错误:<img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/问题.png" alt="问题"></p>
-<p>解决办法：</p>
-<p>在电脑的系统变量中的PATH添加下面两个路径</p>
-<p>D:\appIItemp\Anaconda\Library\bin</p>
-<p>D:\appIItemp\Anaconda</p>
-<p>然后重新运行一下。</p>
-<p>4.2 在上面的问题解决之后，又遇到这个问题：在jupyter notebook使用新建的虚拟环境时，会显示是“挂掉的服务”。</p>
-<p>在后台中出现如此的问题：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#39;win32api&#39;</span><br></pre></td></tr></table></figure>
-<p>解决办法：</p>
-<p>输入pip install pypiwin32</p>
-<p>4.3 又遇到的问题</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ERROR: Could not find a version that satisfies the requirement pypiwin32 (from versions: none)</span><br></pre></td></tr></table></figure>
-<p>解决办法：</p>
-<p>网络不好，重新运行一下就行了。</p>
+    <title>Vmware使用问题</title>
+    <url>/2020/04/19/tools/Vmware%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>在使用VM时出现了如下的问题：</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/VMware锁定问题问题.jpg" alt=""></h1><h3 id="二-原因："><a href="#二-原因：" class="headerlink" title="二.原因："></a>二.原因：</h3><p>虚拟机异常关闭导致的。</p>
+<h3 id="三-解决办法："><a href="#三-解决办法：" class="headerlink" title="三.解决办法："></a>三.解决办法：</h3><p> 找到虚拟机所安装的位置，把所有.lck<em>文件都删除即可</em>。</p>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -2515,11 +2680,67 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
+    <title>jupyter Notebook使用其他环境</title>
+    <url>/2020/05/11/tools/jupyterNotebook%E4%BD%BF%E7%94%A8%E5%85%B6%E4%BB%96%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h3 id="1-问题："><a href="#1-问题：" class="headerlink" title="1.问题："></a>1.问题：</h3><p>在Andaconda中已经配置了某个虚拟环境：UseTensor，在这个环境中安装了pykg2vec库，但是在jupyternotebook中并没法使用这个环境。</p>
+<h3 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2.解决办法"></a>2.解决办法</h3><p>以管理员方式打开Anaconda Promt，</p>
+<p>在Anaconda Promt中进入所创建的虚拟环境，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install ipykernel</span><br><span class="line">#或者 pip install ipkernel</span><br></pre></td></tr></table></figure>
+<p>然后将自己的环境添加到ipython的kernel里，输入一下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(你创建的虚拟环境名)&gt;python -m ipykernel install --user --name (你创建的环境名) --display-name &quot;任意的名字，在jupyternotebook中展示的&quot;</span><br></pre></td></tr></table></figure>
+<p>然后再刷新一下jupyternotebook的网页即可。</p>
+<h3 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3.其他操作"></a>3.其他操作</h3><h4 id="3-1-查看已经安装的kernelspec的命令如下："><a href="#3-1-查看已经安装的kernelspec的命令如下：" class="headerlink" title="3.1 查看已经安装的kernelspec的命令如下："></a>3.1 查看已经安装的kernelspec的命令如下：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter kernelspec list</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-删除某个kernel环境"><a href="#3-2-删除某个kernel环境" class="headerlink" title="3.2 删除某个kernel环境"></a>3.2 删除某个kernel环境</h4><p>输入jupyter kernelspec list 查看安装的kernel和位置，根据显示的路径进入，其中把对应文件夹删除即可。</p>
+<p>或者，直接输入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter kernelspec remove 环境名称</span><br></pre></td></tr></table></figure>
+<h3 id="4-可能遇到的问题"><a href="#4-可能遇到的问题" class="headerlink" title="4.可能遇到的问题"></a>4.可能遇到的问题</h3><p>4.1 在按照上述步骤添加完虚拟环境后，在jupyternotebook中切换到刚创建的环境一直显示“服务正在启动”和“服务重连失败”，然后在Anaconda Promt的虚拟环境中尝试执行jupyter notebook命令，直接报下面的错误:<img src="https://raw.githubusercontent.com/liangwg/FigureBed/master/img/问题.png" alt="问题"></p>
+<p>解决办法：</p>
+<p>在电脑的系统变量中的PATH添加下面两个路径</p>
+<p>D:\appIItemp\Anaconda\Library\bin</p>
+<p>D:\appIItemp\Anaconda</p>
+<p>然后重新运行一下。</p>
+<p>4.2 在上面的问题解决之后，又遇到这个问题：在jupyter notebook使用新建的虚拟环境时，会显示是“挂掉的服务”。</p>
+<p>在后台中出现如此的问题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#39;win32api&#39;</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<p>输入pip install pypiwin32</p>
+<p>4.3 又遇到的问题</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ERROR: Could not find a version that satisfies the requirement pypiwin32 (from versions: none)</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<p>网络不好，重新运行一下就行了。</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ppt的一些操作</title>
     <url>/2020/05/30/tools/ppt%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h3 id="ppt如何使得某一部分内容先展示，某一部分内容后展示"><a href="#ppt如何使得某一部分内容先展示，某一部分内容后展示" class="headerlink" title="ppt如何使得某一部分内容先展示，某一部分内容后展示"></a>ppt如何使得某一部分内容先展示，某一部分内容后展示</h3><p>分成两个文本框，给文本框设计出动作，</p>
 <p>单击要编辑的文本框或图片，选中，然后右键，选择自定义动画就好了。可以选择点击出现，也可以选择设计多少时间后出现。</p>
 <h3 id="如何设计动画同时出现"><a href="#如何设计动画同时出现" class="headerlink" title="如何设计动画同时出现"></a>如何设计动画同时出现</h3><p><a href="https://zhidao.baidu.com/question/445588972.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/445588972.html</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>psql关系数据库操作</title>
+    <url>/2020/06/09/tools/psql%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><h4 id="数据库和数据库表的关系"><a href="#数据库和数据库表的关系" class="headerlink" title="数据库和数据库表的关系"></a>数据库和数据库表的关系</h4><p>角色和用户的role和user关系：create role xxx password ‘mm’  LOGIN等同于create user xxx password ‘mmm’ ，也即role + login = user;</p>
+<h3 id="二-操作"><a href="#二-操作" class="headerlink" title="二.操作"></a>二.操作</h3><h4 id="创建数据库："><a href="#创建数据库：" class="headerlink" title="创建数据库："></a>创建数据库：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create database 数据库名字 owner 用户名；</span><br></pre></td></tr></table></figure>
+<h4 id="将某个数据库的所有权限赋值给某个用户"><a href="#将某个数据库的所有权限赋值给某个用户" class="headerlink" title="将某个数据库的所有权限赋值给某个用户"></a>将某个数据库的所有权限赋值给某个用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grant all privileges on database xxx to xxx;</span><br></pre></td></tr></table></figure>
+<h4 id="赋予部分权限"><a href="#赋予部分权限" class="headerlink" title="赋予部分权限"></a>赋予部分权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alter user xxx 权限1 权限2 权限3;</span><br></pre></td></tr></table></figure>
+<h4 id="登陆指定数据库"><a href="#登陆指定数据库" class="headerlink" title="登陆指定数据库"></a>登陆指定数据库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">psql -h server -p port -u username 数据库名</span><br></pre></td></tr></table></figure>
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop database 数据库名;</span><br></pre></td></tr></table></figure>
+<h4 id="删除用户角色"><a href="#删除用户角色" class="headerlink" title="删除用户角色"></a>删除用户角色</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop role xxx;</span><br></pre></td></tr></table></figure>
+<p>若遇到权限依赖的问题，前面把数据库db的权限给了xxx，则需要事先收回xxx的所有权限。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">revoke all on database db from xxx;</span><br></pre></td></tr></table></figure>
+<h4 id="查看某个数据库中存储的内容"><a href="#查看某个数据库中存储的内容" class="headerlink" title="查看某个数据库中存储的内容"></a>查看某个数据库中存储的内容</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\c 数据库名  #进入到某个数据库中</span><br><span class="line">\dt   #查看该个数据库中的所有表</span><br><span class="line">\c interface  #切换数据库</span><br><span class="line">\d 表名 	#查看某个数据库的某个表结构</span><br><span class="line">select* from apps limit 1; #查看某个库中某个表的记录</span><br><span class="line">\q  #退出psql</span><br></pre></td></tr></table></figure>
+<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://blog.csdn.net/londa/article/details/94327596" target="_blank" rel="noopener">https://blog.csdn.net/londa/article/details/94327596</a>    psql常用命令</p>
+<p><a href="https://blog.csdn.net/londa/article/details/94327596" target="_blank" rel="noopener">https://blog.csdn.net/londa/article/details/94327596</a>    创建用户后，登陆用户并创建数据库</p>
+<p><a href="https://jingyan.baidu.com/article/39810a23af6cc9b636fda6da.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/39810a23af6cc9b636fda6da.html</a>   pgAdmin连接psql数据库</p>
+<p><a href="https://jingyan.baidu.com/article/f3ad7d0fafd8c549c2345b53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/f3ad7d0fafd8c549c2345b53.html</a>    pgAdmin打开表</p>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -2533,6 +2754,40 @@ f3    &x\gt0
 <p>大致过程是</p>
 <p>1.下载安装texlive.iso</p>
 <p>2.下载安装texStudio</p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>visio画图心得</title>
+    <url>/2020/06/22/tools/visio%E7%94%BB%E5%9B%BE/</url>
+    <content><![CDATA[<p>画图的关键：图标+基本图形的组合</p>
+<p>对于一些比较难画的图，比如沙漏结构，可以先在网上找一张模型结构图，然后在这个图的基础上再添加一些线条和文字。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Want to do</th>
+<th>How to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>画出虚线矩形</td>
+<td>先用基本矩形，然后对基本矩形进行样式设置。</td>
+</tr>
+<tr>
+<td>让交叉的线不弯曲</td>
+<td>“设计”-&gt;右上角”选择连接线”-&gt;”显示跨线”前面的勾去掉</td>
+</tr>
+<tr>
+<td>让画布扩大时的分隔线去掉</td>
+<td>“视图”-&gt;取消勾选”分页符”</td>
+</tr>
+</tbody>
+</table>
+</div>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -2592,28 +2847,6 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
-    <title>psql关系数据库操作</title>
-    <url>/2020/06/09/tools/psql%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一.简介"></a>一.简介</h3><h4 id="数据库和数据库表的关系"><a href="#数据库和数据库表的关系" class="headerlink" title="数据库和数据库表的关系"></a>数据库和数据库表的关系</h4><p>角色和用户的role和user关系：create role xxx password ‘mm’  LOGIN等同于create user xxx password ‘mmm’ ，也即role + login = user;</p>
-<h3 id="二-操作"><a href="#二-操作" class="headerlink" title="二.操作"></a>二.操作</h3><h4 id="创建数据库："><a href="#创建数据库：" class="headerlink" title="创建数据库："></a>创建数据库：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create database 数据库名字 owner 用户名；</span><br></pre></td></tr></table></figure>
-<h4 id="将某个数据库的所有权限赋值给某个用户"><a href="#将某个数据库的所有权限赋值给某个用户" class="headerlink" title="将某个数据库的所有权限赋值给某个用户"></a>将某个数据库的所有权限赋值给某个用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grant all privileges on database xxx to xxx;</span><br></pre></td></tr></table></figure>
-<h4 id="赋予部分权限"><a href="#赋予部分权限" class="headerlink" title="赋予部分权限"></a>赋予部分权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alter user xxx 权限1 权限2 权限3;</span><br></pre></td></tr></table></figure>
-<h4 id="登陆指定数据库"><a href="#登陆指定数据库" class="headerlink" title="登陆指定数据库"></a>登陆指定数据库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">psql -h server -p port -u username 数据库名</span><br></pre></td></tr></table></figure>
-<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop database 数据库名;</span><br></pre></td></tr></table></figure>
-<h4 id="删除用户角色"><a href="#删除用户角色" class="headerlink" title="删除用户角色"></a>删除用户角色</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop role xxx;</span><br></pre></td></tr></table></figure>
-<p>若遇到权限依赖的问题，前面把数据库db的权限给了xxx，则需要事先收回xxx的所有权限。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">revoke all on database db from xxx;</span><br></pre></td></tr></table></figure>
-<h4 id="查看某个数据库中存储的内容"><a href="#查看某个数据库中存储的内容" class="headerlink" title="查看某个数据库中存储的内容"></a>查看某个数据库中存储的内容</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\c 数据库名  #进入到某个数据库中</span><br><span class="line">\dt   #查看该个数据库中的所有表</span><br><span class="line">\c interface  #切换数据库</span><br><span class="line">\d 表名 	#查看某个数据库的某个表结构</span><br><span class="line">select* from apps limit 1; #查看某个库中某个表的记录</span><br><span class="line">\q  #退出psql</span><br></pre></td></tr></table></figure>
-<h3 id="三-参考"><a href="#三-参考" class="headerlink" title="三.参考"></a>三.参考</h3><p><a href="https://blog.csdn.net/londa/article/details/94327596" target="_blank" rel="noopener">https://blog.csdn.net/londa/article/details/94327596</a>    psql常用命令</p>
-<p><a href="https://blog.csdn.net/londa/article/details/94327596" target="_blank" rel="noopener">https://blog.csdn.net/londa/article/details/94327596</a>    创建用户后，登陆用户并创建数据库</p>
-<p><a href="https://jingyan.baidu.com/article/39810a23af6cc9b636fda6da.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/39810a23af6cc9b636fda6da.html</a>   pgAdmin连接psql数据库</p>
-<p><a href="https://jingyan.baidu.com/article/f3ad7d0fafd8c549c2345b53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/f3ad7d0fafd8c549c2345b53.html</a>    pgAdmin打开表</p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-  </entry>
-  <entry>
     <title>如何写出合适的参考文献</title>
     <url>/2020/05/28/tools/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E5%90%88%E9%80%82%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/</url>
     <content><![CDATA[<h3 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h3><p>在写论文时知道怎么引用参考文献</p>
@@ -2634,236 +2867,69 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
-    <title>AA常用的好用工具</title>
-    <url>/2020/07/30/tools/AA%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h3 id="编辑用的工具"><a href="#编辑用的工具" class="headerlink" title="编辑用的工具"></a>编辑用的工具</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>用途</th>
-<th>工具</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>论文编辑软件</td>
-<td>TexStudio</td>
-<td></td>
-</tr>
-<tr>
-<td>剪贴板500条存留</td>
-<td>Ditto</td>
-<td>可以保留剪贴板的500条历史记录，方便回溯查找</td>
-</tr>
-<tr>
-<td>让界面半透明工具</td>
-<td>class2k</td>
-<td>在进行文档编辑时特别方便</td>
-</tr>
-<tr>
-<td>Markdown公式识别软件</td>
-<td>Mathpix</td>
-<td>对于学生党一个月只有100条</td>
-</tr>
-<tr>
-<td>画流程图</td>
-<td>Processon</td>
-<td></td>
-</tr>
-<tr>
-<td>可以保存网页的内容</td>
-<td>Web-clipper</td>
-<td>谷歌的插件，方便写博客做笔记时参考其他人的内容，不用自己手动一个个敲。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>网站设计和创意元素设计</td>
-<td>No Design</td>
-<td><a href="https://nodesign.dev/" target="_blank" rel="noopener">https://nodesign.dev/</a></td>
-</tr>
-<tr>
-<td>简历模板软件</td>
-<td>Good Resume</td>
-<td><a href="https://good-resume.com/" target="_blank" rel="noopener">https://good-resume.com/</a></td>
-</tr>
-<tr>
-<td>监视某个网站是否更新的Chrome插件</td>
-<td>Page Monitor</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>用途</th>
-<th>工具</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>后端去测试前端的调试工具</td>
-<td>Postman</td>
-<td></td>
-</tr>
-<tr>
-<td>刷机工具</td>
-<td>奇兔刷机、小米手机助手</td>
-<td>奇兔刷机每天有刷机次数限制</td>
-</tr>
-<tr>
-<td>录像工具</td>
-<td>KK录像机</td>
-<td>KK录像机只能录流畅的，高清的要钱</td>
-</tr>
-<tr>
-<td>磁盘清理工具</td>
-<td>TreeSize</td>
-<td>可以显示C和D盘每个文件夹的大小</td>
-</tr>
-<tr>
-<td>视频播放下载工具</td>
-<td>Zyplayer</td>
-<td><a href="http://zyplayer.fun/" target="_blank" rel="noopener">http://zyplayer.fun/</a></td>
-</tr>
-<tr>
-<td>桌面整理</td>
-<td>腾讯桌面助手</td>
-<td>对桌面的文件进行分区，还可以把常用的文件夹直接展示在桌面上，方便打开</td>
-</tr>
-<tr>
-<td>多目录跳转</td>
-<td>Q-dir</td>
-<td>可以同时看到不同的文件夹的目录，这样方便操作</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
+    <title>如何写出合适的参考文献</title>
+    <url>/2020/05/31/%E5%85%B6%E4%BB%96/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E5%90%88%E9%80%82%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/</url>
+    <content><![CDATA[<h3 id="一-论文下载与找寻"><a href="#一-论文下载与找寻" class="headerlink" title="一.论文下载与找寻"></a>一.论文下载与找寻</h3><p>从浏览器中的Blog中找话</p>
+<p>将看似是一段论文的话复制黏贴进搜索，找到类似的论文，再</p>
+<p>通过北邮图书管理系统的资源</p>
+<p>知网万方Springer，去使用参考文献。</p>
+<h3 id="二-论文查重"><a href="#二-论文查重" class="headerlink" title="二.论文查重"></a>二.论文查重</h3><p>PaperPass </p>
+<p>知网</p>
+<h3 id="三-个例"><a href="#三-个例" class="headerlink" title="三.个例"></a>三.个例</h3><h4 id="1-引用arXiv的文献"><a href="#1-引用arXiv的文献" class="headerlink" title="1.引用arXiv的文献"></a>1.引用arXiv的文献</h4><p>[预印本]    作者姓名 年份 arXiv: 号 [科学领域]</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[8] Latham T, Gershon T 2008 arXiv: 0809.0872v1 [hep-ph]</span><br><span class="line">[9] Shih Yuan Yu,Sujit Rokka Chhetri,Palash Goyal,etc 2019 arXiv: 1906.04239v1 [cs.AI]</span><br></pre></td></tr></table></figure>
+<h4 id="2-电子文献："><a href="#2-电子文献：" class="headerlink" title="2.电子文献："></a>2.电子文献：</h4><p>[电子文献]    作者姓名  网址  [引用日期]</p>
+<h4 id="3-引用书籍："><a href="#3-引用书籍：" class="headerlink" title="3.引用书籍："></a>3.引用书籍：</h4><p>[1] 著者. 书名[M].版本(第一版不标注).出版地.出版者.出版年.引文所在的起始或起止页码</p>
+<p>如</p>
+<p>[1] 翟姚明. 车辆-轨道耦合动力学[M].北京:中国铁道出版社,1997,74-80.</p>
+<p>[1] 邱锡鹏. 神经网络与深度学习[M].北京: 机械工业出版社,2020,7.</p>
+<h3 id="四-参考"><a href="#四-参考" class="headerlink" title="四.参考"></a>四.参考</h3><p><a href="https://wenku.baidu.com/view/0d9a3c4da4e9856a561252d380eb6294dc88225e.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/0d9a3c4da4e9856a561252d380eb6294dc88225e.html</a></p>
+<p><a href="https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html</a></p>
+<p>参考文献中显示符合重复是啥意思：</p>
+<p><a href="http://www.nxhh.net/lunwen/95159.html" target="_blank" rel="noopener">http://www.nxhh.net/lunwen/95159.html</a></p>
 ]]></content>
       <categories>
-        <category>tools</category>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
-    <title>visio画图心得</title>
-    <url>/2020/06/22/tools/visio%E7%94%BB%E5%9B%BE/</url>
-    <content><![CDATA[<p>画图的关键：图标+基本图形的组合</p>
-<p>对于一些比较难画的图，比如沙漏结构，可以先在网上找一张模型结构图，然后在这个图的基础上再添加一些线条和文字。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Want to do</th>
-<th>How to do</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>画出虚线矩形</td>
-<td>先用基本矩形，然后对基本矩形进行样式设置。</td>
-</tr>
-<tr>
-<td>让交叉的线不弯曲</td>
-<td>“设计”-&gt;右上角”选择连接线”-&gt;”显示跨线”前面的勾去掉</td>
-</tr>
-<tr>
-<td>让画布扩大时的分隔线去掉</td>
-<td>“视图”-&gt;取消勾选”分页符”</td>
-</tr>
-</tbody>
-</table>
-</div>
+    <title>小米2手机刷机</title>
+    <url>/2020/06/03/%E5%85%B6%E4%BB%96/%E5%B0%8F%E7%B1%B32s%E5%8D%A1%E5%88%B7%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="一-问题描述"><a href="#一-问题描述" class="headerlink" title="一.问题描述"></a>一.问题描述</h3><p>一部小米2手机，如何把系统刷机到MIUI5或者其他版本？</p>
+<h3 id="二-方式"><a href="#二-方式" class="headerlink" title="二.方式"></a>二.方式</h3><h4 id="卡刷1："><a href="#卡刷1：" class="headerlink" title="卡刷1："></a>卡刷1：</h4><p>1.到官网论坛，选择下载需要的卡刷包。</p>
+<p>2.将下载好的ROM重新命名为update.zip</p>
+<p>3.将小米2连接上电脑，通常情况下会产生一个可移动磁盘（XIAOMI）和一个小米2的手机图标（MI2），如果没有小米2的图标(MI2)，请安装产生的可移动磁盘（XIAOMI）里的可执行文件Setup.exe，安装驱动，成功后继续第4步。如果产生了小米2的图标，请直接第4步。</p>
+<p>4.打开小米2图标，打开我的电脑里小米2的手机图标（MI2），里面有个内存设备，打开。将下载好的并且重命名后的文件update.zip拷贝到内存设备磁盘中（必须是根目录）。拷贝完后关闭手机。</p>
+<p>5.先关机，按住开机键+音量上 屏幕亮后立即松开电源键 音量上一直按住 进入recovery 。选择简体中文 然后选择 清除数据 确认 里面三个选项都清除 。（音量键上下选择，电源键确定）。然后选择将update.zip安装至第一系统。等待刷机成功重启。</p>
+<p>6.刷机成功后返回主菜单，选择重启系统，选择（最近）这个系统，因为进错了会无限重启。 </p>
+<h4 id="卡刷2："><a href="#卡刷2：" class="headerlink" title="卡刷2："></a>卡刷2：</h4><p>下载奇兔刷机，然后按照操作一键刷机。</p>
+<p>或者下载小米手机助手</p>
+<h4 id="如何识别线刷包和卡刷包："><a href="#如何识别线刷包和卡刷包：" class="headerlink" title="如何识别线刷包和卡刷包："></a>如何识别线刷包和卡刷包：</h4><p><a href="http://rom.7to.cn/jiaochengdetail/17162" target="_blank" rel="noopener">http://rom.7to.cn/jiaochengdetail/17162</a></p>
 ]]></content>
       <categories>
-        <category>tools</category>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
-    <title>&lt;&lt;贫穷的本质&gt;&gt;读后感</title>
-    <url>/2020/06/24/read%20note/%E3%80%8A%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8%E3%80%8B/</url>
-    <content><![CDATA[<blockquote>
-<p>Poor countries are poor because they are hot, infertile, malaria infested, often landlocked; this makes it hard for them to be productive without an initial large investment to help them deal with these endemic problems. But they cannot pay for the investments precisely because they are poor—they are in what economists call a“poverty trap.” Until something is done about these problems, neither free markets nor democracy will do very much for them. This is why foreign aid is key: It can kick-start a virtuous cycle by helping poor countries invest in these critical areas and make them more productive. The resulting higher incomes will generate further investments; the beneficial spiral will continue. </p>
-</blockquote>
-<p><strong>穷人困境：</strong>穷人只所以穷，就是因为他们所在的国家贫瘠、疾病流行，还经常闭关锁国，导致他们如果没有一笔足够大的初始投资去克服这些问题，就没办法使得自己变得有效益。但他们大多数是承担不起这个投资的，因为他们穷，这样恶性循环，积贫积弱。</p>
-<p>对于这种情况，由国外援助来解决初始资金的投资问题，敲开良性循环的口子。</p>
-<blockquote>
-<p>The Elusive Quest for Growth</p>
-</blockquote>
-<p>在迷雾中挣扎成长。</p>
-<blockquote>
-<p>Both argue that aid does more bad than good: It prevents people from searching for their own solutions, while corrupting and undermining local institutions and creating a self-perpetuating lobby of aid agencies. The best bet for poor countries is to rely on one simple idea: When markets are free and the incentives are right, people can find ways to solve their problems. They do not need handouts, from foreigners or from their own governments.</p>
-</blockquote>
-<p>援助所带来的坏处要大于其好的初衷：它会阻碍穷人去寻找自己的解决方案，同时腐化当地机构，削弱当地机构的威信力和执行力，使得一些援助机构形同虚设。</p>
-<p><strong>对于穷国的最好的办法是，提供自由的市场和恰当的奖励机制，让人们自己去找到解决问题的方法，避免接收外国人的援助或政府的施舍。</strong></p>
-<blockquote>
-<p> The point is simple: Talking about the problems of the world without talking about some accessible solutions is the way to paralysis rather than progress. </p>
-</blockquote>
-<p>道理很简单：只谈论问题却不谈论问题的解决办法，这是止步不前而不是进步。</p>
-<blockquote>
-<p>童年时期适度的营养摄入具有深远意义。营养不良的儿童的个子更有可能长不高、学习成绩更差、生下来的孩子更瘦小。</p>
-<p>在菲律宾，一项研究表明，那些既要挣基本工资又要挣计件工资的，他们在挣计件工资时要多吃25%的食物。在挣计件工资时，工作能力十分重要，因为干的越多，挣得钱也就越多。</p>
-</blockquote>
-<p>让劳动者按照自己付出的努力和最后的结果来评估这个人的所得，才能调动其的积极性，让其自发地创造性的去完成任务，提高效率。</p>
-<blockquote>
-<p>实际上，存在着一种“心理沉没成本”—-人们更有可能会利用他们为之支付很多钱的东西。此外，人们可能会根据价格来判断质量，恰恰是由于某物品是廉价的，热们便有可能认为它没有价值。</p>
-<p>“时间矛盾”概念，我们对当前与未来的看法是截然不同的，当前的我们是冲动的，很大程度上由感性与即时欲望支配；花一点点时间或放弃一点点舒适感都是我们当前需要经历的，较之在没有迫切感的情况下去想这些事，当前的这种感觉更令人不愉快。但当我们为将来而计划时，那种渴望的快感似乎就不那么重要了。</p>
-</blockquote>
-<p>终于明白为啥构思计划时感觉很简单，真正去实施时却困难重重了，原来要克服一点点的即时欲望，要有迫切感。</p>
-<blockquote>
-<p>诱惑是生理需求的(性、糖、脂肪类食品、烟等)的表现。在这种情况下，富人更容易满足“受到诱惑的自己”。在决定是否存钱时，他们认为，任何为将来存的钱都会用于实现长期目标。因此，如果糖和茶是一种诱惑物的原型，那么富人不太可能会有所困扰—-他们并不是不会受到诱惑，而是无须担心多喝一杯茶就会花掉自己辛苦赚来的钱。</p>
-</blockquote>
-<p>正如自己现在的处境，自己对于时间上想要做的事情是很渴求的，但也经不住玩游戏、看视频的诱惑，但是有钱人的家里是不会让自己的孩子去做事情，不占用孩子自己的时间，因此他们有大把的时间用来试错，即使一天中懈怠了一上午或一下午，他们仍然有剩下的时间去充足地做自己想做的事情，而我自己则不行，一旦懈怠一会儿，就会导致一天下来，什么自己的事情也做不了，毕竟一天中自己有将近五个小时是被占用帮父母做事的状态。</p>
-<blockquote>
-<p>一点儿希望、保障以及安慰可以成为一种强大的激励措施。我们都很容易过上一种安稳的生活，制定一些我们有信心实现的目标(一台新沙发、50英寸的平板电视、第二辆汽车等)，寻求一些机构(储蓄账户、养老金计划、住房贷款等)的帮助。然后，像维多利亚时代的人那样，依据动力与规则行事。…….当你想要的一切看上去都很遥远时，你很难感受到动力。将目标设置得更近一些，或许是穷人实现这些目标的有效方式。</p>
-</blockquote>
-<p>将目标设置得近一些，寻求外在力量的监督和帮助。自己的话，想要发表论文的话，最近的目标就应该是把一些外围的基础知识给弄扎实了，然后潜心看几篇论文，把论文给弄懂。</p>
-<blockquote>
-<p>想要摆脱贫困，就要学会对长期目标进行思考，并习惯为此做出一些短期的牺牲。</p>
-</blockquote>
-<p>长期目标？？？！！！！ 短期享乐！！！？？？？</p>
-<blockquote>
-<p>自我控制就像是一块肌肉，我们用这块肌肉时就会感到劳累。……此外，穷人还生活在巨大的压力之下，而由压力产生的皮质醇会使我们做出更冲动的举动，因此，穷人只能以更少的资源完成更艰苦的任务。</p>
-</blockquote>
-<p>原来如此，自己每次都在本来可以学习的时间段里，冲动性地去玩游戏或者刷视频，就是潜意识里想要去缓解这种不自觉的压力(强迫自己去学习，不学就怎么样，怎么样的压力)。</p>
-<p>因此，解决办法就是不要给自己施压，放轻松地去做，简单一些，凭借着一种最为直接的想法，我就是想学习补充自己，了解自己的动力，而不是强迫自己的压力。</p>
-<blockquote>
-<p>这就是穷人和他们所做生意的矛盾之处，他们精力充沛，拥有丰富的资源，而且努力地做着白手起家的生意。但他们的大部分精力都花在了很小的生意上，而且他们同周围很多其他人都在做着相同的生意。结果，他们失去了过上一种富裕生活的机会。孟买那些富有创意的拾沙女们，发现了利用现成资源赚钱的机会：一些自由的时间和海滩上的沙子。但商业精英没有指出的是，尽管她们有这样的聪明才智，但这种生意几乎赚不了几个钱。</p>
-</blockquote>
-<p>也许，这就是菜市场有很多个卖菜的，但是很少有听说靠卖菜的起家的事迹。</p>
-<blockquote>
-<p>确实有超过10亿人在经营着自己的农场或公司，但他们中的大多数人这样做是因为别无选择。他们只想生存下去。因为他们没有才华、技能或是必要的风险承受能力。小额信贷及其他有助于小企业发展的方式，仍然在穷人的生活中扮演着重要角色。因为这些小企业要存活下去。或许，在可预见的未来，这是很多穷人得以生存的唯一方式。但是，如果我们认为他们能以此铺出一条逃脱贫穷的路，那么我们简直是在自欺欺人。</p>
-</blockquote>
-<p>如果不具有一技之长，那么做着同样的活，又凭什么你能致富脱贫，而我不能呢？</p>
+    <title>翻墙须知</title>
+    <url>/2020/06/20/%E5%85%B6%E4%BB%96/%E7%BF%BB%E5%A2%99%E9%A1%BB%E7%9F%A5/</url>
+    <content><![CDATA[<h3 id="0-一些问题"><a href="#0-一些问题" class="headerlink" title="0 一些问题"></a>0 一些问题</h3><p>系统http代理是主机通过访问代理服务器的地址，端口来获得相应的网络资源。</p>
+<h3 id="1-系统代理模式"><a href="#1-系统代理模式" class="headerlink" title="1 系统代理模式"></a>1 系统代理模式</h3><h4 id="1-1-PAC模式："><a href="#1-1-PAC模式：" class="headerlink" title="1.1 PAC模式："></a>1.1 PAC模式：</h4><p>智能分流模式，根据规则匹配访问的网站，仅仅加速国外网站，国内网站不受影响。PAC文件为SSR根目录下的pac.txt。</p>
+<p><strong>优点</strong>：国内网站依旧走本地网络，国外网站走代理，速度快，省流。</p>
+<p><strong>缺点</strong>：少部分国外网站不走代理，没法加速，甚至无法访问(解决方案：自己编辑PAC规则列表，将不走代理的国外网址加入进去，或者直接选择全局模式)</p>
+<h4 id="1-2-全局模式"><a href="#1-2-全局模式" class="headerlink" title="1.2 全局模式"></a>1.2 全局模式</h4><p>国内、国外所有网站都走代理。</p>
+<p><strong>优点</strong>：可访问全球所有的网站</p>
+<p><strong>缺点</strong>：所有网站都走代理，造成访问国内的网站速度变慢，耗流。</p>
+<h4 id="1-3-直连模式"><a href="#1-3-直连模式" class="headerlink" title="1.3 直连模式"></a>1.3 直连模式</h4><p>关闭系统HTTP代理，所有HTTP上网流量都不会通过SSR代理，此模式下只能使用Socks5代理方式连接SSR代理。</p>
+<h4 id="1-4保持当前状态不修改"><a href="#1-4保持当前状态不修改" class="headerlink" title="1.4保持当前状态不修改"></a>1.4保持当前状态不修改</h4><p>不会对目前的系统HTTP代理状态进行任何的修改。当退出SSR后，系统HTTP代理会自动被恢复至原有状态;开启SSR后，系统HTTP代理会被设置成所设定的系统代理模式状态。</p>
+<h3 id="2-SSR的配置"><a href="#2-SSR的配置" class="headerlink" title="2 SSR的配置"></a>2 SSR的配置</h3><ol>
+<li><strong>系统代理模式选择</strong>：PAC模式（PAC模式就是有选择的使用专线，国内不代理）</li>
+<li><strong>代理规则模式选择</strong>：绕过局域网和大陆</li>
+<li><strong>PAC选择</strong>：更新PAC为绕过大陆IP（即所有的大陆IP网址不需要使用专线网络）</li>
+</ol>
 ]]></content>
       <categories>
-        <category>read note</category>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -2894,28 +2960,6 @@ f3    &x\gt0
       </categories>
   </entry>
   <entry>
-    <title>翻墙须知</title>
-    <url>/2020/06/20/%E5%85%B6%E4%BB%96/%E7%BF%BB%E5%A2%99%E9%A1%BB%E7%9F%A5/</url>
-    <content><![CDATA[<h3 id="0-一些问题"><a href="#0-一些问题" class="headerlink" title="0 一些问题"></a>0 一些问题</h3><p>系统http代理是主机通过访问代理服务器的地址，端口来获得相应的网络资源。</p>
-<h3 id="1-系统代理模式"><a href="#1-系统代理模式" class="headerlink" title="1 系统代理模式"></a>1 系统代理模式</h3><h4 id="1-1-PAC模式："><a href="#1-1-PAC模式：" class="headerlink" title="1.1 PAC模式："></a>1.1 PAC模式：</h4><p>智能分流模式，根据规则匹配访问的网站，仅仅加速国外网站，国内网站不受影响。PAC文件为SSR根目录下的pac.txt。</p>
-<p><strong>优点</strong>：国内网站依旧走本地网络，国外网站走代理，速度快，省流。</p>
-<p><strong>缺点</strong>：少部分国外网站不走代理，没法加速，甚至无法访问(解决方案：自己编辑PAC规则列表，将不走代理的国外网址加入进去，或者直接选择全局模式)</p>
-<h4 id="1-2-全局模式"><a href="#1-2-全局模式" class="headerlink" title="1.2 全局模式"></a>1.2 全局模式</h4><p>国内、国外所有网站都走代理。</p>
-<p><strong>优点</strong>：可访问全球所有的网站</p>
-<p><strong>缺点</strong>：所有网站都走代理，造成访问国内的网站速度变慢，耗流。</p>
-<h4 id="1-3-直连模式"><a href="#1-3-直连模式" class="headerlink" title="1.3 直连模式"></a>1.3 直连模式</h4><p>关闭系统HTTP代理，所有HTTP上网流量都不会通过SSR代理，此模式下只能使用Socks5代理方式连接SSR代理。</p>
-<h4 id="1-4保持当前状态不修改"><a href="#1-4保持当前状态不修改" class="headerlink" title="1.4保持当前状态不修改"></a>1.4保持当前状态不修改</h4><p>不会对目前的系统HTTP代理状态进行任何的修改。当退出SSR后，系统HTTP代理会自动被恢复至原有状态;开启SSR后，系统HTTP代理会被设置成所设定的系统代理模式状态。</p>
-<h3 id="2-SSR的配置"><a href="#2-SSR的配置" class="headerlink" title="2 SSR的配置"></a>2 SSR的配置</h3><ol>
-<li><strong>系统代理模式选择</strong>：PAC模式（PAC模式就是有选择的使用专线，国内不代理）</li>
-<li><strong>代理规则模式选择</strong>：绕过局域网和大陆</li>
-<li><strong>PAC选择</strong>：更新PAC为绕过大陆IP（即所有的大陆IP网址不需要使用专线网络）</li>
-</ol>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
     <title>通过关闭Windows update更新解决服务主机CPU率高的问题</title>
     <url>/2020/04/23/%E5%85%B6%E4%BB%96/%E9%80%9A%E8%BF%87%E5%85%B3%E9%97%ADWindows%20update%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E4%B8%BB%E6%9C%BACPU%E7%8E%87%E9%AB%98%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h3 id="一-问题"><a href="#一-问题" class="headerlink" title="一.问题"></a>一.问题</h3><p>windows10系统卡顿，并且笔记本风扇声音特别响，通过任务管理器查看得到Windows Update 所占的内存较大。</p>
@@ -2927,24 +2971,6 @@ f3    &x\gt0
 <p>6.依次展开”计算机配置”，”管理模板” ，”windows组件” ，”windows更新 “，在右面找到“配置自动更新”，并双击</p>
 <p>7.在配置窗口上按1-3的顺序选择“已禁用”，点击“应用”，“确定”，重启电脑</p>
 <p>8.打开C:\Windows\SoftwareDistribution，删除里面所有文件</p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>小米2手机刷机</title>
-    <url>/2020/06/03/%E5%85%B6%E4%BB%96/%E5%B0%8F%E7%B1%B32s%E5%8D%A1%E5%88%B7%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h3 id="一-问题描述"><a href="#一-问题描述" class="headerlink" title="一.问题描述"></a>一.问题描述</h3><p>一部小米2手机，如何把系统刷机到MIUI5或者其他版本？</p>
-<h3 id="二-方式"><a href="#二-方式" class="headerlink" title="二.方式"></a>二.方式</h3><h4 id="卡刷1："><a href="#卡刷1：" class="headerlink" title="卡刷1："></a>卡刷1：</h4><p>1.到官网论坛，选择下载需要的卡刷包。</p>
-<p>2.将下载好的ROM重新命名为update.zip</p>
-<p>3.将小米2连接上电脑，通常情况下会产生一个可移动磁盘（XIAOMI）和一个小米2的手机图标（MI2），如果没有小米2的图标(MI2)，请安装产生的可移动磁盘（XIAOMI）里的可执行文件Setup.exe，安装驱动，成功后继续第4步。如果产生了小米2的图标，请直接第4步。</p>
-<p>4.打开小米2图标，打开我的电脑里小米2的手机图标（MI2），里面有个内存设备，打开。将下载好的并且重命名后的文件update.zip拷贝到内存设备磁盘中（必须是根目录）。拷贝完后关闭手机。</p>
-<p>5.先关机，按住开机键+音量上 屏幕亮后立即松开电源键 音量上一直按住 进入recovery 。选择简体中文 然后选择 清除数据 确认 里面三个选项都清除 。（音量键上下选择，电源键确定）。然后选择将update.zip安装至第一系统。等待刷机成功重启。</p>
-<p>6.刷机成功后返回主菜单，选择重启系统，选择（最近）这个系统，因为进错了会无限重启。 </p>
-<h4 id="卡刷2："><a href="#卡刷2：" class="headerlink" title="卡刷2："></a>卡刷2：</h4><p>下载奇兔刷机，然后按照操作一键刷机。</p>
-<p>或者下载小米手机助手</p>
-<h4 id="如何识别线刷包和卡刷包："><a href="#如何识别线刷包和卡刷包：" class="headerlink" title="如何识别线刷包和卡刷包："></a>如何识别线刷包和卡刷包：</h4><p><a href="http://rom.7to.cn/jiaochengdetail/17162" target="_blank" rel="noopener">http://rom.7to.cn/jiaochengdetail/17162</a></p>
 ]]></content>
       <categories>
         <category>其他</category>
@@ -3024,32 +3050,6 @@ f3    &x\gt0
 <p><strong>字节跳动面经</strong></p>
 <p><a href="https://mp.weixin.qq.com/s/A5bSc7jcUhfhcDLu9bdC6w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/A5bSc7jcUhfhcDLu9bdC6w</a></p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>谷歌面试<a href="https://mp.weixin.qq.com/s/plxO4mCuAPFzLCt6AYd8GA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/plxO4mCuAPFzLCt6AYd8GA</a></p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>如何写出合适的参考文献</title>
-    <url>/2020/05/31/%E5%85%B6%E4%BB%96/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E5%90%88%E9%80%82%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/</url>
-    <content><![CDATA[<h3 id="一-论文下载与找寻"><a href="#一-论文下载与找寻" class="headerlink" title="一.论文下载与找寻"></a>一.论文下载与找寻</h3><p>从浏览器中的Blog中找话</p>
-<p>将看似是一段论文的话复制黏贴进搜索，找到类似的论文，再</p>
-<p>通过北邮图书管理系统的资源</p>
-<p>知网万方Springer，去使用参考文献。</p>
-<h3 id="二-论文查重"><a href="#二-论文查重" class="headerlink" title="二.论文查重"></a>二.论文查重</h3><p>PaperPass </p>
-<p>知网</p>
-<h3 id="三-个例"><a href="#三-个例" class="headerlink" title="三.个例"></a>三.个例</h3><h4 id="1-引用arXiv的文献"><a href="#1-引用arXiv的文献" class="headerlink" title="1.引用arXiv的文献"></a>1.引用arXiv的文献</h4><p>[预印本]    作者姓名 年份 arXiv: 号 [科学领域]</p>
-<p>举例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[8] Latham T, Gershon T 2008 arXiv: 0809.0872v1 [hep-ph]</span><br><span class="line">[9] Shih Yuan Yu,Sujit Rokka Chhetri,Palash Goyal,etc 2019 arXiv: 1906.04239v1 [cs.AI]</span><br></pre></td></tr></table></figure>
-<h4 id="2-电子文献："><a href="#2-电子文献：" class="headerlink" title="2.电子文献："></a>2.电子文献：</h4><p>[电子文献]    作者姓名  网址  [引用日期]</p>
-<h4 id="3-引用书籍："><a href="#3-引用书籍：" class="headerlink" title="3.引用书籍："></a>3.引用书籍：</h4><p>[1] 著者. 书名[M].版本(第一版不标注).出版地.出版者.出版年.引文所在的起始或起止页码</p>
-<p>如</p>
-<p>[1] 翟姚明. 车辆-轨道耦合动力学[M].北京:中国铁道出版社,1997,74-80.</p>
-<p>[1] 邱锡鹏. 神经网络与深度学习[M].北京: 机械工业出版社,2020,7.</p>
-<h3 id="四-参考"><a href="#四-参考" class="headerlink" title="四.参考"></a>四.参考</h3><p><a href="https://wenku.baidu.com/view/0d9a3c4da4e9856a561252d380eb6294dc88225e.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/0d9a3c4da4e9856a561252d380eb6294dc88225e.html</a></p>
-<p><a href="https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/fd8044faa77d7c1031137ab8.html</a></p>
-<p>参考文献中显示符合重复是啥意思：</p>
-<p><a href="http://www.nxhh.net/lunwen/95159.html" target="_blank" rel="noopener">http://www.nxhh.net/lunwen/95159.html</a></p>
 ]]></content>
       <categories>
         <category>其他</category>
